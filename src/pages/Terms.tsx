@@ -1,0 +1,217 @@
+import LegalLayout from '../components/ui/LegalLayout'
+import { useSEO } from '../hooks/usePageMeta'
+import { graph, breadcrumbLd } from '../data/jsonld'
+
+/**
+ * Terms of Service. The clauses that describe how the app actually behaves are
+ * quoted from the build, so a term and the screen it governs say the same thing.
+ */
+export default function Terms() {
+  useSEO({
+    title: 'Terms of Service — Xelvic',
+    description:
+      'The agreement between you and Xelvic: your account, your content, acceptable use, takedowns, creator deals, Sparks, and how to leave.',
+    image: '/media/walls/xelvic.jpg',
+    jsonLd: graph(
+      breadcrumbLd([
+        { name: 'Home', path: '/' },
+        { name: 'Terms of Service', path: '/terms' },
+      ]),
+    ),
+  })
+
+  return (
+    <LegalLayout
+      eyebrow="The ground rules"
+      title="Terms of Service"
+      updated="October 2026"
+      minutes={7}
+      wall="/media/walls/xelvic.jpg"
+      intro="These terms are the agreement between you and Xelvic. By using the app, you agree to them. They are written to be read rather than skimmed past."
+      inShort={[
+        'You must be 13 or over. Below that, the sign-up does not complete.',
+        'What you make stays yours. You give us only the permission needed to show it to the people you meant to reach.',
+        'Keep it a place people can be. No harassment, no impersonation, no breaking the service.',
+        'You can leave whenever you want, and deleting gives you 30 days to change your mind.',
+      ]}
+      glance={[
+        { label: 'Minimum age', value: '13' },
+        { label: 'Deletion window', value: '30 days' },
+        { label: 'Ownership of posts', value: 'Yours' },
+        { label: 'Handle change', value: 'Once a day' },
+      ]}
+      sections={[
+        {
+          heading: 'Accepting these terms',
+          body: [
+            'By creating an account or using Xelvic, you agree to these Terms of Service and to our Privacy Policy. If you do not agree with them, please do not use Xelvic — and if you already have an account, you can delete it from settings at any point.',
+            'Where these terms and the app disagree about how something works, the app is what actually happens and we will correct these terms to match.',
+          ],
+        },
+        {
+          heading: 'Who can use Xelvic',
+          body: [
+            'You must be at least 13 years old. This is not a suggestion buried in a policy: the date of birth is worked out at sign-up, and an account that does not clear the line cannot be finished. The age itself is never stored — it is used to check the gate and then it is gone.',
+            'You are responsible for keeping your account secure and for what happens on it. That means not sharing the one-time codes we send you, and not sharing your password.',
+          ],
+          points: [
+            'You must be 13 or over.',
+            'Your date of birth is checked, then not kept.',
+            'Keep your password and your one-time codes to yourself.',
+            'You are responsible for activity on your account.',
+          ],
+          app: 'You need to be over 13',
+        },
+        {
+          heading: 'Your account and your handle',
+          body: [
+            'Your handle is how people reach you, so it has to be yours to use. Handles are first come, first served, and the app will not leave you stuck: if somebody takes one out from under you, it offers another.',
+            'A handle can be changed, but not endlessly — the app holds you to roughly one change a day, which keeps a handle meaning something rather than being a thing people swap to dodge a block.',
+            'You can add a display name, a picture and a line about yourself. None of it is required, and none of it changes what the handle does.',
+          ],
+          points: [
+            'Handles are first come, first served.',
+            'A handle change is limited to about once a day.',
+            'Impersonating somebody else is a break of these terms.',
+          ],
+          app: 'Somebody just took that handle. Here is another one.',
+        },
+        {
+          heading: 'Your content',
+          body: [
+            'You own what you make. Posting something gives us the permission needed to host it and to show it to the people you intended to reach — nothing wider than that, and nothing that outlives the post.',
+            'You are responsible for what you put up. Do not post anything unlawful, anything that infringes somebody else’s rights, or anything that would put another person in danger by being seen.',
+            'Deleting works the way you would expect. Taking a post down removes it from the app, and taking a track or playlist down takes it off your shelf and off everybody it was sent to, including links that were already handed out. A feed takedown is the narrower tool, and the app is honest about it — it stops the thing being dealt into anybody’s feed while leaving it on its author’s profile and at its own link.',
+          ],
+          points: [
+            'You keep ownership of what you create.',
+            'We get only the permission needed to host it and show it to your audience.',
+            'Deleted content comes off the shelf and off everyone it was sent to.',
+            'A feed takedown is narrower than a deletion, and says so.',
+          ],
+          app: 'It stops being dealt into anybody’s feed. It is still on the author’s profile, still at its own link, and still readable by everyone who could read it before.',
+        },
+        {
+          heading: 'Acceptable use',
+          body: [
+            'Keep Xelvic a place people can be. That means no harassment, no targeted abuse, no spam, no impersonation, and nothing illegal — including using the app to organise harm to somebody.',
+            'It also means leaving the service alone. Do not try to break it, overload it, reverse-engineer it, scrape it, or reach into it in ways the app does not offer. Do not use it to send bulk messages to people who did not ask for them.',
+            'Do not use Xelvic if you are under 13, and do not help somebody who is to get around the age gate.',
+          ],
+          points: [
+            'No harassment, abuse, spam or impersonation.',
+            'Nothing unlawful, and nothing that organises harm.',
+            'No scraping, bulk messaging, or breaking the service.',
+            'No getting around the age gate, for yourself or anybody else.',
+          ],
+        },
+        {
+          heading: 'Reports, takedowns and moderation',
+          body: [
+            'You can report a person, a post or a comment. A report goes into a queue and is read by a moderator, and the person you reported is not told who reported them. Reporting is not an automatic punishment — the app is explicit that nothing happens to them on its own.',
+            'We act on reports by removing content, restricting an account, or removing it outright, depending on what happened. Where a report turns out to be a misuse of the reporting tool itself, that can be acted on too.',
+            'If you believe something on Xelvic infringes a right you hold, write to us at legal@xelvic.app with the post, the link, and what you hold. We will look, and we will tell you what we did.',
+          ],
+          points: [
+            'Reports are read by a person, not a filter.',
+            'The reported person is not told who reported them.',
+            'Content or accounts can be removed where the terms are broken.',
+            'Rights holders can write to legal@xelvic.app.',
+          ],
+          app: 'A moderator will look at it. Nobody is told you reported this, and nothing happens to them on its own.',
+        },
+        {
+          heading: 'Verification',
+          body: [
+            'Verification is a tick beside a handle, and the date it was given written down. It is not an endorsement of what somebody says, and the app says so plainly — it is a mark that the account is who it claims to be.',
+            'You can request it from your profile by saying why you should be verified. If an account stops being what it was verified as, the mark can be taken back.',
+          ],
+          points: [
+            'A tick and the date it was granted — not an endorsement.',
+            'Requested from your profile, with a reason.',
+            'Revocable if the account stops being what it was verified as.',
+          ],
+          app: 'It can be taken back if the account stops being what it was verified as.',
+        },
+        {
+          heading: 'Creators, deals and payments',
+          body: [
+            'A deal is a paid collaboration between a brand and a creator. You are told what the deal asks for before you take it on, you can decline it, and you can cancel a deal you have taken — with the app warning you that the other side sees the cancellation and it cannot be undone.',
+            'When you take part, payment is released only after the company approves the deliverable you upload. Deals you send or receive show up in one place, so the agreement and the payment stay visible together rather than living in a message thread.',
+            'You are responsible for any taxes on amounts you earn. If you are earning as a business rather than as an individual, that is your side of it to get right.',
+          ],
+          points: [
+            'What a deal asks for is stated before you accept.',
+            'Payment is released after the deliverable is approved.',
+            'Cancelling a deal is visible to the other side and cannot be undone.',
+            'Tax on what you earn is yours to handle.',
+          ],
+          app: 'Invite creators to make content and track paid deals, agreement to payment, in the open.',
+        },
+        {
+          heading: 'Sparks and paid extras',
+          body: [
+            'Chatting, calling, moments, live rooms and music are free. Sparks are the currency for cosmetic extras — themes, looks and the like. They change how the app looks, not what it does.',
+            'Sparks are earned rather than only bought. A day two people talk on is one spark, and one can bank each week up to the cap the app shows you. Sparks and purchases are tied to your account and are not transferable to another person.',
+            'If a cosmetic item is withdrawn — a theme pulled from sale, for instance — the app tells you rather than quietly leaving a gap, and anything you already applied stays as it is.',
+          ],
+          points: [
+            'The app itself is free; Sparks are for cosmetics.',
+            'Sparks are earned by talking, and one can bank each week.',
+            'Sparks are tied to your account and cannot be transferred.',
+            'A withdrawn item is announced rather than silently removed.',
+          ],
+          app: 'That theme is not open to buy just now.',
+        },
+        {
+          heading: 'Ending your use',
+          body: [
+            'You can stop using Xelvic and delete your account at any time. Deleting hides the account right away, so nobody can find you or message you, and then keeps it for 30 days in case you change your mind — sign in once inside that window and it is restored exactly as it was.',
+            'After 30 days the account is deleted permanently, along with your profile and everything you posted. Past that point it cannot be recovered, and there is no route by which we can bring it back.',
+            'We may suspend or close accounts that break these terms or that put other people at risk. Where we do, we tell you why.',
+          ],
+          points: [
+            'Delete whenever you want, from settings.',
+            'Hidden at once, recoverable for 30 days.',
+            'Permanently gone after 30 days, with no route back.',
+            'We can remove accounts that break these terms, and we say why.',
+          ],
+          app: 'After 30 days it is gone for good and cannot be recovered.',
+        },
+        {
+          heading: 'Our side of it',
+          body: [
+            'We work to keep Xelvic running, and we fix what breaks. But the service is provided as it is, and we cannot promise it will be uninterrupted or free of faults — no app honestly can.',
+            'We are not responsible for what other people post, and we are not responsible for what you do with something you saw here. What we are responsible for is acting on reports and honouring what these terms and the Privacy Policy say we do.',
+            'Nothing in these terms takes away rights you have under the law where you live.',
+          ],
+        },
+        {
+          heading: 'Changes to these terms',
+          body: [
+            'We may update these terms from time to time. If we make a change that significantly affects you, we will tell you inside the app rather than relying on you to come back and read this page. The date at the top of this page always moves when the wording does.',
+            'Continuing to use Xelvic after a change means you accept the updated terms. If you do not, you can delete your account at any point, on the terms above.',
+          ],
+        },
+        {
+          heading: 'Contact',
+          body: [
+            'For anything about these terms, including a legal notice or a rights complaint, write to legal@xelvic.app. For questions about how the app behaves, the Help Center is faster, and for anything about your information or your account, privacy@xelvic.app and support@xelvic.app respectively.',
+          ],
+        },
+      ]}
+      related={[
+        { label: 'Privacy Policy', to: '/privacy' },
+        { label: 'Your Data', to: '/data' },
+        { label: 'Safety', to: '/safety' },
+        { label: 'Security', to: '/security' },
+        { label: 'Help Center', to: '/help' },
+      ]}
+      contact={{
+        label: 'Email legal@xelvic.app',
+        href: 'mailto:legal@xelvic.app',
+        note: 'Legal notices, rights complaints and questions about these terms. Tell us the post or the account, and we will look at it.',
+      }}
+    />
+  )
+}

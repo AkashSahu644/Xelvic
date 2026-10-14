@@ -1,0 +1,343 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --pink: #ec4899;
+  --pink-glow: #ff6fb1;
+  --plum: #3a0a24;
+  /* legacy aliases kept so older inline styles keep resolving */
+  --blue: #ec4899;
+  --blue-glow: #ff6fb1;
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* iOS inflates body copy when the phone is turned to landscape unless this is
+     pinned. The page is already set in the sizes it wants at every width. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  @apply bg-ink-900 font-sans text-plum antialiased;
+  /* One element wider than the screen — a mockup card escaping its phone, the
+     footer watermark, a marquee — must not turn the whole document into a
+     scrollable surface the user can drag sideways. Sections that do overflow
+     clip themselves; this is the backstop for the ones that forget to. */
+  overflow-x: hidden;
+}
+
+/* Responsive safety net: these rules only prevent intrinsic media and long
+   strings from widening a layout. They do not change the visual system. */
+img,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+}
+
+button,
+a {
+  touch-action: manipulation;
+}
+
+[id] {
+  scroll-margin-top: calc(5rem + env(safe-area-inset-top));
+}
+
+@media (max-width: 639px) {
+  /* Keep the existing button styling, but make every primary control thumb
+     friendly on phones without forcing desktop buttons to grow. */
+  .btn {
+    min-height: 44px;
+  }
+}
+
+@media (orientation: landscape) and (max-height: 520px) {
+  /* Short phone landscape viewports need less vertical breathing room so the
+     same sections remain usable without changing their desktop composition. */
+  .section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #fff4f9;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#ec4899, #ff8fc4);
+  border-radius: 999px;
+  border: 2px solid #fff4f9;
+}
+
+::selection {
+  background: rgba(236, 72, 153, 0.25);
+  color: #3a0a24;
+}
+
+@layer components {
+  /* The page gutter, and the one place the notch is accounted for. It is
+     padding rather than an inset on the page itself so that full-bleed
+     backgrounds — the hero bed, a band, the footer — still reach the screen
+     edge; only the content is pulled clear. On a notched phone held sideways
+     the gutter grows to clear the cutout instead of letting a headline run
+     under it, and `max()` means a device that reports no safe area gets the
+     plain gutter it always had. */
+  .wrap {
+    @apply mx-auto w-full max-w-wrap;
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+  @media (min-width: 640px) {
+    .wrap {
+      padding-left: max(1.25rem, env(safe-area-inset-left));
+      padding-right: max(1.25rem, env(safe-area-inset-right));
+    }
+  }
+  @media (min-width: 1024px) {
+    .wrap {
+      padding-left: max(2rem, env(safe-area-inset-left));
+      padding-right: max(2rem, env(safe-area-inset-right));
+    }
+  }
+
+  /* Liquid glass surfaces — light, pink-tinted, plum hairline borders */
+  .glass {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(255, 214, 232, 0.55)
+    );
+    backdrop-filter: blur(18px) saturate(150%);
+    -webkit-backdrop-filter: blur(18px) saturate(150%);
+    border: 1px solid rgba(58, 10, 36, 0.1);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.95),
+      0 20px 50px rgba(157, 23, 77, 0.1);
+  }
+
+  .glass-soft {
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(58, 10, 36, 0.08);
+  }
+
+  .glass-strong {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(255, 224, 238, 0.8)
+    );
+    backdrop-filter: blur(26px) saturate(170%);
+    -webkit-backdrop-filter: blur(26px) saturate(170%);
+    border: 1px solid rgba(58, 10, 36, 0.12);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 1);
+  }
+
+  .text-grad {
+    background-image: linear-gradient(100deg, #be185d, #ec4899 55%, #ff5fa2);
+    @apply bg-clip-text text-transparent;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold transition-all duration-200 whitespace-nowrap;
+  }
+  .btn-glow {
+    @apply bg-brand-grad text-plum;
+  }
+  .btn-glow:hover {
+    @apply -translate-y-0.5 shadow-glow;
+  }
+  .btn-white {
+    @apply bg-plum text-pure;
+  }
+  .btn-white:hover {
+    @apply -translate-y-0.5 shadow-card-dark;
+  }
+  .btn-ghost {
+    @apply border border-plum/20 text-plum;
+  }
+  .btn-ghost:hover {
+    @apply border-plum/50 bg-pink-500/10;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-pink-500/20 bg-pink-500/[0.07] px-4 py-2 text-xs font-bold uppercase tracking-wider text-pink-600;
+  }
+
+  .chip {
+    @apply rounded-full border border-plum/10 bg-pure px-4 py-2.5 text-sm font-semibold text-plum/80 shadow-[0_2px_10px_rgba(157,23,77,.06)] transition-all duration-200;
+  }
+  .chip:hover {
+    @apply -translate-y-0.5 border-transparent bg-brand-grad text-plum shadow-glow-sm;
+  }
+
+  /* 80px of air above and below a section is right on a laptop and eats a
+     third of a small phone's screen, so the rhythm starts tighter and opens
+     out once there is room for it. */
+  .section {
+    @apply py-16 sm:py-20 md:py-28;
+  }
+
+  /* Animated gradient text that slowly pans */
+  .text-grad-anim {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(100deg, #9d174d, #ec4899 45%, #ff5fa2 80%, #9d174d);
+    background-size: 200% auto;
+    @apply animate-gradient-pan;
+  }
+
+  /* Pill tab used in feature "how it works" switchers */
+  .tab {
+    @apply rounded-full px-4 py-2 text-sm font-semibold text-plum/60 transition-all duration-200;
+  }
+  .tab[data-active='true'] {
+    @apply bg-brand-grad text-plum shadow-glow-sm;
+  }
+  .tab:not([data-active='true']):hover {
+    @apply bg-pink-500/10 text-plum;
+  }
+
+  /* Press states. Everything on this site is styled with `hover:`, and a phone
+     has no hover: the lift and the glow that confirm a control is live on a
+     laptop never fire under a thumb, so a tap reads as nothing having happened
+     until the page changes underneath it. `:active` is the one state a touch
+     screen can produce, and nothing on the site was using it.
+
+     It is a brightness change and not a scale because the magnetic buttons
+     hand their `transform` to Framer as an inline style, and an inline
+     transform outranks anything written here — a scale would have landed on
+     the plain links and skipped every call to action. A filter is not a
+     property Framer touches, so one declaration covers the whole site: the
+     plain `.btn` links, the chips, the tabs and the magnetic CTAs alike. */
+  .btn:active,
+  .chip:active,
+  .tab:active {
+    filter: brightness(0.93);
+    transition-duration: 90ms;
+  }
+
+  /* Numbered step bubble */
+  .step-num {
+    @apply grid h-10 w-10 shrink-0 place-items-center rounded-full bg-brand-grad font-display text-sm font-bold text-plum shadow-glow-sm;
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-plum/15 bg-pure px-4 py-3 text-plum outline-none transition-colors placeholder:text-plum/35 focus:border-pink-500;
+    /* 16px on a phone, deliberately. iOS zooms the whole page in when a control
+       smaller than that takes focus and does not zoom back out, so a 14px field
+       leaves the visitor on a magnified page after they tap it. From `sm` up
+       there is no zoom to trigger and the type settles back to 14px. */
+    font-size: 16px;
+  }
+  @media (min-width: 640px) {
+    .field {
+      font-size: 14px;
+    }
+  }
+}
+
+@layer utilities {
+  /* Fixed chrome that meets a screen edge. `viewport-fit=cover` is declared in
+     index.html, which is what lets the page paint under a notch and a home
+     indicator — so the two things pinned to those edges have to step around
+     them. `env()` is 0 on every device without a safe area, so these are no-ops
+     everywhere else. */
+  .pt-safe {
+    padding-top: env(safe-area-inset-top);
+  }
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .noise {
+    position: relative;
+  }
+  .noise::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+  .glow-dot {
+    box-shadow: 0 0 12px var(--pink), 0 0 24px rgba(255, 111, 177, 0.5);
+  }
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  }
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
+    mask-image: linear-gradient(180deg, #000 60%, transparent);
+  }
+
+  /* Horizontal rails you drag or nudge with arrows: still scrollable, but
+     without the OS scrollbar track cutting across the artwork.
+
+     `overscroll-behavior-x` is what stops a hard flick at the end of a rail
+     from being handed on to the page. Without it, a thumb that reaches the
+     last tile and keeps going drags the whole document sideways — the one
+     gesture on a phone that scrolls the layout off the screen and leaves it
+     there. */
+  .no-scrollbar {
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Soft drifting pink aurora blobs for section backdrops */
+  .aurora-bg {
+    position: absolute;
+    inset: 0;
+    z-index: -10;
+    pointer-events: none;
+    background-image:
+      radial-gradient(45% 55% at 18% 12%, rgba(236, 72, 153, 0.16), transparent 60%),
+      radial-gradient(40% 50% at 85% 18%, rgba(255, 143, 196, 0.2), transparent 60%),
+      radial-gradient(55% 60% at 55% 100%, rgba(219, 39, 119, 0.13), transparent 60%);
+    will-change: transform;
+  }
+  .aurora-bg--drift {
+    animation: aurora-drift 18s ease-in-out infinite;
+  }
+
+  /* Animated conic ring (used as "live" / recording halo) */
+  .ring-live::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    padding: 2px;
+    background: conic-gradient(from 0deg, #ff9ecb, #ec4899, #9d174d, #ff9ecb);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: spin-slow 6s linear infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
