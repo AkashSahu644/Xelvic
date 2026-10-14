@@ -3,28 +3,11 @@ import PageHero from '../components/layout/PageHero'
 import Reveal from '../components/ui/Reveal'
 import { posts } from '../data/posts'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, webPageLd } from '../data/jsonld'
 
 const fmt = (d: string) => new Date(d).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })
 
 export default function Blog() {
-  useSEO({
-    title: 'Blog — Xelvic',
-    description: 'Stories, updates and behind-the-scenes from the Xelvic team.',
-    jsonLd: graph(
-      webPageLd({
-        name: 'The Xelvic blog',
-        description:
-          'Product news, design deep-dives and the thinking behind Xelvic, written by the team that builds it.',
-        path: '/blog',
-        image: '/media/walls/raat.jpg',
-        breadcrumbs: [
-          { name: 'Home', path: '/' },
-          { name: 'Blog', path: '/blog' },
-        ],
-      }),
-    ),
-  })
+  useSEO()
   const [featured, ...rest] = posts
   return (
     <>

@@ -5,7 +5,6 @@ import { Lede, Rows, SectionHead, Prose, Note, DoDont } from '../components/ui/E
 import { NextLinks } from '../components/ui/Explainers'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, webPageLd } from '../data/jsonld'
 
 /* The download set. Two files, both real: the deep-plum wordmark for light
    surfaces and the reversed one for plum. Nothing here is a placeholder. */
@@ -104,25 +103,7 @@ const naming = [
 ]
 
 export default function Brand() {
-  useSEO({
-    title: 'Brand Center — Xelvic',
-    description:
-      'The Xelvic logo files, the colour system and when to use which, the typefaces, how to write the name, and the things we would rather you did not do with the mark.',
-    image: '/media/walls/xelvic.jpg',
-    jsonLd: graph(
-      webPageLd({
-        name: 'Xelvic Brand Center',
-        description:
-          'The Xelvic logo files, the colour system and when to use which, the typefaces, how to write the name, and the things we would rather you did not do with the mark.',
-        path: '/brand',
-        image: '/media/walls/xelvic.jpg',
-        breadcrumbs: [
-          { name: 'Home', path: '/' },
-          { name: 'Brand Center', path: '/brand' },
-        ],
-      }),
-    ),
-  })
+  useSEO()
 
   return (
     <>

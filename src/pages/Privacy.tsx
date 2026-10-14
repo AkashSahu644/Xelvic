@@ -1,6 +1,5 @@
 import LegalLayout from '../components/ui/LegalLayout'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, webPageLd } from '../data/jsonld'
 
 /**
  * Every quoted line on this page is lifted word-for-word out of the app, and
@@ -8,25 +7,7 @@ import { graph, webPageLd } from '../data/jsonld'
  * policy normally would, the plainer line is quoted rather than paraphrased.
  */
 export default function Privacy() {
-  useSEO({
-    title: 'Privacy Policy — Xelvic',
-    description:
-      'What Xelvic collects, how it is used, who can see it, and the control you have — written against the app as it ships.',
-    image: '/media/themes/teddy/convo.jpg',
-    jsonLd: graph(
-      webPageLd({
-        name: 'Xelvic Privacy Policy',
-        description:
-          'What Xelvic collects, how it is used, who can see it, and the control you have — written against the app as it ships.',
-        path: '/privacy',
-        image: '/media/themes/teddy/convo.jpg',
-        breadcrumbs: [
-          { name: 'Home', path: '/' },
-          { name: 'Privacy Policy', path: '/privacy' },
-        ],
-      }),
-    ),
-  })
+  useSEO()
 
   return (
     <LegalLayout

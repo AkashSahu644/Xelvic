@@ -57,7 +57,7 @@ export const features: Feature[] = [
     quote: 'Calls you make and calls you miss are kept here.',
     points: [
       { title: 'Add people on the fly', body: 'Pull friends into an ongoing call with a tap.' },
-      { title: 'Encrypted media', body: 'Call media is encrypted in transit, end to end of the connection.' },
+      { title: 'Encrypted media', body: 'Call media is encrypted in transit, so nothing sitting on the network path can listen in.' },
       { title: 'Call history', body: 'Every call you make or miss is kept neatly in one place.' },
       { title: 'Works everywhere', body: 'Calls and messages follow you across every screen in the app.' },
     ],

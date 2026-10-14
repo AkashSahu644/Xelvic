@@ -6,40 +6,14 @@ import PhoneFrame from '../components/ui/PhoneFrame'
 import PhoneDemo from '../components/ui/PhoneDemo'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, webPageLd, itemListLd } from '../data/jsonld'
 import { ArrowUpRight, ChevronRight, Navigation } from 'lucide-react'
 
 export default function Features() {
-  /* The ItemList is built from the same `features` array the page maps over,
-     so the list a crawler reads and the list a reader sees cannot drift. */
-  useSEO({
-    title: 'Features — Xelvic',
-    description:
-      'Everything Xelvic can do: messaging, voice and video calls, moments, live rooms, drops, short video, music and 50+ themes.',
-    image: '/media/walls/xelvic.jpg',
-    jsonLd: graph(
-      webPageLd({
-        name: 'Xelvic features',
-        description:
-          'The complete tour of Xelvic: messaging, voice and video calls, moments and memories, live rooms, drops and vibes, audio and music, and themes.',
-        path: '/features',
-        image: '/media/walls/xelvic.jpg',
-        breadcrumbs: [
-          { name: 'Home', path: '/' },
-          { name: 'Features', path: '/features' },
-        ],
-      }),
-      itemListLd({
-        name: 'Xelvic features',
-        path: '/features',
-        items: features.map((f) => ({
-          name: f.name,
-          path: `/features/${f.slug}`,
-          description: f.blurb,
-        })),
-      }),
-    ),
-  })
+  /* No arguments. The title, the share card, the WebPage and the ItemList of
+     every feature are the route entry's — built from the same `features` array
+     this page maps over, so the list a crawler reads and the list a reader sees
+     cannot drift. */
+  useSEO()
   return (
     <>
       <PageHero

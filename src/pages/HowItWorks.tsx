@@ -5,96 +5,23 @@ import PageHero from '../components/layout/PageHero'
 import Reveal from '../components/ui/Reveal'
 import SectionHeading from '../components/ui/SectionHeading'
 import PhoneFrame from '../components/ui/PhoneFrame'
-import PhoneDemo, { type DemoKind } from '../components/ui/PhoneDemo'
+import PhoneDemo from '../components/ui/PhoneDemo'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
 import { features } from '../data/features'
-import { graph, webPageLd, howToLd } from '../data/jsonld'
+import { gettingStarted as steps } from '../data/gettingStarted'
 import { ChevronRight, Navigation } from 'lucide-react'
 
-const steps: {
-  n: string
-  title: string
-  body: string
-  demo: DemoKind
-  taps: string[]
-}[] = [
-  {
-    n: '01',
-    title: 'Create your account',
-    body: 'Enter your phone number, confirm the one-time code we text you, and pick a username. No email, no fuss — the whole thing takes under a minute.',
-    demo: 'chat',
-    taps: ['Open Xelvic', 'Enter number', 'Confirm code', 'Pick a @username'],
-  },
-  {
-    n: '02',
-    title: 'Find your people',
-    body: 'Allow contacts and everyone already on Xelvic shows up right away — your numbers never leave your device in readable form. Prefer to search? Find anyone by name or @handle.',
-    demo: 'chat',
-    taps: ['Allow contacts', 'See who is on Xelvic', 'or Search by @handle'],
-  },
-  {
-    n: '03',
-    title: 'Start talking',
-    body: 'Send a message, hold the mic for a voice note, or tap the phone and camera icons to start a voice or video call. Everything is offline-first, so your messages always get there.',
-    demo: 'call',
-    taps: ['Open a chat', 'Type or hold 🎤', 'Tap 📞 / 🎥 to call'],
-  },
-  {
-    n: '04',
-    title: 'Share your day',
-    body: 'Post a Moment, drop a photo, or go Live. What you share with the people you follow turns up today and becomes a Memory tomorrow.',
-    demo: 'moments',
-    taps: ['Tap your avatar +', 'Add text / music / poll', 'Post — lasts 24h'],
-  },
-  {
-    n: '05',
-    title: 'Make it yours',
-    body: 'Flip into any of 50+ themes, set a chat wallpaper, and dress your profile in Drip. Keep a spark going with a friend — both of you say something before the day is out — to unlock even more.',
-    demo: 'audio',
-    taps: ['Profile → Settings ⚙️', 'Appearance → Themes', 'Pick a look & apply'],
-  },
-]
-
 export default function HowItWorks() {
-  /* The HowTo node is the reason this page is worth marking up at all. "How do
-     I get started on Xelvic" is a question somebody asks an assistant in a
-     full sentence, and a HowTo is the one schema that answers it with the
-     actual steps rather than dumping the page and hoping. The steps below are
-     the same five the page renders, in the same order, with the same taps —
-     the markup is a transcription of the visible walkthrough, not a summary
+  /* No arguments. The HowTo below is the reason this page is worth marking up
+     at all — "how do I get started on Xelvic" is a question somebody asks an
+     assistant in a full sentence, and a HowTo is the one schema that answers it
+     with the actual steps rather than dumping the page and hoping. It comes
+     from the route entry, built from the same five steps in
+     src/data/gettingStarted that the walkthrough renders, in the same order,
+     with the same taps — a transcription of the visible page, not a summary
      written for a crawler. */
-  useSEO({
-    title: 'How it works — Xelvic',
-    description:
-      'From your first hello to going live: the five steps to get started on Xelvic, with exactly where to tap at each one.',
-    image: '/media/walls/safar.jpg',
-    jsonLd: graph(
-      webPageLd({
-        name: 'How Xelvic works',
-        description:
-          'Five steps from installing Xelvic to going live with your friends — create an account, find your people, start talking, share your day, and make the app yours.',
-        path: '/how-it-works',
-        image: '/media/walls/safar.jpg',
-        breadcrumbs: [
-          { name: 'Home', path: '/' },
-          { name: 'How it works', path: '/how-it-works' },
-        ],
-      }),
-      howToLd({
-        name: 'How to get started on Xelvic',
-        description:
-          'Five steps from downloading Xelvic to going live with your friends, with the exact taps at each one.',
-        path: '/how-it-works',
-        totalTime: 'PT5M',
-        tools: ['Xelvic for iOS or Android'],
-        steps: steps.map((s) => ({
-          name: s.title,
-          text: `${s.body} In the app: ${s.taps.join(' → ')}.`,
-        })),
-      }),
-    ),
-  })
+  useSEO()
   const [active, setActive] = useState(0)
   const step = steps[active]
 

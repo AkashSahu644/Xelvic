@@ -14,47 +14,32 @@
     <meta name="apple-mobile-web-app-title" content="Xelvic" />
     <meta name="application-name" content="Xelvic" />
 
-    <!-- Primary meta (per-route tags are injected by useSEO) -->
+    <!--
+      Per-route head.
+
+      There is deliberately no canonical, robots, Open Graph or Twitter tag
+      written here, and no structured data either — not because they are
+      unwanted but because there is exactly one place that decides them:
+      `src/seo/routes.ts`.
+
+      Two things read that table and write the head from it. The build runs
+      `scripts/prerender.mjs`, which writes a real document per route into
+      `dist/`, and that is what production serves. The dev server runs the
+      `seo-head` plugin in `vite.config.ts`, which swaps the head on the HTML
+      it serves, so a local link preview matches the deployed one. The browser
+      reads the same table through `useSEO`. A second copy of any of it here
+      would be a second answer to the same question, and the two would drift —
+      which is precisely how every route ended up sharing one share card.
+
+      Nothing below may spell a tag name inside a comment. This comment used to
+      say, in prose, that the build replaces the title tag — and a share-link
+      scraper looking for the first title tag found that one, inside the
+      comment, and produced a card reading "below with the whole route block
+      for every route in that table". Write about the tags in words, or not at
+      all.
+    -->
     <title>Xelvic — Chat. Call. Vibe.</title>
-    <meta
-      name="description"
-      content="Xelvic is a free app for messaging, voice &amp; video calls, moments, live rooms, short video and music — with 50+ themes and a private vault."
-    />
-    <link rel="canonical" href="https://xelvic.com/" />
-    <link rel="alternate" hreflang="en" href="https://xelvic.com/" />
-    <link rel="alternate" hreflang="x-default" href="https://xelvic.com/" />
-    <meta
-      name="robots"
-      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-    />
-
-    <!-- Open Graph -->
-    <meta property="og:site_name" content="Xelvic" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Xelvic — Chat. Call. Vibe." />
-    <meta
-      property="og:description"
-      content="One app for messaging, voice &amp; video calls, moments, live rooms, music and more."
-    />
-    <meta property="og:url" content="https://xelvic.com/" />
-    <meta property="og:image" content="https://xelvic.com/og/xelvic-og.png" />
-    <meta property="og:image:type" content="image/png" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Xelvic — chat, call and vibe in one app." />
-    <meta property="og:locale" content="en_US" />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@xelvic" />
-    <meta name="twitter:creator" content="@xelvic" />
-    <meta name="twitter:title" content="Xelvic — Chat. Call. Vibe." />
-    <meta
-      name="twitter:description"
-      content="One app for messaging, voice &amp; video calls, moments, live rooms, music and more."
-    />
-    <meta name="twitter:image" content="https://xelvic.com/og/xelvic-og.png" />
-    <meta name="twitter:image:alt" content="Xelvic — chat, call and vibe in one app." />
+    <meta name="description" content="Xelvic is a free app for chat, voice and video calls, Moments, live rooms, Drops and Vibes, music and Sparks — with 50+ themes and a private, encrypted Vault." />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -65,83 +50,14 @@
     />
 
     <!--
-      Structured data.
-
-      This block is written into the HTML on purpose rather than left to the
-      route. The site is a client-rendered React app, so a crawler that does
-      not execute JavaScript — which is most of the AI answer engines — never
-      runs useSEO and never sees a single one of the per-page tags. What it
-      does see is this file. So the three nodes that describe the company, the
-      site and the app live here, in the one document that is guaranteed to
-      arrive, and the per-route graph layers the page-specific nodes on top.
-
-      Both are emitted on a page that runs JavaScript, which is fine: they
-      carry the same @id, so a consumer merges them into one entity instead of
-      reading two contradictory ones.
+      Structured data is not written by hand here either. The company, the site
+      and the app are built by `src/data/jsonld.ts` and baked into every
+      route's document by `scripts/prerender.mjs`, so the node identifiers and
+      the claims they make come from one place and cannot contradict the page
+      they sit on. A hand-written copy of the same graph used to live in this
+      file; it was a second description of the same three entities, and the two
+      had already drifted apart from `jsonld.ts`.
     -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Organization",
-            "@id": "https://xelvic.com/#organization",
-            "name": "Xelvic",
-            "alternateName": "Xelvic App",
-            "url": "https://xelvic.com",
-            "logo": {
-              "@type": "ImageObject",
-              "@id": "https://xelvic.com/#logo",
-              "url": "https://xelvic.com/favicon-512x512.png",
-              "contentUrl": "https://xelvic.com/favicon-512x512.png",
-              "width": 512,
-              "height": 512,
-              "caption": "Xelvic"
-            },
-            "image": { "@id": "https://xelvic.com/#logo" },
-            "description": "One app for messaging, voice & video calls, moments, live rooms, music and more.",
-            "slogan": "Chat. Call. Vibe.",
-            "sameAs": [
-              "https://x.com/xelvic",
-              "https://instagram.com/xelvic",
-              "https://youtube.com/@xelvic",
-              "https://tiktok.com/@xelvic",
-              "https://linkedin.com/company/xelvic"
-            ]
-          },
-          {
-            "@type": "WebSite",
-            "@id": "https://xelvic.com/#website",
-            "name": "Xelvic",
-            "alternateName": "Xelvic — Chat. Call. Vibe.",
-            "url": "https://xelvic.com",
-            "description": "One app for messaging, voice & video calls, moments, live rooms, music and more.",
-            "inLanguage": "en",
-            "publisher": { "@id": "https://xelvic.com/#organization" }
-          },
-          {
-            "@type": ["SoftwareApplication", "MobileApplication"],
-            "@id": "https://xelvic.com/#app",
-            "name": "Xelvic",
-            "operatingSystem": "iOS, Android",
-            "applicationCategory": "SocialNetworkingApplication",
-            "applicationSubCategory": "Messaging",
-            "description": "One app for messaging, voice & video calls, moments, live rooms, music and more.",
-            "url": "https://xelvic.com",
-            "downloadUrl": "https://xelvic.com/download",
-            "inLanguage": "en",
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "USD",
-              "availability": "https://schema.org/InStock",
-              "url": "https://xelvic.com/download"
-            },
-            "publisher": { "@id": "https://xelvic.com/#organization" }
-          }
-        ]
-      }
-    </script>
   </head>
   <body>
     <div id="root"></div>
@@ -190,7 +106,7 @@
           <li><a href="/features">All features</a></li>
           <li><a href="/how-it-works">How it works</a></li>
           <li><a href="/download">Download Xelvic</a></li>
-          <li><a href="/help">Help Center — 50 answers</a></li>
+          <li><a href="/help">Help Center</a></li>
           <li><a href="/safety">Safety</a> · <a href="/security">Security</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></li>
           <li><a href="/about">About us</a> · <a href="/careers">Careers</a> · <a href="/contact">Contact</a></li>
         </ul>

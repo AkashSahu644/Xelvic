@@ -6,113 +6,14 @@ import { Lede, Stats, Numbered, SectionHead, Prose, Note } from '../components/u
 import { NextLinks } from '../components/ui/Explainers'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, webPageLd, contactPageLd } from '../data/jsonld'
-
-/* One address per reason somebody writes to us. Nine doors rather than one
-   inbox, because the address you choose is most of the routing. */
-const doors = [
-  {
-    k: 'Anything at all',
-    address: 'hello@xelvic.app',
-    d: 'Questions about the app, an idea you think we should build, a correction to something on this site, or a compliment. If you are not sure which address to use, use this one and we will move it.',
-    when: 'Answered within two working days',
-  },
-  {
-    k: 'Help and support',
-    address: 'support@xelvic.app',
-    d: 'Something is not working, or working in a way you did not expect. The Help Center answers most of it instantly; write here when it does not, and tell us the phone and the app version.',
-    when: 'Answered within two working days',
-  },
-  {
-    k: 'Safety',
-    address: 'safety@xelvic.app',
-    d: 'A threat, a person who will not stop, or something that worries you about somebody else on the app. Reports sent from inside the app reach the moderation queue directly; this address is for everything the queue cannot hold.',
-    when: 'Triaged the same day',
-  },
-  {
-    k: 'Security',
-    address: 'security@xelvic.app',
-    d: 'A vulnerability you have found, or a sign-in you do not recognise. If you are reporting a flaw, say how to reproduce it and give us a chance to fix it before you publish — we credit researchers who ask.',
-    when: 'Acknowledged within 24 hours',
-  },
-  {
-    k: 'Privacy and data',
-    address: 'privacy@xelvic.app',
-    d: 'A question about what we hold, a request to see it, or a request to delete it. Deleting the account inside the app is faster than writing to us, but this address exists for anything the app does not cover.',
-    when: 'Answered within 30 days',
-  },
-  {
-    k: 'Press',
-    address: 'press@xelvic.app',
-    d: 'Interviews, assets, briefings, comment and corrections. The Press page already carries the fast facts, the numbers the app enforces and the wording we would ask you to use.',
-    when: 'Answered the same working day',
-  },
-  {
-    k: 'Careers',
-    address: 'careers@xelvic.app',
-    d: 'An application, or an argument for a role we have not advertised. Put the role in the subject line and send something you have made along with it.',
-    when: 'Answered within a week of the last interview',
-  },
-  {
-    k: 'Partnerships',
-    address: 'partners@xelvic.app',
-    d: 'Brands and creators, integrations, and anything involving our name or logo on something we have not seen. If you are a creator already in a deal, your deal page is faster than this address.',
-    when: 'Answered within two working days',
-  },
-  {
-    k: 'Legal',
-    address: 'legal@xelvic.app',
-    d: 'Notices, takedowns, law-enforcement requests and anything contractual. Include the document you are referring to and the jurisdiction you are writing from.',
-    when: 'Acknowledged within two working days',
-  },
-]
-
-/* Four things that get a faster answer, and one thing we will never ask for. */
-const before = [
-  {
-    t: 'Write from the address on your account',
-    d: 'It tells us which account you mean without any back and forth, and it is the only way we can act on a request about your own data. If you must write from another address, say which account it concerns in the first line.',
-  },
-  {
-    t: 'Name the handle, not the display name',
-    d: 'Display names repeat and change; the handle is unique and it is what the moderation queue and the search box both work from. One handle saves a round trip.',
-  },
-  {
-    t: 'For a bug, tell us what you did',
-    d: 'What you tapped, what you expected, what happened instead, and the phone and app version. A screenshot helps enormously and a screen recording helps more — but send it as an attachment rather than a link that expires.',
-  },
-  {
-    t: 'Say what outcome you want',
-    d: '“I want the message deleted”, “I want to know why this happened”, “I want this person to stop being able to reach me”. We can act on a request; we can only guess at a complaint.',
-  },
-]
+import { before, doors, topics } from '../data/contact'
 
 export default function Contact() {
-  useSEO({
-    title: 'Contact — Xelvic',
-    description:
-      'Every way to reach the Xelvic team, what each address is for, how quickly each one is answered, and what to include so you get a useful reply the first time.',
-    image: '/media/walls/sheher.jpg',
-    jsonLd: graph(
-      webPageLd({
-        name: 'Contact Xelvic',
-        description:
-          'Every way to reach the Xelvic team, what each address is for, how quickly each one is answered, and what to include so you get a useful reply the first time.',
-        path: '/contact',
-        image: '/media/walls/sheher.jpg',
-        breadcrumbs: [
-          { name: 'Home', path: '/' },
-          { name: 'Contact', path: '/contact' },
-        ],
-      }),
-      /* Built from `doors`, the same array the page renders, so the nine
-         addresses in the markup are the nine a reader can see. */
-      contactPageLd({
-        path: '/contact',
-        departments: doors.map((d) => ({ name: d.k, email: d.address, note: d.d })),
-      }),
-    ),
-  })
+  /* No arguments. The title, the share card, the WebPage and the ContactPage
+     listing all nine addresses come from the route entry, built from the same
+     `doors` array this page renders — so the nine addresses in the head are the
+     nine a reader can see. */
+  useSEO()
 
   return (
     <>
@@ -245,21 +146,7 @@ export default function Contact() {
             </p>
           </Reveal>
           <Reveal delay={0.1}>
-            <ContactForm
-              topics={[
-                'General question',
-                'Help and support',
-                'Report a problem',
-                'Safety',
-                'Security',
-                'Privacy and data',
-                'Press',
-                'Careers',
-                'Partnerships',
-                'Something else',
-              ]}
-              cta="Send it to a person"
-            />
+            <ContactForm topics={topics} cta="Send it to a person" />
           </Reveal>
         </div>
       </section>

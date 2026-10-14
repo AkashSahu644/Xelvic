@@ -8,7 +8,7 @@ import { Lede, Stats, Rows, Steps, Blocks, SectionHead, Note } from '../componen
 import { NextLinks } from '../components/ui/Explainers'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, webPageLd, faqLd, softwareApplicationLd } from '../data/jsonld'
+import { downloadFaqs as faqs } from '../data/downloadFaq'
 import { site } from '../data/site'
 import { ArrowUpRight, Check } from 'lucide-react'
 
@@ -64,7 +64,7 @@ const included = [
   },
   {
     t: 'Calls and chats, encrypted',
-    d: 'Voice, video and text are encrypted end to end. Nobody between the two phones can read a word of it, us included.',
+    d: 'Voice, video and text are encrypted in transit, so a call cannot be listened in on from the network it runs over.',
   },
   {
     t: 'Live rooms you can open yourself',
@@ -139,64 +139,17 @@ const install = [
   },
 ]
 
-/* The questions a download page actually gets asked, answered without
-   hedging. If an answer here ever stops being true, it has to be deleted
-   rather than softened. */
-const faqs = [
-  {
-    q: 'Is it genuinely free, or free for now?',
-    a: 'Genuinely free. There is no subscription, no premium tier and no ads in the chat list. Everything the app can do, it does for everyone who installs it.',
-    tag: 'Price',
-  },
-  {
-    q: 'Will it run on an old phone?',
-    a: 'If the phone runs Android 8 or iOS 14, yes — and those go back to 2017 and 2020 respectively. The app is built light, so a cheap phone is not treated as a second-class one.',
-    tag: 'Devices',
-  },
-  {
-    q: 'Do I need a second account for the web app?',
-    a: `No. ${webHost} is the same account, reached through a browser. Sign in with your number and you are looking at the same chats you have on your phone.`,
-    tag: 'Sign-in',
-  },
-  {
-    q: 'How do I move my chats to a new phone?',
-    a: 'Install Xelvic on the new phone, choose the QR sign-in, and scan the code shown on your old phone. The account moves across; you do not have to start again.',
-    tag: 'Moving',
-  },
-  {
-    q: 'Why does it want my phone number?',
-    a: 'Because a number is the account. It is what your people already have for you, so nobody has to be told a new username, and it is what makes the sign-in code work.',
-    tag: 'Privacy',
-  },
-  {
-    q: 'Can I use it on a tablet as well as a phone?',
-    a: 'Yes. The same account signs in on a phone, a tablet and a browser at once, and a message you send from one turns up on the others.',
-    tag: 'Devices',
-  },
-]
+/* The questions a download page actually gets asked now live in
+   src/data/downloadFaq, where the FAQPage in the head is built from the same
+   six answers this page's accordion renders. If an answer there ever stops
+   being true, it has to be deleted rather than softened. */
 
 export default function Download() {
-  useSEO({
-    title: 'Download — Xelvic',
-    description:
-      'Download Xelvic free on Android 8+ and iOS 14+. What is included, what it needs to run, how to install it in four taps, and how to sign in on the web without installing anything.',
-    image: '/media/walls/xelvic.jpg',
-    jsonLd: graph(
-      softwareApplicationLd(),
-      webPageLd({
-        name: 'Download Xelvic',
-        description:
-          'Download Xelvic free on Android 8+ and iOS 14+. What is included, what it needs to run, how to install it in four taps, and how to sign in on the web without installing anything.',
-        path: '/download',
-        image: '/media/walls/xelvic.jpg',
-        breadcrumbs: [
-          { name: 'Home', path: '/' },
-          { name: 'Download', path: '/download' },
-        ],
-      }),
-      faqLd(faqs),
-    ),
-  })
+  /* No arguments. The title, the share card, the WebPage, the app node and the
+     FAQPage are the route entry's. The app node is on every page — it is one
+     of the three the whole site hangs off — so this page does not restate
+     it. */
+  useSEO()
 
   return (
     <>

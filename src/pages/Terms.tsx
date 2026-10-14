@@ -1,31 +1,12 @@
 import LegalLayout from '../components/ui/LegalLayout'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, webPageLd } from '../data/jsonld'
 
 /**
  * Terms of Service. The clauses that describe how the app actually behaves are
  * quoted from the build, so a term and the screen it governs say the same thing.
  */
 export default function Terms() {
-  useSEO({
-    title: 'Terms of Service — Xelvic',
-    description:
-      'The agreement between you and Xelvic: your account, your content, acceptable use, takedowns, creator deals, Sparks, and how to leave.',
-    image: '/media/walls/xelvic.jpg',
-    jsonLd: graph(
-      webPageLd({
-        name: 'Xelvic Terms of Service',
-        description:
-          'The agreement between you and Xelvic: your account, your content, acceptable use, takedowns, creator deals, Sparks, and how to leave.',
-        path: '/terms',
-        image: '/media/walls/xelvic.jpg',
-        breadcrumbs: [
-          { name: 'Home', path: '/' },
-          { name: 'Terms of Service', path: '/terms' },
-        ],
-      }),
-    ),
-  })
+  useSEO()
 
   return (
     <LegalLayout

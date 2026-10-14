@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "npm run gen:sitemap && vite build",
+    "build": "npm run gen:og && npm run gen:sitemap && vite build && npm run prerender",
     "preview": "vite preview",
     "gen:assets": "node scripts/gen-assets.mjs",
-    "gen:sitemap": "node scripts/gen-sitemap.mjs"
+    "gen:og": "node scripts/gen-og.mjs",
+    "gen:sitemap": "node scripts/gen-sitemap.mjs",
+    "prerender": "node scripts/prerender.mjs"
   },
   "dependencies": {
     "@react-three/drei": "^9.114.0",

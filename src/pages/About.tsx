@@ -5,7 +5,6 @@ import { Lede, Stats, Rows, Numbered, Timeline, Pull, SectionHead, Prose, Note }
 import { NextLinks } from '../components/ui/Explainers'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, webPageLd } from '../data/jsonld'
 
 /* The four things we settled on before there was an app to argue about. Each
    one is a decision with a consequence in the build, not a value on a poster. */
@@ -82,25 +81,7 @@ const howWeWork = [
 ]
 
 export default function About() {
-  useSEO({
-    title: 'About — Xelvic',
-    description:
-      'Who builds Xelvic, what we decided before we wrote a line of code, how the team works, and the limits we would rather you heard from us.',
-    image: '/media/walls/mehfil.jpg',
-    jsonLd: graph(
-      webPageLd({
-        name: 'About Xelvic',
-        description:
-          'Who builds Xelvic, what we decided before we wrote a line of code, how the team works, and the limits we would rather you heard from us.',
-        path: '/about',
-        image: '/media/walls/mehfil.jpg',
-        breadcrumbs: [
-          { name: 'Home', path: '/' },
-          { name: 'About', path: '/about' },
-        ],
-      }),
-    ),
-  })
+  useSEO()
 
   return (
     <>

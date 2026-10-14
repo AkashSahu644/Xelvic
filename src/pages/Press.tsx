@@ -4,7 +4,6 @@ import { Lede, Stats, Rows, Timeline, Pull, SectionHead, Prose, Note, DoDont } f
 import { NextLinks } from '../components/ui/Explainers'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, webPageLd } from '../data/jsonld'
 
 /* The facts a journalist actually needs, in the order they usually ask for
    them. Anything that is a claim about the app is a claim the app itself makes. */
@@ -107,25 +106,7 @@ const assets = [
 ]
 
 export default function Press() {
-  useSEO({
-    title: 'Press — Xelvic',
-    description:
-      'Company facts, figures from the build, how to describe Xelvic correctly, the release history and how to reach the communications team.',
-    image: '/media/walls/sheher.jpg',
-    jsonLd: graph(
-      webPageLd({
-        name: 'Xelvic press room',
-        description:
-          'Company facts, figures from the build, how to describe Xelvic correctly, the release history and how to reach the communications team.',
-        path: '/press',
-        image: '/media/walls/sheher.jpg',
-        breadcrumbs: [
-          { name: 'Home', path: '/' },
-          { name: 'Press', path: '/press' },
-        ],
-      }),
-    ),
-  })
+  useSEO()
 
   return (
     <>

@@ -13,7 +13,6 @@ import {
   Note,
 } from '../components/ui/Editorial'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, webPageLd } from '../data/jsonld'
 
 const tools = [
   {
@@ -98,25 +97,7 @@ const habits = [
 ]
 
 export default function Safety() {
-  useSEO({
-    title: 'Safety — Xelvic',
-    description:
-      'Blocking, reporting, the Vault and the controls that keep you in charge — what each one actually does, step by step, including the limits.',
-    image: '/media/walls/mehfil.jpg',
-    jsonLd: graph(
-      webPageLd({
-        name: 'Staying safe on Xelvic',
-        description:
-          'Blocking, reporting, the Vault and the controls that keep you in charge — what each one actually does, step by step, including the limits.',
-        path: '/safety',
-        image: '/media/walls/mehfil.jpg',
-        breadcrumbs: [
-          { name: 'Home', path: '/' },
-          { name: 'Safety', path: '/safety' },
-        ],
-      }),
-    ),
-  })
+  useSEO()
 
   return (
     <>

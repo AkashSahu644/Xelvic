@@ -3,59 +3,13 @@ import Reveal from '../components/ui/Reveal'
 import PhoneFrame from '../components/ui/PhoneFrame'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, webPageLd, itemListLd, howToLd } from '../data/jsonld'
-import { BarChart3, BadgeCheck, Handshake, Users, Wallet, Flame } from 'lucide-react'
-
-const tools = [
-  { icon: BarChart3, title: 'Insights', body: 'Insights fill in as people find your page — see what lands and who you reach.' },
-  { icon: BadgeCheck, title: 'Verification', body: 'Ask for the mark that says this account is really you. Your account carries the mark.' },
-  { icon: Handshake, title: 'Brand Deals', body: 'Brands invite you to make content and track paid deals in the open. Payment is released only after the work is approved.' },
-  { icon: Users, title: 'Creator Directory', body: 'Public creators with 2k followers or more show up here, so brands can find you.' },
-  { icon: Wallet, title: 'Wallet & payouts', body: 'Track what you have earned and get paid for approved deliverables.' },
-  { icon: Flame, title: 'Sparks & Circles', body: 'Build sparks with your audience and lead interest Circles of fifty.' },
-]
-
-const dealSteps = [
-  { n: '1', t: 'Get invited', d: 'A brand invites you to a paid collaboration.' },
-  { n: '2', t: 'Create & upload', d: 'You make the content and upload the deliverable for approval.' },
-  { n: '3', t: 'Get approved', d: 'The company reviews and approves the work.' },
-  { n: '4', t: 'Get paid', d: 'Payment is released only after approval — fair for everyone.' },
-]
+import { creatorTools, dealSteps } from '../data/creators'
 
 export default function Creators() {
-  useSEO({
-    title: 'For Creators — Xelvic',
-    description:
-      'Grow your audience, collaborate with brands and get paid — all in the open on Xelvic.',
-    image: '/media/themes/animeblue/drops.jpg',
-    jsonLd: graph(
-      webPageLd({
-        name: 'For Creators — Xelvic',
-        description:
-          'Grow your audience, collaborate with brands and get paid — all in the open on Xelvic.',
-        path: '/creators',
-        image: '/media/themes/animeblue/drops.jpg',
-        breadcrumbs: [
-          { name: 'Home', path: '/' },
-          { name: 'Creators', path: '/creators' },
-        ],
-      }),
-      /* Both lists are built from the arrays the page renders, so the schema
-         cannot drift from the copy the reader sees. */
-      itemListLd({
-        name: 'Creator tools in Xelvic',
-        path: '/creators',
-        items: tools.map((t) => ({ name: t.title, description: t.body })),
-      }),
-      howToLd({
-        name: 'How a Xelvic brand deal works',
-        description:
-          'From the invitation to the payout: the four steps of a paid collaboration on Xelvic, where payment is released only after the brand approves the deliverable.',
-        path: '/creators',
-        steps: dealSteps.map((s) => ({ name: `${s.n}. ${s.t}`, text: s.d })),
-      }),
-    ),
-  })
+  /* No arguments. The WebPage, the ItemList of creator tools and the HowTo for
+     a brand deal are the route entry's — both built from the arrays in
+     src/data/creators that this page renders. */
+  useSEO()
   return (
     <>
       <PageHero
@@ -66,7 +20,7 @@ export default function Creators() {
 
       <section className="pb-6">
         <div className="wrap grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {tools.map((t, i) => {
+          {creatorTools.map((t, i) => {
             const Icon = t.icon
             return (
               <Reveal key={t.title} delay={(i % 3) * 0.06}>

@@ -3,28 +3,9 @@ import Reveal from '../components/ui/Reveal'
 import { features, socialFeatures } from '../data/features'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, webPageLd } from '../data/jsonld'
 
 export default function Overview() {
-  useSEO({
-    title: 'Overview — Xelvic',
-    description:
-      'The big picture: what Xelvic is, and everything it brings together in one app — messaging, calls, moments, live rooms, a social feed, music and creators.',
-    image: '/media/walls/studio.jpg',
-    jsonLd: graph(
-      webPageLd({
-        name: 'Xelvic at a glance',
-        description:
-          'Xelvic brings messaging, calling, stories, live audio, a social feed, music and a creator economy into a single home.',
-        path: '/overview',
-        image: '/media/walls/studio.jpg',
-        breadcrumbs: [
-          { name: 'Home', path: '/' },
-          { name: 'Overview', path: '/overview' },
-        ],
-      }),
-    ),
-  })
+  useSEO()
   return (
     <>
       <PageHero

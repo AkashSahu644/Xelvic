@@ -13,7 +13,6 @@ import {
   DoDont,
 } from '../components/ui/Editorial'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, webPageLd } from '../data/jsonld'
 
 const pillars = [
   {
@@ -73,25 +72,7 @@ const report = [
 ]
 
 export default function Security() {
-  useSEO({
-    title: 'Security — Xelvic',
-    description:
-      'How Xelvic protects your conversations, calls and account — encryption, the Vault, password and device rules, and the limits we will not pretend away.',
-    image: '/media/walls/raat.jpg',
-    jsonLd: graph(
-      webPageLd({
-        name: 'Security at Xelvic',
-        description:
-          'How Xelvic protects your conversations, calls and account — encryption, the Vault, password and device rules, and the limits we will not pretend away.',
-        path: '/security',
-        image: '/media/walls/raat.jpg',
-        breadcrumbs: [
-          { name: 'Home', path: '/' },
-          { name: 'Security', path: '/security' },
-        ],
-      }),
-    ),
-  })
+  useSEO()
 
   return (
     <>

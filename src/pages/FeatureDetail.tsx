@@ -10,52 +10,19 @@ import FeatureHowItWorks from '../components/sections/FeatureHowItWorks'
 import MagneticButton from '../components/ui/MagneticButton'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, webPageLd, howToLd } from '../data/jsonld'
 import { Check, ArrowRight } from 'lucide-react'
 
 export default function FeatureDetail() {
   const { slug } = useParams()
   const feature = slug ? getFeature(slug) : undefined
   const guide = slug ? getGuide(slug) : undefined
-  /* Every feature page gets a HowTo built from its own guide.
-     "How do I send a voice note" and "how do I start a group call" are the
-     questions people actually type, and the answer is already written on this
-     page as a list of taps — this just says so in a shape an answer engine can
-     read without parsing the layout. Only added when a guide exists, so a
-     feature without one emits no empty steps. */
-  useSEO({
-    title: feature ? `${feature.name} — Xelvic` : 'Feature — Xelvic',
-    description: feature?.blurb,
-    image: feature?.screen,
-    noindex: !feature,
-    jsonLd: feature
-      ? graph(
-          webPageLd({
-            name: `${feature.name} — ${feature.tagline}`,
-            description: feature.blurb,
-            path: `/features/${feature.slug}`,
-            image: feature.screen,
-            breadcrumbs: [
-              { name: 'Home', path: '/' },
-              { name: 'Features', path: '/features' },
-              { name: feature.name, path: `/features/${feature.slug}` },
-            ],
-          }),
-          ...(guide
-            ? [
-                howToLd({
-                  name: `How to use ${feature.name} in Xelvic`,
-                  description: `${feature.tagline} — where to tap, step by step.`,
-                  path: `/features/${feature.slug}`,
-                  totalTime: 'PT2M',
-                  tools: ['Xelvic for iOS or Android'],
-                  steps: guide.steps.map((s) => ({ name: s.tap, text: s.detail })),
-                }),
-              ]
-            : []),
-        )
-      : undefined,
-  })
+  /* The only thing this page has to say for itself is that a slug it does not
+     recognise is not a page. Everything else — the title, the share card, the
+     WebPage node and the HowTo built from this feature's own list of taps —
+     comes from the route entry, which is also what the prerenderer wrote into
+     this URL's HTML. A feature without a guide emits no HowTo, so there are
+     never empty steps. */
+  useSEO({ noindex: !feature })
 
   if (!feature) return <Navigate to="/features" replace />
   const Icon = feature.icon

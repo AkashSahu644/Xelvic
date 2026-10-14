@@ -1,15 +1,32 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { site, absoluteUrl } from '../data/site'
+import { routeSeo } from '../seo/routes'
+import { pageGraph } from '../seo/graph'
 
+/**
+ * Everything here is optional, because almost none of it has to be written
+ * twice.
+ *
+ * A page whose head is exactly what `src/seo/routes.ts` says it is calls
+ * `useSEO()` and nothing else — the title, description, share image, robots
+ * directive and structured data come from the table. That is the same table
+ * `scripts/prerender.mjs` reads to write the static HTML, so the document a
+ * crawler fetches and the document a browser renders are the same document,
+ * not two that happen to look alike today.
+ *
+ * Anything passed here still wins. That is what the data-driven pages use:
+ * a blog post's byline and date come from the post object the page is already
+ * rendering, and they must not be able to disagree with the body.
+ */
 type SEOOptions = {
-  title: string
+  title?: string
   description?: string
-  /** Social share image, site-relative or absolute. Falls back to the default OG image. */
+  /** Social share image, site-relative or absolute. Falls back to the route's own card. */
   image?: string
   /** Alt text for the share image, for anybody who meets the card through a screen reader. */
   imageAlt?: string
-  /** Override the canonical path. Defaults to the current route. */
+  /** Look a different route up instead. Defaults to the one being rendered. */
   path?: string
   /** 'website' for most pages, 'article' for blog posts. */
   type?: 'website' | 'article'
@@ -20,7 +37,7 @@ type SEOOptions = {
   modified?: string
   author?: string
   section?: string
-  /** Optional JSON-LD structured data object(s). */
+  /** Structured data. Defaults to this route's WebPage node. */
   jsonLd?: Record<string, unknown> | Record<string, unknown>[]
 }
 
@@ -77,27 +94,30 @@ function canonicalPath(pathname: string): string {
   return clean === '' ? '/' : clean
 }
 
-export function useSEO({
-  title,
-  description = site.description,
-  image,
-  imageAlt,
-  path,
-  type = 'website',
-  noindex = false,
-  published,
-  modified,
-  author,
-  section,
-  jsonLd,
-}: SEOOptions) {
+export function useSEO(options: SEOOptions = {}) {
   const location = useLocation()
-  const canonical = absoluteUrl(canonicalPath(path ?? location.pathname))
-  const ogImage = absoluteUrl(image ?? site.ogImage)
+  const path = options.path ?? location.pathname
+  const entry = routeSeo(path)
+
+  const title = options.title ?? entry?.title ?? site.name
+  const description = options.description ?? entry?.description ?? site.description
+  const type = options.type ?? entry?.type ?? 'website'
+  const noindex = options.noindex ?? entry?.noindex ?? false
+
+  const canonical = absoluteUrl(canonicalPath(path))
+  const ogImage = absoluteUrl(options.image ?? entry?.image ?? site.ogImage)
   const fullTitle = title.includes(site.name) ? title : `${title} · ${site.name}`
-  const alt = imageAlt ?? `${site.name} — ${site.tagline}`
-  // Serialize so an inline object literal doesn't retrigger the effect every render.
-  const ldJson = jsonLd ? JSON.stringify(jsonLd) : ''
+  const alt = options.imageAlt ?? entry?.imageAlt ?? `${site.name} — ${site.tagline}`
+  /* Serialize so an inline object literal doesn't retrigger the effect every render. */
+  const ldGraph = options.jsonLd ?? pageGraph(path)
+  const ldJson = ldGraph ? JSON.stringify(ldGraph) : ''
+  /* Article tags fall back to the route's own entry, so a blog post does not
+     have to hand the same date over twice — once to the table, which already
+     knows it, and once here. */
+  const published = options.published ?? entry?.published
+  const modified = options.modified ?? entry?.lastmod
+  const author = options.author ?? entry?.author
+  const section = options.section ?? entry?.section
 
   useEffect(() => {
     const created: Element[] = []
@@ -118,6 +138,32 @@ export function useSEO({
     )
     setLink('canonical', canonical, created)
 
+    /* One language, so every alternate points at this page's own canonical.
+       They still have to be rewritten on each navigation: the prerendered HTML
+       carries the pair belonging to the URL the visitor first landed on, and a
+       `/blog` page advertising `/about` as its English version is a page
+       competing with the one it just came from. A `noindex` route drops them
+       entirely, for the same reason it drops the canonical. */
+    const alternates = ['en', 'x-default']
+    if (noindex) {
+      document.head
+        .querySelectorAll('link[rel="alternate"][hreflang]')
+        .forEach((el) => el.remove())
+    } else {
+      for (const lang of alternates) {
+        let tag = document.head.querySelector(`link[rel="alternate"][hreflang="${lang}"]`)
+        if (!tag) {
+          tag = document.createElement('link')
+          tag.setAttribute('rel', 'alternate')
+          tag.setAttribute('hreflang', lang)
+          tag.setAttribute('data-seo', 'route')
+          document.head.appendChild(tag)
+          created.push(tag)
+        }
+        tag.setAttribute('href', canonical)
+      }
+    }
+
     // Open Graph
     setMeta('property', 'og:site_name', site.name, created)
     setMeta('property', 'og:title', fullTitle, created)
@@ -125,6 +171,7 @@ export function useSEO({
     setMeta('property', 'og:type', type, created)
     setMeta('property', 'og:url', canonical, created)
     setMeta('property', 'og:image', ogImage, created)
+    setMeta('property', 'og:image:type', 'image/png', created)
     setMeta('property', 'og:image:alt', alt, created)
     setMeta('property', 'og:image:width', '1200', created)
     setMeta('property', 'og:image:height', '630', created)
@@ -150,6 +197,13 @@ export function useSEO({
     }
 
     // Structured data
+    /* The prerendered document already carries this route's graph, marked the
+       same way. Replacing it rather than adding to it keeps one description of
+       the page in the head — two graphs with the same `@id` merge harmlessly,
+       but a head that grows a script per navigation is a head nobody can read
+       when something is wrong. */
+    document.head.querySelectorAll('script[data-seo="route"]').forEach((el) => el.remove())
+
     let ldScript: HTMLScriptElement | null = null
     if (ldJson) {
       ldScript = document.createElement('script')

@@ -7,38 +7,15 @@ import { Rows, SectionHead, Prose, Note } from '../components/ui/Editorial'
 import { NextLinks } from '../components/ui/Explainers'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, jobPostingLd, webPageLd } from '../data/jsonld'
 
 export default function CareerDetail() {
   const { id } = useParams()
   const job = id ? getJob(id) : undefined
 
-  useSEO({
-    title: job ? `${job.title} — Xelvic Careers` : 'Careers — Xelvic',
-    description: job?.summary,
-    noindex: !job,
-    jsonLd: job
-      ? graph(
-          webPageLd({
-            name: `${job.title} — Xelvic Careers`,
-            description: job.summary,
-            path: `/careers/${job.id}`,
-            breadcrumbs: [
-              { name: 'Home', path: '/' },
-              { name: 'Careers', path: '/careers' },
-              { name: job.title, path: `/careers/${job.id}` },
-            ],
-          }),
-          jobPostingLd({
-            title: job.title,
-            description: job.summary,
-            employmentType: job.type,
-            location: job.location,
-            team: job.team,
-          }),
-        )
-      : undefined,
-  })
+  /* As on a blog post: an unknown id is the only thing this page decides. The
+     WebPage and the JobPosting node come from the route entry, built from the
+     same job object the page renders. */
+  useSEO({ noindex: !job })
 
   if (!job) return <Navigate to="/careers" replace />
 

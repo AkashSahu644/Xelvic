@@ -9,8 +9,15 @@ export const site = {
      marketing pages are duplicates of it. */
   url: 'https://xelvic.com',
   tagline: 'Chat. Call. Vibe.',
+  /* The sitewide description. It shows up in three places that are easy to
+     forget about: the Organization, WebSite and SoftwareApplication nodes that
+     ride along in every page's structured data, and the fallback description
+     for a route that is not in the table. So it names the app's own surfaces
+     rather than trailing off into "and more" — an answer engine reading it
+     should come away knowing what Xelvic does, not that it does several
+     things. */
   description:
-    'Xelvic — chat, call, go live and vibe. One app for messaging, voice & video calls, moments, live rooms, music and more.',
+    'Xelvic is a free social and messaging app for iOS, Android and the web: chat and group messaging, voice and video calls, Moments, live rooms, Drops and Vibes, music, a daily Spark streak, 50+ themes and a private, encrypted Vault.',
   // Default social share image (1200×630). Lives in /public/og.
   ogImage: '/og/xelvic-og.png',
   locale: 'en_US',

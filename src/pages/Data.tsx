@@ -1,6 +1,5 @@
 import LegalLayout from '../components/ui/LegalLayout'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, webPageLd } from '../data/jsonld'
 
 /**
  * The Data page. Everything here is checked against the app itself: the numbers
@@ -9,25 +8,7 @@ import { graph, webPageLd } from '../data/jsonld'
  * promise something the build does not do.
  */
 export default function Data() {
-  useSEO({
-    title: 'Your Data — Xelvic',
-    description:
-      'What Xelvic does with your data, where it is used, how it is used, and what you and Xelvic can each do with it — in the app’s own words.',
-    image: '/media/themes/animeblue/moments.jpg',
-    jsonLd: graph(
-      webPageLd({
-        name: 'Your data on Xelvic',
-        description:
-          'What Xelvic does with your data, where it is used, how it is used, and what you and Xelvic can each do with it — in the app’s own words.',
-        path: '/data',
-        image: '/media/themes/animeblue/moments.jpg',
-        breadcrumbs: [
-          { name: 'Home', path: '/' },
-          { name: 'Your Data', path: '/data' },
-        ],
-      }),
-    ),
-  })
+  useSEO()
 
   return (
     <LegalLayout

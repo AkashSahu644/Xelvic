@@ -3,52 +3,18 @@ import { getPost, posts } from '../data/posts'
 import Reveal from '../components/ui/Reveal'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, articleLd, webPageLd } from '../data/jsonld'
 
 const fmt = (d: string) => new Date(d).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
 
 export default function BlogPost() {
   const { slug } = useParams()
   const post = slug ? getPost(slug) : undefined
-  useSEO({
-    title: post ? `${post.title} — Xelvic Blog` : 'Blog — Xelvic',
-    description: post?.excerpt,
-    image: post?.cover,
-    type: 'article',
-    noindex: !post,
-    /* The article tags are fed from the same post object the page renders, so
-       the date and byline in the head cannot disagree with the ones in the
-       body — which is the version of this that gets a page dropped. */
-    published: post?.date,
-    modified: post?.date,
-    author: post?.author,
-    section: post?.category,
-    jsonLd: post
-      ? graph(
-          webPageLd({
-            name: post.title,
-            description: post.excerpt,
-            path: `/blog/${post.slug}`,
-            image: post.cover,
-            datePublished: post.date,
-            breadcrumbs: [
-              { name: 'Home', path: '/' },
-              { name: 'Blog', path: '/blog' },
-              { name: post.title, path: `/blog/${post.slug}` },
-            ],
-          }),
-          articleLd({
-            title: post.title,
-            description: post.excerpt,
-            path: `/blog/${post.slug}`,
-            image: post.cover,
-            datePublished: post.date,
-            author: post.author,
-            section: post.category,
-          }),
-        )
-      : undefined,
-  })
+  /* An unknown slug is the only thing this page has to decide. The headline,
+     the excerpt, the share card, the `article:*` tags and the BlogPosting node
+     are all the route entry's — built from the same post object this page
+     renders, so the date and byline in the head cannot disagree with the ones
+     in the body. */
+  useSEO({ noindex: !post })
   if (!post) return <Navigate to="/blog" replace />
   const more = posts.filter((p) => p.slug !== post.slug).slice(0, 3)
 
