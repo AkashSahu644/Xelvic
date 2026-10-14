@@ -3,7 +3,7 @@ import { getPost, posts } from '../data/posts'
 import Reveal from '../components/ui/Reveal'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, articleLd, breadcrumbLd } from '../data/jsonld'
+import { graph, articleLd, webPageLd } from '../data/jsonld'
 
 const fmt = (d: string) => new Date(d).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })
 
@@ -16,8 +16,27 @@ export default function BlogPost() {
     image: post?.cover,
     type: 'article',
     noindex: !post,
+    /* The article tags are fed from the same post object the page renders, so
+       the date and byline in the head cannot disagree with the ones in the
+       body — which is the version of this that gets a page dropped. */
+    published: post?.date,
+    modified: post?.date,
+    author: post?.author,
+    section: post?.category,
     jsonLd: post
       ? graph(
+          webPageLd({
+            name: post.title,
+            description: post.excerpt,
+            path: `/blog/${post.slug}`,
+            image: post.cover,
+            datePublished: post.date,
+            breadcrumbs: [
+              { name: 'Home', path: '/' },
+              { name: 'Blog', path: '/blog' },
+              { name: post.title, path: `/blog/${post.slug}` },
+            ],
+          }),
           articleLd({
             title: post.title,
             description: post.excerpt,
@@ -25,12 +44,8 @@ export default function BlogPost() {
             image: post.cover,
             datePublished: post.date,
             author: post.author,
+            section: post.category,
           }),
-          breadcrumbLd([
-            { name: 'Home', path: '/' },
-            { name: 'Blog', path: '/blog' },
-            { name: post.title, path: `/blog/${post.slug}` },
-          ]),
         )
       : undefined,
   })

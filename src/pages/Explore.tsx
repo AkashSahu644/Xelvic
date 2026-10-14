@@ -5,7 +5,8 @@ import LiveDemos from '../components/sections/LiveDemos'
 import HowItWorksPreview from '../components/sections/HowItWorksPreview'
 import { wallpapers } from '../data/themes'
 import { CTABand } from '../components/sections/Bands'
-import { usePageMeta } from '../hooks/usePageMeta'
+import { useSEO } from '../hooks/usePageMeta'
+import { graph, webPageLd } from '../data/jsonld'
 
 const tiles = [
   { title: 'Live rooms right now', tag: 'Audio', screen: '/media/themes/catgirl/audio.jpg', span: 'md:col-span-2 md:row-span-2' },
@@ -16,10 +17,25 @@ const tiles = [
 ]
 
 export default function Explore() {
-  usePageMeta(
-    'Explore — Xelvic',
-    'See what people are doing on Xelvic right now — live rooms, moments, drops, plus live interactive previews of the app itself.',
-  )
+  useSEO({
+    title: 'Explore — Xelvic',
+    description:
+      'See what people are doing on Xelvic right now — live rooms, moments, drops and trending audio, with interactive previews of the app itself.',
+    image: '/media/walls/sheher.jpg',
+    jsonLd: graph(
+      webPageLd({
+        name: 'Explore Xelvic',
+        description:
+          'Live rooms, fresh moments, trending audio and endless drops — a taste of what people are doing on Xelvic, with live interactive previews of the app.',
+        path: '/explore',
+        image: '/media/walls/sheher.jpg',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Explore', path: '/explore' },
+        ],
+      }),
+    ),
+  })
   return (
     <>
       <PageHero

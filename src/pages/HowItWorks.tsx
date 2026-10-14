@@ -7,8 +7,9 @@ import SectionHeading from '../components/ui/SectionHeading'
 import PhoneFrame from '../components/ui/PhoneFrame'
 import PhoneDemo, { type DemoKind } from '../components/ui/PhoneDemo'
 import { CTABand } from '../components/sections/Bands'
-import { usePageMeta } from '../hooks/usePageMeta'
+import { useSEO } from '../hooks/usePageMeta'
 import { features } from '../data/features'
+import { graph, webPageLd, howToLd } from '../data/jsonld'
 import { ChevronRight, Navigation } from 'lucide-react'
 
 const steps: {
@@ -56,10 +57,44 @@ const steps: {
 ]
 
 export default function HowItWorks() {
-  usePageMeta(
-    'How it works — Xelvic',
-    'From your first hello to going live — see exactly how Xelvic works, where to tap and how to reach every feature.',
-  )
+  /* The HowTo node is the reason this page is worth marking up at all. "How do
+     I get started on Xelvic" is a question somebody asks an assistant in a
+     full sentence, and a HowTo is the one schema that answers it with the
+     actual steps rather than dumping the page and hoping. The steps below are
+     the same five the page renders, in the same order, with the same taps —
+     the markup is a transcription of the visible walkthrough, not a summary
+     written for a crawler. */
+  useSEO({
+    title: 'How it works — Xelvic',
+    description:
+      'From your first hello to going live: the five steps to get started on Xelvic, with exactly where to tap at each one.',
+    image: '/media/walls/safar.jpg',
+    jsonLd: graph(
+      webPageLd({
+        name: 'How Xelvic works',
+        description:
+          'Five steps from installing Xelvic to going live with your friends — create an account, find your people, start talking, share your day, and make the app yours.',
+        path: '/how-it-works',
+        image: '/media/walls/safar.jpg',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'How it works', path: '/how-it-works' },
+        ],
+      }),
+      howToLd({
+        name: 'How to get started on Xelvic',
+        description:
+          'Five steps from downloading Xelvic to going live with your friends, with the exact taps at each one.',
+        path: '/how-it-works',
+        totalTime: 'PT5M',
+        tools: ['Xelvic for iOS or Android'],
+        steps: steps.map((s) => ({
+          name: s.title,
+          text: `${s.body} In the app: ${s.taps.join(' → ')}.`,
+        })),
+      }),
+    ),
+  })
   const [active, setActive] = useState(0)
   const step = steps[active]
 

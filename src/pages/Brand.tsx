@@ -5,7 +5,7 @@ import { Lede, Rows, SectionHead, Prose, Note, DoDont } from '../components/ui/E
 import { NextLinks } from '../components/ui/Explainers'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, breadcrumbLd } from '../data/jsonld'
+import { graph, webPageLd } from '../data/jsonld'
 
 /* The download set. Two files, both real: the deep-plum wordmark for light
    surfaces and the reversed one for plum. Nothing here is a placeholder. */
@@ -110,10 +110,17 @@ export default function Brand() {
       'The Xelvic logo files, the colour system and when to use which, the typefaces, how to write the name, and the things we would rather you did not do with the mark.',
     image: '/media/walls/xelvic.jpg',
     jsonLd: graph(
-      breadcrumbLd([
-        { name: 'Home', path: '/' },
-        { name: 'Brand Center', path: '/brand' },
-      ]),
+      webPageLd({
+        name: 'Xelvic Brand Center',
+        description:
+          'The Xelvic logo files, the colour system and when to use which, the typefaces, how to write the name, and the things we would rather you did not do with the mark.',
+        path: '/brand',
+        image: '/media/walls/xelvic.jpg',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Brand Center', path: '/brand' },
+        ],
+      }),
     ),
   })
 
@@ -215,7 +222,7 @@ export default function Brand() {
                 'Place it on one of the four brand colours, or on a photograph that is dark enough for the reversed file.',
                 'Keep the clear space clear — a quarter of the width, on every side.',
                 'Give it a plain background. A gradient behind the logo is fine; a photograph with people in it usually is not.',
-                'Link the mark back to xelvic.app when you use it on a page of your own.',
+                'Link the mark back to xelvic.com when you use it on a page of your own.',
               ]}
               donts={[
                 'Do not stretch, squash, rotate, skew or add a shadow, glow or outline.',

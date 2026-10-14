@@ -1,6 +1,6 @@
 import LegalLayout from '../components/ui/LegalLayout'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, breadcrumbLd } from '../data/jsonld'
+import { graph, webPageLd } from '../data/jsonld'
 
 /**
  * Terms of Service. The clauses that describe how the app actually behaves are
@@ -13,10 +13,17 @@ export default function Terms() {
       'The agreement between you and Xelvic: your account, your content, acceptable use, takedowns, creator deals, Sparks, and how to leave.',
     image: '/media/walls/xelvic.jpg',
     jsonLd: graph(
-      breadcrumbLd([
-        { name: 'Home', path: '/' },
-        { name: 'Terms of Service', path: '/terms' },
-      ]),
+      webPageLd({
+        name: 'Xelvic Terms of Service',
+        description:
+          'The agreement between you and Xelvic: your account, your content, acceptable use, takedowns, creator deals, Sparks, and how to leave.',
+        path: '/terms',
+        image: '/media/walls/xelvic.jpg',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Terms of Service', path: '/terms' },
+        ],
+      }),
     ),
   })
 

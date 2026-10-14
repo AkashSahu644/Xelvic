@@ -7,6 +7,7 @@ import SectionHeading from '../components/ui/SectionHeading'
 import Reveal from '../components/ui/Reveal'
 import MagneticButton from '../components/ui/MagneticButton'
 import { useSEO } from '../hooks/usePageMeta'
+import { graph, webPageLd, itemListLd } from '../data/jsonld'
 
 type PoseKey = 'typing' | 'wait'
 
@@ -23,6 +24,25 @@ export default function Characters() {
     title: 'The Cast — meet the Xelvic characters',
     description:
       'Every Xelvic theme ships its own character. Meet the cast, and see where they turn up while you chat, call and hang out.',
+    image: '/media/char/bio.png',
+    jsonLd: graph(
+      webPageLd({
+        name: 'The Xelvic cast',
+        description:
+          'Every Xelvic theme ships its own character. The mascot is not one fixed character — it is a cast, and it changes when you change your look.',
+        path: '/characters',
+        image: '/media/char/bio.png',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'The Cast', path: '/characters' },
+        ],
+      }),
+      itemListLd({
+        name: 'The Xelvic cast',
+        path: '/characters',
+        items: cast.map((c) => ({ name: c.name, description: c.note })),
+      }),
+    ),
   })
 
   return (

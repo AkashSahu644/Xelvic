@@ -6,7 +6,7 @@ import { NextLinks } from '../components/ui/Explainers'
 import { CTABand } from '../components/sections/Bands'
 import { jobs, departments } from '../data/jobs'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, breadcrumbLd } from '../data/jsonld'
+import { graph, webPageLd } from '../data/jsonld'
 
 /* The surfaces a new person would actually own, described in terms of what the
    app does rather than in terms of a stack. Each one carries a line from the
@@ -108,10 +108,17 @@ export default function Careers() {
       'Open roles at Xelvic, the surfaces you would own, how the hiring process actually works, and what the job is like in practice.',
     image: '/media/walls/studio.jpg',
     jsonLd: graph(
-      breadcrumbLd([
-        { name: 'Home', path: '/' },
-        { name: 'Careers', path: '/careers' },
-      ]),
+      webPageLd({
+        name: 'Careers at Xelvic',
+        description:
+          'Open roles at Xelvic, the surfaces you would own, how the hiring process actually works, and what the job is like in practice.',
+        path: '/careers',
+        image: '/media/walls/studio.jpg',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Careers', path: '/careers' },
+        ],
+      }),
     ),
   })
 

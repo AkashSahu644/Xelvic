@@ -1,6 +1,6 @@
 import LegalLayout from '../components/ui/LegalLayout'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, breadcrumbLd } from '../data/jsonld'
+import { graph, webPageLd } from '../data/jsonld'
 
 /**
  * The Data page. Everything here is checked against the app itself: the numbers
@@ -15,10 +15,17 @@ export default function Data() {
       'What Xelvic does with your data, where it is used, how it is used, and what you and Xelvic can each do with it — in the app’s own words.',
     image: '/media/themes/animeblue/moments.jpg',
     jsonLd: graph(
-      breadcrumbLd([
-        { name: 'Home', path: '/' },
-        { name: 'Data', path: '/data' },
-      ]),
+      webPageLd({
+        name: 'Your data on Xelvic',
+        description:
+          'What Xelvic does with your data, where it is used, how it is used, and what you and Xelvic can each do with it — in the app’s own words.',
+        path: '/data',
+        image: '/media/themes/animeblue/moments.jpg',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Your Data', path: '/data' },
+        ],
+      }),
     ),
   })
 

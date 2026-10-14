@@ -8,7 +8,7 @@ import { Lede, Stats, Rows, Steps, Blocks, SectionHead, Note } from '../componen
 import { NextLinks } from '../components/ui/Explainers'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, breadcrumbLd, faqLd, softwareApplicationLd } from '../data/jsonld'
+import { graph, webPageLd, faqLd, softwareApplicationLd } from '../data/jsonld'
 import { site } from '../data/site'
 import { ArrowUpRight, Check } from 'lucide-react'
 
@@ -183,11 +183,18 @@ export default function Download() {
     image: '/media/walls/xelvic.jpg',
     jsonLd: graph(
       softwareApplicationLd(),
-      breadcrumbLd([
-        { name: 'Home', path: '/' },
-        { name: 'Download', path: '/download' },
-      ]),
-      faqLd(faqs)
+      webPageLd({
+        name: 'Download Xelvic',
+        description:
+          'Download Xelvic free on Android 8+ and iOS 14+. What is included, what it needs to run, how to install it in four taps, and how to sign in on the web without installing anything.',
+        path: '/download',
+        image: '/media/walls/xelvic.jpg',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Download', path: '/download' },
+        ],
+      }),
+      faqLd(faqs),
     ),
   })
 

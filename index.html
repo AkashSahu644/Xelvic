@@ -11,14 +11,22 @@
     <link rel="icon" sizes="16x16" href="/favicon-16x16.png" type="image/png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
+    <meta name="apple-mobile-web-app-title" content="Xelvic" />
+    <meta name="application-name" content="Xelvic" />
 
     <!-- Primary meta (per-route tags are injected by useSEO) -->
     <title>Xelvic — Chat. Call. Vibe.</title>
     <meta
       name="description"
-      content="Xelvic — chat, call, go live and vibe. One app for messaging, voice & video calls, moments, live rooms, music and more."
+      content="Xelvic is a free app for messaging, voice &amp; video calls, moments, live rooms, short video and music — with 50+ themes and a private vault."
     />
-    <link rel="canonical" href="https://xelvic.app/" />
+    <link rel="canonical" href="https://xelvic.com/" />
+    <link rel="alternate" hreflang="en" href="https://xelvic.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://xelvic.com/" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
 
     <!-- Open Graph -->
     <meta property="og:site_name" content="Xelvic" />
@@ -26,23 +34,27 @@
     <meta property="og:title" content="Xelvic — Chat. Call. Vibe." />
     <meta
       property="og:description"
-      content="One app for messaging, voice & video calls, moments, live rooms, music and more."
+      content="One app for messaging, voice &amp; video calls, moments, live rooms, music and more."
     />
-    <meta property="og:url" content="https://xelvic.app/" />
-    <meta property="og:image" content="https://xelvic.app/og/xelvic-og.png" />
+    <meta property="og:url" content="https://xelvic.com/" />
+    <meta property="og:image" content="https://xelvic.com/og/xelvic-og.png" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Xelvic — chat, call and vibe in one app." />
     <meta property="og:locale" content="en_US" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@xelvic" />
+    <meta name="twitter:creator" content="@xelvic" />
     <meta name="twitter:title" content="Xelvic — Chat. Call. Vibe." />
     <meta
       name="twitter:description"
-      content="One app for messaging, voice & video calls, moments, live rooms, music and more."
+      content="One app for messaging, voice &amp; video calls, moments, live rooms, music and more."
     />
-    <meta name="twitter:image" content="https://xelvic.app/og/xelvic-og.png" />
+    <meta name="twitter:image" content="https://xelvic.com/og/xelvic-og.png" />
+    <meta name="twitter:image:alt" content="Xelvic — chat, call and vibe in one app." />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -52,27 +64,143 @@
       rel="stylesheet"
     />
 
-    <!-- Organization structured data -->
+    <!--
+      Structured data.
+
+      This block is written into the HTML on purpose rather than left to the
+      route. The site is a client-rendered React app, so a crawler that does
+      not execute JavaScript — which is most of the AI answer engines — never
+      runs useSEO and never sees a single one of the per-page tags. What it
+      does see is this file. So the three nodes that describe the company, the
+      site and the app live here, in the one document that is guaranteed to
+      arrive, and the per-route graph layers the page-specific nodes on top.
+
+      Both are emitted on a page that runs JavaScript, which is fine: they
+      carry the same @id, so a consumer merges them into one entity instead of
+      reading two contradictory ones.
+    -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Xelvic",
-        "url": "https://xelvic.app",
-        "logo": "https://xelvic.app/favicon-512x512.png",
-        "description": "One app for messaging, voice & video calls, moments, live rooms, music and more.",
-        "sameAs": [
-          "https://x.com/xelvic",
-          "https://instagram.com/xelvic",
-          "https://youtube.com/@xelvic",
-          "https://tiktok.com/@xelvic",
-          "https://linkedin.com/company/xelvic"
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://xelvic.com/#organization",
+            "name": "Xelvic",
+            "alternateName": "Xelvic App",
+            "url": "https://xelvic.com",
+            "logo": {
+              "@type": "ImageObject",
+              "@id": "https://xelvic.com/#logo",
+              "url": "https://xelvic.com/favicon-512x512.png",
+              "contentUrl": "https://xelvic.com/favicon-512x512.png",
+              "width": 512,
+              "height": 512,
+              "caption": "Xelvic"
+            },
+            "image": { "@id": "https://xelvic.com/#logo" },
+            "description": "One app for messaging, voice & video calls, moments, live rooms, music and more.",
+            "slogan": "Chat. Call. Vibe.",
+            "sameAs": [
+              "https://x.com/xelvic",
+              "https://instagram.com/xelvic",
+              "https://youtube.com/@xelvic",
+              "https://tiktok.com/@xelvic",
+              "https://linkedin.com/company/xelvic"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://xelvic.com/#website",
+            "name": "Xelvic",
+            "alternateName": "Xelvic — Chat. Call. Vibe.",
+            "url": "https://xelvic.com",
+            "description": "One app for messaging, voice & video calls, moments, live rooms, music and more.",
+            "inLanguage": "en",
+            "publisher": { "@id": "https://xelvic.com/#organization" }
+          },
+          {
+            "@type": ["SoftwareApplication", "MobileApplication"],
+            "@id": "https://xelvic.com/#app",
+            "name": "Xelvic",
+            "operatingSystem": "iOS, Android",
+            "applicationCategory": "SocialNetworkingApplication",
+            "applicationSubCategory": "Messaging",
+            "description": "One app for messaging, voice & video calls, moments, live rooms, music and more.",
+            "url": "https://xelvic.com",
+            "downloadUrl": "https://xelvic.com/download",
+            "inLanguage": "en",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://xelvic.com/download"
+            },
+            "publisher": { "@id": "https://xelvic.com/#organization" }
+          }
         ]
       }
     </script>
   </head>
   <body>
     <div id="root"></div>
+
+    <!--
+      The no-JavaScript fallback.
+
+      This is not a crawler trick and it is not hidden from anybody: with
+      scripting off, this is genuinely all a visitor would otherwise get, and a
+      blank page is a worse answer for a person than a plain one. It says the
+      same things the rendered home page says, in the same words, and links to
+      the same pages — nothing here is written for a machine that a reader
+      would not also be told.
+    -->
+    <noscript>
+      <div style="max-width: 44rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; line-height: 1.65; color: #3a0a24">
+        <h1 style="font-size: 1.9rem; line-height: 1.15; margin: 0 0 0.5rem">Xelvic — Chat. Call. Vibe.</h1>
+        <p style="font-size: 1.05rem; margin: 0 0 1.5rem">
+          Xelvic is a free social app for iOS, Android and the web that puts messaging, voice and
+          video calls, moments, live rooms, short video and music in one place. It is built around
+          close groups rather than follower counts.
+        </p>
+
+        <h2 style="font-size: 1.15rem; margin: 1.75rem 0 0.5rem">What it does</h2>
+        <ul style="margin: 0; padding-left: 1.15rem">
+          <li><strong>Messaging</strong> — one-to-one and group chat with channels, voice notes, media, documents and an offline outbox.</li>
+          <li><strong>Voice &amp; video calls</strong> — peer-to-peer over WebRTC, with encrypted media and a full call history.</li>
+          <li><strong>Moments &amp; Memories</strong> — posts with text, polls and music that last 24 hours, then file themselves away.</li>
+          <li><strong>Live &amp; Rooms</strong> — go live by camera or text, or open an audio room and hand out the microphones.</li>
+          <li><strong>Drops &amp; Vibes</strong> — photo posts and short-video reels, with feels and private notes on each one.</li>
+          <li><strong>Audio &amp; music</strong> — charts, playlists, offline saving, and sharing a track straight into a chat.</li>
+          <li><strong>Themes &amp; Drip</strong> — 50+ themes that restyle the whole app, chat wallpapers, and wearables for your profile.</li>
+          <li><strong>Sparks</strong> — a streak for every day two people actually talk.</li>
+          <li><strong>Private Vault</strong> — an encrypted, code-locked space for the conversations you want out of the way.</li>
+        </ul>
+
+        <h2 style="font-size: 1.15rem; margin: 1.75rem 0 0.5rem">The essentials</h2>
+        <ul style="margin: 0; padding-left: 1.15rem">
+          <li>Free to use. Sparks are spent on cosmetic themes and looks, never on features.</li>
+          <li>Available on iOS, Android and any modern browser. Minimum age 13.</li>
+          <li>Contacts are matched on your device — your address book is never uploaded.</li>
+        </ul>
+
+        <h2 style="font-size: 1.15rem; margin: 1.75rem 0 0.5rem">Where to go next</h2>
+        <ul style="margin: 0; padding-left: 1.15rem">
+          <li><a href="/features">All features</a></li>
+          <li><a href="/how-it-works">How it works</a></li>
+          <li><a href="/download">Download Xelvic</a></li>
+          <li><a href="/help">Help Center — 50 answers</a></li>
+          <li><a href="/safety">Safety</a> · <a href="/security">Security</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></li>
+          <li><a href="/about">About us</a> · <a href="/careers">Careers</a> · <a href="/contact">Contact</a></li>
+        </ul>
+
+        <p style="margin: 1.75rem 0 0; font-size: 0.95rem">
+          Signing in to an existing account: <a href="https://web.xelvic.com">web.xelvic.com</a>
+        </p>
+      </div>
+    </noscript>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

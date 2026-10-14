@@ -1,6 +1,6 @@
 import LegalLayout from '../components/ui/LegalLayout'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, breadcrumbLd } from '../data/jsonld'
+import { graph, webPageLd } from '../data/jsonld'
 
 /**
  * Every quoted line on this page is lifted word-for-word out of the app, and
@@ -14,10 +14,17 @@ export default function Privacy() {
       'What Xelvic collects, how it is used, who can see it, and the control you have — written against the app as it ships.',
     image: '/media/themes/teddy/convo.jpg',
     jsonLd: graph(
-      breadcrumbLd([
-        { name: 'Home', path: '/' },
-        { name: 'Privacy Policy', path: '/privacy' },
-      ]),
+      webPageLd({
+        name: 'Xelvic Privacy Policy',
+        description:
+          'What Xelvic collects, how it is used, who can see it, and the control you have — written against the app as it ships.',
+        path: '/privacy',
+        image: '/media/themes/teddy/convo.jpg',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Privacy Policy', path: '/privacy' },
+        ],
+      }),
     ),
   })
 

@@ -6,7 +6,7 @@ import { Lede, Stats, Numbered, SectionHead, Prose, Note } from '../components/u
 import { NextLinks } from '../components/ui/Explainers'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, breadcrumbLd } from '../data/jsonld'
+import { graph, webPageLd, contactPageLd } from '../data/jsonld'
 
 /* One address per reason somebody writes to us. Nine doors rather than one
    inbox, because the address you choose is most of the routing. */
@@ -94,10 +94,23 @@ export default function Contact() {
       'Every way to reach the Xelvic team, what each address is for, how quickly each one is answered, and what to include so you get a useful reply the first time.',
     image: '/media/walls/sheher.jpg',
     jsonLd: graph(
-      breadcrumbLd([
-        { name: 'Home', path: '/' },
-        { name: 'Contact', path: '/contact' },
-      ]),
+      webPageLd({
+        name: 'Contact Xelvic',
+        description:
+          'Every way to reach the Xelvic team, what each address is for, how quickly each one is answered, and what to include so you get a useful reply the first time.',
+        path: '/contact',
+        image: '/media/walls/sheher.jpg',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Contact', path: '/contact' },
+        ],
+      }),
+      /* Built from `doors`, the same array the page renders, so the nine
+         addresses in the markup are the nine a reader can see. */
+      contactPageLd({
+        path: '/contact',
+        departments: doors.map((d) => ({ name: d.k, email: d.address, note: d.d })),
+      }),
     ),
   })
 

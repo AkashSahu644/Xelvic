@@ -13,7 +13,7 @@ import MagneticButton from "../components/ui/MagneticButton";
 import { CTABand } from "../components/sections/Bands";
 import { newInXelvic, type NewInXelvic } from "../data/whatsNew";
 import { useSEO } from "../hooks/usePageMeta";
-import { graph, breadcrumbLd } from "../data/jsonld";
+import { graph, webPageLd } from "../data/jsonld";
 
 /**
  * One new thing, in full: the heading and the long description on one side, a
@@ -122,10 +122,17 @@ export default function WhatsNewPage() {
       "The spark that counts the days two people talk, feeling and noting a Vibe, a Drop or a track without leaving the chat — everything new in Xelvic, explained in full.",
     image: "/media/themes/teddy/convo.jpg",
     jsonLd: graph(
-      breadcrumbLd([
-        { name: "Home", path: "/" },
-        { name: "What's New", path: "/whats-new" },
-      ]),
+      webPageLd({
+        name: "What's new in Xelvic",
+        description:
+          "The spark that counts the days two people talk, feeling and noting a Vibe, a Drop or a track without leaving the chat — everything new in Xelvic, explained in full.",
+        path: "/whats-new",
+        image: "/media/themes/teddy/convo.jpg",
+        breadcrumbs: [
+          { name: "Home", path: "/" },
+          { name: "What's New", path: "/whats-new" },
+        ],
+      }),
     ),
   });
 

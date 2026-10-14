@@ -2,7 +2,8 @@ import PageHero from '../components/layout/PageHero'
 import Reveal from '../components/ui/Reveal'
 import PhoneFrame from '../components/ui/PhoneFrame'
 import { CTABand } from '../components/sections/Bands'
-import { usePageMeta } from '../hooks/usePageMeta'
+import { useSEO } from '../hooks/usePageMeta'
+import { graph, webPageLd, itemListLd, howToLd } from '../data/jsonld'
 import { BarChart3, BadgeCheck, Handshake, Users, Wallet, Flame } from 'lucide-react'
 
 const tools = [
@@ -22,7 +23,39 @@ const dealSteps = [
 ]
 
 export default function Creators() {
-  usePageMeta('For Creators — Xelvic', 'Grow your audience, collaborate with brands and get paid — all in the open on Xelvic.')
+  useSEO({
+    title: 'For Creators — Xelvic',
+    description:
+      'Grow your audience, collaborate with brands and get paid — all in the open on Xelvic.',
+    image: '/media/themes/animeblue/drops.jpg',
+    jsonLd: graph(
+      webPageLd({
+        name: 'For Creators — Xelvic',
+        description:
+          'Grow your audience, collaborate with brands and get paid — all in the open on Xelvic.',
+        path: '/creators',
+        image: '/media/themes/animeblue/drops.jpg',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Creators', path: '/creators' },
+        ],
+      }),
+      /* Both lists are built from the arrays the page renders, so the schema
+         cannot drift from the copy the reader sees. */
+      itemListLd({
+        name: 'Creator tools in Xelvic',
+        path: '/creators',
+        items: tools.map((t) => ({ name: t.title, description: t.body })),
+      }),
+      howToLd({
+        name: 'How a Xelvic brand deal works',
+        description:
+          'From the invitation to the payout: the four steps of a paid collaboration on Xelvic, where payment is released only after the brand approves the deliverable.',
+        path: '/creators',
+        steps: dealSteps.map((s) => ({ name: `${s.n}. ${s.t}`, text: s.d })),
+      }),
+    ),
+  })
   return (
     <>
       <PageHero

@@ -1,4 +1,136 @@
+# robots.txt — xelvic.com
+#
+# Everything here is public marketing copy, so the answer is "yes" to
+# everybody and this file exists to say so out loud rather than to keep
+# anyone out.
+#
+# It is written out per-crawler rather than as a bare `User-agent: *` for two
+# reasons. The first is that several of the AI crawlers below are recent
+# enough that an operator auditing this file wants to see them named. The
+# second is that naming them is what makes the opt-out at the bottom a
+# one-line change instead of a research project.
+
 User-agent: *
 Allow: /
 
-Sitemap: https://xelvic.app/sitemap.xml
+# ── Search engines ───────────────────────────────────────────────────────────
+# These are the ones that produce a result page somebody can click, and they
+# are also the ones the AI answer engines read for retrieval.
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+User-agent: PetalBot
+Allow: /
+
+# ── AI answer engines ────────────────────────────────────────────────────────
+# Split deliberately into the two jobs an AI crawler can be doing.
+#
+# The *search/retrieval* bots are the ones that put a Xelvic page in front of
+# somebody as a cited source, which is the entire point of being crawlable by
+# them. The *user* bots fire when a person pastes a xelvic.com link into a
+# chat window and asks about it — blocking those only breaks the thing the
+# person just asked for.
+#
+# Training-only crawlers (GPTBot, Google-Extended, CCBot, Applebot-Extended,
+# Bytespider) are allowed too. They give no citation, so there is a real
+# argument for turning them off; see the note at the end of this file.
+
+# OpenAI — search index and on-demand fetching.
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic — Claude's search and on-demand fetching.
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# Perplexity — its own index, plus the fetcher behind a pasted link.
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google's Gemini grounding.
+User-agent: Google-CloudVertexBot
+Allow: /
+
+# Microsoft Copilot.
+User-agent: BingBot
+Allow: /
+
+# DuckDuckGo's AI answers.
+User-agent: DuckAssistBot
+Allow: /
+
+# Mistral.
+User-agent: MistralAI-User
+Allow: /
+
+# You.com.
+User-agent: YouBot
+Allow: /
+
+# ── Training-only crawlers (allowed, and separable) ──────────────────────────
+# To stop feeding model training while staying visible in AI answers, change
+# each `Allow: /` below to `Disallow: /`. Do not touch the section above it —
+# those are the crawlers that cite you.
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: AI2Bot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+Sitemap: https://xelvic.com/sitemap.xml

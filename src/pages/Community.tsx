@@ -12,7 +12,7 @@ import {
   Note,
 } from '../components/ui/Editorial'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, breadcrumbLd } from '../data/jsonld'
+import { graph, webPageLd } from '../data/jsonld'
 
 /* The four places a Xelvic account is not alone. Each carries a line the app
    itself uses, so the block is a pointer to the build rather than a promise. */
@@ -85,10 +85,17 @@ export default function Community() {
       'Circles, Sparks, rooms and creators — how the people on Xelvic find each other, keep a run going, hold a stage and keep the place worth being in.',
     image: '/media/walls/mehfil.jpg',
     jsonLd: graph(
-      breadcrumbLd([
-        { name: 'Home', path: '/' },
-        { name: 'Community', path: '/community' },
-      ]),
+      webPageLd({
+        name: 'The Xelvic community',
+        description:
+          'Circles, Sparks, rooms and creators — how the people on Xelvic find each other, keep a run going, hold a stage and keep the place worth being in.',
+        path: '/community',
+        image: '/media/walls/mehfil.jpg',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Community', path: '/community' },
+        ],
+      }),
     ),
   })
 

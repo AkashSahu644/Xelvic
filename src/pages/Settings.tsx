@@ -4,7 +4,7 @@ import Reveal from '../components/ui/Reveal'
 import { NextLinks } from '../components/ui/Explainers'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, breadcrumbLd } from '../data/jsonld'
+import { graph, webPageLd } from '../data/jsonld'
 import { Lede, Stats, Rows, Numbered, SectionHead, Prose, Note } from '../components/ui/Editorial'
 
 /* Every row below is a real Settings screen from the app — labels and
@@ -139,10 +139,17 @@ export default function Settings() {
       'Every switch in Xelvic Settings: privacy, notifications, appearance, the Vault and every phone on your account — and why each one is there.',
     image: '/media/walls/mehfil.jpg',
     jsonLd: graph(
-      breadcrumbLd([
-        { name: 'Home', path: '/' },
-        { name: 'Settings', path: '/settings' },
-      ]),
+      webPageLd({
+        name: 'Xelvic Settings, explained',
+        description:
+          'Every switch in Xelvic Settings: privacy, notifications, appearance, the Vault and every phone on your account — and why each one is there.',
+        path: '/settings',
+        image: '/media/walls/mehfil.jpg',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Settings', path: '/settings' },
+        ],
+      }),
     ),
   })
 

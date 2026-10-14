@@ -7,7 +7,7 @@ import { Rows, SectionHead, Prose, Note } from '../components/ui/Editorial'
 import { NextLinks } from '../components/ui/Explainers'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, jobPostingLd, breadcrumbLd } from '../data/jsonld'
+import { graph, jobPostingLd, webPageLd } from '../data/jsonld'
 
 export default function CareerDetail() {
   const { id } = useParams()
@@ -19,17 +19,23 @@ export default function CareerDetail() {
     noindex: !job,
     jsonLd: job
       ? graph(
+          webPageLd({
+            name: `${job.title} — Xelvic Careers`,
+            description: job.summary,
+            path: `/careers/${job.id}`,
+            breadcrumbs: [
+              { name: 'Home', path: '/' },
+              { name: 'Careers', path: '/careers' },
+              { name: job.title, path: `/careers/${job.id}` },
+            ],
+          }),
           jobPostingLd({
             title: job.title,
             description: job.summary,
             employmentType: job.type,
             location: job.location,
+            team: job.team,
           }),
-          breadcrumbLd([
-            { name: 'Home', path: '/' },
-            { name: 'Careers', path: '/careers' },
-            { name: job.title, path: `/careers/${job.id}` },
-          ]),
         )
       : undefined,
   })

@@ -8,7 +8,7 @@ import { CTABand } from '../components/sections/Bands'
 import { faqCategories } from '../data/faq'
 import { Stats, SectionHead, Note } from '../components/ui/Editorial'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, faqLd, breadcrumbLd } from '../data/jsonld'
+import { graph, faqLd, webPageLd } from '../data/jsonld'
 
 /* The searches people actually type, rather than a decorative tag cloud. Each
    one drops straight into the box above. */
@@ -43,11 +43,21 @@ export default function Help() {
       'Answers and how-tos for getting the most out of Xelvic — sign-up, messaging, calls, Moments, Sparks, the Vault, reporting and leaving.',
     image: '/media/walls/safar.jpg',
     jsonLd: graph(
+      webPageLd({
+        name: 'Xelvic Help Center',
+        description:
+          'Answers to the questions people actually ask about Xelvic — sign-up, messaging and calls, Moments and Live, Sparks and themes, privacy and safety, comments and notes, accounts and devices, and creator deals.',
+        path: '/help',
+        image: '/media/walls/safar.jpg',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Help Center', path: '/help' },
+        ],
+      }),
+      /* Every answer on the page, as one FAQPage. Google only shows FAQ rich
+         results for content that is visible to the reader, which it is: these
+         are the same strings the accordion renders, from src/data/faq.ts. */
       faqLd(faqCategories.flatMap((c) => c.faqs)),
-      breadcrumbLd([
-        { name: 'Home', path: '/' },
-        { name: 'Help Center', path: '/help' },
-      ]),
     ),
   })
 

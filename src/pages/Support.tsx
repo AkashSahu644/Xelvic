@@ -5,7 +5,7 @@ import ContactForm from '../components/ui/ContactForm'
 import { NextLinks } from '../components/ui/Explainers'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { graph, breadcrumbLd } from '../data/jsonld'
+import { graph, webPageLd } from '../data/jsonld'
 import { Lede, Stats, Rows, SectionHead, Prose, Note } from '../components/ui/Editorial'
 
 /* Four doors, each answering a different kind of "I need help" — reading,
@@ -115,10 +115,17 @@ export default function Support() {
       'Get help from the Xelvic team — what to try first for the six most common problems, how to reach a person, and where each kind of request should go.',
     image: '/media/walls/studio.jpg',
     jsonLd: graph(
-      breadcrumbLd([
-        { name: 'Home', path: '/' },
-        { name: 'Support', path: '/support' },
-      ]),
+      webPageLd({
+        name: 'Xelvic Support',
+        description:
+          'Get help from the Xelvic team — what to try first for the six most common problems, how to reach a person, and where each kind of request should go.',
+        path: '/support',
+        image: '/media/walls/studio.jpg',
+        breadcrumbs: [
+          { name: 'Home', path: '/' },
+          { name: 'Support', path: '/support' },
+        ],
+      }),
     ),
   })
 
