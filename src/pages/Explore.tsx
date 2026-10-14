@@ -23,7 +23,6 @@ export default function Explore() {
   return (
     <>
       <PageHero
-        eyebrow="A peek inside"
         title={<>See what's <span className="text-grad">happening</span></>}
         sub="Live rooms, fresh moments, trending audio and endless drops. Here's a taste of the energy on Xelvic."
         wall="/media/walls/sheher.jpg"

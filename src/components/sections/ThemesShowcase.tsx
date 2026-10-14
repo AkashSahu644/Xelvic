@@ -15,7 +15,6 @@ export default function ThemesShowcase() {
     <section className="section relative overflow-hidden bg-ink-800">
       <div className="wrap">
         <SectionHeading
-          eyebrow="50+ themes & counting"
           title={<>A look for <span className="text-grad">every you</span></>}
           sub="Flip your whole app into a brand-new world with a single tap — anime, kitsune, shinobi, unicorn, mecha, pastel, neon and dozens more. Each one brings its own character along."
         />

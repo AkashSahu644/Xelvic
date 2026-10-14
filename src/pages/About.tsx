@@ -98,7 +98,6 @@ export default function About() {
   return (
     <>
       <PageHero
-        eyebrow="Our story"
         title={
           <>
             One app for the people you <span className="text-grad">actually talk to</span>

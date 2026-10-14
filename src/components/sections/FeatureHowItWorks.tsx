@@ -21,10 +21,6 @@ export default function FeatureHowItWorks({
       <div className="aurora-bg" />
       <div className="wrap">
         <Reveal>
-          <span className="eyebrow mb-4">
-            <span className="h-2 w-2 rounded-full bg-blue glow-dot" />
-            How it works
-          </span>
           <h2 className="font-display text-3xl font-bold md:text-4xl">
             Where to tap, and how to get there
           </h2>

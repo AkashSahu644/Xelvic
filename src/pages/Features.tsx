@@ -13,7 +13,6 @@ export default function Features() {
   return (
     <>
       <PageHero
-        eyebrow="The complete tour"
         title={<>Everything Xelvic <span className="text-grad">can do</span></>}
         sub="Seven ways to stay close, plus the social fun that keeps it interesting. Tap any feature for a deeper look."
         wall="/media/walls/xelvic.jpg"

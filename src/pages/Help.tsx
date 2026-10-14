@@ -77,7 +77,6 @@ export default function Help() {
   return (
     <>
       <PageHero
-        eyebrow="Help center"
         title={
           <>
             How can we <span className="text-grad">help?</span>

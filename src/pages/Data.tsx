@@ -24,7 +24,6 @@ export default function Data() {
 
   return (
     <LegalLayout
-      eyebrow="Your data"
       title="What happens to your data"
       updated="October 2026"
       minutes={8}

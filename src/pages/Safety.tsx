@@ -114,7 +114,6 @@ export default function Safety() {
   return (
     <>
       <PageHero
-        eyebrow="Safety first"
         title={
           <>
             Tools to keep you <span className="text-grad">in control</span>

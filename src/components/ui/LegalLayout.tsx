@@ -18,7 +18,6 @@ export type LegalSection = {
 }
 
 type Props = {
-  eyebrow: string
   title: string
   updated: string
   intro: string
@@ -50,7 +49,6 @@ function Marker({ n }: { n: number }) {
 }
 
 export default function LegalLayout({
-  eyebrow,
   title,
   updated,
   intro,
@@ -84,7 +82,7 @@ export default function LegalLayout({
 
   return (
     <>
-      <PageHero eyebrow={eyebrow} title={title} sub={intro} wall={wall} />
+      <PageHero title={title} sub={intro} wall={wall} />
 
       <section className="pb-24">
         <div className="wrap grid gap-12 lg:grid-cols-[286px_minmax(0,1fr)]">

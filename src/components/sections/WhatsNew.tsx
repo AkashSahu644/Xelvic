@@ -11,7 +11,6 @@ export default function WhatsNew() {
       <div className="aurora-bg aurora-bg--drift" />
       <div className="wrap">
         <SectionHeading
-          eyebrow="What's new"
           title={
             <>
               Feel it and note it, <span className="text-grad">without leaving the chat</span>

@@ -51,12 +51,8 @@ export function CTABand() {
       <div className="wrap relative">
         <Reveal>
           <div className="mx-auto max-w-2xl rounded-[2rem] border border-plum/[0.07] bg-pure/80 px-5 py-8 text-center shadow-[0_28px_70px_-18px_rgba(157,23,77,.3)] backdrop-blur-2xl sm:rounded-[2.5rem] sm:px-12 sm:py-12">
-            <span className="eyebrow">
-              <span className="h-2 w-2 rounded-full bg-blue glow-dot" />
-              Ready when you are
-            </span>
 
-            <h2 className="mt-5 font-display text-[clamp(1.85rem,8vw,2.25rem)] font-bold leading-[1.08] md:mt-6 md:text-5xl">
+            <h2 className="font-display text-[clamp(1.85rem,8vw,2.25rem)] font-bold leading-[1.08] md:text-5xl">
               Your people are waiting on <span className="text-grad">Xelvic</span>
             </h2>
 

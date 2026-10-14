@@ -56,7 +56,6 @@ export default function FeatureGrid() {
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <SectionHeading
             center={false}
-            eyebrow="Everything in one app"
             title={<>One app for <span className="text-grad">every way you connect</span></>}
             sub="From a quick hello to an all-night live room — Xelvic keeps your whole crew in one playful place."
           />

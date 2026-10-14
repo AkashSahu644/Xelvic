@@ -38,7 +38,7 @@ export default function CareerDetail() {
 
   return (
     <>
-      <PageHero eyebrow={job.team} title={job.title} sub={job.summary} wall="/media/walls/studio.jpg" />
+      <PageHero title={job.title} sub={job.summary} wall="/media/walls/studio.jpg" />
 
       {/* ————— the role as a set of facts ————— */}
       <section className="pb-20">

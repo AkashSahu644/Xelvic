@@ -123,7 +123,6 @@ export default function Press() {
   return (
     <>
       <PageHero
-        eyebrow="Press & media"
         title={
           <>
             Everything you need to <span className="text-grad">write about us</span>

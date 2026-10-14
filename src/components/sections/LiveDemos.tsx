@@ -74,7 +74,6 @@ export default function LiveDemos() {
       <div className="aurora-bg aurora-bg--drift" />
       <div className="wrap">
         <SectionHeading
-          eyebrow="See it move"
           title={
             <>
               Watch Xelvic <span className="text-grad">in action</span>

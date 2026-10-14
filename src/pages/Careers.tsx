@@ -118,7 +118,6 @@ export default function Careers() {
   return (
     <>
       <PageHero
-        eyebrow="Join us"
         title={
           <>
             Build the app people <span className="text-grad">open first</span>

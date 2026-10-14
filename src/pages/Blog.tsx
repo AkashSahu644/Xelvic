@@ -22,7 +22,6 @@ export default function Blog() {
   return (
     <>
       <PageHero
-        eyebrow="The Xelvic blog"
         title={<>Stories & <span className="text-grad">updates</span></>}
         sub="Product news, design deep-dives and the thinking behind Xelvic."
         wall="/media/walls/raat.jpg"
@@ -37,7 +36,6 @@ export default function Blog() {
                 <img src={featured.cover} alt={featured.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
               </div>
               <div className="flex flex-col justify-center p-8 md:p-10">
-                <span className="eyebrow mb-4 self-start">{featured.category}</span>
                 <h2 className="font-display text-2xl font-bold leading-tight md:text-3xl">{featured.title}</h2>
                 <p className="mt-3 text-white/55">{featured.excerpt}</p>
                 <p className="mt-5 text-sm text-white/40">{fmt(featured.date)} · {featured.readTime} read</p>

@@ -73,11 +73,6 @@ function NewBlock({ item, flip }: { item: NewInXelvic; flip: boolean }) {
             <Icon size={26} />
           </span>
 
-          <span className="eyebrow mb-4 mt-6">
-            <span className="h-2 w-2 rounded-full bg-blue glow-dot" />
-            {item.tag}
-          </span>
-
           <h2 className="font-display text-3xl font-bold leading-tight md:text-4xl">
             {item.title}
           </h2>
@@ -137,7 +132,6 @@ export default function WhatsNewPage() {
   return (
     <>
       <PageHero
-        eyebrow="What's new"
         title={
           <>
             New in <span className="text-grad">Xelvic</span>
@@ -152,10 +146,6 @@ export default function WhatsNewPage() {
         <div className="wrap">
           <Reveal>
             <div className="mx-auto max-w-2xl text-center">
-              <span className="eyebrow mb-5">
-                <span className="h-2 w-2 rounded-full bg-blue glow-dot" />
-                Watch it happen
-              </span>
               <h2 className="font-display text-3xl font-bold leading-tight md:text-4xl">
                 Feel it, note it, send a Spark —{" "}
                 <span className="text-grad">all inside one convo</span>

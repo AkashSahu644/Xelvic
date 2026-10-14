@@ -95,7 +95,6 @@ export default function Community() {
   return (
     <>
       <PageHero
-        eyebrow="Better together"
         title={
           <>
             The Xelvic <span className="text-grad">community</span>

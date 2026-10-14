@@ -32,11 +32,6 @@ export default function Characters() {
         <div className="aurora-bg aurora-bg--drift" />
         <div className="wrap grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="relative z-10 text-center lg:text-left">
-            <span className="eyebrow mb-6">
-              <span className="h-2 w-2 rounded-full bg-blue glow-dot" />
-              The Cast
-            </span>
-
             <h1 className="font-display text-[2.7rem] font-bold leading-[1.04] tracking-tight sm:text-5xl lg:text-[3.9rem]">
               One app.
               <br />
@@ -80,7 +75,6 @@ export default function Characters() {
       <section className="section relative">
         <div className="wrap">
           <SectionHeading
-            eyebrow="Three poses, three jobs"
             title={
               <>
                 Same character, <span className="text-grad">doing different work</span>
@@ -122,7 +116,6 @@ export default function Characters() {
       <section className="section relative overflow-hidden bg-pink-50">
         <div className="wrap">
           <SectionHeading
-            eyebrow="The cast"
             title={
               <>
                 Change the theme, <span className="text-grad">change the character</span>
@@ -262,7 +255,6 @@ export default function Characters() {
       <section className="section relative">
         <div className="wrap">
           <SectionHeading
-            eyebrow="Out in the app"
             title={
               <>
                 Where the cast <span className="text-grad">shows up</span>
@@ -305,7 +297,6 @@ export default function Characters() {
       <section className="section relative">
         <div className="wrap">
           <SectionHeading
-            eyebrow="Concept art"
             title={
               <>
                 From the <span className="text-grad">art desk</span>

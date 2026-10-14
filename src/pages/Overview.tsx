@@ -9,7 +9,6 @@ export default function Overview() {
   return (
     <>
       <PageHero
-        eyebrow="The big picture"
         title={<>Six apps' worth of fun, <span className="text-grad">in one</span></>}
         sub="Xelvic brings messaging, calling, stories, live audio, a social feed, music and a creator economy into a single, playful home."
         wall="/media/walls/studio.jpg"

@@ -22,7 +22,6 @@ export default function Terms() {
 
   return (
     <LegalLayout
-      eyebrow="The ground rules"
       title="Terms of Service"
       updated="October 2026"
       minutes={7}

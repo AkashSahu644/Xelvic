@@ -31,7 +31,6 @@ export default function CharacterCast() {
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <SectionHeading
             center={false}
-            eyebrow="The cast"
             title={
               <>
                 Not one mascot — <span className="text-grad">a whole cast</span>

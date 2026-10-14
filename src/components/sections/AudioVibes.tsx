@@ -42,7 +42,6 @@ export default function AudioVibes() {
         <div>
           <SectionHeading
             center={false}
-            eyebrow="Sound & feeling"
             title={
               <>
                 Audio vibes for <span className="text-grad">every mood</span>

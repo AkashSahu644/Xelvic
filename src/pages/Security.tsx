@@ -89,7 +89,6 @@ export default function Security() {
   return (
     <>
       <PageHero
-        eyebrow="Built to protect"
         title={
           <>
             Security you can <span className="text-grad">feel good</span> about

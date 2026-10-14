@@ -217,19 +217,6 @@ export default function Hero() {
         <div className="grid items-center gap-x-14 gap-y-10 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)]">
           {/* ── what the hero is saying ────────────────────────────────────── */}
           <div>
-            <motion.span
-              initial={reduced ? false : { opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2.5 rounded-full border border-plum/15 bg-pure/70 px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[.18em] text-pink-700"
-            >
-              <span className="relative flex h-1.5 w-1.5" aria-hidden>
-                <span className="absolute inset-0 animate-pulse-ring rounded-full bg-[#ff8fc4]" />
-                <span className="relative h-1.5 w-1.5 rounded-full bg-[#ff8fc4]" />
-              </span>
-              Free on Android
-            </motion.span>
-
             <motion.h1
               initial={reduced ? false : { opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
@@ -240,7 +227,7 @@ export default function Hero() {
                  holding its size and pushing the section past the fold. The
                  ceiling is set by the widest line, which has to hold one line
                  in the left half of the grid. */
-              className="mt-6 font-display text-[clamp(2.6rem,5.3vw,4rem)] font-bold leading-[1] tracking-[-.055em]"
+              className="font-display text-[clamp(2.6rem,5.3vw,4rem)] font-bold leading-[1] tracking-[-.055em]"
             >
               Focus, streak,
               <span className="mt-1 block bg-[linear-gradient(100deg,#9d174d,#ec4899_38%,#ff77b0_68%,#9d174d)] bg-[length:220%_auto] bg-clip-text text-transparent animate-gradient-pan">

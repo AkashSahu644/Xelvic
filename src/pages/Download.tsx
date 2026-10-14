@@ -194,7 +194,6 @@ export default function Download() {
   return (
     <>
       <PageHero
-        eyebrow="Free · Android & iOS"
         title={
           <>
             Get <span className="text-grad">Xelvic</span>

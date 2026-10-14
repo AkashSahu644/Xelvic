@@ -1,24 +1,15 @@
 import Reveal from './Reveal'
 
 type Props = {
-  eyebrow?: string
   title: React.ReactNode
   sub?: string
   center?: boolean
   className?: string
 }
 
-export default function SectionHeading({ eyebrow, title, sub, center = true, className = '' }: Props) {
+export default function SectionHeading({ title, sub, center = true, className = '' }: Props) {
   return (
     <div className={`${center ? 'mx-auto max-w-2xl text-center' : 'max-w-2xl'} ${className}`}>
-      {eyebrow && (
-        <Reveal>
-          <span className="eyebrow mb-4">
-            <span className="h-2 w-2 rounded-full bg-blue glow-dot" />
-            {eyebrow}
-          </span>
-        </Reveal>
-      )}
       <Reveal delay={0.05}>
         {/* `text-wrap: balance` matters most on a phone, where these headings
             are the widest thing on the screen and the fewest words fit per

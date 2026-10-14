@@ -1,13 +1,12 @@
 import Reveal from '../ui/Reveal'
 
 type Props = {
-  eyebrow?: string
   title: React.ReactNode
   sub?: string
   wall?: string
 }
 
-export default function PageHero({ eyebrow, title, sub, wall }: Props) {
+export default function PageHero({ title, sub, wall }: Props) {
   return (
     <section className="relative overflow-hidden pt-[calc(9rem+env(safe-area-inset-top))] pb-16 md:pt-[calc(11rem+env(safe-area-inset-top))] md:pb-20">
       {/* ambient background */}
@@ -26,14 +25,6 @@ export default function PageHero({ eyebrow, title, sub, wall }: Props) {
         <div className="absolute left-1/2 top-0 h-[min(400px,60vw)] w-[min(700px,110vw)] -translate-x-1/2 rounded-full bg-blue/20 blur-[120px]" />
       </div>
       <div className="wrap text-center">
-        {eyebrow && (
-          <Reveal>
-            <span className="eyebrow mb-5">
-              <span className="h-2 w-2 rounded-full bg-blue glow-dot" />
-              {eyebrow}
-            </span>
-          </Reveal>
-        )}
         <Reveal delay={0.05}>
           {/* Every page title on the site is a sentence rather than a word, and
               a fixed 48px on a 320px phone leaves three or four characters a

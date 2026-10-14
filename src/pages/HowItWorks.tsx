@@ -66,7 +66,6 @@ export default function HowItWorks() {
   return (
     <>
       <PageHero
-        eyebrow="From hello to live"
         title={
           <>
             Up and running in <span className="text-grad">minutes</span>
@@ -159,7 +158,6 @@ export default function HowItWorks() {
         <div className="aurora-bg" />
         <div className="wrap">
           <SectionHeading
-            eyebrow="Find anything"
             title={
               <>
                 How to reach <span className="text-grad">every feature</span>

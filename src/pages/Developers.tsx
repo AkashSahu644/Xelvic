@@ -18,7 +18,6 @@ export default function Developers() {
   return (
     <>
       <PageHero
-        eyebrow="Build with Xelvic"
         title={<>The Xelvic <span className="text-grad">platform</span></>}
         sub="Link straight into the app with deep links, and build experiences that connect to Xelvic."
         wall="/media/walls/studio.jpg"

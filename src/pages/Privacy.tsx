@@ -23,7 +23,6 @@ export default function Privacy() {
 
   return (
     <LegalLayout
-      eyebrow="Your privacy"
       title="Privacy Policy"
       updated="October 2026"
       minutes={7}

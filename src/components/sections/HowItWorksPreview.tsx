@@ -21,7 +21,6 @@ export default function HowItWorksPreview() {
       <div className="pointer-events-none absolute left-1/2 top-1/3 h-[min(400px,70vw)] w-[min(600px,120vw)] -translate-x-1/2 rounded-full bg-blue/10 blur-[120px]" />
       <div className="wrap">
         <SectionHeading
-          eyebrow="Made to feel good"
           title={<>Connecting, <span className="text-grad">minus the clutter</span></>}
           sub="No noise, no overload. Just a clean, delightful space to talk to your favourite people."
         />

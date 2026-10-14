@@ -104,7 +104,6 @@ export default function Contact() {
   return (
     <>
       <PageHero
-        eyebrow="Say hello"
         title={
           <>
             Reach a <span className="text-grad">person</span>, not a queue

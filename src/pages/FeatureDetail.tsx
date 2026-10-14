@@ -40,7 +40,6 @@ export default function FeatureDetail() {
   return (
     <>
       <PageHero
-        eyebrow={feature.tagline}
         title={<>{feature.name}</>}
         sub={feature.blurb}
         wall={feature.screen}
@@ -104,7 +103,6 @@ export default function FeatureDetail() {
         <section className="section">
           <div className="wrap">
             <SectionHeading
-              eyebrow="See it for real"
               title={
                 <>
                   Straight from the <span className="text-grad">app</span>

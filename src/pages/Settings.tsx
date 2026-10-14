@@ -151,7 +151,6 @@ export default function Settings() {
   return (
     <>
       <PageHero
-        eyebrow="Every switch, explained"
         title={
           <>
             What is in <span className="text-grad">Settings</span>

@@ -125,7 +125,6 @@ export default function Support() {
   return (
     <>
       <PageHero
-        eyebrow="We’re here to help"
         title={
           <>
             Get <span className="text-grad">support</span>

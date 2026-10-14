@@ -120,7 +120,6 @@ export default function Brand() {
   return (
     <>
       <PageHero
-        eyebrow="Brand center"
         title={
           <>
             The Xelvic <span className="text-grad">brand</span>

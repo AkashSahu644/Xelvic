@@ -43,7 +43,6 @@ export default function BlogPost() {
           clearance the PageHero does rather than a bare padding-top. */}
       <article className="pt-[calc(9rem+env(safe-area-inset-top))] md:pt-[calc(11rem+env(safe-area-inset-top))]">
         <div className="wrap max-w-3xl text-center">
-          <Reveal><span className="eyebrow mb-5">{post.category}</span></Reveal>
           <Reveal delay={0.05}>
             <h1 className="font-display text-4xl font-bold leading-tight md:text-5xl">{post.title}</h1>
           </Reveal>

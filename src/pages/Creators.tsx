@@ -26,7 +26,6 @@ export default function Creators() {
   return (
     <>
       <PageHero
-        eyebrow="For creators"
         title={<>Grow, collab and <span className="text-grad">get paid</span></>}
         sub="Xelvic is built for creators from day one — professional profiles, insights, verification and brand deals with approval-gated payouts."
         wall="/media/themes/animeblue/drops.jpg"
