@@ -1,198 +1,360 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://xelvic.app/</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/home.png</image:loc>
+      <image:title>Xelvic — Chat. Call. Vibe.</image:title>
+    </image:image>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/features</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/download</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/download.png</image:loc>
+      <image:title>Download — Xelvic</image:title>
+    </image:image>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/how-it-works</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/features</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/features.png</image:loc>
+      <image:title>Features — Xelvic</image:title>
+    </image:image>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/how-it-works</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/how-it-works.png</image:loc>
+      <image:title>How it works — Xelvic</image:title>
+    </image:image>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/explore</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/whats-new</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/whats-new.png</image:loc>
+      <image:title>What&apos;s New — Xelvic</image:title>
+    </image:image>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/blog</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/blog.png</image:loc>
+      <image:title>Blog — Xelvic</image:title>
+    </image:image>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/overview</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/download</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/creators</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/characters</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/characters.png</image:loc>
+      <image:title>The Cast — meet the Xelvic characters</image:title>
+    </image:image>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/developers</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/creators</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/creators.png</image:loc>
+      <image:title>For Creators — Xelvic</image:title>
+    </image:image>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/about</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/careers</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/blog</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/developers</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/developers.png</image:loc>
+      <image:title>Developers — Xelvic</image:title>
+    </image:image>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/press</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/explore</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/explore.png</image:loc>
+      <image:title>Explore — Xelvic</image:title>
+    </image:image>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/about</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/about.png</image:loc>
+      <image:title>About — Xelvic</image:title>
+    </image:image>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/careers</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/careers.png</image:loc>
+      <image:title>Careers — Xelvic</image:title>
+    </image:image>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/child-safety</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/child-safety.png</image:loc>
+      <image:title>Child Safety Standards — Xelvic</image:title>
+    </image:image>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/community</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/community.png</image:loc>
+      <image:title>Community — Xelvic</image:title>
+    </image:image>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/contact</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/contact.png</image:loc>
+      <image:title>Contact — Xelvic</image:title>
+    </image:image>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/delete-account</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/delete-account.png</image:loc>
+      <image:title>Delete your account — Xelvic</image:title>
+    </image:image>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/features/audio</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/features-audio.png</image:loc>
+      <image:title>Audio &amp; Music — Xelvic</image:title>
+    </image:image>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/features/calls</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/features-calls.png</image:loc>
+      <image:title>Voice &amp; Video Calls — Xelvic</image:title>
+    </image:image>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/features/chat</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/features-chat.png</image:loc>
+      <image:title>Messaging — Xelvic</image:title>
+    </image:image>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/features/drops-vibes</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/features-drops-vibes.png</image:loc>
+      <image:title>Drops &amp; Vibes — Xelvic</image:title>
+    </image:image>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/features/live-rooms</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/features-live-rooms.png</image:loc>
+      <image:title>Live &amp; Rooms — Xelvic</image:title>
+    </image:image>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/features/moments</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/features-moments.png</image:loc>
+      <image:title>Moments &amp; Memories — Xelvic</image:title>
+    </image:image>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/features/themes</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/features-themes.png</image:loc>
+      <image:title>Themes &amp; Drip — Xelvic</image:title>
+    </image:image>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/help</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/help.png</image:loc>
+      <image:title>Help Center — Xelvic</image:title>
+    </image:image>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/overview</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/overview.png</image:loc>
+      <image:title>Overview — Xelvic</image:title>
+    </image:image>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/safety</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/safety.png</image:loc>
+      <image:title>Safety — Xelvic</image:title>
+    </image:image>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/blog/building-for-creators</loc>
+    <lastmod>2026-08-12</lastmod>
+    <image:image>
+      <image:loc>https://xelvic.com/og/blog-building-for-creators.png</image:loc>
+      <image:title>Building for creators from day one — Xelvic Blog</image:title>
+    </image:image>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/brand</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/privacy</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/terms</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.4</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/security</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/blog/how-calls-stay-smooth</loc>
+    <lastmod>2026-08-30</lastmod>
+    <image:image>
+      <image:loc>https://xelvic.com/og/blog-how-calls-stay-smooth.png</image:loc>
+      <image:title>How Xelvic calls stay smooth on bad networks — Xelvic Blog</image:title>
+    </image:image>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/safety</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/help</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/community</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/support</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/blog/say-hello-to-xelvic</loc>
+    <lastmod>2026-09-28</lastmod>
+    <image:image>
+      <image:loc>https://xelvic.com/og/blog-say-hello-to-xelvic.png</image:loc>
+      <image:title>Say hello to Xelvic — Xelvic Blog</image:title>
+    </image:image>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/contact</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/status</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/features/chat</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/features/calls</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/features/moments</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/features/live-rooms</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/features/drops-vibes</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/features/audio</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/features/themes</loc>
-    <lastmod>2026-10-12</lastmod>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://xelvic.app/blog/say-hello-to-xelvic</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/blog/the-story-behind-our-themes</loc>
+    <lastmod>2026-09-15</lastmod>
+    <image:image>
+      <image:loc>https://xelvic.com/og/blog-the-story-behind-our-themes.png</image:loc>
+      <image:title>The story behind our 18 themes — Xelvic Blog</image:title>
+    </image:image>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/blog/the-story-behind-our-themes</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/data</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/data.png</image:loc>
+      <image:title>Your Data — Xelvic</image:title>
+    </image:image>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/blog/how-calls-stay-smooth</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/press</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/press.png</image:loc>
+      <image:title>Press — Xelvic</image:title>
+    </image:image>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/blog/building-for-creators</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/security</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/security.png</image:loc>
+      <image:title>Security — Xelvic</image:title>
+    </image:image>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/careers/senior-flutter-engineer</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/settings</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/settings.png</image:loc>
+      <image:title>Settings — Xelvic</image:title>
+    </image:image>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/support</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/support.png</image:loc>
+      <image:title>Support — Xelvic</image:title>
+    </image:image>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/brand</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/brand.png</image:loc>
+      <image:title>Brand Center — Xelvic</image:title>
+    </image:image>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/careers/realtime-infrastructure-engineer</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/careers/community-manager</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/careers-community-manager.png</image:loc>
+      <image:title>Community Manager — Xelvic Careers</image:title>
+    </image:image>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/careers/product-designer</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/careers/growth-marketer</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/careers-growth-marketer.png</image:loc>
+      <image:title>Growth Marketer — Xelvic Careers</image:title>
+    </image:image>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/careers/trust-safety-lead</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/careers/product-designer</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/careers-product-designer.png</image:loc>
+      <image:title>Product Designer — Xelvic Careers</image:title>
+    </image:image>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/careers/growth-marketer</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/careers/realtime-infrastructure-engineer</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/careers-realtime-infrastructure-engineer.png</image:loc>
+      <image:title>Real-time Infrastructure Engineer — Xelvic Careers</image:title>
+    </image:image>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://xelvic.app/careers/community-manager</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://xelvic.com/careers/senior-flutter-engineer</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/careers-senior-flutter-engineer.png</image:loc>
+      <image:title>Senior Flutter Engineer — Xelvic Careers</image:title>
+    </image:image>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/careers/trust-safety-lead</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/careers-trust-safety-lead.png</image:loc>
+      <image:title>Trust &amp; Safety Lead — Xelvic Careers</image:title>
+    </image:image>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/privacy</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/privacy.png</image:loc>
+      <image:title>Privacy Policy — Xelvic</image:title>
+    </image:image>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://xelvic.com/terms</loc>
+    <image:image>
+      <image:loc>https://xelvic.com/og/terms.png</image:loc>
+      <image:title>Terms of Service — Xelvic</image:title>
+    </image:image>
     <priority>0.4</priority>
   </url>
 </urlset>

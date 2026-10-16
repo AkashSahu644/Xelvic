@@ -1,0 +1,76 @@
+# Xelvic
+
+> Xelvic is a free social app for iOS, Android and the web that puts messaging,
+> voice and video calls, moments, live rooms, short video and music in one
+> place. It is built around close groups rather than follower counts: a daily
+> "Spark" streak, encrypted Private Vault chats, and 50+ full-app themes.
+
+Xelvic is a consumer social and communication product. The app is free to use;
+a virtual currency called Sparks is spent on cosmetic themes and profile looks,
+not on features. Minimum age is 13.
+
+- Canonical origin: https://xelvic.com
+- Web app (sign-in for existing accounts): https://web.xelvic.com
+- Platforms: iOS, Android, and any modern browser
+- Price: free. Sparks buy cosmetics only.
+- Minimum age: 13
+- Contact: hello@xelvic.app
+
+This file is an index for language models and answer engines. Every page below
+is public marketing copy. A single-file, full-text version of the whole site is
+at https://xelvic.com/llms-full.txt.
+
+## Product — what Xelvic does
+
+- [All features](https://xelvic.com/features): The complete tour, in one page.
+- [Messaging](https://xelvic.com/features/chat): One-to-one and group chat with channels, voice notes, media, documents and an offline outbox.
+- [Voice & Video Calls](https://xelvic.com/features/calls): Peer-to-peer WebRTC calls with encrypted media, add-people-mid-call and a full call history.
+- [Moments & Memories](https://xelvic.com/features/moments): Posts with text, polls and music that last 24 hours, then file themselves into Memories.
+- [Live & Rooms](https://xelvic.com/features/live-rooms): Camera or text live streaming, plus audio rooms where the host hands out the microphones.
+- [Drops & Vibes](https://xelvic.com/features/drops-vibes): Photo Drops and short-video Vibes, with feels and private notes on each post.
+- [Audio & Music](https://xelvic.com/features/audio): Charts, playlists, offline saving and sharing a track straight into a chat.
+- [Themes & Drip](https://xelvic.com/features/themes): 50+ themes that restyle the whole app, chat wallpapers, and wearable Drip for your profile.
+- [The Cast](https://xelvic.com/characters): The 17 characters — one per theme pack — that appear in your conversations.
+
+## How it works
+
+- [How it works](https://xelvic.com/how-it-works): Hello to live in minutes, tap by tap.
+- [Overview](https://xelvic.com/overview): The whole product on a single page.
+- [What's New](https://xelvic.com/whats-new): The newest things in the app, and why they were built.
+- [Explore](https://xelvic.com/explore): What people are doing across Xelvic.
+
+## Download
+
+- [Download Xelvic](https://xelvic.com/download): App Store and Google Play links, device requirements, and answers about installing.
+- [Sign in on the web](https://web.xelvic.com): For people who already have an account.
+
+## Help and answers
+
+- [Help Center](https://xelvic.com/help): Over 50 answers across eight topics — sign-up, messaging and calls, moments and live, sparks and themes, privacy and safety, comments and notes, accounts and devices, and creator deals.
+- [Settings, explained](https://xelvic.com/settings): Every switch in the app and what it actually changes.
+- [Support](https://xelvic.com/support): Which address to write to for what.
+- [Contact](https://xelvic.com/contact): Every team address, including privacy, safety, security and press.
+
+## Trust, safety and legal
+
+- [Safety](https://xelvic.com/safety): Blocking, reporting, what happens after a report, and the rules.
+- [Security](https://xelvic.com/security): How accounts, sessions and call media are protected.
+- [Your Data](https://xelvic.com/data): What Xelvic collects, what it does not, and how to get it out.
+- [Privacy Policy](https://xelvic.com/privacy)
+- [Terms of Service](https://xelvic.com/terms)
+
+## Company
+
+- [About us](https://xelvic.com/about): Who builds Xelvic and how the team works.
+- [Careers](https://xelvic.com/careers): Open roles, and how the hiring process works.
+- [Press](https://xelvic.com/press): Press resources and contacts.
+- [Brand Center](https://xelvic.com/brand): Logos, colours and usage guidelines.
+- [Blog](https://xelvic.com/blog): Product news and design deep-dives.
+- [Community](https://xelvic.com/community): Where Xelvic people gather.
+- [Creators](https://xelvic.com/creators): Paid brand deals, deliverables and payouts.
+- [Developers](https://xelvic.com/developers): Deep links and platform details.
+
+## Optional
+
+- [Sitemap](https://xelvic.com/sitemap.xml): Every indexable URL.
+- [Full text](https://xelvic.com/llms-full.txt): The whole site as one plain-text document.

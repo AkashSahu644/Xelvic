@@ -1,0 +1,708 @@
+# Xelvic — full text
+
+> Xelvic is a free social app for iOS, Android and the web that puts messaging,
+> voice and video calls, moments, live rooms, short video and music in one
+> place. It is built around close groups rather than follower counts: a daily
+> "Spark" streak, an encrypted Private Vault, and 50+ app-wide themes.
+
+Source: https://xelvic.com · Index: https://xelvic.com/llms.txt
+Platforms: iOS, Android, any modern browser
+Price: free. Sparks buy cosmetic themes and looks only, never features.
+Minimum age: 13
+Contact: hello@xelvic.app
+
+This document collects the site's own words in one place so a language model
+can read the whole product without following forty links. Nothing here is
+written for a crawler — every line is copy that appears on the site, with the
+page it came from noted above each part.
+
+---
+
+## 1. The product
+
+Xelvic is one app for the people you talk to every day. Chat, call, go live
+and vibe — messaging, voice and video calls, moments, live rooms, drops, short
+video, music and a wall of themes, together rather than in six separate apps.
+
+It is built around the people you actually talk to. A Spark counts the days two
+people talk to each other. A group keeps its own rooms. A conversation you want
+out of the way goes into an encrypted Vault behind a code. The app is free, and
+stays free: the things you can buy are looks, not abilities.
+
+*(from https://xelvic.com/ — home page)*
+
+---
+
+## 2. Features
+
+### Messaging — "Conversations that feel alive"
+
+One-to-one and group chat with channels, voice notes, media and documents —
+delivered reliably, even offline.
+
+- **Groups & channels** — A channel is a room inside your group: everybody
+  reads, admins post.
+- **Voice notes** — Hold the mic to record. Slide up to lock it, left to
+  cancel.
+- **Offline-first** — Messages queue in an outbox and send themselves the
+  moment you reconnect.
+- **Delivery & read receipts** — Know what landed and what was seen, in order.
+
+**How to use it.** Open Xelvic → Chats tab → tap a conversation.
+
+1. Tap the ✎ compose button — bottom-right of the Chats tab opens a new
+   message. Pick a person or start a group.
+2. Type, or hold the 🎤 mic — hold to record a voice note. Slide up to lock
+   hands-free, slide left to cancel.
+3. Tap + for media & docs — attach photos, videos, files or a song straight
+   from your library.
+4. Long-press any message — reply, react, forward, copy, or move the whole
+   chat into your Private Vault.
+
+Tips: a single ✓ means sent, ✓✓ means delivered, a highlighted ✓✓ means read.
+Lost signal? Messages wait in an outbox and send the moment you reconnect. Open
+a group → tap its name → Channels to post admin-only announcements.
+
+*(from https://xelvic.com/features/chat)*
+
+### Voice & Video Calls — "Crisp calls, powered by WebRTC"
+
+Peer-to-peer voice and video built on WebRTC for low-latency calls that hold up
+even on shaky networks.
+
+- **Add people on the fly** — Pull friends into an ongoing call with a tap.
+- **Encrypted media** — Call media is encrypted in transit, end to end of the
+  connection.
+- **Call history** — Every call you make or miss is kept neatly in one place.
+- **Works everywhere** — Calls and messages follow you across every screen in
+  the app.
+
+**How to use it.** Open a chat → tap the 📞 or 🎥 icon, top-right of the
+conversation.
+
+1. Open any conversation — the phone 📞 (voice) and camera 🎥 (video) icons sit
+   in the top-right header.
+2. Tap 📞 or 🎥 to ring — the call connects peer-to-peer over WebRTC for
+   low-latency, encrypted media.
+3. Tap ＋ during a call — pull more friends into an ongoing call without
+   hanging up.
+4. Check the Calls tab — every call you make or miss is kept neatly, with a tap
+   to call back.
+
+Tips: calls hold up on shaky networks — quality adapts automatically. Flip
+between front and back camera with the ↺ icon mid-call. Mute, video-off and
+speaker controls live along the bottom bar.
+
+*(from https://xelvic.com/features/calls)*
+
+### Moments & Memories — "Here today, a memory tomorrow"
+
+Share the little things with text, polls and music. After a day they tuck
+themselves away into Memories.
+
+- **Text, polls & music** — Post a thought, ask the room, or set it to a track.
+- **Mention your people** — A moment can name up to 5 people.
+- **Memories** — Everything you post is kept in a Memory once its day is over.
+- **Just for followers** — Only the people you follow see what you put up.
+
+**How to use it.** Home feed → tap your avatar ring → or swipe to Moments.
+
+1. Tap your avatar with the + ring — at the top of the feed, this opens the
+   Moment composer.
+2. Add text, a poll or music — set the mood with a track, ask the room with a
+   poll, or just drop a thought.
+3. Mention up to 5 people — type @ to tag the people who should see themselves
+   in it.
+4. Post — it lasts 24 hours. Followers see it today; tomorrow it tucks itself
+   into your Memories.
+
+Tips: only people you follow back can see your Moments. Open Profile →
+Memories to relive everything you have ever posted. Tap-and-hold a moment to
+pause it; swipe sideways to skip.
+
+*(from https://xelvic.com/features/moments)*
+
+### Live & Rooms — "Go live. Hold the room."
+
+Stream live by camera or text, or open an audio room where you hand out the
+mics — and even watch a game together.
+
+- **Go live your way** — Camera live, text live — announced to everyone who
+  follows you.
+- **Audio rooms** — You open it, hand out mics, and you are the one who closes
+  it.
+- **Watch together** — Pick a game and the board becomes the stream — everyone
+  sees the same thing.
+- **Host controls** — Full moderation so your room stays yours.
+
+**How to use it.** Live tab → tap Go Live → pick camera, text or audio room.
+
+1. Open the Live tab — see who is live right now, or start your own broadcast.
+2. Tap Go Live — choose Camera live, Text live, or open an Audio room.
+   Followers get a ping.
+3. Hand out the mic 🎤 — in an audio room you are the host: tap a listener to
+   invite them up to speak.
+4. Start Watch Together — pick a game and the board becomes the stream so
+   everyone sees the same thing.
+
+Tips: you opened the room, so you close it — full host moderation is built in.
+Remove or mute anyone with a tap on their avatar. Comments and reactions float
+up live along the bottom of the screen.
+
+*(from https://xelvic.com/features/live-rooms)*
+
+### Drops & Vibes — "Your feed, your frame"
+
+Post photo Drops and short-video Vibes. Feel them, leave notes, and find more
+of what you are into.
+
+- **Drops** — Photo posts. Every picture in a drop is posted at this one frame.
+- **Vibes** — Short-video reels with voice and music, built for the scroll.
+- **Feels & notes** — Feel a post with the heart, and leave a note right on it.
+- **Tuned to you** — Pick interests and your feed follows along.
+
+**How to use it.** Home feed → tap ＋ → choose Drop or Vibe.
+
+1. Tap ＋ in the feed — choose a Drop (photos) or a Vibe (short video with
+   voice & music).
+2. Pick your frame — every picture in a Drop is pinned at the same frame so
+   your grid stays clean.
+3. Add music to a Vibe — lay a track under your clip and let it loop for the
+   scroll.
+4. Share & get notes — people react, reply and leave little notes right on your
+   post.
+
+Tips: pick your interests in Explore and your feed tunes itself to you. Tap the
+heart to feel a post; long-press to save it for later. Drops from the people you
+follow surface at the top of the feed.
+
+*(from https://xelvic.com/features/drops-vibes)*
+
+### Audio & Music — "A soundtrack for every mood"
+
+Stream tracks, build playlists, follow the charts and share a song straight
+into any chat — online or off.
+
+- **Charts & trending** — See what everyone is playing right now.
+- **Playlists** — Line up the tracks that match the moment.
+- **Share to chat** — Drop a song straight into a conversation.
+- **Offline** — Save tracks for later, on every phone you sign in on.
+
+**How to use it.** Audio tab → browse charts → tap any track.
+
+1. Open the Audio tab — charts and trending show what everyone is playing right
+   now.
+2. Tap a track to play — a mini-player sticks to the bottom so you can keep
+   browsing.
+3. Build a playlist — line up the tracks that match the moment and save them.
+4. Share to a chat — hit share on any song to drop it straight into a
+   conversation.
+
+Tips: save tracks offline — they follow you to every phone you sign in on. Your
+playlists sync across devices automatically. Set a Moment to a track so your
+story has a soundtrack.
+
+*(from https://xelvic.com/features/audio)*
+
+### Themes & Drip — "A look for every you"
+
+Flip your whole app into a new world with 50+ themes, chat wallpapers and
+wearable "Drip" for your profile.
+
+- **50+ themes** — Anime, kitsune, shinobi, unicorn, mecha and more.
+- **Chat wallpapers** — Set the scene with hand-painted backdrops.
+- **Drip wearables** — Dress your profile in cosmetic looks.
+- **Unlocked by Sparks** — Keep the spark going and new looks open up.
+
+**How to use it.** Profile → Settings ⚙️ → Appearance → Themes.
+
+1. Open Settings → Appearance — tap your profile, then the ⚙️ gear, then
+   Appearance.
+2. Pick a theme — preview any of the 50+ looks live, then apply to flip your
+   whole app.
+3. Set a chat wallpaper — choose a hand-painted backdrop for your
+   conversations.
+4. Dress your profile in Drip — add cosmetic wearables that show on your avatar
+   and profile.
+
+Tips: keep a spark going with a friend to unlock more looks. Each theme
+restyles chats, buttons, loaders and the whole UI. Switch back any time —
+nothing you post is tied to a theme.
+
+*(from https://xelvic.com/features/themes)*
+
+### The Cast
+
+The Xelvic mascot is not one fixed character — it is a cast. Every theme pack
+ships its own artwork, so the character changes when you change your look.
+Seventeen characters, one per theme pack, plus three global poses:
+
+- **Bio** — profiles & onboarding. The one that introduces you; it fronts the
+  welcome flow and stands in wherever a profile needs a face.
+- **Typing** — the typing indicator. What bobs at the bottom of a chat while
+  the other person is mid-sentence.
+- **Wait** — loading and empty screens. The patient one; it keeps you company
+  on loading screens and when a list has nothing in it yet.
+
+*(from https://xelvic.com/characters)*
+
+### Social features
+
+- **Sparks** — A day two people talk on is one spark. Keep it alive and unlock
+  new looks.
+- **Circles** — Land in a circle of fifty who chose the same interest, with a
+  small daily task. Best take goes to the top.
+- **Verification** — Ask for the mark that says this account is really you.
+- **Private Vault** — Move a chat into an encrypted vault. Hidden — type your
+  code where you would type a name.
+- **Explore & Search** — Find people, drops, places and trending tags across
+  all of Xelvic.
+- **QR & Multi-device** — Scan to sign in, and manage every phone you use from
+  one place.
+
+*(from https://xelvic.com/features)*
+
+---
+
+## 3. Download and requirements
+
+- Free on Android 8+ and iOS 14+ — those go back to 2017 and 2020
+  respectively.
+- There is no subscription, no premium tier and no ads in the chat list.
+  Everything the app can do, it does for everyone who installs it.
+- The same account signs in on a phone, a tablet and a browser at once, and a
+  message you send from one turns up on the others.
+- To move to a new phone: install Xelvic on the new phone, choose the QR
+  sign-in, and scan the code shown on your old phone.
+- A phone number is the account. It is what your people already have for you,
+  so nobody has to be told a new username, and it is what makes the sign-in
+  code work.
+- Existing accounts can sign in from a browser at https://web.xelvic.com —
+  the same account, no second sign-up, and nothing to install.
+
+*(from https://xelvic.com/download)*
+
+---
+
+## 4. Help — the complete answer set
+
+### Getting started
+
+**How do I create a Xelvic account?**
+Download Xelvic, enter your phone number and confirm the one-time code we text
+you. Pick a username and you are in — the whole thing takes under a minute.
+Never share that code with anyone; it is the one thing standing between your
+account and somebody else.
+
+**What does Xelvic cost?**
+Nothing. Chatting, calling, voice notes, moments, drops, vibes, live rooms and
+music are all free to use. Sparks are the currency for cosmetic extras — themes
+and looks — and they change how the app looks rather than what it does. You
+earn Sparks by talking, and you can buy them as well.
+
+**What is the minimum age?**
+Xelvic is not for anyone under 13. Your date of birth is checked when you sign
+up — the sign-up will not complete below the line — and the date itself is
+never stored afterwards.
+
+**How do I find my friends?**
+Allow contacts and everyone in your phone who is already on Xelvic shows up
+right away. Numbers never leave your device in readable form; the match happens
+on your phone rather than in a copy of your address book on our side. If you
+would rather not share contacts at all, you can search for someone by their
+handle instead.
+
+**What is a handle, and can I change it?**
+A handle is how people reach you — the name someone types to find you. You
+choose it at sign-up and you can change it later, but only about once a day,
+which keeps a handle meaning something rather than being a thing people swap to
+dodge a block.
+
+**Can I use Xelvic on a computer?**
+You can sign in from a browser, and when you do, the sign-in is confirmed on
+your phone first — the app asks you to press No if you did not just start it,
+so nobody gets in by guessing. Once you are in, the browser is yours until you
+sign it out from sessions.
+
+**Somebody already has the handle I wanted. What now?**
+Handles are first come, first served. If one is taken out from under you while
+you are choosing, the app offers another rather than leaving you stuck on an
+error screen. Add a display name on top of the handle if you want people to see
+something other than the username.
+
+### Messaging & calls
+
+**How do voice notes work?**
+Hold the mic to record. Slide up to lock it so you can let go and keep talking,
+or slide left to cancel. The recording stops on its own at 30 minutes, and the
+app tells you when it does rather than cutting you off silently.
+
+**What is a channel?**
+A channel is a room inside a group. Everybody in the group can read it, and
+whoever runs the group decides who can post: a channel set to announcements is
+read-only for everyone else, and the app says so on the screen rather than just
+refusing your message.
+
+**Do my messages send if I lose signal?**
+Yes. Xelvic holds what you sent and delivers it the moment you are back. The
+one exception is signing a device out: messages and actions still waiting on
+that phone are discarded rather than delivered later from a device you no
+longer use.
+
+**What happens when I delete a call record?**
+It leaves your call log, and the other person keeps their own copy. Deleting a
+record tidies your own list; it is not a way to make a call disappear for both
+people, and the app says so rather than letting you assume otherwise.
+
+**How do I delete a message or a conversation?**
+Hold the message to remove it for everyone, or clear the convo to empty the
+thread on your side. If you want it out of your convo list entirely without
+losing it, move it into the Vault instead — it leaves the list and turns up
+behind your code.
+
+**Can I take a call while already on one?**
+No. The app tells you that you are already on a call rather than dropping the
+first one. Missed calls land in the same list as the ones you made, so nothing
+quietly disappears.
+
+**What happens to a group when I leave it?**
+Everything goes with you: the channels, what was said in them, and your place
+in the group. Photos and videos sent there stop being reachable on your side.
+Getting back in is not automatic — somebody still inside has to add you back.
+
+**How do I add somebody to a group?**
+A group is you and at least one other person, and whoever runs it decides who
+is in. If somebody leaves, they need an invite back rather than being able to
+walk in — which is the point of the rule.
+
+### Moments, Live & Rooms
+
+**How long do Moments last?**
+A day. What you post turns up for the people who follow you and is gone from
+the feed tomorrow — and then it is kept in your Memories, on your profile,
+where who sees it follows your account exactly as your moments do.
+
+**What is the difference between a Drop and a Vibe?**
+A drop is a photo post and holds up to 10 pieces; it can be found by its words,
+its tag or its place. A Vibe is a video, and the app is blunt about what that
+means: a Vibe is public and stays up until you take it down. Post the one you
+are happy to have found.
+
+**Can I save something to come back to?**
+Yes. Drops, Vibes and songs you put by turn up in one place, along with what
+you played lately — so a thing you meant to return to does not have to be found
+again from scratch.
+
+**Who sees what I post?**
+That follows your account. Keep it private and your moments stay inside the
+app, visible to the people you approved rather than to anyone who goes looking.
+A private profile also means your posts do not go into anyone else's feed —
+make it public again and what you put up shows there.
+
+**How do I go live?**
+Open Live, pick camera or text, and start whenever you are ready. It is
+announced to the people who follow you the moment you go, so nobody misses it
+by accident.
+
+**Who can talk in a room?**
+Anybody can walk in, but the host holds the room: they hand out the
+microphones, decide who speaks, and decide when it closes. A room you opened
+stays in your list afterwards, whether it was on, coming or over.
+
+**What are watch-together games?**
+In a room you can put a game on the board, and the board becomes the stream, so
+everyone watching sees the same game at the same time. Two of you can play
+while the rest of the room watches.
+
+**How do I take something down?**
+Open the post and take it down. It stops being dealt into anybody's feed, and
+it comes off the app for the people who were carrying it. If you are taking
+down a track or a playlist, it also goes off everybody it was sent to,
+including links that were already handed out — so take it down before you share
+it around.
+
+### Sparks, Drip & themes
+
+**What is a Spark?**
+A day two people talk on is one spark, and it does not matter who of you sent
+first. Nobody has one until the first line lands, and from then on every day
+you and a friend actually say something to each other keeps it going.
+
+**What is a Shield?**
+A Shield covers a day you missed. Both of you have to say something before the
+day is out to keep a spark alive; miss one and a Shield takes the hit instead
+of the run. One banks each week, up to the cap the app shows you, so they are
+worth not spending carelessly.
+
+**Who can see my Spark?**
+You can. "Show my sparks" is a setting, and your run stays yours — nobody else
+gets to watch it. What the other person does see is a screenshot: take one of a
+Spark and the app notes it on your screen and tells them their Spark was
+captured.
+
+**Does a group count towards a Spark?**
+No. A one-to-one convo keeps its own spark; a group does not count towards it.
+That is deliberate — a spark is meant to be the two of you, not a room you
+happen to both be in.
+
+**What are Sparks spent on?**
+Themes, looks and cosmetics. A theme changes the character in your convos and
+the colour of the app; anything you buy applies to you rather than changing
+what anybody else sees. Themes can be changed or removed from Settings whenever
+you want.
+
+**A theme I wanted is not available. Why?**
+Themes are rotated, and an item can be pulled from sale. When that happens the
+app tells you rather than leaving a gap where the button was, and anything you
+already applied stays as it is.
+
+### Privacy & safety
+
+**What is the Vault?**
+A private, encrypted space for the chats you want out of the way. Hold a convo
+in the list and choose "Move to the vault" — it leaves the list and turns up
+behind your code. Open it by typing that code where you would normally type a
+name, and it closes again on its own after a stretch.
+
+**What if I forget my vault code?**
+There is no way to recover it — the app warns you when you set it, and that
+warning is real rather than boilerplate. Resetting the code is possible, but if
+you had a lock set, resetting deletes every chat inside the vault. Choose a
+code you will not lose.
+
+**Are my contacts uploaded?**
+No. Numbers never leave your device in readable form — the match against Xelvic
+happens on your phone, so you can find friends without handing over your
+address book.
+
+**Can I make messages disappear?**
+Yes. Turn on a disappearing convo and messages clear themselves once they have
+been seen. Switching it on deletes everything already in the chat, for both
+people, so the app asks before it does it — that part is not reversible.
+
+**What happens when I block someone?**
+They cannot reach you, and neither of you sees the other online. The convo
+stays where it is rather than being deleted out from under either of you, and
+blocking is not announced — the other person simply stops being able to get
+through.
+
+**How do I report someone?**
+Open the profile, the message or the comment, choose report, and say what
+happened. It goes into a queue and a moderator reads it. Reporting the same
+thing twice is recognised rather than filed again, so you do not need to keep
+at it.
+
+**Does the other person know I reported them?**
+No. Nobody is told who reported them, and nothing happens to them on its own —
+a report starts a review, it is not an automatic punishment. Reporting a
+comment works the same way.
+
+**Are screenshots blocked?**
+No, and no app on a normal phone can block them. What Xelvic does instead is
+tell the truth about it: take a screenshot of a Spark and the app notes it on
+your screen and lets the other person know their Spark was captured.
+
+### Comments & notes
+
+**What is the difference between a comment and a note?**
+A comment is public under the post: everyone in the convo reads it, and every
+comment carries a heart and a Reply so an answer lands on that comment rather
+than loose in the thread. A note is private — the field says "Write a private
+note", and what you write goes to whoever put the post up rather than to
+everybody reading it.
+
+**How do I open comments and notes?**
+Every post in a convo carries its own count. Tap it and the sheet comes up over
+the conversation with Comments on one tab and Notes on the other, so you never
+have to leave the thread to say something about what is in it.
+
+**Can I turn comments off on my own post?**
+Yes. Comments can be switched off per post, and the app says so on the post
+rather than just hiding the button. Existing comments can be removed one at a
+time as well.
+
+**Can I remove a comment somebody left?**
+Yes, from the comment itself. Removing it takes it off the post for everybody,
+and reporting it is a separate option if you want it looked at rather than just
+gone.
+
+**Can a note be a voice note?**
+Yes. A note can be written or recorded — the composer offers both — which is
+often the faster way to say something longer than a line.
+
+### Account & devices
+
+**Can I use Xelvic on more than one phone?**
+Yes. Scan a code to sign in on another device, and manage every phone you use
+from settings. Each one is listed separately, so you can see where the account
+is open.
+
+**How do I sign out everywhere?**
+In sessions, sign out of every phone but this one in a single press. The first
+device the account signed in on stays by design, because removing that one
+needs your password — it is the safety catch that stops somebody with a
+borrowed phone locking you out.
+
+**How do I change my password?**
+From settings. If you have forgotten it, the reset asks for your account
+password first — and the reset only happens if it is correct, so nobody can
+wipe your account by claiming to be you. Never share a one-time code with
+anyone, including somebody claiming to be from Xelvic.
+
+**How do I get verified?**
+Request the verification mark from your profile and say why you should be
+verified. A tick sits beside the handle along with the date it was granted, so
+people can see it is current rather than something you have always had.
+
+**Can verification be taken away?**
+Yes. It can be taken back if the account stops being what it was verified as —
+change what the account is and the mark goes with it. It is a statement that
+the account is who it claims to be, not an endorsement of what it says.
+
+**What is the first device?**
+The first phone the account was ever signed in on. It stays in the list by
+design, because removing it needs your password — otherwise anybody holding
+your unlocked phone could lock you out of your own account in one tap. Remove
+it on its own row, with the password, and it goes too.
+
+**What happens when I delete my account?**
+It is hidden straight away, so nobody can find you or message you, and the
+account is then kept for 30 days in case you change your mind — sign back in
+during that window and everything returns exactly as it was. After 30 days it
+is deleted permanently, along with your profile and everything you posted, and
+it cannot be recovered.
+
+**Can I recover an account I deleted months ago?**
+No. Past the 30 days there is no route back, for you or for us, which is why
+the window exists at all — it is the last chance to change your mind rather
+than a promise that deletion is reversible.
+
+### Creators & deals
+
+**What is a deal?**
+A deal is a paid collaboration between a brand and a creator. You are told what
+the deal is asking for before you take it on, so you know what you are agreeing
+to rather than finding out from a brief afterwards.
+
+**How do I get paid?**
+You upload the deliverable, and payment is released once the company approves
+it. The agreement and the payment sit together in the same place, so what was
+asked for and what was paid stay visible side by side.
+
+**Can I turn a deal down, or cancel one?**
+Both. You can decline a deal you were invited to, and you can cancel one you
+have already taken — the app warns you that cancelling is visible to the other
+side and cannot be undone, so it is a last resort rather than a way to stall.
+
+**Where do I see my deals?**
+Deals you send or receive show up together in one place: what is open, what is
+waiting on a deliverable, and what has been paid. Brands use the same list to
+invite creators and follow an agreement through to payment.
+
+**Who handles the tax on what I earn?**
+You do. Amounts you earn through a deal are yours to declare, and if you are
+earning as a business rather than as an individual that is your side of it to
+get right.
+
+*(from https://xelvic.com/help and https://xelvic.com/download)*
+
+---
+
+## 5. Blog
+
+### Say hello to Xelvic — 28 September 2026 — Product
+
+One app for the people you talk to every day — chat, call, go live and vibe,
+all in one place.
+
+We built Xelvic around a simple idea: the people you care about should all live
+in one place that actually feels good to open. Calls and messages follow you
+wherever you are in the app. Moments bring the little updates. Live and Rooms
+are there when you want to hang out out loud. And a wall of themes lets you
+make the whole thing feel like you. This is just the start. Over the coming
+months we will keep adding, polishing and listening. Welcome in.
+
+*(https://xelvic.com/blog/say-hello-to-xelvic)*
+
+### The story behind our 18 themes — 15 September 2026 — Design
+
+From Kitsune to Mecha — how we design a world you can wear on your whole app.
+
+A theme is more than a color swap. Each one re-skins chat, calls, moments, live
+and your profile into a single, consistent world. We start with a mood, build a
+mascot pose for it, then paint every surface so the moment you switch, the
+whole app changes character. Keep a spark going and new themes open up — a
+small reward for staying close to your people.
+
+*(https://xelvic.com/blog/the-story-behind-our-themes)*
+
+### How Xelvic calls stay smooth on bad networks — 30 August 2026 — Engineering
+
+A peek under the hood at the WebRTC pipeline powering voice and video.
+
+Xelvic calls are peer-to-peer over WebRTC. Our own signaling service sets up
+the connection and hands out ICE servers so two phones can find each other.
+From there, media flows directly and is encrypted in transit. We tune bitrate
+and recovery hard so a call holds up even when the signal does not. The result:
+calls that connect fast and stay clear, wherever you are in the app.
+
+*(https://xelvic.com/blog/how-calls-stay-smooth)*
+
+### Building for creators from day one — 12 August 2026 — Creators
+
+Insights, verification and brand deals with approval-gated payouts — in the
+open.
+
+Creators are not an afterthought on Xelvic. Professional profiles, Insights and
+a verification mark are built in. Brands can invite creators to make content
+and track paid deals in the open. The creator uploads the deliverable for
+approval, and payment is released only after the company approves. Public
+creators with 2k followers or more show up in the directory, so brands can find
+exactly the right collaborator.
+
+*(https://xelvic.com/blog/building-for-creators)*
+
+---
+
+## 6. Trust, safety and the company
+
+These pages are long and written as prose; the links below are the canonical
+source rather than a summary, so nothing is paraphrased out of context.
+
+- **Safety** — https://xelvic.com/safety — Blocking, reporting, the Vault and
+  the controls that keep you in charge: what each one actually does, step by
+  step, including the limits.
+- **Security** — https://xelvic.com/security — How Xelvic protects your
+  conversations, calls and account: encryption, the Vault, password and device
+  rules, and the limits we will not pretend away.
+- **Your Data** — https://xelvic.com/data — What Xelvic does with your data,
+  where it is used, how it is used, and what you and Xelvic can each do with
+  it.
+- **Privacy Policy** — https://xelvic.com/privacy
+- **Terms of Service** — https://xelvic.com/terms
+- **Settings, explained** — https://xelvic.com/settings — Every switch in the
+  app and what it changes.
+- **About us** — https://xelvic.com/about
+- **Careers** — https://xelvic.com/careers
+- **Press** — https://xelvic.com/press
+- **Brand Center** — https://xelvic.com/brand
+- **Contact** — https://xelvic.com/contact — hello@xelvic.app for anything at
+  all; support@, safety@, security@, privacy@, press@, careers@, partners@ and
+  legal@ for the specific routes.
+- **Support** — https://xelvic.com/support
+- **Community** — https://xelvic.com/community
+- **Creators** — https://xelvic.com/creators
+- **Developers** — https://xelvic.com/developers
+- **What's New** — https://xelvic.com/whats-new
+- **Explore** — https://xelvic.com/explore
+- **Overview** — https://xelvic.com/overview
+
+---
+
+## 7. Attributions and corrections
+
+Xelvic, the Xelvic mark and the character artwork are trademarks of Xelvic.
+When quoting this document, "Xelvic" is written as one word with a capital X.
+The app is free; the correct price to state is "free".
+
+Corrections and questions: hello@xelvic.app
