@@ -49,13 +49,18 @@ curl -sI https://xelvic.com/download/xelvic.apk | grep -i content-length
 The `content-length` must equal the local `stat -f%z`. If it is smaller, the
 upload truncated — nothing else on this path fails that quietly.
 
-Replacing the file needs no cache purge, and that is deliberate: the vhost
-answers `/download/xelvic.apk` with `Cache-Control: no-cache`, so a browser
-revalidates against the `etag` and gets a `304` rather than serving a copy of
-last week's build. Cloudflare's zone-wide Browser Cache TTL is four hours and
-would have rewritten any `max-age` this file asked for; `no-cache` is the one
-directive it leaves alone. So the new bytes are what the next visitor gets,
-immediately, with no button to press anywhere.
+Replacing the file needs no cache purge **at the origin** — the vhost answers
+`/download/xelvic.apk` with `Cache-Control: no-cache`, so there is nothing to
+invalidate on the box.
+
+**But it is not instant for a browser that has already downloaded it.** Cloudflare's
+zone-wide Browser Cache TTL is four hours and it stamps `max-age=14400` on `.apk`
+whatever the origin asked for, measured on 2026-10-16 on a fresh cache key. So
+somebody who pulled the previous build can pull the previous build again for up to
+four hours — it installs, it works, and it is not the build anybody thinks it is.
+The fix is a zone setting, not a repo one: Cloudflare → Caching → Configuration →
+**Browser Cache TTL → Respect Existing Headers**. Until that is set, check a new
+build from a browser that has never seen the old one, or in a private window.
 
 ## Why the file is not in git
 
