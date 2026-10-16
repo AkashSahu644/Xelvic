@@ -49,6 +49,14 @@ curl -sI https://xelvic.com/download/xelvic.apk | grep -i content-length
 The `content-length` must equal the local `stat -f%z`. If it is smaller, the
 upload truncated — nothing else on this path fails that quietly.
 
+Replacing the file needs no cache purge, and that is deliberate: the vhost
+answers `/download/xelvic.apk` with `Cache-Control: no-cache`, so a browser
+revalidates against the `etag` and gets a `304` rather than serving a copy of
+last week's build. Cloudflare's zone-wide Browser Cache TTL is four hours and
+would have rewritten any `max-age` this file asked for; `no-cache` is the one
+directive it leaves alone. So the new bytes are what the next visitor gets,
+immediately, with no button to press anywhere.
+
 ## Why the file is not in git
 
 `.gitignore` keeps `public/download/*.apk` and `dist/download/*.apk` out.
