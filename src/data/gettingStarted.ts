@@ -26,7 +26,7 @@ export const gettingStarted: GettingStartedStep[] = [
   {
     n: '02',
     title: 'Find your people',
-    body: 'Allow contacts and everyone already on Xelvic shows up right away — your numbers never leave your device in readable form. Prefer to search? Find anyone by name or @handle.',
+    body: 'Allow contacts and everyone already on Xelvic shows up right away — each number is kept only as a one-way hash, with the name you saved it under. Prefer to search? Find anyone by name or @handle.',
     demo: 'chat',
     taps: ['Allow contacts', 'See who is on Xelvic', 'or Search by @handle'],
   },

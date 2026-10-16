@@ -258,14 +258,18 @@ export default function Safety() {
             title="Young people, and the age gate"
             lead="Xelvic is not for anyone under 13, and the gate is enforced rather than suggested."
             body={[
-              'A date of birth is checked when an account is created, and an account that does not clear the line cannot be finished. The date itself is never stored — it is used to answer one question and then it is gone, which is the right amount of retention for that particular fact.',
+              'A date of birth is checked when an account is created, and an account that does not clear the line cannot be finished. The date stays on the account afterwards, because it is doing more than one job: it is what says you are old enough for the 18+ content, what puts a birthday on your profile, and what sets how much of the feed you see. The day and the month can show on your profile; the year stays yours unless you choose to show it.',
               'If you believe an account belongs to somebody under 13, report it or write to us. We remove accounts that should not be there, and we would rather hear about one that turns out to be fine than miss one that is not.',
+              'Anything sexual involving a minor is banned outright, and it is the one subject with a page of its own rather than a paragraph here — what is prohibited, which reason to pick when you report it, who reads it, and the address that reaches a person the same day. The Child safety page is that page.',
               'If you are a parent or guardian and you want to understand what the app collects and what controls exist, the Data page is written for exactly that question, in plain language and without the legal padding.',
             ]}
             points={[
               'You must be 13 or over, and the sign-up enforces it.',
-              'The date of birth is checked, then not stored.',
+              'The date of birth is checked at sign-up, and it stays on the account.',
+              'It is what holds the 18+ line, the birthday on your profile and your age band.',
+              'The year stays private unless you choose to show it.',
               'Under-13 accounts are removed when we learn of them.',
+              'Sexual content involving a minor: see the Child safety page.',
               'Parents: the Data page answers the collection question directly.',
             ]}
             app="You need to be over 13"
@@ -336,6 +340,12 @@ export default function Safety() {
                   >
                     safety@xelvic.app
                   </a>
+                  <Link
+                    to="/child-safety"
+                    className="rounded-full border border-plum/15 px-5 py-2.5 text-sm font-bold text-plum transition-colors hover:border-pink-500/40 hover:text-pink-700"
+                  >
+                    Child safety
+                  </Link>
                 </div>
               </div>
             </Reveal>

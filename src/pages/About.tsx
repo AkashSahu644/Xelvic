@@ -21,8 +21,8 @@ const principles = [
   },
   {
     t: 'Your phone does the deciding wherever it can',
-    d: 'Contacts are matched on the device rather than uploaded, sessions are listed so you can see every phone the account is open on, and the first device needs your password before it can be removed. The work happens as close to you as it can.',
-    app: 'Allow contacts and everyone in your phone who is already on Xelvic shows up right here. Numbers never leave your device in readable form.',
+    d: 'Sessions are listed so you can see every phone the account is open on, the first device needs your password before it can be removed, and contacts are held to the smallest thing that still works — a hashed number and the name you saved it under. The work happens as close to you as it can.',
+    app: 'Allow contacts and everyone in your phone who is already on Xelvic shows up right here. Each number is kept only as a one-way hash, along with the name you saved for it, so we can make that match.',
   },
   {
     t: 'The person holding the phone comes before the feature',
@@ -42,7 +42,7 @@ const history = [
   {
     k: '2025',
     t: 'First builds',
-    d: 'Chat, calls and moments came together, and the first theme packs went in. This is the year the Vault was designed, the age gate went in front of sign-up, and the contact matching moved onto the device rather than onto a server.',
+    d: 'Chat, calls and moments came together, and the first theme packs went in. This is the year the Vault was designed, the age gate went in front of sign-up, and contact matching landed — every number hashed on the way in, never kept in readable form.',
   },
   {
     k: '2026',
@@ -122,7 +122,7 @@ export default function About() {
           <Stats
             items={[
               { value: 'Nothing', label: 'Sold to advertisers', note: 'No advertising profile is built from you, and none is sold.' },
-              { value: 'Never', label: 'Is your address book uploaded', note: 'Contacts are matched on your phone, not in a copy on our side.' },
+              { value: 'Hashed', label: 'Your address book, if you allow it', note: 'One row per number: a one-way hash and the name you saved it under. Never a readable copy.' },
               { value: '30 days', label: 'To change your mind', note: 'Delete the account and it is recoverable for a month, then it is gone.' },
               { value: '13', label: 'The age you have to be', note: 'The gate is in front of sign-up, and it is real rather than decorative.' },
             ]}

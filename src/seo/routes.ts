@@ -356,6 +356,34 @@ const statics: RouteSeo[] = [
     breadcrumbs: [HOME, { name: 'Safety', path: '/safety' }],
     priority: 0.6,
   }),
+  /* The two pages the app stores are handed, and they are here rather than only
+     in the router for a reason that is not SEO: `prerender.mjs` writes a real
+     HTML file per route from this table, so a policy page left out of it is a
+     policy page that a crawler and a reviewer both fetch as a blank shell. */
+  route({
+    path: '/child-safety',
+    title: 'Child Safety Standards — Xelvic',
+    description:
+      'Child sexual abuse material, grooming and any sexual content involving a minor are banned on Xelvic. How to report it, who reads it, and the address that reaches a person the same day.',
+    ld: { name: 'Child safety standards at Xelvic' },
+    breadcrumbs: [HOME, { name: 'Child safety', path: '/child-safety' }],
+    priority: 0.6,
+    card: { kicker: 'Child safety' },
+  }),
+  route({
+    path: '/delete-account',
+    title: 'Delete your account — Xelvic',
+    description:
+      'How to delete a Xelvic account from inside the app or by asking us from here — hidden immediately, kept 30 days so you can change your mind, then erased for good.',
+    ld: {
+      name: 'Deleting your Xelvic account',
+      description:
+        'The whole of account deletion on Xelvic: the in-app route, the route for when the app is gone, exactly what is removed, the 30-day window, and what to do instead if you want less than a deletion.',
+    },
+    breadcrumbs: [HOME, { name: 'Delete your account', path: '/delete-account' }],
+    priority: 0.6,
+    card: { kicker: 'Account' },
+  }),
   route({
     path: '/help',
     title: 'Help Center — Xelvic',

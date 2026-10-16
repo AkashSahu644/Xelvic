@@ -38,12 +38,13 @@ export default function Terms() {
         {
           heading: 'Who can use Xelvic',
           body: [
-            'You must be at least 13 years old. This is not a suggestion buried in a policy: the date of birth is worked out at sign-up, and an account that does not clear the line cannot be finished. The age itself is never stored — it is used to check the gate and then it is gone.',
+            'You must be at least 13 years old. This is not a suggestion buried in a policy: the date of birth is worked out at sign-up, and an account that does not clear the line cannot be finished. That date stays on your account afterwards — it is what holds the 18+ line and puts a birthday on your profile — and only the day and month are ever shown to other people.',
             'You are responsible for keeping your account secure and for what happens on it. That means not sharing the one-time codes we send you, and not sharing your password.',
           ],
           points: [
             'You must be 13 or over.',
-            'Your date of birth is checked, then not kept.',
+            'Your date of birth is checked at sign-up, and kept on the account.',
+            'Only the day and month are ever shown to other people.',
             'Keep your password and your one-time codes to yourself.',
             'You are responsible for activity on your account.',
           ],
@@ -84,12 +85,14 @@ export default function Terms() {
             'Keep Xelvic a place people can be. That means no harassment, no targeted abuse, no spam, no impersonation, and nothing illegal — including using the app to organise harm to somebody.',
             'It also means leaving the service alone. Do not try to break it, overload it, reverse-engineer it, scrape it, or reach into it in ways the app does not offer. Do not use it to send bulk messages to people who did not ask for them.',
             'Do not use Xelvic if you are under 13, and do not help somebody who is to get around the age gate.',
+            'Child sexual abuse material is prohibited on Xelvic, absolutely. So is anything that sexualises a minor, and so is using the app to reach a minor for a sexual purpose — grooming and sextortion included. That prohibition has no exception for a private conversation, a disappearing message or a live room. Where it is broken, the content goes, the account goes, and we pass what we hold to the relevant authorities. How to report it is set out in full on the Child safety page.',
           ],
           points: [
             'No harassment, abuse, spam or impersonation.',
             'Nothing unlawful, and nothing that organises harm.',
             'No scraping, bulk messaging, or breaking the service.',
             'No getting around the age gate, for yourself or anybody else.',
+            'No child sexual abuse material, grooming or sextortion — no exceptions.',
           ],
         },
         {
@@ -191,6 +194,7 @@ export default function Terms() {
         { label: 'Privacy Policy', to: '/privacy' },
         { label: 'Your Data', to: '/data' },
         { label: 'Safety', to: '/safety' },
+        { label: 'Child safety', to: '/child-safety' },
         { label: 'Security', to: '/security' },
         { label: 'Help Center', to: '/help' },
       ]}
