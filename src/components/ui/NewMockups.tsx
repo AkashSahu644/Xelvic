@@ -534,7 +534,7 @@ function FeelsMockup() {
               </div>
               <div className="flex items-center gap-1.5 px-2 pt-1.5">
                 <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#2b0b1d] text-[7px] font-bold leading-none text-pure">
-                  Z
+                  A
                 </span>
                 <span className="flex min-w-0 flex-1 flex-col">
                   <span className="flex items-center gap-0.5">
@@ -543,7 +543,7 @@ function FeelsMockup() {
                     <MdVerified size={10} className="text-[#1d9bf0]" />
                   </span>
                   <span className="truncate text-[8px] font-semibold leading-tight text-plum/55">
-                    @itz_ziya
+                    @alex.rivera
                   </span>
                 </span>
               </div>
@@ -591,7 +591,7 @@ function FeelsEscape() {
             Kisi Ki Baaton Se
           </span>
           <span className="absolute bottom-3 left-3 text-[9px] font-bold uppercase leading-none tracking-[0.14em] text-pure/70">
-            @riya_vibe_03
+            @morgan.lee
           </span>
         </div>
 
@@ -604,7 +604,7 @@ function FeelsEscape() {
               Kingston
             </span>
             <span className="block truncate text-[10px] leading-tight text-plum/50">
-              @kingston_123
+              @kingston.ward
             </span>
           </span>
         </div>
@@ -736,18 +736,18 @@ function SheetRow({
  *  name repeats anywhere in the comments — every one of them is somebody new. */
 const COMMENTS: SheetVoice[] = [
   {
-    name: "kamran_462",
+    name: "hannah.b",
     when: "2d",
-    text: "Four frames and the whole story is told.",
-    letter: "K",
+    text: "Frame three belongs in a gallery.",
+    letter: "H",
   },
   {
-    name: "shariq_rqf",
+    name: "tyler_brooks",
     when: "2d",
     text: "The light in the second one is unreal.",
   },
   {
-    name: "afzal_k17",
+    name: "emily.rose",
     when: "2d",
     text: "Commenting without leaving the chat, finally.",
   },
@@ -758,17 +758,17 @@ const COMMENTS: SheetVoice[] = [
  *  than to the thread. */
 const NOTES: SheetVoice[] = [
   {
-    name: "itz_ziya",
+    name: "alex.rivera",
     when: "now",
     text: "The fourth frame should be the cover.",
   },
   {
-    name: "itz_ziya",
+    name: "alex.rivera",
     when: "1h",
     text: "Same spot last week. Sending you mine.",
   },
   {
-    name: "itz_ziya",
+    name: "alex.rivera",
     when: "2h",
     text: "Tell me when the next set goes up.",
   },
@@ -783,7 +783,7 @@ function SheetComposer({ placeholder }: { placeholder: string }) {
       <div className="flex items-center gap-2">
         <ImageIcon size={15} className="shrink-0 text-plum/70" />
         <Mic size={15} className="shrink-0 text-plum/70" />
-        <span className="flex min-w-0 flex-1 items-center rounded-full border-[1.5px] border-plum/10 px-2.5 py-2.5">
+        <span className="flex min-w-0 flex-1 items-center rounded-full border-[1.5px] border-[#ec4899]/70 px-2.5 py-2.5">
           <span className="truncate text-[10px] leading-none text-plum/40">
             {placeholder}
           </span>
@@ -808,7 +808,7 @@ function CommentsMockup({ tab = "comments", onTab }: MockupProps) {
       <div className="relative flex h-full flex-col">
         <StatusRow />
         <ConvoHeader
-          name="Kamran"
+          name="Kevin"
           avatar={
             <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[#7c3aed] text-[10px] font-bold leading-none text-pure">
               K
@@ -949,24 +949,24 @@ function CommentsEscape({ tab = "comments" }: { tab?: NewTab }) {
 
   const left: SheetVoice = onNotes
     ? {
-        name: "itz_ziya",
+        name: "alex.rivera",
         when: "3h",
         text: "Only you will read this, and that is the point.",
       }
     : {
-        name: "riya_vibe_03",
+        name: "morgan.lee",
         when: "1d",
         text: "Post and the talk in one place. Nothing else does this.",
       };
 
   const right: SheetVoice = onNotes
     ? {
-        name: "itz_ziya",
+        name: "alex.rivera",
         when: "yesterday",
         text: "A private note, kept right under the post.",
       }
     : {
-        name: "naina.k_22",
+        name: "brandon.hale",
         when: "1d",
         text: "I have not opened another app for this since.",
       };

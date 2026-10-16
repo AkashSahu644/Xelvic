@@ -28,7 +28,9 @@ import {
   MessageSquare,
   AudioLines,
   Bookmark,
-  Flame,
+  EyeOff,
+  Image as ImageIcon,
+  CornerUpLeft,
 } from "lucide-react";
 import { FaArrowLeft } from "react-icons/fa6";
 import { MdVerified } from "react-icons/md";
@@ -85,7 +87,12 @@ const conversations: Line[][] = [
     { kind: "them", text: "yayy welcome!! 💗" },
     { kind: "them", text: "pick a theme yet?" },
     { kind: "me", text: "went full Pink 🌸" },
-    { kind: "image", image: "/media/char/typing.png", size: "162 KB", time: "11:57" },
+    {
+      kind: "image",
+      image: "/media/char/typing.png",
+      size: "162 KB",
+      time: "11:57",
+    },
     { kind: "them", text: "obsessed 😍 call me on it?" },
     { kind: "me", text: "omw — the HD video is unreal 📞" },
   ],
@@ -104,7 +111,12 @@ const conversations: Line[][] = [
     { kind: "me", text: "did you catch my Moment?" },
     { kind: "them", text: "the sunset one?? 😍" },
     { kind: "me", text: "gone in 24h so screenshot it 📸" },
-    { kind: "image", image: "/media/char/typing.png", size: "162 KB", time: "09:12" },
+    {
+      kind: "image",
+      image: "/media/char/typing.png",
+      size: "162 KB",
+      time: "09:12",
+    },
     { kind: "them", text: "saved to Memories already 💗" },
   ],
   [
@@ -122,7 +134,12 @@ const conversations: Line[][] = [
     { kind: "me", text: "sharing my playlist 🎧" },
     { kind: "them", text: "ooh what's on it" },
     { kind: "me", text: "all the Xelvic Sounds tracks" },
-    { kind: "image", image: "/media/char/typing.png", size: "162 KB", time: "20:40" },
+    {
+      kind: "image",
+      image: "/media/char/typing.png",
+      size: "162 KB",
+      time: "20:40",
+    },
     { kind: "them", text: "night drive on repeat 🌙" },
   ],
 ];
@@ -305,7 +322,9 @@ function ChatDemo({ reduced }: { reduced: boolean }) {
                 {...bubbleMotion}
                 className="flex origin-bottom-right flex-col items-end self-end"
               >
-                <span className="mb-1 mr-1 text-[9px] text-plum/40">{m.time}</span>
+                <span className="mb-1 mr-1 text-[9px] text-plum/40">
+                  {m.time}
+                </span>
                 <div className="relative h-32 w-20 overflow-hidden rounded-[10px] bg-black">
                   <img
                     src={m.image}
@@ -323,16 +342,13 @@ function ChatDemo({ reduced }: { reduced: boolean }) {
               </motion.div>
             );
           })}
-
         </AnimatePresence>
 
         {/* the other person's character, always floating above the thread
             (absolute, out of flow — the messages never shift). She holds a
             phone while composing and switches to the thinking pose the rest of
             the time (receiving / waiting / after sending). */}
-        <motion.div
-          className="pointer-events-none absolute inset-x-0 -bottom-2 z-10 flex justify-center"
-        >
+        <motion.div className="pointer-events-none absolute inset-x-0 -bottom-2 z-10 flex justify-center">
           <AnimatePresence mode="wait" initial={false}>
             <motion.img
               key={typing ? "typing" : "wait"}
@@ -454,7 +470,11 @@ function CallDemo({ reduced }: { reduced: boolean }) {
           <div className="flex min-w-0 flex-1 flex-col items-center gap-1">
             <motion.span
               animate={reduced ? undefined : { rotate: [0, -10, 0] }}
-              transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+              transition={{
+                duration: 1.8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
               className="grid h-8 w-8 place-items-center rounded-full bg-[#e5302f] text-pure"
             >
               <Phone size={16} className="rotate-[135deg]" />
@@ -512,7 +532,9 @@ function MomentsDemo({ reduced }: { reduced: boolean }) {
               <motion.span
                 className="block h-full bg-pure"
                 initial={{ width: "0%" }}
-                animate={{ width: i < idx ? "100%" : i === idx ? "100%" : "0%" }}
+                animate={{
+                  width: i < idx ? "100%" : i === idx ? "100%" : "0%",
+                }}
                 transition={{ duration: i === idx && !reduced ? 3.1 : 0 }}
               />
             </span>
@@ -757,7 +779,11 @@ function DropsDemo({ reduced }: { reduced: boolean }) {
           {vibes.map((v) => (
             <div key={v.src} className="w-[22%] shrink-0">
               <div className="relative aspect-[9/15] overflow-hidden border rounded-xl bg-plum">
-                <img src={v.src} alt="" className="h-full w-full object-cover" />
+                <img
+                  src={v.src}
+                  alt=""
+                  className="h-full w-full object-cover"
+                />
                 <span className="absolute left-1 top-1 h-5 w-5 overflow-hidden rounded-full ring-2 ring-pure/70">
                   <img
                     src="/media/walls/mehfil.jpg"
@@ -850,11 +876,11 @@ function DropsDemo({ reduced }: { reduced: boolean }) {
 }
 
 /* --------------------------- CONVO ---------------------------- *
- * A one-to-one thread with the app's newer in-chat touches: the spark
- * rides along the top of the thread, and anything shared into the
- * convo — a Vibe, a photo Drop, a track — carries its own feel/note row, so
- * you react and answer without ever leaving the chat. The heart fills on its
- * own, the way a real tap looks from the other side. */
+ * A one-to-one thread with the app's newer in-chat touches: anything shared
+ * into the convo — a Vibe, a photo Drop, a track — arrives as the thing itself
+ * and carries its own feel row, and answering it opens the comment sheet over
+ * the thread rather than sending you out to another screen. The heart fills on
+ * its own, the way a real tap looks from the other side. */
 type ConvoPostKind = "Vibe" | "Photo" | "Track";
 
 type ConvoLine =
@@ -870,13 +896,18 @@ type ConvoLine =
       meta: string;
       likes: number;
       comments: number;
+      shares: number;
     }
   /** the reader taps the heart on post #on (0-based, counted among posts) */
   | { kind: "like"; on: number }
-  /** a note left on post #on — it stays on that post instead of floating loose */
-  | { kind: "note"; on: number; quote: string; text: string }
-  /** a Spark — a photo that goes for good the moment it has been opened */
-  | { kind: "spark"; mine: boolean; src: string; meta: string }
+  /**
+   * The comment sheet, opened from post #on. It carries both of the things a
+   * post takes: a comment, which goes to everyone who can see the post, and a
+   * private note, which only the person who put the post up ever reads.
+   */
+  | { kind: "comment"; on: number; comment: string; note: string }
+  /** a Spark — sent rather than posted, carrying no picture, and gone the moment it is opened */
+  | { kind: "spark"; mine: boolean }
   /** the reader opens the Spark sitting in the thread, and it is gone */
   | { kind: "openSpark" };
 
@@ -892,6 +923,7 @@ const convoScript: ConvoLine[] = [
     meta: "0:18",
     likes: 11,
     comments: 3,
+    shares: 2,
   },
   { kind: "like", on: 0 },
   { kind: "me", text: "felt it before I even opened the app 🔥" },
@@ -905,8 +937,16 @@ const convoScript: ConvoLine[] = [
     meta: "Xelvic Sounds · 3:12",
     likes: 4,
     comments: 1,
+    shares: 1,
   },
-  { kind: "note", on: 1, quote: "Night Drive", text: "adding it to the road-trip list" },
+  // the sheet comes up over the thread and takes both: a comment anybody who
+  // can see the post will read, and a note only John will
+  {
+    kind: "comment",
+    on: 0,
+    comment: "sending this to the group chat",
+    note: "saving this one for the trip",
+  },
   { kind: "them", text: "wait till you see the photo drop 📸" },
   {
     kind: "post",
@@ -917,14 +957,293 @@ const convoScript: ConvoLine[] = [
     meta: "4 photos",
     likes: 26,
     comments: 8,
+    shares: 5,
   },
-  // a Spark goes the other way round from everything above: it is sent rather
-  // than posted, and it does not keep — "This Spark is gone." once it is opened
-  { kind: "spark", mine: true, src: "/media/themes/teddy/moments.jpg", meta: "Goes once it is opened" },
+  // a Spark goes the other way round from everything above: it is sent to
+  // people rather than posted, it carries no picture, and it does not keep —
+  // the moment it is opened it reads "Spark · opened" for both sides
+  { kind: "spark", mine: true },
   { kind: "them", text: "a Spark?? okay okay 👀" },
-  { kind: "spark", mine: false, src: "/media/themes/alone/moments.jpg", meta: "Tap to open" },
+  { kind: "spark", mine: false },
   { kind: "openSpark" },
 ];
+
+/* ── the comment sheet ─────────────────────────────────────────────────────── */
+
+/**
+ * One voice in the sheet — a comment, which everybody who can see the post
+ * reads, or a note, which only the two people in the convo ever will. They are
+ * drawn the same way; the difference is the heart and the Reply, which a note
+ * has neither of, because there is nobody else to reply to.
+ */
+type SheetVoice = {
+  name: string;
+  when: string;
+  text: string;
+  /** whoever never set a photo wears their initial instead */
+  letter?: string;
+  /** the colour that initial sits on */
+  tone?: string;
+  /** the avatar, when there is a photo rather than an initial */
+  photo?: string;
+  /** how many people felt it — most comments have nobody yet */
+  feels?: number;
+};
+
+/**
+ * What the sheet is already holding when it comes up on a post, indexed by the
+ * post's ordinal in the thread so the sheet always belongs to the post that was
+ * tapped. Only comments: a post with no notes on it opens on the app's own
+ * "No notes yet", which is the whole point of that tab.
+ */
+const POST_COMMENTS: SheetVoice[][] = [
+  [
+    {
+      name: "tyler_brooks",
+      when: "9d",
+      text: "Where is this? I need to go 🙌",
+      letter: "TB",
+      tone: "#3b82f6",
+      feels: 1,
+    },
+    {
+      name: "emily.rose",
+      when: "4d",
+      text: "The colours in this are unreal.",
+      letter: "ER",
+      tone: "#7c3aed",
+    },
+    {
+      name: "marcus_reed",
+      when: "3d",
+      text: "Best thing on my feed all week 🔥",
+      letter: "MR",
+      tone: "#e11d48",
+    },
+  ],
+  [
+    {
+      name: "sydney.grant",
+      when: "2d",
+      text: "On repeat since you posted it.",
+      letter: "SG",
+      tone: "#7c3aed",
+    },
+    {
+      name: "dylancarter",
+      when: "1d",
+      text: "Adding this to the road trip mix.",
+      letter: "DC",
+      tone: "#0ea5e9",
+    },
+  ],
+  [
+    {
+      name: "hannah.b",
+      when: "10d",
+      text: "Frame three belongs in a gallery.",
+      letter: "HB",
+      tone: "#db2777",
+    },
+    {
+      name: "jake_morrison",
+      when: "9d",
+      text: "Golden hour never misses 🌇",
+      letter: "JM",
+      tone: "#e11d48",
+      feels: 2,
+    },
+    {
+      name: "ashleygrant",
+      when: "8d",
+      text: "So clean. What did you shoot on?",
+      letter: "AG",
+      tone: "#3b82f6",
+    },
+  ],
+];
+
+/** The account this demo is signed in as — the name its own comment wears. */
+const ME = {
+  name: "alex.rivera",
+  when: "now",
+  photo: "/media/themes/teddy/profile.jpg",
+};
+
+type SheetTab = "comments" | "notes";
+
+/** One row. */
+function SheetVoiceRow({
+  voice,
+  actions,
+}: {
+  voice: SheetVoice;
+  actions: boolean;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      className="flex gap-2 pb-2.5"
+    >
+      {voice.photo ? (
+        <span className="h-5 w-5 shrink-0 overflow-hidden rounded-full bg-pink-100">
+          <img
+            src={voice.photo}
+            alt=""
+            className="h-full w-full object-cover"
+          />
+        </span>
+      ) : (
+        <span
+          className="grid h-5 w-5 shrink-0 place-items-center rounded-full text-[7.5px] font-bold leading-none text-pure"
+          style={{ background: voice.tone }}
+        >
+          {voice.letter}
+        </span>
+      )}
+      <span className="min-w-0 flex-1">
+        <span className="flex items-baseline gap-1.5 leading-none">
+          <span className="truncate text-[9px] font-bold">{voice.name}</span>
+          <span className="shrink-0 text-[8px] font-medium text-plum/45">
+            {voice.when}
+          </span>
+        </span>
+        <span className="mt-0.5 block truncate text-[9.5px] leading-snug">
+          {voice.text}
+        </span>
+        {actions && (
+          <span className="mt-1 flex items-center gap-2.5 text-[8px] font-medium leading-none text-plum/45">
+            <span className="flex items-center gap-1">
+              <Heart size={8} className="shrink-0" />
+              {voice.feels ? voice.feels : ""}
+            </span>
+            Reply
+          </span>
+        )}
+      </span>
+    </motion.div>
+  );
+}
+
+/**
+ * The sheet a post opens into: Comments on one tab, Notes on the other, slid up
+ * over the thread with the thread pushed back behind it. A note and a comment
+ * are written in the same field — the placeholder is the only thing that
+ * changes, and that is how the app tells you which one you are writing.
+ */
+function CommentSheet({
+  tab,
+  rows,
+  draft,
+  withWhom,
+}: {
+  tab: SheetTab;
+  rows: SheetVoice[];
+  /** what is in the field while it is being typed into */
+  draft: string;
+  /** the person the notes are between, named back in the empty state */
+  withWhom: string;
+}) {
+  const onNotes = tab === "notes";
+  return (
+    <>
+      {/* the thread is still there, just pushed back */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.25 }}
+        className="absolute inset-0 z-10 bg-[#2b0b1d]/30"
+      />
+      <motion.div
+        initial={{ y: "100%" }}
+        animate={{ y: 0 }}
+        exit={{ y: "100%" }}
+        transition={{ type: "spring", stiffness: 300, damping: 32 }}
+        className="absolute inset-x-0 bottom-0 z-20 flex h-[72%] flex-col rounded-t-[22px] bg-pure shadow-[0_-10px_30px_rgba(58,10,36,.22)]"
+      >
+        <span className="mx-auto mt-1.5 h-[3px] w-8 shrink-0 rounded-full bg-plum/70" />
+
+        <div className="mt-3 flex shrink-0 border-b border-plum/10">
+          {(["comments", "notes"] as const).map((t) => {
+            const active = tab === t;
+            return (
+              <span key={t} className="flex flex-1 justify-center pt-1">
+                <span className="flex flex-col items-center gap-1 px-2">
+                  <span
+                    className={`text-[10px] leading-none ${
+                      active
+                        ? "font-bold text-plum"
+                        : "font-semibold text-plum/45"
+                    }`}
+                  >
+                    {t === "comments" ? "Comments" : "Notes"}
+                  </span>
+                  <span
+                    className={`h-[2.5px] self-stretch rounded-full ${
+                      active ? "bg-[#ec4899]" : "bg-transparent"
+                    }`}
+                  />
+                </span>
+              </span>
+            );
+          })}
+        </div>
+
+        <div className="min-h-0 flex-1 overflow-hidden px-2.5 pt-2">
+          {rows.length === 0 ? (
+            /* the app's own empty state, word for word — a post nobody has
+               written a note on is the ordinary case, not an error */
+            <div className="flex h-full flex-col items-center justify-center gap-1 pb-8 text-center">
+              <Lock size={17} className="text-plum/25" />
+              <span className="text-[10px] font-bold leading-none">
+                No notes yet
+              </span>
+              <span className="text-[8.5px] leading-snug text-plum/50">
+                A note is private — only you and {withWhom} see it.
+              </span>
+            </div>
+          ) : (
+            rows.map((v, i) => (
+              <SheetVoiceRow
+                key={`${v.name}-${i}`}
+                voice={v}
+                actions={!onNotes}
+              />
+            ))
+          )}
+        </div>
+
+        <div className="flex shrink-0 items-center gap-1 border-t border-plum/10 px-2.5 pb-2 pt-2">
+          <ImageIcon size={16} className="shrink-0 text-plum/70" />
+          <Mic size={16} className="shrink-0 text-plum/70" />
+          <span className="flex min-w-0 flex-1 items-center rounded-full border-[1.5px] border-[#ec4899]/70 px-2 py-2">
+            {draft ? (
+              <span className="truncate text-[11px] leading-none">
+                {draft}
+                <motion.span
+                  aria-hidden
+                  className="ml-px inline-block"
+                  animate={{ opacity: [1, 0, 1] }}
+                  transition={{ duration: 0.9, repeat: Infinity }}
+                >
+                  |
+                </motion.span>
+              </span>
+            ) : (
+              <span className="truncate text-[9px] leading-none text-plum/40">
+                {onNotes ? "Write a private note" : "Say something"}
+              </span>
+            )}
+          </span>
+          <Send size={16} className="shrink-0 h-5 w-5 p-0.5 fill-[#ec4899] text-[#ec4899]" />
+        </div>
+      </motion.div>
+    </>
+  );
+}
 
 function PostCard({
   type,
@@ -933,8 +1252,8 @@ function PostCard({
   meta,
   likes,
   comments,
+  shares,
   liked,
-  note,
 }: {
   type: ConvoPostKind;
   src: string;
@@ -942,9 +1261,8 @@ function PostCard({
   meta: string;
   likes: number;
   comments: number;
+  shares: number;
   liked: boolean;
-  /** a note left on this post — it renders here, on the post, not in the thread */
-  note?: { quote: string; text: string } | null;
 }) {
   const badge = type === "Vibe" ? "Vibe" : type === "Photo" ? "Drop" : "Audio";
   return (
@@ -959,8 +1277,12 @@ function PostCard({
             </span>
           </span>
           <span className="min-w-0 flex-1">
-            <span className="block truncate text-[11px] font-bold">{title}</span>
-            <span className="block truncate text-[9px] text-plum/50">{meta}</span>
+            <span className="block truncate text-[11px] font-bold">
+              {title}
+            </span>
+            <span className="block truncate text-[9px] text-plum/50">
+              {meta}
+            </span>
             <span className="mt-1 flex h-3 items-end gap-[2px]">
               {Array.from({ length: 16 }).map((_, i) => (
                 <span
@@ -990,11 +1312,15 @@ function PostCard({
               {meta}
             </span>
           </div>
-          <p className="truncate px-2.5 pt-1.5 text-[11px] font-bold">{title}</p>
+          <p className="truncate px-2.5 pt-1.5 text-[11px] font-bold">
+            {title}
+          </p>
         </>
       )}
 
-      {/* feel / note live on the post itself — inside the convo */}
+      {/* The app's own row: a feel with its count, the comments, the shares,
+          and the reply arrow the app keeps on the right. The comment count is
+          the thing the sheet moves, so it is the one to watch. */}
       <div className="mt-1.5 flex items-center gap-3 border-t border-plum/10 px-2.5 py-1.5 text-[10px] font-semibold text-plum/60">
         <span className="flex items-center gap-1">
           <motion.span
@@ -1006,113 +1332,89 @@ function PostCard({
           >
             <Heart
               size={13}
-              className={liked ? "fill-[#ff2d78] text-[#ff2d78]" : "text-plum/60"}
+              className={
+                liked ? "fill-[#ff2d78] text-[#ff2d78]" : "text-plum/60"
+              }
             />
           </motion.span>
-          {likes + (liked ? 1 : 0)}
+          <span className={liked ? "text-[#ff2d78]" : undefined}>
+            {likes + (liked ? 1 : 0)}
+          </span>
         </span>
         <span className="flex items-center gap-1">
           <MessageSquare size={11} />
-          {comments + (note ? 1 : 0)}
+          {comments}
         </span>
-        <span className="ml-auto text-[9px] font-bold text-pink-600">Add a note</span>
+        <span className="flex items-center gap-1">
+          <Upload size={11} />
+          {shares}
+        </span>
+        <CornerUpLeft size={12} className="ml-auto shrink-0 text-pink-600" />
       </div>
-
-      {/* the note stays on the post it is about, the way the app keeps it —
-          so leaving one never means losing your place in the thread */}
-      {note && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          transition={{ duration: 0.35, ease: "easeOut" }}
-          className="overflow-hidden border-t border-plum/10 bg-[#fff3f8]"
-        >
-          <div className="px-2.5 py-1.5">
-            <span className="flex items-center gap-1 text-[8px] font-semibold text-plum/45">
-              <MessageSquare size={8} />
-              <span className="truncate">Your note on {note.quote}</span>
-            </span>
-            <span className="mt-0.5 block text-[11px] font-bold leading-snug">
-              {note.text}
-            </span>
-          </div>
-        </motion.div>
-      )}
     </div>
   );
 }
 
 /**
- * A Spark. The one thing in the app that is *sent* rather than posted, and the
- * one thing that does not keep: it is there until somebody opens it, and then
- * "This Spark is gone." So the card shows the state rather than the picture —
- * waiting to be opened, or already spent.
+ * A Spark.
+ *
+ * The one thing in the app that is *sent* to people rather than posted, and the
+ * one thing that does not keep. It carries no picture — what arrives is a card
+ * saying a Spark is waiting, and opening it is the whole of it. Afterwards both
+ * sides of the thread are left holding the same spent line, which is why the
+ * sent and opened states are the small pill rather than a card of their own.
  */
-function SparkCard({
-  src,
-  meta,
-  mine,
-  gone,
-}: {
-  src: string;
-  meta: string;
-  mine: boolean;
-  gone: boolean;
-}) {
-  // only the Spark that was sent to me can be opened, so only that one goes
+function SparkCard({ mine, gone }: { mine: boolean; gone: boolean }) {
+  // only the Spark that was sent to me can be opened, so only that one is spent
   const spent = gone && !mine;
-  return (
-    <div className="w-[164px] overflow-hidden rounded-2xl bg-pure text-plum shadow-[0_3px_12px_rgba(58,10,36,.12)] ring-1 ring-plum/10">
-      <div className="relative aspect-[4/5] bg-plum">
-        <img
-          src={src}
-          alt=""
-          className={`h-full w-full object-cover transition-all duration-500 ${
-            spent ? "scale-110 opacity-20 blur-[3px]" : ""
-          }`}
-        />
-        <span className="absolute left-1.5 top-1.5 flex items-center gap-1 rounded-full bg-[#ff5a1f] px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-wide text-pure">
-          <Flame size={8} />
-          Spark
-        </span>
 
-        {/* the state is the whole point of a Spark, so it sits over the picture */}
-        {!mine && (
-          <span className="absolute inset-0 grid place-items-center px-3">
-            <motion.span
-              key={spent ? "gone" : "waiting"}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.3 }}
-              className="rounded-xl bg-black/60 px-2.5 py-1.5 text-center text-[10px] font-bold leading-snug text-pure backdrop-blur-sm"
-            >
-              {spent ? "This Spark is gone." : "A Spark for you"}
-            </motion.span>
-          </span>
+  if (mine || spent) {
+    return (
+      <motion.span
+        // the key changes when it is opened, so the line is replaced rather
+        // than quietly reworded — which is what opening a Spark does
+        key={spent ? "opened" : "sent"}
+        initial={{ opacity: 0, y: 4 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.3 }}
+        className="inline-flex items-center gap-1.5 rounded-full border border-plum/10 bg-pure px-2.5 py-1.5 text-[10px] font-semibold leading-none text-plum/70 shadow-[0_2px_8px_rgba(58,10,36,.06)]"
+      >
+        {spent ? (
+          <EyeOff size={12} className="shrink-0 text-plum/40" />
+        ) : (
+          <Sparkles size={12} className="shrink-0 text-plum/45" />
         )}
+        {spent ? "Spark · opened" : "Spark · sent"}
+      </motion.span>
+    );
+  }
 
-        <span className="absolute bottom-1.5 right-1.5 rounded bg-black/55 px-1.5 py-0.5 text-[8px] font-semibold text-pure">
-          {spent ? "Gone" : meta}
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3 }}
+      className="flex w-fit max-w-[172px] items-center gap-2 rounded-[18px] border border-[#f7c9dd] bg-[#fbe0ec] px-2.5 py-2"
+    >
+      <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-[#f9c9de]">
+        <Sparkles size={16} className="text-[#e8447f]" />
+      </span>
+      <span className="min-w-0">
+        <span className="block truncate text-[11px] font-bold leading-tight text-plum">
+          A Spark for you
         </span>
-      </div>
-
-      <div className="flex items-center gap-1.5 border-t border-plum/10 px-2.5 py-1.5 text-[9px] font-bold">
-        <Flame size={10} className="shrink-0 text-[#ff5a1f]" />
-        <span className="truncate text-plum/60">
-          {mine ? "Your Spark" : spent ? "Opened" : "Not opened yet"}
+        <span className="mt-0.5 block truncate text-[9px] leading-tight text-plum/50">
+          Tap to open · once only
         </span>
-        <span className="ml-auto shrink-0 text-pink-600">
-          {mine ? "Keep a Spark here" : spent ? "Send one back" : "Tap to open"}
-        </span>
-      </div>
-    </div>
+      </span>
+    </motion.div>
   );
 }
 
 /**
- * The convo screen: a one-to-one thread with the app's newer in-chat touches —
- * anything shared into the convo carries its own feel/note row, so you react
- * and answer without ever leaving the chat, and a Spark can be sent and spent
+ * The convo screen: a one-to-one thread where anything shared into it arrives
+ * as the thing itself, so you can feel it, comment on it or leave a private
+ * note without ever leaving the chat — and a Spark can be sent and spent
  * without leaving it either.
  *
  * `onCount` reports how much of the thread is up. A caller can hang its own
@@ -1135,15 +1437,30 @@ export function ConvoDemo({
   };
   const [typing, setTyping] = useState(false);
   const [draft, setDraft] = useState("");
-  const [replyTo, setReplyTo] = useState<string | null>(null);
   const [liked, setLiked] = useState<number[]>(reduced ? [0] : []);
+  // the post the comment sheet is open on, and which of its two tabs is up
+  const [sheet, setSheet] = useState<{ on: number; tab: SheetTab } | null>(
+    null,
+  );
+  // what is in the sheet's field while it is being typed into
+  const [sheetDraft, setSheetDraft] = useState("");
+  // everything written into a sheet in this run, keyed `post:tab` — the app
+  // keeps the two apart, so a note never turns up among the comments
+  const [written, setWritten] = useState<Record<string, SheetVoice[]>>({});
   // a Spark is only there until it is opened — then it is gone, for both sides
   const [sparkOpened, setSparkOpened] = useState(reduced);
-  // the composer's Spark button lights while one is going out
-  const [sparkPulse, setSparkPulse] = useState(false);
   // the app answers a tap with a line of its own — "Felt. Tap to take it back.",
-  // "Note up." — so the demo shows the same confirmation at the same moment
+  // "Spark sent." — so the demo shows the same confirmation at the same moment
   const [toast, setToast] = useState<string | null>(null);
+
+  /** Add what was just written to the sheet, and empty the field. */
+  const wrote = (on: number, tab: SheetTab, text: string) => {
+    setWritten((w) => ({
+      ...w,
+      [`${on}:${tab}`]: [...(w[`${on}:${tab}`] ?? []), { ...ME, text }],
+    }));
+    setSheetDraft("");
+  };
 
   useEffect(() => {
     // With motion off there is no timeline to run, so land on the finished
@@ -1152,10 +1469,11 @@ export function ConvoDemo({
     if (reduced) {
       setDraft("");
       setTyping(false);
-      setReplyTo(null);
       setLiked([0]);
+      setSheet(null);
+      setSheetDraft("");
+      setWritten({});
       setSparkOpened(true);
-      setSparkPulse(false);
       setToast(null);
       setCount(convoScript.length);
       return;
@@ -1181,6 +1499,19 @@ export function ConvoDemo({
       };
       wait(320, typeChar);
     };
+    // the same, into the sheet's field — which is a shade quicker, because a
+    // comment is a shorter thing to write than a line of conversation
+    const typeInto = (full: string, send: () => void) => {
+      let c = 0;
+      const typeChar = () => {
+        if (!alive) return;
+        c += 1;
+        setSheetDraft(full.slice(0, c));
+        if (c < full.length) wait(42, typeChar);
+        else wait(460, send);
+      };
+      wait(280, typeChar);
+    };
     const step = () => {
       if (!alive) return;
       if (i >= convoScript.length) {
@@ -1189,11 +1520,12 @@ export function ConvoDemo({
           i = 1;
           setCount(1);
           setDraft("");
-          setReplyTo(null);
           setLiked([]);
           setTyping(false);
+          setSheet(null);
+          setSheetDraft("");
+          setWritten({});
           setSparkOpened(false);
-          setSparkPulse(false);
           setToast(null);
           wait(900, step);
         });
@@ -1215,19 +1547,31 @@ export function ConvoDemo({
           setCount(i);
           wait(950, step);
         });
-      } else if (line.kind === "note") {
-        // the composer strip names the post being noted; the note itself then
-        // lands on that post, so the strip always has something to point at
-        setReplyTo(line.quote);
-        compose(line.text, () => {
-          setDraft("");
-          setReplyTo(null);
-          // the app confirms a note the same way it confirms a feel
-          setToast("Note up.");
-          wait(2400, () => setToast(null));
-          i += 1;
-          setCount(i);
-          wait(950, step);
+      } else if (line.kind === "comment") {
+        // the sheet comes up over the thread on Comments, takes the comment,
+        // and is then moved to the other tab for the note — the two are written
+        // in the same field, and only the placeholder tells them apart
+        setSheet({ on: line.on, tab: "comments" });
+        wait(1000, () => {
+          typeInto(line.comment, () => {
+            wrote(line.on, "comments", line.comment);
+            wait(1250, () => {
+              setSheet((s) => (s ? { ...s, tab: "notes" } : s));
+              wait(950, () => {
+                typeInto(line.note, () => {
+                  wrote(line.on, "notes", line.note);
+                  wait(1500, () => {
+                    setSheet(null);
+                    wait(520, () => {
+                      i += 1;
+                      setCount(i);
+                      wait(900, step);
+                    });
+                  });
+                });
+              });
+            });
+          });
         });
       } else if (line.kind === "like") {
         wait(650, () => {
@@ -1239,11 +1583,12 @@ export function ConvoDemo({
           wait(900, step);
         });
       } else if (line.kind === "spark") {
-        // sending one lights the button in the composer first, so the thread
-        // shows where a Spark comes from as well as what it looks like
+        // it lands in the thread as itself; the app's own confirmation for one
+        // going out is the toast, so the demo says the same thing at the same
+        // moment rather than inventing a button to light up
         if (line.mine) {
-          setSparkPulse(true);
-          wait(780, () => setSparkPulse(false));
+          setToast("Spark sent.");
+          wait(1900, () => setToast(null));
         }
         wait(720, () => {
           i += 1;
@@ -1277,18 +1622,24 @@ export function ConvoDemo({
 
   const shown = convoScript.slice(0, count);
   let postN = -1; // ordinal of each shown post, so `liked` can address one
-  // Notes address the post they were left on, so they render inside that card
-  // rather than as a bubble of their own — the same place the app keeps them.
-  const notes: Record<number, { quote: string; text: string }> = {};
-  shown.forEach((m) => {
-    if (m.kind === "note") notes[m.on] = { quote: m.quote, text: m.text };
-  });
+  /* What the sheet is showing: the post's own comments on the Comments tab —
+     a note is never in that list — and then whatever has been written into the
+     tab that is up. */
+  const sheetRows: SheetVoice[] = sheet
+    ? [
+        ...(sheet.tab === "comments" ? (POST_COMMENTS[sheet.on] ?? []) : []),
+        ...(written[`${sheet.on}:${sheet.tab}`] ?? []),
+      ]
+    : [];
+  /* A comment moves the post's comment count; a note does not, because a note
+     was never in the comments to begin with. */
+  const commentsOn = (n: number) => written[`${n}:comments`]?.length ?? 0;
   // A day two people talk on is one spark, and it does not matter who of you
   // sent first — John has already spoken here, so it ticks over the moment "I"
   // do. The count itself lives on the convo's own screen, though, not here.
 
   return (
-    <div className="flex h-full flex-col bg-[#f1eff5] text-plum">
+    <div className="relative flex h-full flex-col bg-[#f1eff5] text-plum">
       {/* status row */}
       <div className="flex items-center justify-between px-4 pt-3 pb-1 text-[11px] font-semibold text-plum/75">
         <span>21:04</span>
@@ -1302,7 +1653,11 @@ export function ConvoDemo({
       <div className="flex items-center gap-2.5 border-b border-plum/10 px-1.5 py-1 shadow-[0_1px_3px_rgba(58,10,36,.05)]">
         <ChevronLeft size={16} className="shrink-0 text-plum/70" />
         <span className="h-8 w-8 shrink-0 overflow-hidden rounded-full bg-pink-100">
-          <img src="/media/walls/mehfil.jpg" alt="" className="h-full w-full object-cover" />
+          <img
+            src="/media/walls/mehfil.jpg"
+            alt=""
+            className="h-full w-full object-cover"
+          />
         </span>
         <span className="flex min-w-0 flex-1 items-center gap-1">
           <span className="truncate text-[15px] font-bold">John</span>
@@ -1313,8 +1668,9 @@ export function ConvoDemo({
         <MoreVertical size={16} className="text-plum/55" />
       </div>
 
-      {/* thread */}
-      <div className="relative flex flex-1 flex-col justify-end gap-2 overflow-hidden px-1.5 py-2">
+      {/* thread — the bottom pad is the floor John's character stands on, so it
+          never ends up drawn across the last thing said */}
+      <div className="relative flex flex-1 flex-col justify-end gap-2 overflow-hidden px-1.5 pt-2 pb-[78px]">
         <AnimatePresence initial={false} mode="popLayout">
           {shown.map((m, idx) => {
             if (m.kind === "system")
@@ -1351,7 +1707,11 @@ export function ConvoDemo({
                   {m.text}
                 </motion.div>
               );
-            if (m.kind === "like" || m.kind === "note" || m.kind === "openSpark")
+            if (
+              m.kind === "like" ||
+              m.kind === "comment" ||
+              m.kind === "openSpark"
+            )
               return null; // an action on something already in the thread
             if (m.kind === "spark")
               return (
@@ -1361,7 +1721,7 @@ export function ConvoDemo({
                   {...bubbleMotion}
                   className={`w-fit ${m.mine ? "self-end" : "self-start"}`}
                 >
-                  <SparkCard src={m.src} meta={m.meta} mine={m.mine} gone={sparkOpened} />
+                  <SparkCard mine={m.mine} gone={sparkOpened} />
                 </motion.div>
               );
             // a shared post
@@ -1379,34 +1739,40 @@ export function ConvoDemo({
                   title={m.title}
                   meta={m.meta}
                   likes={m.likes}
-                  comments={m.comments}
+                  comments={m.comments + commentsOn(postN)}
+                  shares={m.shares}
                   liked={liked.includes(postN)}
-                  note={notes[postN] ?? null}
                 />
               </motion.div>
             );
           })}
-
-          {typing && (
-            <motion.div
-              key="typing"
-              layout
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              className="flex w-fit items-center gap-1 self-start rounded-[20px] rounded-bl-md bg-pure px-3 py-2 shadow-[0_2px_8px_rgba(58,10,36,.05)]"
-            >
-              {[0, 1, 2].map((d) => (
-                <motion.span
-                  key={d}
-                  className="h-1.5 w-1.5 rounded-full bg-plum/35"
-                  animate={{ opacity: [0.3, 1, 0.3], y: [0, -2, 0] }}
-                  transition={{ duration: 0.9, repeat: Infinity, delay: d * 0.15 }}
-                />
-              ))}
-            </motion.div>
-          )}
         </AnimatePresence>
+
+        {/* John's character at the foot of the thread — the same indicator the
+            messaging screen wears, so the two read as one app: small, centred,
+            and it swaps between the theme's `typing` pose while he is
+            mid-sentence and its `wait` pose the rest of the time. It stands on
+            the thread's bottom pad rather than over the messages, and being out
+            of flow it never shifts them either. */}
+        <div className="pointer-events-none absolute inset-x-0 -bottom-2 z-10 flex justify-center">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.img
+              key={typing ? "typing" : "wait"}
+              src={
+                typing
+                  ? "/media/themes/pink/typing.png"
+                  : "/media/themes/pink/wait.png"
+              }
+              alt={typing ? "John is typing…" : "John"}
+              /* a small bottom-to-top nudge — minimal travel, no fuss */
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -14 }}
+              transition={{ duration: 0.28, ease: [0.22, 0.68, 0.24, 1] }}
+              className="h-[70px] w-auto object-contain drop-shadow-[0_12px_20px_rgba(58,10,36,.22)]"
+            />
+          </AnimatePresence>
+        </div>
 
         {/* the app's own confirmation, word for word, at the moment it happens.
             Its own AnimatePresence: the one above runs in popLayout mode for the
@@ -1418,7 +1784,7 @@ export function ConvoDemo({
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 8 }}
-              className="pointer-events-none absolute inset-x-0 bottom-2 z-10 mx-auto w-fit max-w-[92%] truncate rounded-full bg-plum/90 px-3 py-1.5 text-[10px] font-semibold text-pure shadow-[0_4px_14px_rgba(58,10,36,.25)]"
+              className="pointer-events-none absolute inset-x-0 bottom-2 z-10 mx-auto w-fit max-w-[92%] truncate rounded-2xl bg-pure px-3 py-2 text-[10px] font-semibold text-plum shadow-[0_6px_18px_rgba(58,10,36,.18)]"
             >
               {toast}
             </motion.div>
@@ -1426,32 +1792,12 @@ export function ConvoDemo({
         </AnimatePresence>
       </div>
 
-      {/* composer — carries the note strip while a note is being written */}
+      {/* composer */}
       <div className="border-t border-plum/10 px-2 pb-2 pt-1.5">
-        {replyTo && (
-          <div className="mb-1 flex items-center gap-1.5 rounded-lg border-l-2 border-pink-500 bg-pure px-2 py-1">
-            <MessageSquare size={9} className="shrink-0 text-plum/45" />
-            <span className="truncate text-[9px] font-semibold text-plum/60">
-              Note on {replyTo}
-            </span>
-          </div>
-        )}
         <div className="flex items-center gap-1">
-          <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full border border-plum/25 text-plum/50">
-            <FiPlusCircle size={16} />
+          <span className="grid shrink-0 place-items-center rounded-full border text-pink-500">
+            <FiPlusCircle size={18} />
           </span>
-          {/* a Spark goes out from here — the button lights while one is being sent */}
-          <motion.span
-            animate={sparkPulse ? { scale: [1, 1.3, 1] } : { scale: 1 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border transition-colors duration-300 ${
-              sparkPulse
-                ? "border-[#ff5a1f] bg-[#ff5a1f] text-pure"
-                : "border-[#ff5a1f]/50 text-[#ff5a1f]"
-            }`}
-          >
-            <Flame size={15} />
-          </motion.span>
           <div className="flex-1 truncate rounded-full border border-plum/15 bg-pure px-2.5 py-1.5 text-[12px]">
             {draft ? (
               <span>
@@ -1474,6 +1820,20 @@ export function ConvoDemo({
           </span>
         </div>
       </div>
+
+      {/* the comment sheet, over everything — it is the app's one way of
+          answering a post without leaving the convo it arrived in */}
+      <AnimatePresence>
+        {sheet && (
+          <CommentSheet
+            key="sheet"
+            tab={sheet.tab}
+            rows={sheetRows}
+            draft={sheetDraft}
+            withWhom="John"
+          />
+        )}
+      </AnimatePresence>
     </div>
   );
 }
@@ -1492,4 +1852,3 @@ export default function PhoneDemo({ kind }: { kind: DemoKind }) {
   const Demo = demos[kind];
   return <Demo reduced={reduced} />;
 }
-

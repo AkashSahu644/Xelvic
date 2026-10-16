@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { Flame, EyeOff, Heart, MessageCircle, RotateCcw, Share2 } from 'lucide-react'
+import { Sparkles, EyeOff, Heart, MessageCircle, RotateCcw, Share2 } from 'lucide-react'
 import PhoneFrame from './PhoneFrame'
 import { ConvoDemo } from './PhoneDemo'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 
 /**
- * The four things worth watching for in a convo. `at` is a line count — the
+ * The five things worth watching for in a convo. `at` is a line count — the
  * number of messages that have landed in the thread — so a beat lights up at
  * the exact moment the screen shows it, and resets by itself when the thread
  * loops back to the top. No second timeline to drift out of step.
@@ -27,20 +27,20 @@ const BEATS = [
   {
     at: 8,
     icon: MessageCircle,
-    label: 'You leave a note on the post',
-    body: 'Write a note and it stays on the post it is about — “Note up.” Tap somebody else’s note and you reply to that reader, not to the whole thread.',
+    label: 'You comment — or leave a note',
+    body: 'Tapping the comment icon on a post brings the sheet up over the thread. Comments on one tab go to everyone who can see the post; Notes on the other stay between the two of you.',
   },
   {
     at: 11,
-    icon: Flame,
+    icon: Sparkles,
     label: 'You send a Spark',
-    body: 'A Spark is sent rather than posted — the button in the composer lights and it lands in the thread as itself. Unlike a Drop, it is not a thing you keep.',
+    body: 'A Spark is not posted, it is sent to people — so the thread shows the Spark itself rather than a picture of one. Unlike a Drop, it is not a thing you keep.',
   },
   {
     at: 14,
     icon: EyeOff,
     label: 'And then it is gone',
-    body: 'Opening it is the whole of a Spark. “This Spark is gone.” — and it goes for both sides of the thread, not just the one who opened it.',
+    body: 'Opening it is the whole of a Spark. The card reads “Spark · opened” — and it goes for both sides of the thread, not just the one who opened it.',
   },
 ]
 
@@ -67,8 +67,8 @@ function Convo({ onCount }: { onCount: (shown: number) => void }) {
 }
 
 /**
- * The convo, playing, with the four in-chat moves called out as they happen:
- * a post lands, you feel it, the spark counts the day, you leave a note.
+ * The convo, playing, with the five in-chat moves called out as they happen:
+ * a post lands, you feel it, you leave a note, you send a Spark, and it is gone.
  *
  * The phone and the callouts share one timeline — the screen reports how many
  * messages are up and the callouts are pinned to those counts — so what you
