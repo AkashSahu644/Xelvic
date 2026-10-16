@@ -207,7 +207,13 @@ export default function Download() {
 
             <div className="mt-7 flex flex-wrap gap-4">
               <StoreButton store="apple" variant="white" href="#" />
-              <StoreButton store="google" variant="glow" href="#" />
+              {/* The Android badge hands over the build itself rather than
+                  sending anybody to a store — see `site.androidApk`. It is a
+                  plain same-tab link on purpose: a `.apk` answered with its own
+                  package MIME type downloads, and a `target="_blank"` on top of
+                  that would leave the visitor on a page they did not ask for
+                  once the file lands. */}
+              <StoreButton store="google" variant="glow" href={site.androidApk} />
             </div>
 
             {/* For the person who already has an account: the shortest path

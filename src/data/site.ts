@@ -27,6 +27,22 @@ export const site = {
      here, so somebody who already has an account never has to install
      anything to get back into it. */
   web: 'https://web.xelvic.com',
+  /* The Android build itself, served out of this site's own `public/download/`.
+     A site-relative path rather than an absolute one, so the file is fetched
+     from whatever host is serving the page — the apex, a preview, localhost —
+     instead of jumping to production from a page that is not production.
+
+     It is an `.apk` and not a store listing because there is no Play listing
+     yet, and the Android button used to be handed a bare `#`: a button that
+     does nothing at all. Served as `application/vnd.android.package-archive`,
+     which is nginx's own type for `.apk`, it opens the installer on the phone —
+     which is what the click was always promising.
+
+     The file is deliberately **not tracked in git** (see `.gitignore`): a 73 MB
+     binary has no business in a repository whose `dist/` is committed, where it
+     could not be read in a diff and would be copied into the history on every
+     release. How a fresh build gets there is written down in DOWNLOAD.md. */
+  androidApk: '/download/xelvic.apk',
   social: {
     x: 'https://x.com/xelvic',
     instagram: 'https://instagram.com/xelvic',

@@ -1,1 +1,13 @@
 node_modules
+
+# The Android build, served at /download/xelvic.apk.
+#
+# `dist/` is committed in this repository, which is right for built pages —
+# they are text, they diff, and a deploy can be read before it goes. A 73 MB
+# binary is the opposite of that: it does not diff, it cannot be reviewed, and
+# every release would add another copy to the history for ever. So the file
+# lives in `public/download/` and is *not* tracked; `npm run build` still
+# copies it into `dist/`, so it ships with the site exactly as if it were.
+# The one line that puts a fresh build there is in DOWNLOAD.md.
+public/download/*.apk
+dist/download/*.apk
