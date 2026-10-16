@@ -70,6 +70,21 @@ export const ogImageFor = (path: string): string =>
 
 const HOME: Breadcrumb = { name: 'Home', path: '/' }
 
+/**
+ * Alt text for a share card.
+ *
+ * `ld.name` already carries the brand on some routes — the home page's name
+ * *is* the tagged title — so the brand and the tagline are only appended where
+ * they are not already present. Without that, the home card's alt text read
+ * "Xelvic — Chat, Spark, Vibe & more — Xelvic: Chat, Spark, Vibe & more", which
+ * describes the card to somebody who cannot see it by saying the same thing
+ * three times.
+ */
+function imageAltFor(name: string): string {
+  const branded = name.includes(site.name) ? name : `${name} — ${site.name}`
+  return branded.includes(site.tagline) ? branded : `${branded}: ${site.tagline}`
+}
+
 /** Fill in everything a route does not say for itself. */
 function route(r: {
   path: string
@@ -96,7 +111,7 @@ function route(r: {
     title: r.title,
     description: r.description,
     image: ogImageFor(r.path),
-    imageAlt: `${ld.name} — ${site.name}: ${site.tagline}`,
+    imageAlt: imageAltFor(ld.name),
     type: r.type ?? 'website',
     noindex: r.noindex ?? false,
     breadcrumbs: r.breadcrumbs,
@@ -115,21 +130,21 @@ function route(r: {
 const statics: RouteSeo[] = [
   route({
     path: '/',
-    title: 'Xelvic — Chat. Call. Vibe.',
+    title: 'Xelvic — Chat, Spark, Vibe & more',
     description:
-      'Xelvic is a free app for chat, voice and video calls, Moments, live rooms, Drops and Vibes, music and Sparks — with 50+ themes and a private, encrypted Vault.',
+      'Xelvic is a free app for chat, Sparks, Moments, live rooms, Drops & Vibes, short video, music and 50+ themes — one place for the people you talk to every day.',
     ld: {
-      name: 'Xelvic — Chat. Call. Vibe.',
+      name: 'Xelvic — Chat, Spark, Vibe & more',
       description:
-        'One app for the people you talk to every day: chat and group messaging, voice and video calls, Moments, live rooms, Drops and Vibes, music and Sparks, in 50+ themes.',
+        'One app for the people you talk to every day: chat and group messaging, Sparks, Moments, live rooms, Drops and Vibes, short video, music, 50+ themes and a private, encrypted Vault.',
       type: 'WebPage',
     },
     breadcrumbs: [HOME],
     priority: 1.0,
     card: {
       kicker: 'Free on iOS, Android & the web',
-      headline: 'Chat. Call. Vibe.',
-      sub: 'Chat, calls, Moments, live rooms, Drops & Vibes, music and Sparks — one app for the people you talk to every day.',
+      headline: 'Chat, Spark, Vibe & more',
+      sub: 'Chat, Sparks, Moments, live rooms, Drops & Vibes, short video, music and 50+ themes — one place for the people you talk to every day.',
     },
   }),
   route({

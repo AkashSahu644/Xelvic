@@ -4,10 +4,10 @@
  *
  * Why one per route rather than one for the site: a link to /help and a link
  * to /features/chat are different things to be asked about, and a card that
- * says "Xelvic — Chat. Call. Vibe." for both tells the person deciding whether
- * to tap nothing they did not already know. Each card carries the route's own
- * section, headline and lede, taken from src/seo/routes.ts, which is the same
- * table the page and its static HTML are built from.
+ * says "Xelvic — Chat, Spark, Vibe & more" for both tells the person deciding
+ * whether to tap nothing they did not already know. Each card carries the
+ * route's own section, headline and lede, taken from src/seo/routes.ts, which
+ * is the same table the page and its static HTML are built from.
  *
  * Drawn as SVG and rasterised with sharp: no headless browser, no font files
  * to ship, and the whole set renders in a second or two.
@@ -191,7 +191,7 @@ await render(
   {
     kicker: 'Free on iOS, Android & the web',
     headline: seo.site.tagline,
-    sub: 'One app for the people you talk to every day — chat, calls, Moments, live rooms, Drops, Vibes and music.',
+    sub: 'One app for the people you talk to every day — chat, Sparks, Moments, live rooms, Drops, Vibes, music and 50+ themes.',
     path: '/',
   },
   'xelvic-og.png',

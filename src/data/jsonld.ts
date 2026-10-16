@@ -99,7 +99,7 @@ export const softwareApplicationLd = (): Json => ({
   '@type': ['SoftwareApplication', 'MobileApplication'],
   '@id': APP_ID,
   name: site.name,
-  alternateName: 'Xelvic — Chat. Call. Vibe.',
+  alternateName: `${site.name} — ${site.tagline}`,
   operatingSystem: 'iOS, Android',
   applicationCategory: 'SocialNetworkingApplication',
   applicationSubCategory: 'Messaging',

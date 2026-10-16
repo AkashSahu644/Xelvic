@@ -270,7 +270,7 @@ export default function Brand() {
                   Display · Space Grotesk
                 </p>
                 <p className="mt-6 font-display text-4xl font-bold leading-none text-plum">
-                  Chat. Call. Vibe.
+                  Chat, Spark, Vibe &amp; more
                 </p>
                 <p className="mt-6 font-display text-lg font-bold text-plum/70">
                   Aa Bb Cc Dd Ee 0123456789

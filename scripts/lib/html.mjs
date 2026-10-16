@@ -359,7 +359,7 @@ export const NOT_FOUND = {
   description:
     'That page is not here. The features, the download, the Help Center and the rest of xelvic.com are one tap away.',
   image: '/og/home.png',
-  imageAlt: 'Xelvic — Chat. Call. Vibe.',
+  imageAlt: 'Xelvic — Chat, Spark, Vibe & more',
   type: 'website',
   noindex: true,
   breadcrumbs: [{ name: 'Home', path: '/' }],

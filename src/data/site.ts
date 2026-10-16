@@ -8,7 +8,7 @@ export const site = {
      different jobs, and pointing a canonical at the app would tell Google the
      marketing pages are duplicates of it. */
   url: 'https://xelvic.com',
-  tagline: 'Chat. Call. Vibe.',
+  tagline: 'Chat, Spark, Vibe & more',
   /* The sitewide description. It shows up in three places that are easy to
      forget about: the Organization, WebSite and SoftwareApplication nodes that
      ride along in every page's structured data, and the fallback description
