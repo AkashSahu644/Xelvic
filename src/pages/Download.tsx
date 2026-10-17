@@ -127,7 +127,7 @@ const install = [
   },
   {
     t: 'Let the store install it',
-    d: 'Android may ask once about installing from this source; iPhone will ask for Face ID or your Apple ID password. Both are the store, not us.',
+    d: 'Google Play installs it in one tap, with no “unknown sources” detour; iPhone will ask for Face ID or your Apple ID password. Any prompt is the store’s, not ours.',
   },
   {
     t: 'Enter your number',
@@ -207,13 +207,11 @@ export default function Download() {
 
             <div className="mt-7 flex flex-wrap gap-4">
               <StoreButton store="apple" variant="white" href="#" />
-              {/* The Android badge hands over the build itself rather than
-                  sending anybody to a store — see `site.androidApk`. It is a
-                  plain same-tab link on purpose: a `.apk` answered with its own
-                  package MIME type downloads, and a `target="_blank"` on top of
-                  that would leave the visitor on a page they did not ask for
-                  once the file lands. */}
-              <StoreButton store="google" variant="glow" href={site.androidApk} />
+              {/* The Android badge hands over the Play listing rather than the
+                  build itself — see `site.playStore`. The store is the road
+                  that keeps working: it updates the app, checks the signature
+                  and needs no “allow unknown sources” detour on the phone. */}
+              <StoreButton store="google" variant="glow" href={site.playStore} />
             </div>
 
             {/* For the person who already has an account: the shortest path

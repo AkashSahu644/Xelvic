@@ -105,8 +105,12 @@ export const softwareApplicationLd = (): Json => ({
   applicationSubCategory: 'Messaging',
   description: site.description,
   url: site.url,
-  downloadUrl: absoluteUrl('/download'),
-  installUrl: absoluteUrl('/download'),
+  /* Both point at the Play listing now that one exists. Google reads these
+     as "where to get the app", and a marketing page that only explains how
+     is a worse answer than the listing itself — which is also the URL a
+     person can install from without coming back to us. */
+  downloadUrl: site.playStore,
+  installUrl: site.playStore,
   softwareHelp: absoluteUrl('/help'),
   screenshot: absoluteUrl(site.ogImage),
   inLanguage: 'en',

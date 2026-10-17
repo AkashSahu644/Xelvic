@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import Reveal from '../ui/Reveal'
 import StoreButton from '../ui/StoreButton'
 import { themeCovers } from '../../data/themes'
+import { site } from '../../data/site'
 
 /* The closing pitch sits on the app's own wallpapers: every tile is a real
  * theme cover pulled from the build, so the band proves the "50+ themes"
@@ -62,7 +63,12 @@ export function CTABand() {
             </p>
 
             <div className="mt-7 flex flex-col items-center justify-center gap-3 sm:mt-9 sm:flex-row sm:gap-4">
-              <StoreButton store="google" variant="glow" to="/download" className="w-full max-w-[240px] sm:w-auto" />
+              {/* The Android badge goes straight to the Play listing: this is
+                  the band that closes the pitch, and a person who has decided
+                  to install should not have to pass through a second page to
+                  say which phone they hold. The Apple badge still hands off to
+                  /download, which is where the iPhone story lives. */}
+              <StoreButton store="google" variant="glow" href={site.playStore} className="w-full max-w-[240px] sm:w-auto" />
               <StoreButton store="apple" variant="ghost" to="/download" className="w-full max-w-[240px] sm:w-auto" />
             </div>
           </div>

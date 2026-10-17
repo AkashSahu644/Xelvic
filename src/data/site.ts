@@ -27,21 +27,19 @@ export const site = {
      here, so somebody who already has an account never has to install
      anything to get back into it. */
   web: 'https://web.xelvic.com',
-  /* The Android build itself, served out of this site's own `public/download/`.
-     A site-relative path rather than an absolute one, so the file is fetched
-     from whatever host is serving the page — the apex, a preview, localhost —
-     instead of jumping to production from a page that is not production.
-
-     It is an `.apk` and not a store listing because there is no Play listing
-     yet, and the Android button used to be handed a bare `#`: a button that
-     does nothing at all. Served as `application/vnd.android.package-archive`,
-     which is nginx's own type for `.apk`, it opens the installer on the phone —
-     which is what the click was always promising.
-
-     The file is deliberately **not tracked in git** (see `.gitignore`): a 73 MB
-     binary has no business in a repository whose `dist/` is committed, where it
-     could not be read in a diff and would be copied into the history on every
-     release. How a fresh build gets there is written down in DOWNLOAD.md. */
+  /* The Android listing. Xelvic is live on Google Play, so every Android
+     install button on the site hands over this and not a file: the store
+     installs updates, checks the signature and works on a phone whose
+     browser refuses an unknown APK — none of which a direct download does.
+     The query string is the package name and nothing else, so the URL keeps
+     working when the listing's title changes. */
+  playStore: 'https://play.google.com/store/apps/details?id=com.xelvic.app',
+  /* The direct build, still served out of `public/download/` as a fallback for
+     a phone whose Play Store is unreachable. Nothing on the site links to it
+     any more; it lives on so the file the site already ships is not orphaned
+     in the config as well. The file is deliberately **not tracked in git**
+     (see `.gitignore`): a 73 MB binary has no business in a repository whose
+     `dist/` is committed. How a fresh build gets there is in DOWNLOAD.md. */
   androidApk: '/download/xelvic.apk',
   social: {
     x: 'https://x.com/xelvic',

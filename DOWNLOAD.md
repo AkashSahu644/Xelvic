@@ -1,7 +1,10 @@
 # The Android download
 
-The Download page's Android badge hands over a file, not a store listing. This
-is where that file comes from and how to replace it.
+**Since 2026-10-17 the Android badges hand over the Play listing** —
+`site.playStore` in `src/data/site.ts`, and nothing on the site links to the
+APK any more. What follows is how the direct build is made and where it lives;
+it is a fallback for a phone whose Play Store is unreachable, not the road the
+buttons take.
 
 ## Where it lives
 
