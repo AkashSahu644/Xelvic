@@ -217,15 +217,15 @@ const statics: RouteSeo[] = [
     path: '/download',
     title: 'Download — Xelvic',
     description:
-      'Download Xelvic free for Android 8+ and iOS 14+ — what is included, what it needs to run, how to install it in four taps, and how to sign in on the web instead.',
+      'Download Xelvic free for Android 8+ and iOS 15+ — what is included, what it needs to run, how to install it in four taps, and how to sign in on the web instead.',
     ld: {
       name: 'Download Xelvic',
       description:
-        'Download Xelvic free on Android 8+ and iOS 14+. What is included, what it needs to run, how to install it in four taps, and how to sign in on the web without installing anything.',
+        'Download Xelvic free on Android 8+ and iOS 15+. What is included, what it needs to run, how to install it in four taps, and how to sign in on the web without installing anything.',
     },
     breadcrumbs: [HOME, { name: 'Download', path: '/download' }],
     priority: 0.9,
-    card: { kicker: 'Free download', headline: 'Get Xelvic', sub: 'Android 8+ and iOS 14+, or right here in your browser — no install needed.' },
+    card: { kicker: 'Free download', headline: 'Get Xelvic', sub: 'Android 8+ and iOS 15+, or right here in your browser — no install needed.' },
   }),
   route({
     path: '/creators',

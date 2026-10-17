@@ -43,7 +43,7 @@ const headline = [
     note: 'Oreo shipped in 2017. If the phone still turns on, it can most likely run Xelvic.',
   },
   {
-    value: 'iOS 14',
+    value: 'iOS 15',
     label: 'The oldest iPhone we run on',
     note: 'iPhone 6s and later, and iPad. One build covers both — there is no separate tablet version.',
   },
@@ -94,7 +94,7 @@ const requirements = [
   },
   {
     k: 'iPhone & iPad',
-    v: 'iOS 14 and later',
+    v: 'iOS 15 and later',
     note: 'iPhone 6s and later. The app fills the screen on an iPad rather than sitting in a phone-shaped box.',
   },
   {
