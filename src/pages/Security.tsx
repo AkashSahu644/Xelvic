@@ -37,8 +37,8 @@ const pillars = [
   },
   {
     t: 'Private contact matching',
-    d: 'Friends are matched on your phone, so your address book never becomes a file on our side.',
-    app: 'Numbers never leave your device in readable form.',
+    d: 'Friends are found from the numbers you already have, each one kept only as a one-way hash so a match can read “Bina” rather than a string of digits.',
+    app: 'Each number is kept only as a one-way hash, along with the name you saved for it.',
   },
   {
     t: 'Kept small on purpose',
@@ -220,17 +220,18 @@ export default function Security() {
           <DeepSection
             n={5}
             title="Finding friends without handing over your address book"
-            lead="The feature that asks for the most and gives back the least is contact matching — so it is done in the one place the data already is."
+            lead="The feature that asks for the most and gives back the least is contact matching — so it is held to the smallest thing that still works: a one-way hash, and the name you saved it under."
             body={[
-              'Matching happens on your device. What we receive is the answer to whether somebody is already on Xelvic, not a copy of who you know — the app’s own words are that numbers never leave your device in readable form.',
+              'Each number you allow is hashed on the way in, and what stays is one row per number: that hash, and the name you saved it under, so a match can come back as “Bina” rather than a string of digits. What never stays is a readable copy of the book — and turning contacts off deletes every row we hold.',
               'If you would rather not use contacts at all, nothing forces it: you can find people by handle instead, and the app offers both routes side by side rather than making contacts the price of admission.',
             ]}
             points={[
-              'Contacts are matched on the device, not uploaded.',
-              'Nothing about the match is kept as an address book on our side.',
+              'Numbers are kept only as a one-way hash, with the name you saved.',
+              'Never a readable copy of the address book, and never sold or shared.',
+              'Turning contacts off deletes every row held for you.',
               'Searching by handle works without contacts access at all.',
             ]}
-            app="Numbers never leave your device in readable form."
+            app="Each number is kept only as a one-way hash, along with the name you saved for it."
             path={['Contacts', 'Allow, or search a handle', 'People you know appear']}
           />
 

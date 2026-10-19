@@ -15,16 +15,16 @@ export default function Privacy() {
       updated="October 2026"
       minutes={7}
       wall="/media/themes/teddy/convo.jpg"
-      intro="This policy explains what we collect, why, and the control you have. In short: your conversations are yours, your address book stays on your phone, and nothing here is sold."
+      intro="This policy explains what we collect, why, and the control you have. In short: your conversations are yours, your address book is used only to find your friends, and nothing here is sold."
       inShort={[
         'We collect your number, your handle, and what you choose to put up.',
-        'Your address book is matched on your phone. It is not uploaded.',
+        'Contacts are optional. Allow them and we keep each number only as a one-way hash, plus the name you saved for it — never a readable copy of the book.',
         'Reports are read by a moderator. The person you reported is not told.',
         'You can hide a convo, put it on a disappearing clock, or delete the whole account — with 30 days to change your mind.',
       ]}
       glance={[
         { label: 'Sold to advertisers', value: 'Nothing' },
-        { label: 'Contacts uploaded', value: 'None' },
+        { label: 'Contacts uploaded', value: 'Optional, hashed' },
         { label: 'Account deletion', value: '30 days' },
         { label: 'Minimum age', value: '13' },
       ]}
@@ -46,18 +46,18 @@ export default function Privacy() {
           body: [
             'When you create an account we take your phone number and send a one-time code to confirm it. You then choose people see you by — the app puts it plainly: “This is the name people see on your profile. We will make your username later,” followed by the handle itself, because “A handle is how people reach you.”',
             'You may add a picture, a line about yourself, and an email address if you want one on the account. Everything past the number and the handle is optional, and leaving it blank costs you nothing.',
-            'To help you find friends, we match your contacts. That match happens on your device: “Numbers never leave your device in readable form.” We are checking for people already on Xelvic, not building a copy of your address book.',
+            'To help you find friends we check your address book against the people already on Xelvic. What we keep from that check is one row per number: a one-way hash of the number, and the name you saved it under, so the row can read “Bina” instead of a string of digits. We are answering one question — who you already know here. Not the numbers themselves, and not a readable copy of the book.',
             'As you use Xelvic we process what you send so it reaches the right people. Alongside that there is the thin technical layer any app needs — device type, app version, and whether a connection held — which exists to keep the thing standing up.',
           ],
           points: [
             'Your phone number, and the code that confirms it.',
             'Your handle, and the display name on your profile.',
             'Anything optional you add: picture, bio, email.',
-            'Your contacts, matched privately on your device.',
+            'Your contacts, if you allow them: hashed numbers and the names you saved.',
             'What you send, and who you sent it to.',
             'Basic technical data: device type, app version, connection health.',
           ],
-          app: 'Numbers never leave your device in readable form.',
+          app: 'Each number is kept only as a one-way hash, along with the name you saved for it.',
         },
         {
           heading: 'How we use your information',
@@ -95,7 +95,7 @@ export default function Privacy() {
         {
           heading: 'Contacts and who can find you',
           body: [
-            'Finding friends works from your address book, matched on the device. You can also skip contacts entirely and search for someone by handle, and the app offers both routes rather than assuming.',
+            'Finding friends works from your address book, or you can skip contacts entirely and search for someone by handle — the app offers both routes rather than assuming. Allow contacts and we keep a one-way hash of each number and the name you saved for it, and nothing else out of the book. Refuse, or turn it off later, and every row we hold for you goes.',
             'Who can reach you is partly your choice and partly the other person’s. If you keep your account private, your moments stay inside the app — visible to the people you approved rather than to anyone who goes looking. Deleting your account goes further: it hides it straight away, so nobody can find you or message you, and the app confirms that “Nothing happens to the account” beyond the hiding while the 30-day window is open.',
           ],
           app: 'Allow contacts, or hunt someone down by handle.',
@@ -150,13 +150,13 @@ export default function Privacy() {
           heading: 'What we share',
           body: [
             'We do not sell your personal information. There is no version of this where your convos fund an advertising business, because there is no advertising business pointing back at you.',
-            'We share data with service providers who help us run Xelvic — the servers that carry it, and the crash reporting that tells us when a release broke — and only as much as the job needs. Your address book is not among what they receive, because it never left your phone.',
+            'We share data with service providers who help us run Xelvic — the servers that carry it, and the crash reporting that tells us when a release broke — and only as much as the job needs. What they hold from your contacts is the same thing we hold: a hashed number and the name you saved it under, and nothing more.',
             'We hand information over when the law requires it and the request is valid. We tell you when we are allowed to. We do not hand it over because somebody asked.',
           ],
           points: [
             'No sale of personal information, to anybody, ever.',
             'Service providers get the minimum the job needs.',
-            'Your contacts are not shared, because they were never collected.',
+            'Your contacts are never shared and never sold. They are held to answer one question: who you already know here.',
             'Legal requests: honoured when valid, disclosed to you when permitted.',
           ],
         },

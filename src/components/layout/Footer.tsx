@@ -4,12 +4,16 @@ import { footerColumns } from '../../data/nav'
 import { socials } from '../../data/socials'
 import Logo from '../ui/Logo'
 
-/* The three documents people actually look for, given their own row rather than
-   buried in a column. */
+/* The documents people actually look for, given their own row rather than
+   buried in a column — including the child-safety standards page and the
+   account-deletion URL, which are the two a store reviewer looks for in
+   exactly this strip. */
 const legalBar = [
   { label: 'Privacy', to: '/privacy' },
   { label: 'Terms', to: '/terms' },
   { label: 'Your Data', to: '/data' },
+  { label: 'Child safety', to: '/child-safety' },
+  { label: 'Delete account', to: '/delete-account' },
 ]
 
 /* The watermark sits centred in the footer rather than pinned to its bottom

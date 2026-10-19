@@ -48,6 +48,8 @@ const Data = lazy(() => import('./pages/Data'))
 const Terms = lazy(() => import('./pages/Terms'))
 const Security = lazy(() => import('./pages/Security'))
 const Safety = lazy(() => import('./pages/Safety'))
+const ChildSafety = lazy(() => import('./pages/ChildSafety'))
+const DeleteAccount = lazy(() => import('./pages/DeleteAccount'))
 const Help = lazy(() => import('./pages/Help'))
 const Community = lazy(() => import('./pages/Community'))
 const Support = lazy(() => import('./pages/Support'))
@@ -109,6 +111,12 @@ export default function App() {
                   <Route path="/terms" element={<Terms />} />
                   <Route path="/security" element={<Security />} />
                   <Route path="/safety" element={<Safety />} />
+                  {/* The two routes the app stores are handed: the child-safety
+                      standards page and the "delete your account" URL. They are
+                      not in the menus for the sake of it — a policy page nobody
+                      can find is a policy page that fails its own review. */}
+                  <Route path="/child-safety" element={<ChildSafety />} />
+                  <Route path="/delete-account" element={<DeleteAccount />} />
                   <Route path="/help" element={<Help />} />
                   <Route path="/community" element={<Community />} />
                   <Route path="/support" element={<Support />} />

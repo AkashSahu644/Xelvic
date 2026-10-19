@@ -24,11 +24,11 @@ export const faqCategories: FaqCategory[] = [
       },
       {
         q: 'What is the minimum age?',
-        a: 'Xelvic is not for anyone under 13. Your date of birth is checked when you sign up — the sign-up will not complete below the line — and the date itself is never stored afterwards.',
+        a: 'Xelvic is not for anyone under 13. Your date of birth is checked when you sign up — the sign-up will not complete below the line — and it stays on your account afterwards, because it is what says you are old enough for the 18+ content and what puts a birthday on your profile. Other people see the day and the month; the year stays yours unless you choose to show it.',
       },
       {
         q: 'How do I find my friends?',
-        a: 'Allow contacts and everyone in your phone who is already on Xelvic shows up right away. Numbers never leave your device in readable form; the match happens on your phone rather than in a copy of your address book on our side. If you would rather not share contacts at all, you can search for someone by their handle instead.',
+        a: 'Allow contacts and everyone in your phone who is already on Xelvic shows up right away. We keep one row per number: a one-way hash of the number, and the name you saved it under, so the row can read “Bina” rather than a string of digits. Refuse, or turn it off later, and every one of those rows is deleted. If you would rather not share contacts at all, you can search for someone by their handle instead.',
       },
       {
         q: 'What is a handle, and can I change it?',
@@ -172,7 +172,7 @@ export const faqCategories: FaqCategory[] = [
       },
       {
         q: 'Are my contacts uploaded?',
-        a: 'No. Numbers never leave your device in readable form — the match against Xelvic happens on your phone, so you can find friends without handing over your address book.',
+        a: 'Only if you allow it, and not in readable form. We keep one row per number — a one-way hash of the number, and the name you saved it under — which is what lets a match come back as “Bina” rather than a string of digits. We never keep the numbers themselves or a copy of the book, and turning contacts off deletes every row.',
       },
       {
         q: 'Can I make messages disappear?',

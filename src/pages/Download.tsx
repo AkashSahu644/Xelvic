@@ -43,7 +43,7 @@ const headline = [
     note: 'Oreo shipped in 2017. If the phone still turns on, it can most likely run Xelvic.',
   },
   {
-    value: 'iOS 14',
+    value: 'iOS 15',
     label: 'The oldest iPhone we run on',
     note: 'iPhone 6s and later, and iPad. One build covers both — there is no separate tablet version.',
   },
@@ -94,7 +94,7 @@ const requirements = [
   },
   {
     k: 'iPhone & iPad',
-    v: 'iOS 14 and later',
+    v: 'iOS 15 and later',
     note: 'iPhone 6s and later. The app fills the screen on an iPad rather than sitting in a phone-shaped box.',
   },
   {
@@ -127,7 +127,7 @@ const install = [
   },
   {
     t: 'Let the store install it',
-    d: 'Android may ask once about installing from this source; iPhone will ask for Face ID or your Apple ID password. Both are the store, not us.',
+    d: 'Google Play installs it in one tap, with no “unknown sources” detour; iPhone will ask for Face ID or your Apple ID password. Any prompt is the store’s, not ours.',
   },
   {
     t: 'Enter your number',
@@ -207,7 +207,11 @@ export default function Download() {
 
             <div className="mt-7 flex flex-wrap gap-4">
               <StoreButton store="apple" variant="white" href="#" />
-              <StoreButton store="google" variant="glow" href="#" />
+              {/* The Android badge hands over the Play listing rather than the
+                  build itself — see `site.playStore`. The store is the road
+                  that keeps working: it updates the app, checks the signature
+                  and needs no “allow unknown sources” detour on the phone. */}
+              <StoreButton store="google" variant="glow" href={site.playStore} />
             </div>
 
             {/* For the person who already has an account: the shortest path

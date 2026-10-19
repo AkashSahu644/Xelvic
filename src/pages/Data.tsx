@@ -19,7 +19,7 @@ export default function Data() {
       intro="Every app takes something from you. This page says exactly what Xelvic takes, what it does with it, where it goes, and what you can do about it — with the app’s own wording quoted where it matters."
       inShort={[
         'Your messages are yours. A convo is encrypted, and the Vault keeps the ones you want out of the convo list entirely.',
-        'Your address book is never uploaded. Numbers are matched on your phone and “never leave your device in readable form”.',
+        'Contacts are opt-in. Allow them and each number is kept only as a one-way hash, plus the name you saved for it, so the match can read “Bina” and not a string of digits.',
         'We do not sell your data, and we do not use the content of your convos to advertise to you.',
         'You can take your data out, hide what you post, switch off the counts, or leave for good — and deleting gives you 30 days to change your mind.',
       ]}
@@ -43,9 +43,9 @@ export default function Data() {
             'What you send in a convo, and who you sent it to.',
             'What you put up — moments, drops, vibes, rooms, playlists.',
             'The marks that keep you safe: who you blocked, who you reported, and the queue that report went into.',
-            'Not: your address book, your location history, or the contents of your phone.',
+            'Not: a readable copy of your address book, your location history, or the contents of your phone.',
           ],
-          app: 'Numbers never leave your device in readable form.',
+          app: 'Each number is kept only as a one-way hash, along with the name you saved for it.',
         },
         {
           heading: 'Where your data is used',
@@ -108,7 +108,7 @@ export default function Data() {
             'Xelvic can keep the service running: deliver what you send, carry a report to a moderator, act on a report, and remove an account that is breaking the rules or putting other people at risk.',
             'Xelvic can read what it needs to in order to act on a report. What was written in somebody’s private conversation stays in that conversation in the ordinary course of things, but a reported item, and the context needed to judge it, is read by the person working the queue.',
             'Xelvic cannot sell your data — there is no line of business that does it. It cannot read your convos to decide what to advertise to you, because there is nothing advertising-shaped pointing back at you. And it cannot bring back an account after the 30 days are up, no matter who asks.',
-            'One limit worth stating plainly: no system is perfect, and anyone who tells you theirs is has stopped being useful. What we can promise is what the app itself does — a convo that is encrypted and says so, the Vault behind your code, contacts matched on the device — and that we will say so here if any of it changes.',
+            'One limit worth stating plainly: no system is perfect, and anyone who tells you theirs is has stopped being useful. What we can promise is what the app itself does — a convo that is encrypted and says so, the Vault behind your code, contacts kept as a hash and never as a readable copy of the book — and that we will say so here if any of it changes.',
           ],
           points: [
             'Can: deliver your messages, carry your reports, act on them, and remove accounts that break the rules.',
@@ -123,12 +123,12 @@ export default function Data() {
           heading: 'Who else touches it',
           body: [
             'A handful of service providers do parts of the job we do not do ourselves — the servers that carry the service, and the crash reports that tell us when a release broke on a particular phone. They see what they need in order to do that job, and nothing beyond it.',
-            'Two places where the app is more careful than it has to be. Your address book is matched on the device rather than uploaded, so the list of everyone you know never becomes a file on our side. And a convo is encrypted, which is stated on the convo itself rather than only in a policy.',
+            'Two places where the app is more careful than it has to be. A convo is encrypted, which is stated on the convo itself rather than only in a policy. And the address book, which we do not need in readable form: what we keep is one row per number — a one-way hash, and the name you saved it under — because a match that returned a string of digits instead of “Bina” would be useless to you.',
             'Beyond that, we hand something over when the law requires it and the request is valid, and we tell you when we are allowed to. We do not hand it over because somebody asked.',
           ],
           points: [
             'Service providers: what is needed to run the service, and crash reports when something breaks.',
-            'Your address book: matched on your phone, never uploaded.',
+            'Your address book: hashed numbers and the names you saved, and only if you allow it.',
             'A convo: encrypted, and the convo says so.',
             'Legal requests: honoured when valid, and disclosed to you when we are allowed to.',
           ],

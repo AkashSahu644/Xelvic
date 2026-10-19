@@ -8,7 +8,7 @@ import { ArrowRight } from 'lucide-react'
 
 const steps = [
   { n: '01', title: 'Sign up in seconds', body: 'Enter your number, confirm the code, pick a username. You are in.' },
-  { n: '02', title: 'Find your people', body: 'Contacts already on Xelvic show up instantly — numbers never leave your device in readable form.' },
+  { n: '02', title: 'Find your people', body: 'Contacts already on Xelvic show up instantly — each number kept only as a one-way hash, with the name you saved it under.' },
   { n: '03', title: 'Start the vibe', body: 'Chat, call, go live, post a moment, or spin up a room. Make it yours with a theme.' },
 ]
 

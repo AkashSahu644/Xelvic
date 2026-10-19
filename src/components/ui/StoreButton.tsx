@@ -33,7 +33,9 @@ type Props = {
   variant?: 'glow' | 'white' | 'ghost'
   /** An in-site route — what the CTA bands use to hand off to /download. */
   to?: string
-  /** The store listing itself. */
+  /** Where the badge actually sends you. A store listing when there is one,
+      and the build itself when there is not — the Android badge on the
+      Download page is handed `site.androidApk` for exactly that reason. */
   href?: string
   className?: string
 }

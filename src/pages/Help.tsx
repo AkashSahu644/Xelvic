@@ -17,7 +17,7 @@ const POPULAR = ['vault', 'delete account', 'voice note', 'sparks', 'block', 've
 const first = [
   {
     t: 'Find your people',
-    d: 'Allow contacts and everyone already on Xelvic appears — matched on your phone rather than uploaded. Or search for somebody by handle instead.',
+    d: 'Allow contacts and everyone already on Xelvic appears — each number kept only as a one-way hash, with the name you saved it under. Or search for somebody by handle instead.',
     to: '/how-it-works',
     cta: 'How it works',
   },

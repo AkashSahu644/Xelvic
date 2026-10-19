@@ -47,6 +47,16 @@ export default function MagneticButton({
   )
 
   if (to) return <Link to={to} onClick={onClick}>{inner}</Link>
+  /* An absolute link leaves the site — the store listings are the ones that
+     do — so it opens beside the page rather than replacing it, and without
+     handing the listing a window handle back into xelvic.com. */
+  if (href && /^https?:\/\//.test(href)) {
+    return (
+      <a href={href} onClick={onClick} target="_blank" rel="noopener noreferrer">
+        {inner}
+      </a>
+    )
+  }
   if (href) return <a href={href} onClick={onClick}>{inner}</a>
   return <button onClick={onClick} className="appearance-none bg-transparent">{inner}</button>
 }

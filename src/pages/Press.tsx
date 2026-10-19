@@ -63,7 +63,7 @@ const releases = [
   {
     k: 'September 2026',
     t: 'Xelvic launches: one app to chat, call, go live and vibe',
-    d: 'The first public build brings messaging, calls, moments, live rooms with a stage, drops and vibes together in one app — with encrypted convos, device-side contact matching and an age gate in front of sign-up.',
+    d: 'The first public build brings messaging, calls, moments, live rooms with a stage, drops and vibes together in one app — with encrypted convos, contacts kept only as a one-way hash and an age gate in front of sign-up.',
   },
   {
     k: 'August 2026',
@@ -135,8 +135,8 @@ export default function Press() {
         <div className="wrap">
           <Pull by="Lift-and-quote — the short description, in our own words">
             Xelvic is a social and messaging app for the people you actually talk to. Chat, calls,
-            moments, live rooms and music in one app — with encrypted convos, contacts matched on
-            your phone rather than on our servers, and no advertising profile of anybody.
+            moments, live rooms and music in one app — with encrypted convos, contacts kept only as
+            a one-way hash rather than a readable copy, and no advertising profile of anybody.
           </Pull>
           <p className="mt-6 max-w-3xl text-sm leading-relaxed text-plum/55">
             That paragraph is free to use verbatim, in full or in part, without asking. If you need
@@ -184,7 +184,7 @@ export default function Press() {
               dos={[
                 '“Xelvic, a messaging and social app” — one word, capital X.',
                 '“Encrypted convos” — the app says so on the convo screen itself.',
-                '“Contacts are matched on the device” — the numbers never leave the phone in readable form.',
+                '“Contacts are opt-in and hashed” — a one-way hash of each number, plus the name you saved it under.',
                 '“Reports are reviewed by people” — there is no automatic punishment, and nobody is told who reported them.',
                 '“Xelvic is for people 13 and over” — the gate is in front of sign-up.',
               ]}
@@ -193,6 +193,7 @@ export default function Press() {
                 '“End-to-end encrypted everything” — encryption covers convos and calls, not every surface in the app.',
                 '“Anonymous” — it is not, and profiles carry a handle for a reason.',
                 '“AI-moderated” — the queue is worked by moderators; automation flags, people decide.',
+                '“Your contacts never leave your phone” — if you allow contacts, a one-way hash of each number is kept on our side, so this one is false.',
                 '“Xelvic sells your data” — there is no advertising profile of a user to sell.',
               ]}
             />
