@@ -132,11 +132,11 @@ const statics: RouteSeo[] = [
     path: '/',
     title: 'Xelvic — Chat, Spark, Vibe & more',
     description:
-      'Xelvic is a free app for chat, Sparks, Moments, live rooms, Drops & Vibes, short video, music and 50+ themes — one place for the people you talk to every day.',
+      'Xelvic is a free app for chat, Sparks, Moments, live rooms, Drops & Vibes, short video, music and 33 themes — one place for the people you talk to every day.',
     ld: {
       name: 'Xelvic — Chat, Spark, Vibe & more',
       description:
-        'One app for the people you talk to every day: chat and group messaging, Sparks, Moments, live rooms, Drops and Vibes, short video, music, 50+ themes and a private, encrypted Vault.',
+        'One app for the people you talk to every day: chat and group messaging, Sparks, Moments, live rooms, Drops and Vibes, short video, music, 33 themes and a private, encrypted Vault.',
       type: 'WebPage',
     },
     breadcrumbs: [HOME],
@@ -144,14 +144,14 @@ const statics: RouteSeo[] = [
     card: {
       kicker: 'Free on iOS, Android & the web',
       headline: 'Chat, Spark, Vibe & more',
-      sub: 'Chat, Sparks, Moments, live rooms, Drops & Vibes, short video, music and 50+ themes — one place for the people you talk to every day.',
+      sub: 'Chat, Sparks, Moments, live rooms, Drops & Vibes, short video, music and 33 themes — one place for the people you talk to every day.',
     },
   }),
   route({
     path: '/features',
     title: 'Features — Xelvic',
     description:
-      'Everything Xelvic can do: chat and group messaging, voice and video calls, Moments, live rooms, Drops and Vibes, short video, music, 50+ themes, Sparks and the Vault.',
+      'Everything Xelvic can do: chat and group messaging, voice and video calls, Moments, live rooms, Drops and Vibes, short video, music, 33 themes, Sparks and the Vault.',
     ld: {
       name: 'Xelvic features',
       description:
@@ -250,17 +250,21 @@ const statics: RouteSeo[] = [
     priority: 0.7,
   }),
   route({
+    /* The cast is part of Themes & Drip now. This URL stays so old links and
+       bookmarks still resolve; the app redirects it to the cast section, and
+       the noindex keeps a redirect page out of the sitemap. */
     path: '/characters',
-    title: 'The Cast — meet the Xelvic characters',
+    title: 'The Cast — Xelvic',
     description:
-      'Every Xelvic theme ships its own character. Meet all 17 of the cast — plus the three global poses behind the typing indicator and the loading screens.',
+      'The Xelvic cast now lives with Themes & Drip. Every theme ships its own character — meet all 17, plus the three global poses behind the typing indicator and the loading screens.',
     ld: {
       name: 'The Xelvic cast',
       description:
         'Every Xelvic theme ships its own character. The mascot is not one fixed character — it is a cast, and it changes when you change your look.',
     },
-    breadcrumbs: [HOME, { name: 'The Cast', path: '/characters' }],
-    priority: 0.7,
+    breadcrumbs: [HOME, { name: 'Themes & Drip', path: '/features/themes' }],
+    noindex: true,
+    priority: 0.1,
   }),
   route({
     path: '/about',

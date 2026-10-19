@@ -39,7 +39,7 @@ export default function CharacterCast() {
             sub={`Every theme pack ships its own character, so the face waiting in your chat changes when you change your look. ${cast.length} of them, one per theme.`}
           />
           <Reveal delay={0.15} className="shrink-0">
-            <MagneticButton to="/characters" variant="ghost">
+            <MagneticButton to="/features/themes#cast" variant="ghost">
               Meet the cast
             </MagneticButton>
           </Reveal>
@@ -50,7 +50,7 @@ export default function CharacterCast() {
           {tiles.map((c, i) => (
             <Reveal key={c.slug} delay={(i % 6) * 0.06} className="h-full">
               <Link
-                to="/characters"
+                to="/features/themes#cast"
                 className="group relative flex h-full flex-col overflow-hidden rounded-3xl border border-plum/10 shadow-[0_16px_36px_-22px_rgba(58,10,36,.45)] transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_30px_56px_-24px_rgba(58,10,36,.55)]"
               >
                 <div className="relative grid aspect-[3/4] place-items-center overflow-hidden">
@@ -109,7 +109,7 @@ export default function CharacterCast() {
             </div>
 
             <Link
-              to="/characters"
+              to="/features/themes#cast"
               className="group inline-flex shrink-0 items-center gap-2 text-sm font-bold text-pink-600 transition-colors hover:text-pink-500"
             >
               Meet all {cast.length}
@@ -121,7 +121,7 @@ export default function CharacterCast() {
           </div>
         </Reveal>
 
-        {/* concept art — a browseable rail; the full wall lives on /characters */}
+        {/* concept art — a browseable rail; the app's own cast lives on /features/themes */}
         <Reveal delay={0.15}>
           <div className="mt-6 rounded-[2.5rem] border border-plum/[0.08] bg-pure p-6 shadow-card md:p-9">
             <div className="flex flex-wrap items-end justify-between gap-5">
@@ -173,7 +173,7 @@ export default function CharacterCast() {
                 {artHighlights.map((p) => (
                   <Link
                     key={p.key}
-                    to="/characters"
+                    to="/features/themes#cast"
                     className="group relative w-[172px] shrink-0 snap-start overflow-hidden rounded-3xl bg-plum shadow-[0_18px_40px_-24px_rgba(58,10,36,.7)] ring-1 ring-plum/10 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_28px_60px_-26px_rgba(236,72,153,.55)] hover:ring-pink-500/40 sm:w-[198px]"
                   >
                     <img
@@ -207,10 +207,10 @@ export default function CharacterCast() {
                 {artHighlights.length} characters · {artWall.length} drawings in all
               </p>
               <Link
-                to="/characters"
+                to="/features/themes#cast"
                 className="group inline-flex items-center gap-2 text-sm font-bold text-pink-600 transition-colors hover:text-pink-500"
               >
-                See all {artWall.length} drawings
+                Meet the cast
                 <ArrowRight
                   size={16}
                   className="transition-transform duration-300 group-hover:translate-x-0.5"

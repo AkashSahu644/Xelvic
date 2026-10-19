@@ -22,7 +22,7 @@ const perks = [
   'Free to download and use',
   'Encrypted calls & chats',
   'Works on low-end phones',
-  '50+ themes included',
+  '33 themes included',
   'Offline-first messaging',
   'QR login across devices',
 ]
@@ -71,7 +71,7 @@ const included = [
     d: 'Go live to your people, or to anyone, and hold the room from the phone in your pocket.',
   },
   {
-    t: '50+ themes, all included',
+    t: '33 themes, all included',
     d: 'Every look ships in the download. Nothing in the theme shelf is a paid extra, and there is nothing to unlock.',
   },
   {

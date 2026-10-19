@@ -124,30 +124,32 @@ pause it; swipe sideways to skip.
 
 ### Live & Rooms — "Go live. Hold the room."
 
-Stream live by camera or text, or open an audio room where you hand out the
-mics — and even watch a game together.
+Open a room from the Live tab — voices only in a Room, on camera in a Stream, or
+on a board in a Game — and hand out the mics yourself.
 
-- **Go live your way** — Camera live, text live — announced to everyone who
-  follows you.
+- **Go live your way** — Room, Stream, Game or AMA — the room is whatever you
+  open it as.
 - **Audio rooms** — You open it, hand out mics, and you are the one who closes
   it.
-- **Watch together** — Pick a game and the board becomes the stream — everyone
+- **Play together** — Pick a game and the board becomes the stream — everyone
   sees the same thing.
-- **Host controls** — Full moderation so your room stays yours.
+- **Host controls** — Bring up is the only way onto the stage, so the room stays
+  yours.
 
-**How to use it.** Live tab → tap Go Live → pick camera, text or audio room.
+**How to use it.** Live tab → tap + → pick Room, Stream, Game or AMA.
 
-1. Open the Live tab — see who is live right now, or start your own broadcast.
-2. Tap Go Live — choose Camera live, Text live, or open an Audio room.
-   Followers get a ping.
-3. Hand out the mic 🎤 — in an audio room you are the host: tap a listener to
-   invite them up to speak.
-4. Start Watch Together — pick a game and the board becomes the stream so
-   everyone sees the same thing.
+1. Open the Live tab — see who is on air, what is coming up, and the rooms you
+   opened yourself.
+2. Tap + and open a room — name it, choose Room, Stream, Game or AMA, and start
+   it now or later.
+3. Hand out the mic 🎤 — listeners raise a hand under Hands up; tap Bring up and
+   they are on the stage.
+4. Put a game on the stage — pick a game and the board becomes the stream, with
+   Play again or Put it away when it ends.
 
-Tips: you opened the room, so you close it — full host moderation is built in.
-Remove or mute anyone with a tap on their avatar. Comments and reactions float
-up live along the bottom of the screen.
+Tips: you opened the room, so you close it — the host is the one who ends it.
+Bring up is the only way onto the stage, so the room stays under control. Start
+it later announces the room on the shelf with a time on it.
 
 *(from https://xelvic.com/features/live-rooms)*
 

@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 import { lazy, Suspense } from 'react'
 
@@ -14,10 +14,24 @@ import Home from './pages/Home'
 // lazy-load secondary pages
 const Features = lazy(() => import('./pages/Features'))
 const FeatureDetail = lazy(() => import('./pages/FeatureDetail'))
+/* Messaging, Calls, Live Rooms, Moments, Audio, Drops & Vibes and Themes have
+   pages of their own rather than the generic feature template — declared before
+   `/features/:slug` so the longer path wins.
+
+   Themes & Drip and The Cast are one page now: the wardrobe and the faces that
+   come with it were always the same story, and splitting them made people learn
+   it twice. `/characters` survives as a redirect so old links still land on the
+   cast section. */
+const Messaging = lazy(() => import('./pages/Messaging'))
+const Calls = lazy(() => import('./pages/Calls'))
+const LiveRooms = lazy(() => import('./pages/Live'))
+const Moments = lazy(() => import('./pages/Moments'))
+const Audio = lazy(() => import('./pages/Audio'))
+const DropsVibes = lazy(() => import('./pages/DropsVibes'))
+const Themes = lazy(() => import('./pages/Themes'))
 const HowItWorks = lazy(() => import('./pages/HowItWorks'))
 const WhatsNewPage = lazy(() => import('./pages/WhatsNew'))
 const Explore = lazy(() => import('./pages/Explore'))
-const Characters = lazy(() => import('./pages/Characters'))
 const Overview = lazy(() => import('./pages/Overview'))
 const Download = lazy(() => import('./pages/Download'))
 const Creators = lazy(() => import('./pages/Creators'))
@@ -64,11 +78,21 @@ export default function App() {
                 <Routes location={location}>
                   <Route path="/" element={<Home />} />
                   <Route path="/features" element={<Features />} />
+                  <Route path="/features/chat" element={<Messaging />} />
+                  <Route path="/features/calls" element={<Calls />} />
+                  <Route path="/features/live-rooms" element={<LiveRooms />} />
+                  <Route path="/features/moments" element={<Moments />} />
+                  <Route path="/features/audio" element={<Audio />} />
+                  <Route path="/features/drops-vibes" element={<DropsVibes />} />
+                  <Route path="/features/themes" element={<Themes />} />
                   <Route path="/features/:slug" element={<FeatureDetail />} />
                   <Route path="/how-it-works" element={<HowItWorks />} />
                   <Route path="/whats-new" element={<WhatsNewPage />} />
                   <Route path="/explore" element={<Explore />} />
-                  <Route path="/characters" element={<Characters />} />
+                  <Route
+                    path="/characters"
+                    element={<Navigate to="/features/themes#cast" replace />}
+                  />
                   <Route path="/overview" element={<Overview />} />
                   <Route path="/download" element={<Download />} />
                   <Route path="/creators" element={<Creators />} />

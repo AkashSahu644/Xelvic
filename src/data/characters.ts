@@ -89,6 +89,32 @@ export const mascotFor = (slug: string, pose: 'typing' | 'wait') =>
 /** A theme's preview cover — the tint the character sits on. */
 export const coverFor = (slug: string) => `/media/themes/covers/${slug}.png`
 
+/**
+ * The 12 packs that ship a full-page illustration on top of the two poses.
+ * `page.png` is not universal in the build, so this list is the only safe way
+ * to know whether a theme's page art exists.
+ */
+export const pageArtSlugs = [
+  'astro',
+  'bubblegum',
+  'cutlass',
+  'dino',
+  'idol',
+  'kitsune',
+  'mecha',
+  'ronin',
+  'shinobi',
+  'shojo',
+  'toon',
+  'windup',
+] as const
+
+export const pageArtCast = cast.filter((c) =>
+  (pageArtSlugs as readonly string[]).includes(c.slug),
+)
+
+export const poseCount = poses.length
+
 /** Where the cast turns up while you're actually using the app. */
 export const sightings = [
   {

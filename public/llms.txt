@@ -26,7 +26,7 @@ at https://xelvic.com/llms-full.txt.
 - [Messaging](https://xelvic.com/features/chat): One-to-one and group chat with channels, voice notes, media, documents and an offline outbox.
 - [Voice & Video Calls](https://xelvic.com/features/calls): Peer-to-peer WebRTC calls with encrypted media, add-people-mid-call and a full call history.
 - [Moments & Memories](https://xelvic.com/features/moments): Posts with text, polls and music that last 24 hours, then file themselves into Memories.
-- [Live & Rooms](https://xelvic.com/features/live-rooms): Camera or text live streaming, plus audio rooms where the host hands out the microphones.
+- [Live & Rooms](https://xelvic.com/features/live-rooms): Rooms, Streams, Games and AMAs you open yourself, with hands up and Bring up to hand out the microphones.
 - [Drops & Vibes](https://xelvic.com/features/drops-vibes): Photo Drops and short-video Vibes, with feels and private notes on each post.
 - [Audio & Music](https://xelvic.com/features/audio): Charts, playlists, offline saving and sharing a track straight into a chat.
 - [Themes & Drip](https://xelvic.com/features/themes): 50+ themes that restyle the whole app, chat wallpapers, and wearable Drip for your profile.

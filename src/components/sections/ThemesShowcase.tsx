@@ -109,7 +109,7 @@ export default function ThemesShowcase() {
 
         <Reveal className="mt-10 text-center">
           <Link
-            to="/characters"
+            to="/features/themes#cast"
             className="inline-flex items-center gap-2 text-sm font-bold text-blue-glow transition-colors hover:text-pink-400"
           >
             Meet all {cast.length} theme characters

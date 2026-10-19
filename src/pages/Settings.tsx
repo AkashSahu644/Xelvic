@@ -54,7 +54,7 @@ const groups: Group[] = [
     sub: 'Themes and wallpapers',
     why: 'The app is meant to look like yours. Nothing in here is held back behind a subscription.',
     rows: [
-      { l: 'Theme', d: '50+ looks that flip the whole app at once. Change it, or remove it, whenever you like.' },
+      { l: 'Theme', d: '33 looks that flip the whole app at once. Change it, or remove it, whenever you like.' },
       { l: 'Chat wallpaper', d: 'Set a backdrop behind a conversation — or take it off and go back to plain.' },
     ],
   },

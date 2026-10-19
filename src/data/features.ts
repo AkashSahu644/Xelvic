@@ -86,16 +86,16 @@ export const features: Feature[] = [
     name: 'Live & Rooms',
     tagline: 'Go live. Hold the room.',
     blurb:
-      'Stream live by camera or text, or open an audio room where you hand out the mics — and even watch a game together.',
+      'Open a room from the Live tab — voices only in a Room, on camera in a Stream, or on a board in a Game — and hand out the mics yourself.',
     color: '#be185d',
     screen: '/media/themes/catgirl/audio.jpg',
     quote:
       'Anybody can walk in. You hold the room, which means you hand out the microphones.',
     points: [
-      { title: 'Go live your way', body: 'Camera live, text live — announced to everyone who follows you.' },
+      { title: 'Go live your way', body: 'Room, Stream, Game or AMA — the room is whatever you open it as.' },
       { title: 'Audio rooms', body: 'You open it, hand out mics, and you are the one who closes it.' },
-      { title: 'Watch together', body: 'Pick a game and the board becomes the stream — everyone sees the same thing.' },
-      { title: 'Host controls', body: 'Full moderation so your room stays yours.' },
+      { title: 'Play together', body: 'Pick a game and the board becomes the stream — everyone sees the same thing.' },
+      { title: 'Host controls', body: 'Bring up is the only way onto the stage, so the room stays yours.' },
     ],
   },
   {
@@ -138,12 +138,12 @@ export const features: Feature[] = [
     name: 'Themes & Drip',
     tagline: 'A look for every you',
     blurb:
-      'Flip your whole app into a new world with 50+ themes, chat wallpapers and wearable "Drip" for your profile.',
+      'Flip your whole app into a new world with 33 themes — 17 of them with their own character — plus chat wallpapers and wearable "Drip" for your profile. The themes, Drip and the cast all live on one page.',
     color: '#ec4899',
     screen: '/media/themes/catgirl/convo.jpg',
     quote: 'This is the one you are wearing.',
     points: [
-      { title: '50+ themes', body: 'Anime, kitsune, shinobi, unicorn, mecha and more.' },
+      { title: '33 themes, 17 faces', body: '17 packs with their own character, plus 16 colour-only looks — 29 of the 33 also ship a light cover.' },
       { title: 'Chat wallpapers', body: 'Set the scene with hand-painted backdrops.' },
       { title: 'Drip wearables', body: 'Dress your profile in cosmetic looks.' },
       { title: 'Unlocked by Sparks', body: 'Keep the spark going and new looks open up.' },
@@ -246,41 +246,42 @@ export const featureGuides: Record<string, FeatureGuide> = {
     ],
   },
   moments: {
-    path: ['Home feed', 'Tap your avatar ring', 'or swipe to Moments'],
+    path: ['Moments tab', 'Tap + on your circle', 'Post'],
     demo: 'moments',
     shots: [
       { src: '/media/themes/animeblue/moments.jpg', caption: 'A moment playing' },
       { src: '/media/themes/catgirl/moment.jpg', caption: 'Add music & polls' },
     ],
     steps: [
-      { tap: 'Tap your avatar with the + ring', detail: 'At the top of the feed — this opens the Moment composer.' },
+      { tap: 'Tap the + on your circle', detail: 'First on the Moments rail — this opens the Moment composer.' },
       { tap: 'Add text, a poll or music', detail: 'Set the mood with a track, ask the room with a poll, or just drop a thought.' },
       { tap: 'Mention up to 5 people', detail: 'Type @ to tag the people who should see themselves in it.' },
       { tap: 'Post — it lasts 24 hours', detail: 'Followers see it today; tomorrow it tucks itself into your Memories.' },
     ],
     tips: [
       'Only people you follow back can see your Moments.',
+      'Open your own Moment and tap 14 watched to see who answered and who watched it.',
       'Open Profile → Memories to relive everything you have ever posted.',
       'Tap-and-hold a moment to pause it; swipe sideways to skip.',
     ],
   },
   'live-rooms': {
-    path: ['Live tab', 'Tap Go Live', 'Pick camera, text or audio room'],
+    path: ['Live tab', 'Tap +', 'Pick Room, Stream, Game or AMA'],
     demo: 'live',
     shots: [
       { src: '/media/themes/catgirl/audio.jpg', caption: 'An audio room' },
       { src: '/media/themes/catgirl/live.jpg', caption: 'Camera live' },
     ],
     steps: [
-      { tap: 'Open the Live tab', detail: 'See who is live right now, or start your own broadcast.' },
-      { tap: 'Tap Go Live', detail: 'Choose Camera live, Text live, or open an Audio room. Followers get a ping.' },
-      { tap: 'Hand out the mic 🎤', detail: 'In an audio room you are the host — tap a listener to invite them up to speak.' },
-      { tap: 'Start Watch Together', detail: 'Pick a game and the board becomes the stream so everyone sees the same thing.' },
+      { tap: 'Open the Live tab', detail: 'See who is on air, what is coming up, and the rooms you opened yourself.' },
+      { tap: 'Tap + and open a room', detail: 'Name it, choose Room, Stream, Game or AMA, and start it now or later.' },
+      { tap: 'Hand out the mic 🎤', detail: 'Listeners raise a hand under Hands up — tap Bring up and they are on the stage.' },
+      { tap: 'Put a game on the stage', detail: 'Pick a game and the board becomes the stream, with Play again or Put it away when it ends.' },
     ],
     tips: [
-      'You opened the room, so you close it — full host moderation is built in.',
-      'Remove or mute anyone with a tap on their avatar.',
-      'Comments and reactions float up live along the bottom of the screen.',
+      'You opened the room, so you close it — the host is the one who ends it.',
+      'Bring up is the only way onto the stage, so the room stays under control.',
+      'Start it later announces the room on the shelf with a time on it.',
     ],
   },
   'drops-vibes': {
@@ -331,7 +332,7 @@ export const featureGuides: Record<string, FeatureGuide> = {
     ],
     steps: [
       { tap: 'Open Settings → Appearance', detail: 'Tap your profile, then the ⚙️ gear, then Appearance.' },
-      { tap: 'Pick a theme', detail: 'Preview any of the 50+ looks live, then apply to flip your whole app.' },
+      { tap: 'Pick a theme', detail: 'Preview any of the 33 looks live, then apply to flip your whole app.' },
       { tap: 'Set a chat wallpaper', detail: 'Choose a hand-painted backdrop for your conversations.' },
       { tap: 'Dress your profile in Drip', detail: 'Add cosmetic wearables that show on your avatar and profile.' },
     ],

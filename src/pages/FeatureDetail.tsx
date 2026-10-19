@@ -1,5 +1,5 @@
-import { useParams, Link, Navigate } from 'react-router-dom'
-import { getFeature, getGuide, features } from '../data/features'
+import { useParams, Navigate } from 'react-router-dom'
+import { getFeature, getGuide } from '../data/features'
 import PageHero from '../components/layout/PageHero'
 import Reveal from '../components/ui/Reveal'
 import PhoneFrame from '../components/ui/PhoneFrame'
@@ -10,7 +10,7 @@ import FeatureHowItWorks from '../components/sections/FeatureHowItWorks'
 import MagneticButton from '../components/ui/MagneticButton'
 import { CTABand } from '../components/sections/Bands'
 import { useSEO } from '../hooks/usePageMeta'
-import { Check, ArrowRight } from 'lucide-react'
+import { Check } from 'lucide-react'
 
 export default function FeatureDetail() {
   const { slug } = useParams()
@@ -26,7 +26,6 @@ export default function FeatureDetail() {
 
   if (!feature) return <Navigate to="/features" replace />
   const Icon = feature.icon
-  const others = features.filter((f) => f.slug !== feature.slug).slice(0, 3)
 
   return (
     <>
@@ -105,40 +104,6 @@ export default function FeatureDetail() {
           </div>
         </section>
       )}
-
-      {/* other features */}
-      <section className="section">
-        <div className="wrap">
-          <h3 className="mb-8 font-display text-2xl font-bold">Keep exploring</h3>
-          <div className="grid gap-5 md:grid-cols-3">
-            {others.map((o) => {
-              const OIcon = o.icon
-              return (
-                <Link
-                  key={o.slug}
-                  to={`/features/${o.slug}`}
-                  className="group flex items-center gap-4 rounded-2xl border border-white/10 bg-white/[0.03] p-5 transition-all duration-200 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.06]"
-                >
-                  <span
-                    className="grid h-11 w-11 shrink-0 place-items-center rounded-xl text-white"
-                    style={{ background: `linear-gradient(135deg, ${o.color}, #ff8fc4)` }}
-                  >
-                    <OIcon size={20} />
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block font-bold">{o.name}</span>
-                    <span className="block truncate text-sm text-white/50">{o.tagline}</span>
-                  </span>
-                  <ArrowRight
-                    size={18}
-                    className="shrink-0 text-white/30 transition-all group-hover:translate-x-1 group-hover:text-white"
-                  />
-                </Link>
-              )
-            })}
-          </div>
-        </div>
-      </section>
 
       <CTABand />
     </>

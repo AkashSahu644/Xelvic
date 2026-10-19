@@ -38,7 +38,7 @@ export default function NotFound() {
         <p className="mx-auto mt-3 max-w-md text-white/55">The page you're after doesn't exist — but your people are still just a tap away.</p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
           <MagneticButton to="/" variant="glow">Back home</MagneticButton>
-          <Link to="/characters" className="btn btn-ghost">Meet the cast</Link>
+          <Link to="/features/themes#cast" className="btn btn-ghost">Meet the cast</Link>
         </div>
       </div>
     </section>

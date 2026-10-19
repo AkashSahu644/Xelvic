@@ -65,9 +65,9 @@ const rails: { tiles: string[]; down: boolean; ratio: string; duration: number }
   }))
 
 /* Three claims, each one already made elsewhere on the site and each one true
-   as written: 50+ themes (features.ts), the Private Vault (features.ts), and
+   as written: 33 themes (features.ts), the Private Vault (features.ts), and
    nothing sold (Data, Privacy and Settings all say so). */
-const promises = ['50+ themes', 'Private Vault', 'Nothing sold, ever']
+const promises = ['33 themes', 'Private Vault', 'Nothing sold, ever']
 
 /**
  * One rail of the wall.

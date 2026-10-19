@@ -114,11 +114,13 @@ export function routeExtras(r: RouteSeo): Json[] {
         }),
       ]
 
-    case '/characters':
+    case '/features/themes':
+      /* Themes & Drip and The Cast are one page, so the cast list ships with
+         the theme route rather than an extra /characters document. */
       return [
         itemListLd({
           name: 'The Xelvic cast',
-          path: '/characters',
+          path: '/features/themes',
           items: cast.map((c) => ({ name: c.name, description: c.note })),
         }),
       ]

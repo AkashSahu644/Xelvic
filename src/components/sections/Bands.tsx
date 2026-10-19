@@ -4,7 +4,7 @@ import StoreButton from '../ui/StoreButton'
 import { themeCovers } from '../../data/themes'
 
 /* The closing pitch sits on the app's own wallpapers: every tile is a real
- * theme cover pulled from the build, so the band proves the "50+ themes"
+ * theme cover pulled from the build, so the band proves the "33 themes"
  * claim instead of just decorating it. No character art here — the mascot
  * poses in /media/char are still the old blue robot, and blue fights a
  * pink-and-white page. */
@@ -70,7 +70,7 @@ export function CTABand() {
 
         <Reveal delay={0.1}>
           <p className="mt-8 text-center text-sm font-semibold text-plum/50">
-            Free to download · Android · 50+ themes · Encrypted chats &amp; calls
+            Free to download · Android · 33 themes · Encrypted chats &amp; calls
           </p>
         </Reveal>
       </div>

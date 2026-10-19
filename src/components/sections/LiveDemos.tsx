@@ -43,7 +43,7 @@ const reels: {
     kind: 'live',
     label: 'Live & Rooms',
     title: 'Go live, host a room',
-    body: 'Camera live, audio rooms where you hand out the mic, or Watch Together on the same screen.',
+    body: 'Open a Room for voices only, a Stream for cameras, or a Game where the board is the stream — and hand out the mics yourself.',
     to: '/features/live-rooms',
     color: '#be185d',
   },

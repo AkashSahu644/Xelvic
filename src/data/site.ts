@@ -17,7 +17,7 @@ export const site = {
      should come away knowing what Xelvic does, not that it does several
      things. */
   description:
-    'Xelvic is a free social and messaging app for iOS, Android and the web: chat and group messaging, voice and video calls, Moments, live rooms, Drops and Vibes, music, a daily Spark streak, 50+ themes and a private, encrypted Vault.',
+    'Xelvic is a free social and messaging app for iOS, Android and the web: chat and group messaging, voice and video calls, Moments, live rooms, Drops and Vibes, music, a daily Spark streak, 33 themes and a private, encrypted Vault.',
   // Default social share image (1200×630). Lives in /public/og.
   ogImage: '/og/xelvic-og.png',
   locale: 'en_US',

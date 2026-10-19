@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import type { ReactNode } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Phone,
@@ -6,9 +7,10 @@ import {
   VideoOff,
   Mic,
   Volume2,
+  VolumeX,
+  Search,
   UserPlus,
   ChevronDown,
-  Camera,
   Radio,
   Heart,
   Send,
@@ -18,26 +20,57 @@ import {
   Lock,
   Plus,
   Pause,
-  Upload,
-  X,
   Play,
+  Shuffle,
+  SkipBack,
+  SkipForward,
+  Repeat,
+  Download,
+  X,
+  Upload,
   Ellipsis,
   Share2,
   LayoutGrid,
   Sparkles,
   MessageSquare,
   AudioLines,
+  Crown,
+  Gamepad2,
+  Hand,
+  Headphones,
+  Share,
+  Smile,
   Bookmark,
   EyeOff,
   Image as ImageIcon,
   CornerUpLeft,
+  AlertCircle,
+  ArrowRight,
+  AtSign,
+  BatteryFull,
+  Cake,
+  Eye,
+  RefreshCw,
+  Signal,
+  User,
+  Wifi,
 } from "lucide-react";
 import { FaArrowLeft } from "react-icons/fa6";
 import { MdVerified } from "react-icons/md";
 import { FiPlusCircle } from "react-icons/fi";
 import { useReducedMotion } from "../../hooks/useReducedMotion";
+import ThemeMarketplaceMockup from "./ThemeMarketplaceMockup";
 
-export type DemoKind = "chat" | "call" | "moments" | "live" | "audio" | "drops";
+export type DemoKind =
+  | "chat"
+  | "call"
+  | "moments"
+  | "live"
+  | "audio"
+  | "drops"
+  | "onboarding"
+  | "contacts"
+  | "marketplace";
 const barClass =
   "flex items-center justify-between px-4 pt-9 pb-2 text-[11px] font-semibold text-pure/90";
 
@@ -275,9 +308,9 @@ function ChatDemo({ reduced }: { reduced: boolean }) {
                   key={`${convo}-${idx}`}
                   layout
                   {...bubbleMotion}
-                  className="flex items-center gap-1.5 self-center rounded-full border border-plum/10 bg-pure px-3.5 py-1 text-[11px] font-semibold text-plum/55 shadow-[0_1px_3px_rgba(58,10,36,.05)]"
+                  className="flex items-center gap-1.5 self-center rounded-full border border-plum/10 bg-pure px-3.5 py-1 text-[11px] font-semibold text-plum/75 shadow-[0_1px_3px_rgba(58,10,36,.05)]"
                 >
-                  <Lock size={11} className="text-plum/45" />
+                  <Lock size={11} className="text-plum/60" />
                   {m.text}
                 </motion.div>
               );
@@ -287,7 +320,7 @@ function ChatDemo({ reduced }: { reduced: boolean }) {
                   key={`${convo}-${idx}`}
                   layout
                   {...bubbleMotion}
-                  className="self-center rounded-full border border-plum/10 bg-pure px-2.5 py-1 text-[11px] font-semibold text-plum/55 shadow-[0_1px_3px_rgba(58,10,36,.05)]"
+                  className="self-center rounded-full border border-plum/10 bg-pure px-2.5 py-1 text-[11px] font-semibold text-plum/75 shadow-[0_1px_3px_rgba(58,10,36,.05)]"
                 >
                   {m.text}
                 </motion.div>
@@ -374,7 +407,7 @@ function ChatDemo({ reduced }: { reduced: boolean }) {
         <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full border-pink-500 text-pink-500">
           <FiPlusCircle size={18} />
         </span>
-        <div className="flex-1 truncate rounded-full bg-pure px-3 border py-2 text-[12px]">
+        <div className="flex-1 truncate rounded-full bg-pure px-3 py-2 text-[12px] shadow-[0_1px_3px_rgba(58,10,36,.08)]">
           {draft ? (
             <span className="text-plum">
               {draft}
@@ -502,35 +535,43 @@ function MomentsDemo({ reduced }: { reduced: boolean }) {
     return () => clearInterval(t);
   }, [reduced]);
   const m = moments[idx];
+
+  /* The marketing hero: the Moment itself is the whole screen, with the
+     poster, the progress and Reply laid over the picture. */
   return (
-    <div className="relative h-full bg-black text-pure">
+    <div className="relative flex h-full flex-col overflow-hidden bg-black text-pure">
       <AnimatePresence mode="popLayout">
         <motion.img
           key={idx}
           src={m.src}
           alt=""
-          initial={{ opacity: 0, scale: 1.08 }}
+          initial={{ opacity: 0, scale: 1.06 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6 }}
           className="absolute inset-0 h-full w-full object-cover"
         />
       </AnimatePresence>
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/45 via-black/15 to-black/60" />
 
-      {/* scrims top & bottom for legibility */}
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-black/70 to-transparent" />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-black/80 to-transparent" />
+      <div className="relative flex shrink-0 items-center justify-between px-4 pb-1 pt-3 text-[9px] font-semibold leading-none text-pure/85">
+        <span>12:33</span>
+        <span className="flex items-center gap-1 text-pure/60">
+          <span className="h-[7px] w-2.5 rounded-[2px] border border-pure/50" />
+          <span>5G</span>
+        </span>
+      </div>
 
-      {/* top: progress segments + poster header */}
-      <div className="absolute inset-x-0 top-0 z-10 px-3 pt-3">
-        <div className="flex gap-1">
+      {/* progress + poster */}
+      <div className="relative shrink-0 px-3">
+        <div className="flex gap-[3px]">
           {moments.map((_, i) => (
             <span
               key={i}
-              className="h-[3px] flex-1 overflow-hidden rounded-full bg-pure/30"
+              className="h-[2.5px] flex-1 overflow-hidden rounded-full bg-pure/30"
             >
               <motion.span
-                className="block h-full bg-pure"
+                className="block h-full rounded-full bg-pure"
                 initial={{ width: "0%" }}
                 animate={{
                   width: i < idx ? "100%" : i === idx ? "100%" : "0%",
@@ -541,31 +582,31 @@ function MomentsDemo({ reduced }: { reduced: boolean }) {
           ))}
         </div>
 
-        <div className="mt-3 flex items-center gap-2.5">
-          <span className="h-8 w-8 shrink-0 overflow-hidden rounded-full ring-2 ring-pure/40">
+        <div className="mt-2.5 flex items-center gap-2">
+          <span className="h-7 w-7 shrink-0 overflow-hidden rounded-full ring-1 ring-pure/30">
             <img
-              src="/media/walls/mehfil.jpg"
+              src="/media/walls/sheher.jpg"
               alt=""
               className="h-full w-full object-cover"
             />
           </span>
           <div className="min-w-0 flex-1 leading-tight">
             <span className="flex items-center gap-1">
-              <span className="text-sm font-bold">Hifza</span>
-              <BadgeCheck size={13} className="shrink-0 text-[#1d9bf0]" />
+              <span className="text-[12px] font-bold">Emma</span>
+              <BadgeCheck size={11} className="shrink-0 text-[#4db5ff]" />
             </span>
-            <span className="block text-[10px] text-pure/70">
-              2 moments · 4 hr ago
+            <span className="block text-[9px] text-pure/70">
+              2 moments · 23 hr ago
             </span>
           </div>
-          <Pause size={16} className="shrink-0 text-pure" />
-          <Upload size={15} className="shrink-0 text-pure" />
-          <X size={17} className="shrink-0 text-pure" />
+          <Pause size={15} className="shrink-0 text-pure" />
+          <Share2 size={14} className="shrink-0 text-pure" />
+          <X size={15} className="shrink-0 text-pure" />
         </div>
       </div>
 
-      {/* centred caption, laid over the photo */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center px-6">
+      {/* the line sits on the picture, as in the app */}
+      <div className="pointer-events-none absolute inset-0 grid place-items-center px-7">
         <AnimatePresence mode="wait">
           <motion.p
             key={idx}
@@ -573,165 +614,383 @@ function MomentsDemo({ reduced }: { reduced: boolean }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.4 }}
-            className="text-center font-display text-xl font-semibold text-pure drop-shadow-[0_2px_8px_rgba(0,0,0,.6)]"
+            className="text-center font-display text-xl font-semibold leading-snug text-pure drop-shadow-[0_2px_10px_rgba(0,0,0,.65)]"
           >
             {m.caption}
           </motion.p>
         </AnimatePresence>
       </div>
 
-      {/* bottom: like + reply bar */}
-      <div className="absolute inset-x-0 bottom-0 z-10 px-3 pb-4">
-        <div className="mb-3 flex justify-end pr-1">
-          <Heart size={20} className="text-pure" />
+      {/* the foot of the viewer, over the picture */}
+      <div className="relative mt-auto px-4 pb-4">
+        <span className="text-[9px] text-pure/70">Hold to open the drop</span>
+        <div className="mt-2 flex justify-end">
+          <span className="grid h-[30px] w-[30px] place-items-center rounded-full bg-pure/15 text-pure backdrop-blur">
+            <Heart size={15} />
+          </span>
         </div>
-        <div className="flex items-center gap-2">
-          <div className="flex-1 rounded-full border border-pure/40 px-4 py-2.5 text-[11px] text-pure/60">
-            Reply…
+        <div className="mt-2 flex items-center gap-2">
+          <div className="flex-1 rounded-full bg-pure/15 px-4 py-2.5 text-[10px] text-pure/70 backdrop-blur">
+            Reply...
           </div>
-          <Send size={18} className="shrink-0 text-pure" />
+          <span className="grid h-9 w-9 place-items-center rounded-full bg-pure/25 text-pure backdrop-blur">
+            <Send size={14} />
+          </span>
         </div>
       </div>
+
+      <span className="pointer-events-none absolute bottom-1 left-1/2 h-[3px] w-[90px] -translate-x-1/2 rounded-full bg-pure/50" />
     </div>
   );
 }
 
 /* ---------------------------- LIVE ---------------------------- */
-const liveComments = [
-  "🔥🔥",
-  "joined!",
-  "play that again",
-  "hiii",
-  "👏👏",
-  "lets gooo",
-];
+/** The app's audio room as the host sees it: the stage, the game card, the
+ *  hands-up queue and the round bar underneath. The one thing that moves is the
+ *  waveform in the kind tile, because a live room's own indicator is the only
+ *  motion the app gives it. */
 function LiveDemo({ reduced }: { reduced: boolean }) {
-  const [feed, setFeed] = useState<{ id: number; who: string; text: string }[]>(
-    [],
-  );
-  const n = useRef(0);
-  useEffect(() => {
-    if (reduced) return;
-    const t = setInterval(() => {
-      n.current += 1;
-      setFeed((f) =>
-        [
-          ...f,
-          {
-            id: n.current,
-            who: ["maya", "devon", "ria", "sam"][n.current % 4],
-            text: liveComments[n.current % liveComments.length],
-          },
-        ].slice(-4),
-      );
-    }, 1300);
-    return () => clearInterval(t);
-  }, [reduced]);
+  const bars = [0.55, 1, 0.7, 0.85];
+
   return (
-    <div className="relative h-full bg-[#1c0614] text-pure">
-      <img
-        src="/media/themes/catgirl/audio.jpg"
-        alt=""
-        className="absolute inset-0 h-full w-full object-cover opacity-80"
-      />
-      <div className="absolute inset-0 bg-gradient-to-b from-plum/60 via-transparent to-plum/90" />
-      <div className="relative z-10 flex items-center gap-2 px-3 pt-10">
-        <span className="flex items-center gap-1 rounded-full bg-[#e11d6b] px-2 py-0.5 text-[10px] font-bold text-pure">
-          <Radio size={11} /> LIVE
-        </span>
-        <span className="rounded-full bg-plum/60 px-2 py-0.5 text-[10px] text-pure/80">
-          1.2k watching
+    <div className="flex h-full flex-col bg-[#f8f6f9] text-plum">
+      <div className="flex shrink-0 items-end justify-between px-4 pb-2 pt-4 text-[10px] font-semibold leading-none text-plum/70">
+        <span>21:04</span>
+        <span className="grid h-4 w-9 place-items-center rounded-full bg-[#22c55e] text-pure">
+          <Mic size={8} />
         </span>
       </div>
-      <div className="absolute bottom-16 left-0 right-0 z-10 space-y-1.5 px-3">
-        <AnimatePresence initial={false}>
-          {feed.map((c) => (
-            <motion.div
-              key={c.id}
-              initial={{ opacity: 0, x: -16 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0 }}
-              className="text-[11px]"
-            >
-              <span className="font-bold text-[#ff9ecb]">{c.who}</span>{" "}
-              <span className="text-pure/85">{c.text}</span>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+
+      <div className="flex shrink-0 items-center gap-2 px-2.5">
+        <ChevronLeft size={16} className="shrink-0 text-plum/70" />
+        <span className="relative grid h-7 w-7 shrink-0 place-items-center rounded-lg bg-[#a16207] text-pure">
+          <Mic size={13} className="absolute opacity-30" />
+          <span className="relative flex h-3 items-end gap-[2px]">
+            {bars.map((h, i) => (
+              <motion.span
+                key={i}
+                className="w-[2px] rounded-full bg-pure"
+                animate={
+                  reduced
+                    ? { height: `${h * 12}px` }
+                    : { height: [`${4 + i}px`, `${h * 12}px`, `${5 + i}px`] }
+                }
+                transition={{
+                  duration: 0.8 + i * 0.12,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              />
+            ))}
+          </span>
+        </span>
+        <span className="min-w-0 flex-1 leading-tight">
+          <span className="block truncate text-[11px] font-bold">
+            Late night, no plan
+          </span>
+          <span className="block truncate text-[8px] text-plum/50">
+            Jordan Blake · 3 people
+          </span>
+        </span>
+        <span className="shrink-0 rounded bg-[#e11d6b] px-1.5 py-[3px] text-[6.5px] font-bold leading-none text-pure">
+          LIVE
+        </span>
+        <MoreVertical size={13} className="shrink-0 text-plum/60" />
       </div>
-      <div className="absolute bottom-0 left-0 right-0 z-10 flex items-center gap-2 p-3">
-        <div className="flex-1 rounded-full border border-pure/30 px-3 py-1.5 text-[11px] text-pure/60">
-          Say something…
+
+      {/* `pt-1` keeps the avatar's ring and crown clear of the container's
+          clip — both are drawn outside the avatar's own box. */}
+      <div className="mt-5 flex min-h-0 flex-1 flex-col overflow-hidden px-3 pt-1">
+        <div className="flex flex-col items-center">
+          <span className="relative">
+            <span className="block h-16 w-16 overflow-hidden rounded-full ring-[3px] ring-[#e11d6b]">
+              <img
+                src="/media/walls/studio.jpg"
+                alt=""
+                className="h-full w-full object-cover"
+              />
+            </span>
+            <span className="absolute -right-0.5 -top-0.5 grid h-4 w-4 place-items-center rounded-full bg-pure text-[#e11d6b] shadow-sm">
+              <Crown size={9} />
+            </span>
+          </span>
+          <span className="mt-1.5 text-[9px] font-bold leading-none">
+            Jordan Blake
+          </span>
+          <span className="mt-2 flex items-center gap-1 text-[7.5px] leading-none text-plum/55">
+            <Mic size={8} /> Your microphone is open · 1 voice
+          </span>
         </div>
-        <span className="grid h-9 w-9 place-items-center rounded-full bg-pure/15 text-pure">
-          <Camera size={16} />
+
+        <div className="mt-2.5 rounded-xl border border-plum/10 bg-pure px-2.5 py-2">
+          <span className="block text-[9px] font-bold leading-tight">
+            Play something with the room
+          </span>
+          <span className="mt-0.5 block text-[7.5px] leading-snug text-plum/50">
+            Two of you play and everybody else watches.
+          </span>
+          <span className="mt-1.5 flex items-center justify-center rounded-lg border border-plum/15 py-1.5 text-[8px] font-semibold leading-none">
+            Choose a game
+          </span>
+        </div>
+
+        <span className="mt-3 block text-[7px] font-bold uppercase leading-none tracking-[0.12em] text-plum/40">
+          Hands up
         </span>
+        <span className="mt-1.5 flex items-center gap-2">
+          <span className="block h-7 w-7 shrink-0 overflow-hidden rounded-full bg-pink-100">
+            <img
+              src="/media/walls/mehfil.jpg"
+              alt=""
+              className="h-full w-full object-cover"
+            />
+          </span>
+          <span className="min-w-0 flex-1 truncate text-[9px] font-bold">
+            Tyler Brooks
+          </span>
+          <Hand size={10} className="shrink-0 text-[#d97706]" />
+          <span className="shrink-0 rounded-full bg-[#b3134f] px-2.5 py-1 text-[7.5px] font-bold leading-none text-pure">
+            Bring up
+          </span>
+        </span>
+
+        <span className="mt-3 block text-[7px] font-bold uppercase leading-none tracking-[0.12em] text-plum/40">
+          Listening
+        </span>
+        <span className="mt-1.5 flex items-center gap-1.5">
+          <Headphones size={10} className="shrink-0 text-plum/50" />
+          <span className="text-[9px] leading-none text-plum/70">
+            2 people listening
+          </span>
+        </span>
+      </div>
+
+      <div className="shrink-0 border-t border-plum/10 bg-pure px-2 pb-4 pt-2">
+        <div className="flex items-center justify-between">
+          {[MessageSquare, Smile, Gamepad2, Share, Mic].map((I, i) => (
+            <span
+              key={i}
+              className={`grid h-7 w-7 place-items-center rounded-full ${
+                i === 2 || i === 4
+                  ? "bg-[#fce7f0] text-[#e11d6b]"
+                  : "bg-[#f3f0f4] text-plum/70"
+              }`}
+            >
+              <I size={13} />
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
 }
 
 /* ---------------------------- AUDIO --------------------------- */
+/** The app's light player, drawn the way the app draws it: the artwork with the
+ *  mint circle behind it, "Piya Aye Na", a waveform caught part-way, the pink
+ *  circle in the middle, Share and Download under it, and Up next below. */
+const demoWave = [
+  6, 12, 5, 15, 9, 6, 16, 9, 12, 7, 17, 10, 5, 14, 8, 12, 6, 15, 9, 7, 13, 9,
+  16, 11, 6, 14, 8, 12, 7, 16, 10, 7, 13, 9, 14, 6, 11, 8, 14, 9,
+];
+
 function AudioDemo({ reduced }: { reduced: boolean }) {
   return (
-    <div className="relative flex h-full flex-col bg-gradient-to-b from-[#2e0b22] to-[#1c0614] text-pure">
-      <StatusBar title="" />
-      <div className="flex flex-1 flex-col items-center justify-center px-6">
+    <div className="relative flex h-full flex-col bg-[#f4f1f4] text-plum">
+      <div className="flex shrink-0 items-end justify-between px-4 pb-2 pt-4 text-[10px] font-semibold leading-none text-plum/70">
+        <span>21:04</span>
+        <span className="flex items-center gap-1 text-plum/50">
+          <span className="h-2 w-3 rounded-[2px] border border-plum/40" />
+          <span>5G</span>
+        </span>
+      </div>
+
+      <div className="flex items-center px-3 py-1">
+        <ChevronDown size={18} className="shrink-0 text-plum/70" />
+        <div className="flex-1 text-center leading-tight">
+          <span className="block text-[6px] font-bold uppercase tracking-[0.2em] text-plum/40">
+            Playing from
+          </span>
+          <span className="mt-0.5 block text-[10px] font-bold">Trending</span>
+        </div>
+        <MoreVertical size={16} className="shrink-0 text-plum/60" />
+      </div>
+
+      {/* artwork with the mint circle behind it */}
+      <div className="relative mt-3 flex shrink-0 justify-center">
+        <span className="absolute right-5 top-4 h-[136px] w-[136px] rounded-full bg-[#bfe8dc]" />
         <img
           src="/media/themes/animeblue/audio.jpg"
           alt=""
-          className="h-40 w-40 rounded-2xl object-cover shadow-glow"
+          className="relative h-[160px] w-[160px] rounded-2xl object-cover shadow-[0_18px_40px_rgba(58,10,36,.25)]"
         />
-        <p className="mt-5 text-sm font-bold">Night Drive</p>
-        <p className="text-[11px] text-pure/55">Xelvic Sounds</p>
-        {/* equalizer */}
-        <div className="mt-6 flex h-10 items-end gap-1">
-          {Array.from({ length: 22 }).map((_, i) => (
+      </div>
+
+      <div className="mt-3 flex items-start gap-2 px-4">
+        <div className="min-w-0 flex-1">
+          <span className="block truncate text-[16px] font-extrabold leading-none">
+            Piya Aye Na
+          </span>
+          <span className="mt-1.5 flex items-center gap-1.5">
+            <span className="h-3 w-3 shrink-0 overflow-hidden rounded-full">
+              <img
+                src="/media/walls/studio.jpg"
+                alt=""
+                className="h-full w-full object-cover"
+              />
+            </span>
+            <span className="truncate text-[7px] font-semibold uppercase tracking-[0.08em] text-plum/45">
+              Totul Sarker
+            </span>
+          </span>
+        </div>
+        <Heart size={16} className="mt-0.5 shrink-0 text-plum/70" />
+      </div>
+
+      {/* waveform, with the played part in pink */}
+      <div className="mt-2.5 px-4">
+        <div className="relative flex h-10 items-center gap-[2px]">
+          {demoWave.map((h, i) => (
             <motion.span
               key={i}
-              className="w-1 rounded-full bg-brand-grad"
-              style={{ transformOrigin: "bottom" }}
+              className={`min-w-0 flex-1 rounded-full ${
+                i < 18 ? "bg-[#e91e63]" : "bg-plum/15"
+              }`}
+              style={{
+                height: `${Math.round(h * 1.55)}px`,
+                transformOrigin: "center",
+              }}
               animate={
-                reduced ? { scaleY: 0.5 } : { scaleY: [0.3, 1, 0.4, 0.9, 0.3] }
+                reduced ? undefined : { scaleY: [0.7, 1, 0.8, 1, 0.7] }
               }
               transition={{
-                duration: 1 + (i % 5) * 0.2,
+                duration: 1.4 + (i % 4) * 0.25,
                 repeat: Infinity,
-                delay: i * 0.05,
+                ease: "easeInOut",
+                delay: (i % 6) * 0.08,
               }}
             />
           ))}
-        </div>
-        <div className="mt-6 h-1 w-full overflow-hidden rounded-full bg-pure/15">
-          <motion.div
-            className="h-full bg-brand-grad"
-            animate={reduced ? { width: "45%" } : { width: ["0%", "100%"] }}
-            transition={{ duration: 8, repeat: Infinity }}
+          <span
+            className="pointer-events-none absolute top-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#e91e63] ring-2 ring-[#f4f1f4]"
+            style={{ left: `${(18 / demoWave.length) * 100}%` }}
           />
         </div>
+        <div className="mt-1 flex justify-between text-[7.5px] font-medium text-plum/45">
+          <span>1:45</span>
+          <span>4:45</span>
+        </div>
+      </div>
+
+      <div className="mt-2 flex items-center justify-between px-6 text-plum/70">
+        <Shuffle size={14} />
+        <SkipBack size={18} />
+        <motion.span
+          className="grid h-11 w-11 place-items-center rounded-full bg-[#e91e63] text-pure shadow-[0_6px_18px_rgba(233,30,99,.35)]"
+          animate={reduced ? undefined : { scale: [1, 1.05, 1] }}
+          transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <Pause size={17} fill="currentColor" />
+        </motion.span>
+        <SkipForward size={18} />
+        <Repeat size={14} />
+      </div>
+
+      <div className="mt-3 flex items-center gap-2 px-4">
+        <span className="flex flex-1 items-center justify-center gap-1.5 rounded-full border border-plum/20 py-2 text-[9px] font-semibold">
+          <Share2 size={12} className="text-[#e91e63]" /> Share
+        </span>
+        <span className="flex flex-1 items-center justify-center gap-1.5 rounded-full border border-plum/20 py-2 text-[9px] font-semibold text-plum/70">
+          <Download size={12} /> Download
+        </span>
+      </div>
+
+      <div className="mt-3 flex items-center justify-between px-4">
+        <span className="text-[11px] font-bold">Up next</span>
+        <span className="text-[8px] font-bold text-[#e11d6b]">Queue</span>
+      </div>
+
+      <div className="mt-1.5 space-y-1.5 px-4">
+        {[
+          {
+            src: "/media/themes/alone/audio.jpg",
+            title: "Saundebaazi",
+            artist: "TOTUL SARKER",
+            time: "6:31",
+          },
+          {
+            src: "/media/themes/catgirl/audio.jpg",
+            title: "Jhol",
+            artist: "Ekta 😊😊",
+            time: "4:38",
+          },
+        ].map((t) => (
+          <div key={t.title} className="flex items-center gap-2">
+            <span className="h-8 w-8 shrink-0 overflow-hidden rounded-lg">
+              <img src={t.src} alt="" className="h-full w-full object-cover" />
+            </span>
+            <div className="min-w-0 flex-1 leading-tight">
+              <span className="block truncate text-[9px] font-bold">
+                {t.title}
+              </span>
+              <span className="block truncate text-[7px] text-plum/50">
+                {t.artist}
+              </span>
+            </div>
+            <span className="text-[7.5px] text-plum/40">{t.time}</span>
+            <span className="grid h-5 w-5 place-items-center rounded-full border border-plum/25 text-plum/55">
+              <Play size={9} />
+            </span>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
 /* ---------------------------- DROPS --------------------------- *
- * The Drops feed, matching the real app: a "xelvic" top bar, a "Vibe"
- * rail of reels (avatar + play count + name), a "For you" photo Drop
- * with its like / comment / share / save counts, and the floating
- * five-tab bar (Drops active). */
+ * The Drops feed, matching the real app: the Xelvic mark and wordmark,
+ * a "Vibe" rail of clips (avatar + play count + name) with a muted
+ * clip among them, a "For you" photo Drop with its feel / comment /
+ * share / keep row and the comments underneath, and the floating
+ * light five-tab bar (Drops active). */
 const vibes = [
-  { src: "/media/themes/animeblue/drops.jpg", n: 3 },
-  { src: "/media/themes/catgirl/drops.jpg", n: 10 },
-  { src: "/media/themes/teddy/drops.jpg", n: 5 },
-  { src: "/media/themes/animeblue/moments.jpg", n: 12 },
+  {
+    src: "/media/walls/raat.jpg",
+    avatar: "/media/themes/alone/profile.jpg",
+    name: "Mason",
+    n: 8,
+    muted: false,
+  },
+  {
+    src: "/media/walls/xelvic.jpg",
+    avatar: "/media/walls/mehfil.jpg",
+    name: "Hailey",
+    n: 15,
+    muted: false,
+  },
+  {
+    src: undefined,
+    avatar: "/media/themes/alone/profile.jpg",
+    name: "Mason",
+    n: 7,
+    muted: true,
+  },
+  {
+    src: "/media/walls/safar.jpg",
+    avatar: "/media/walls/xelvic.jpg",
+    name: "Noah",
+    n: 5,
+    muted: false,
+  },
 ];
 
 const dropTabs = [
-  { icon: LayoutGrid, label: "Drops", active: true },
-  { icon: Sparkles, label: "Moments", active: false },
-  { icon: MessageSquare, label: "Convo", active: false },
-  { icon: AudioLines, label: "Audio", active: false },
-  { icon: Radio, label: "Live", active: false },
+  { icon: LayoutGrid, label: "Drops", active: true, dot: false },
+  { icon: Sparkles, label: "Moments", active: false, dot: true },
+  { icon: MessageSquare, label: "Convo", active: false, dot: true },
+  { icon: AudioLines, label: "Audio", active: false, dot: false },
+  { icon: Radio, label: "Live", active: false, dot: false },
 ];
 
 function DropsDemo({ reduced }: { reduced: boolean }) {
@@ -745,132 +1004,177 @@ function DropsDemo({ reduced }: { reduced: boolean }) {
   return (
     <div className="relative flex h-full flex-col overflow-hidden bg-[#fce9f1] text-plum">
       {/* status row */}
-      <div className="flex items-center justify-between px-4 pt-4 pb-1 text-[11px] font-semibold text-plum/75">
-        <span>3:43</span>
-        <span className="flex items-center gap-1 text-plum/55">
+      <div className="flex items-center justify-between px-4 pb-2 pt-4 text-[10px] font-semibold leading-none text-plum/70">
+        <span>1:44</span>
+        <span className="flex items-center gap-1 text-plum/50">
           <span className="h-2 w-3 rounded-[2px] border border-plum/40" />
           <span>5G</span>
         </span>
       </div>
 
       {/* top bar */}
-      <div className="flex items-center gap-2 px-3 py-1.5">
-        {/* The plum disc was there to frame a wordmark file. The mark is its
-            own plate now, so it sits on the bar at the size it was drawn for
-            rather than shrunk inside a circle. */}
-        <img
-          src="/media/brand/xelvic.png"
-          alt=""
-          className="h-8 w-8 shrink-0 rounded-[22%] object-contain"
-        />
-        <span className="font-display text-lg font-extrabold lowercase text-plum">
-          xelvic
+      <div className="flex items-center gap-2 px-4 pb-1 pt-1">
+        <span className="h-8 w-8 shrink-0 overflow-hidden rounded-full ring-2 ring-pure/80">
+          <img
+            src="/media/brand/xelvic.png"
+            alt=""
+            className="h-full w-full object-cover"
+          />
         </span>
-        <Plus size={20} className="ml-auto text-plum" />
+        <span className="font-display text-[17px] font-extrabold tracking-tight">
+          Xelvic
+        </span>
+        <span className="ml-auto flex items-center gap-3 text-plum/80">
+          <Search size={16} />
+          <Plus size={18} />
+        </span>
       </div>
 
       {/* Vibe rail */}
-      <div className="px-3 pt-1">
-        <div className="flex items-center justify-between">
-          <h4 className="text-sm font-bold text-plum">Vibe</h4>
-          <span className="text-xs font-bold text-pink-600">See all</span>
-        </div>
-        <div className="mt-2 flex gap-2 overflow-hidden">
-          {vibes.map((v) => (
-            <div key={v.src} className="w-[22%] shrink-0">
-              <div className="relative aspect-[9/15] overflow-hidden border rounded-xl bg-plum">
+      <div className="mt-2 flex items-center justify-between px-4">
+        <h4 className="text-[13px] font-extrabold">Vibe</h4>
+        <span className="text-[8px] font-bold text-[#e11d6b]">See all</span>
+      </div>
+      <div className="mt-2 flex items-start gap-2 overflow-hidden px-4">
+        {vibes.map((v, i) => (
+          <div key={`${v.name}-${i}`} className="w-[22%] shrink-0">
+            <div className="relative aspect-[9/12.5] overflow-hidden rounded-[10px] bg-[#efe7eb]">
+              {v.muted ? (
+                <span className="grid h-full w-full place-items-center">
+                  <VolumeX size={17} className="text-[#e11d6b]" />
+                </span>
+              ) : (
                 <img
                   src={v.src}
                   alt=""
                   className="h-full w-full object-cover"
                 />
-                <span className="absolute left-1 top-1 h-5 w-5 overflow-hidden rounded-full ring-2 ring-pure/70">
-                  <img
-                    src="/media/walls/mehfil.jpg"
-                    alt=""
-                    className="h-full w-full object-cover"
-                  />
-                </span>
-                <span className="absolute bottom-1 left-1 flex items-center gap-0.5 text-[8px] font-semibold text-pure drop-shadow">
-                  <Play size={8} className="fill-pure" />
-                  {v.n}
-                </span>
-              </div>
-              <p className="mt-1 flex items-center gap-0.5 text-[9px] font-semibold text-plum">
-                Arjun
-                <BadgeCheck size={9} className="shrink-0 text-[#1d9bf0]" />
-              </p>
+              )}
+              <span className="absolute left-1 top-1 h-[18px] w-[18px] overflow-hidden rounded-full ring-2 ring-pure/90">
+                <img
+                  src={v.avatar}
+                  alt=""
+                  className="h-full w-full object-cover"
+                />
+              </span>
+              <span className="absolute bottom-1 left-1 flex items-center gap-0.5 rounded-full bg-black/45 px-1.5 py-0.5 text-[7px] font-semibold leading-none text-pure">
+                <Play size={6} className="fill-pure" />
+                {v.n}
+              </span>
             </div>
-          ))}
-        </div>
+            <p className="mt-1 truncate text-[9px] font-semibold leading-none">
+              {v.name}
+            </p>
+          </div>
+        ))}
       </div>
 
       {/* For you — one Drop */}
-      <div className="mt-2 px-3">
-        <h4 className="text-sm font-bold text-plum">For you</h4>
-        <div className="mt-4 flex items-center gap-2">
-          <span className="h-8 w-8 shrink-0 overflow-hidden rounded-full p-[1.5px] ring-2 ring-pink-500">
-            <img
-              src="/media/walls/mehfil.jpg"
-              alt=""
-              className="h-full w-full rounded-full object-cover"
-            />
+      <div className="mt-3 flex items-center justify-between px-4">
+        <h4 className="text-[13px] font-extrabold">For you</h4>
+      </div>
+      <div className="mt-2 flex items-center gap-2 px-4">
+        <span className="h-8 w-8 shrink-0 overflow-hidden rounded-full p-[1.5px] ring-2 ring-[#e11d6b]/70">
+          <img
+            src="/media/walls/xelvic.jpg"
+            alt=""
+            className="h-full w-full rounded-full object-cover"
+          />
+        </span>
+        <div className="min-w-0 flex-1 leading-tight">
+          <span className="block truncate text-[11px] font-bold">
+            Ethan Cole
           </span>
-          <div className="min-w-0 flex-1 leading-tight">
-            <span className="flex items-center gap-1">
-              <span className="text-sm font-bold text-plum">Hifza</span>
-              <BadgeCheck size={12} className="shrink-0 text-[#1d9bf0]" />
-            </span>
-            <span className="block text-[10px] text-plum/50">6d · 🌐</span>
-          </div>
-          <Ellipsis size={16} className="shrink-0 text-plum/50" />
+          <span className="block text-[7.5px] text-plum/45">6d · 🌐</span>
         </div>
+        <Ellipsis size={16} className="shrink-0 text-plum/50" />
       </div>
 
-      {/* the photo fills the rest */}
-      <div className="relative mt-2 flex-1 overflow-hidden bg-plum">
+      {/* the photo is set at the Drop frame, and takes the room the rest
+          of the feed leaves — the shell is narrower in the Features grid
+          than in the hero, so the frame has to give there */}
+      <div className="relative mt-2 min-h-0 flex-1 overflow-hidden bg-plum">
         <img
-          src="/media/themes/catgirl/moment.jpg"
+          src="/media/walls/sheher.jpg"
           alt=""
           className="h-full w-full object-cover"
         />
+        <span className="absolute bottom-1.5 right-2 text-[6px] font-medium text-pure/55">
+          2025-05-06 19:00
+        </span>
       </div>
 
-      {/* like / comment / share / save */}
-      <div className="flex items-center gap-4 px-3 py-2 pb-20 text-[12px] font-semibold text-plum/70">
+      {/* feel / comment / share / keep */}
+      <div className="flex items-center gap-4 px-4 py-2 text-[11px] font-semibold text-plum/65">
         <span className="flex items-center gap-1">
           <Heart
-            size={17}
-            className={liked ? "fill-[#ff2d78] text-[#ff2d78]" : "text-plum/70"}
+            size={15}
+            className={
+              liked ? "fill-[#e11d6b] text-[#e11d6b]" : "text-plum/65"
+            }
           />
-          {11 + (liked ? 1 : 0)}
+          {21 + (liked ? 1 : 0)}
         </span>
         <span className="flex items-center gap-1">
-          <MessageSquare size={16} />6
+          <MessageSquare size={14} />8
         </span>
         <span className="flex items-center gap-1">
-          <Share2 size={16} />5
+          <Share2 size={14} />8
         </span>
-        <Bookmark size={16} className="ml-auto" />
+        <Bookmark size={14} className="ml-auto" />
+      </div>
+
+      {/* the comments sit under the post */}
+      <div className="flex items-center gap-2 px-4">
+        <span className="h-6 w-6 shrink-0 overflow-hidden rounded-full bg-[#3a0a24]">
+          <img
+            src="/media/walls/raat.jpg"
+            alt=""
+            className="h-full w-full object-cover opacity-80"
+          />
+        </span>
+        <span className="text-[9px] font-bold">Ava Brooks</span>
+        <span className="ml-auto text-[8px] text-plum/40">8 comments</span>
+      </div>
+      <div className="mt-1 flex items-center gap-2 px-4 opacity-70">
+        <span className="h-6 w-6 shrink-0 overflow-hidden rounded-full bg-[#3a0a24]">
+          <img
+            src="/media/walls/safar.jpg"
+            alt=""
+            className="h-full w-full object-cover opacity-70"
+          />
+        </span>
+        <span className="text-[9px] font-bold">Mia Carter</span>
+        <Ellipsis size={12} className="ml-auto text-plum/40" />
       </div>
 
       {/* floating tab bar */}
-      <div className="absolute inset-x-3 bottom-3 z-10 flex items-stretch justify-between rounded-full bg-plum/70 px-1.5 py-2 backdrop-blur-md">
+      <div className="mx-3 mb-2 mt-auto flex shrink-0 items-center justify-between rounded-full bg-pure/80 px-3 py-2 shadow-[0_10px_30px_rgba(58,10,36,.16)] backdrop-blur">
         {dropTabs.map((t) => {
           const Icon = t.icon;
           return (
             <div
               key={t.label}
-              className={`flex flex-1 flex-col items-center gap-0.5 ${
-                t.active ? "text-[#ff6fae]" : "text-pure/75"
+              className={`flex w-11 flex-col items-center gap-0.5 ${
+                t.active ? "text-[#e11d6b]" : "text-plum/55"
               }`}
             >
-              <Icon size={16} />
-              <span className="text-[8px] font-semibold">{t.label}</span>
+              <span className="relative">
+                <Icon size={15} />
+                {t.dot && (
+                  <span className="absolute -right-1 -top-0.5 h-1.5 w-1.5 rounded-full bg-[#e11d6b]" />
+                )}
+              </span>
+              <span className="text-[6.5px] font-semibold leading-none">
+                {t.label}
+              </span>
             </div>
           );
         })}
       </div>
+
+      {/* home indicator */}
+      <span className="pointer-events-none absolute bottom-1 left-1/2 h-[3px] w-[90px] -translate-x-1/2 rounded-full bg-plum/25" />
     </div>
   );
 }
@@ -1679,9 +1983,9 @@ export function ConvoDemo({
                   key={idx}
                   layout
                   {...bubbleMotion}
-                  className="flex items-center gap-1.5 self-center rounded-full border border-plum/10 bg-pure px-3.5 py-1 text-[11px] font-semibold text-plum/55 shadow-[0_1px_3px_rgba(58,10,36,.05)]"
+                  className="flex items-center gap-1.5 self-center rounded-full border border-plum/10 bg-pure px-3.5 py-1 text-[11px] font-semibold text-plum/75 shadow-[0_1px_3px_rgba(58,10,36,.05)]"
                 >
-                  <Lock size={11} className="text-plum/45" />
+                  <Lock size={11} className="text-plum/60" />
                   {m.text}
                 </motion.div>
               );
@@ -1798,7 +2102,7 @@ export function ConvoDemo({
           <span className="grid shrink-0 place-items-center rounded-full border text-pink-500">
             <FiPlusCircle size={18} />
           </span>
-          <div className="flex-1 truncate rounded-full border border-plum/15 bg-pure px-2.5 py-1.5 text-[12px]">
+          <div className="flex-1 truncate rounded-full bg-pure px-2.5 py-1.5 text-[12px] shadow-[0_1px_3px_rgba(58,10,36,.08)]">
             {draft ? (
               <span>
                 {draft}
@@ -1838,6 +2142,510 @@ export function ConvoDemo({
   );
 }
 
+/* -------------------------- ONBOARDING ------------------------ *
+ * The create-account flow exactly as the app walks it: a name, a birthday,
+ * a number, the six-digit code that proves it, a password, and the handle
+ * Xelvic rolls for you. The pale pink stage with its doodles, the six
+ * progress segments, and the way each screen asks for one thing only are
+ * all the app's. It advances on its own, and the button moves it along too.
+ */
+const ONBOARD_SCREENS = [
+  {
+    title: "What is your name?",
+    sub: "This is the name people see on your profile. We will make your username later.",
+  },
+  {
+    title: "Pick your date of birth",
+    sub: "Nobody else sees this. Xelvic is not for anyone under 13.",
+  },
+  {
+    title: "Let us verify your number",
+    sub: "The code goes there. We also check right away whether it already has an account.",
+  },
+  {
+    title: "Enter the 6-digit code",
+    sub: "Sent on WhatsApp to +919999999999. It stays good for ten minutes.",
+  },
+  {
+    title: "Set a password",
+    sub: "Eight characters or more. You will need it whenever you log in on a new phone.",
+  },
+  {
+    title: "All set, Emma!",
+    sub: "This is how people find you on Xelvic. Not feeling it? Roll another — you can change it later from your profile.",
+  },
+] as const;
+
+const onboardLabel = "text-[7.5px] font-bold text-plum/55";
+
+/** The one button every screen ends with — pale until the field is done,
+ *  solid on the two screens that commit something. */
+function OnboardButton({
+  children,
+  onClick,
+  solid,
+}: {
+  children: ReactNode;
+  onClick: () => void;
+  solid?: boolean;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={`mt-2 flex w-full items-center justify-center gap-1 rounded-full py-2 text-[9.5px] font-bold text-pure transition-colors ${
+        solid ? "bg-[#d81b60]" : "bg-[#f7b9cf] hover:bg-[#f4a8c5]"
+      }`}
+    >
+      {children}
+    </button>
+  );
+}
+
+/** The marks around the art: two arrows, a heart in a speech bubble, and the
+ *  app's "Good Vibes Only" signature. They are drawn, not a picture, so they
+ *  scale with the screen. */
+function OnboardDoodles() {
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 z-[2]">
+      <svg
+        viewBox="0 0 24 24"
+        className="absolute left-[3%] top-[20%] h-5 w-5 -rotate-6 text-[#e6007a]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2.6}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M8 4l8 8-8 8" />
+      </svg>
+      <svg
+        viewBox="0 0 24 24"
+        className="absolute right-[3%] top-[36%] h-5 w-5 rotate-6 text-[#e6007a]"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth={2.6}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path d="M16 4l-8 8 8 8" />
+      </svg>
+
+      <span className="absolute right-[9%] top-[8%] flex h-9 w-11 items-center justify-center rounded-[11px] border-[2.5px] border-[#e6007a]">
+        <Heart size={13} strokeWidth={2.6} className="text-[#e6007a]" />
+        <span className="absolute -bottom-[5px] left-2.5 h-2 w-2 rotate-45 border-b-[2.5px] border-l-[2.5px] border-[#e6007a]" />
+      </span>
+
+      <span className="absolute right-[13%] top-[42%] h-px w-3 rotate-[24deg] bg-[#e6007a]" />
+      <span className="absolute right-[4%] top-[65%] h-px w-2.5 -rotate-[30deg] bg-[#e6007a]" />
+
+      <div className="absolute right-[2%] top-[51%] -rotate-[8deg] text-center">
+        <p className="font-display text-[7px] font-extrabold leading-[1.08] text-[#e6007a]">
+          Good
+          <br />
+          Vibes
+          <br />
+          Only
+        </p>
+        <Smile
+          size={11}
+          strokeWidth={2.4}
+          className="mx-auto mt-0.5 text-[#e6007a]"
+        />
+      </div>
+    </div>
+  );
+}
+
+function OnboardingDemo({ reduced }: { reduced: boolean }) {
+  // With motion off, land on the finished account — the result is the point.
+  const [i, setI] = useState(reduced ? ONBOARD_SCREENS.length - 1 : 0);
+  const next = () => setI((n) => (n + 1) % ONBOARD_SCREENS.length);
+
+  useEffect(() => {
+    if (reduced) {
+      // the preference can arrive after the first paint, so settle on the
+      // finished account rather than freezing on the name screen
+      setI(ONBOARD_SCREENS.length - 1);
+      return;
+    }
+    const t = setInterval(next, 3800);
+    return () => clearInterval(t);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reduced]);
+
+  const s = ONBOARD_SCREENS[i];
+
+  return (
+    <div className="relative flex h-full flex-col overflow-hidden bg-[#fdeef4] text-plum">
+      {/* the soft fields the art stands on */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute -right-14 top-5 h-36 w-36 rounded-full bg-[#fbdce9]"
+      />
+
+      {/* status row */}
+      <div className="relative z-10 flex shrink-0 items-center justify-between px-4 pb-1 pt-3.5 text-[8px] font-semibold leading-none text-plum/70">
+        <span>4:42</span>
+        <span className="flex items-center gap-1 text-plum/50">
+          <Signal size={8} />
+          <Wifi size={8} />
+          <BatteryFull size={9} />
+        </span>
+      </div>
+
+      {/* back, and the six segments — one per screen */}
+      <div className="relative z-10 flex shrink-0 items-center gap-3 px-4 pt-1">
+        <FaArrowLeft size={13} className="shrink-0 text-plum/75" />
+        <div className="flex flex-1 items-center justify-center gap-1 pr-4">
+          {ONBOARD_SCREENS.map((_, k) => (
+            <span
+              key={k}
+              className={`h-[3px] flex-1 rounded-full transition-colors duration-300 ${
+                k <= i ? "bg-[#e6007a]" : "bg-[#f2cada]"
+              }`}
+            />
+          ))}
+        </div>
+      </div>
+
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={i}
+          initial={{ opacity: 0, x: 8 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: -8 }}
+          transition={{ duration: 0.26 }}
+          className="relative z-10 flex min-h-0 flex-1 flex-col"
+        >
+          <div className="shrink-0 px-4 pt-3">
+            <h3 className="font-display text-[15.5px] font-extrabold leading-tight tracking-tight">
+              {s.title}
+            </h3>
+            <p className="mt-1 text-[8.5px] leading-snug text-plum/55">
+              {s.sub}
+            </p>
+          </div>
+
+          {/* the character on its pink wave, with the drawn doodles around it */}
+          <div className="relative flex min-h-0 flex-1 items-end justify-center overflow-hidden">
+            <span
+              aria-hidden
+              className="absolute inset-x-[-25%] bottom-[-10%] h-[68%] rounded-[50%] bg-[#f9d2e3]"
+            />
+            <span
+              aria-hidden
+              className="absolute inset-x-[-25%] bottom-[-58%] h-[82%] rounded-[50%] bg-[#fbdde9]"
+            />
+            <OnboardDoodles />
+            <img
+              src="/media/themes/pink/typing.png"
+              alt=""
+              className={`relative z-[1] mb-0 w-auto max-w-[74%] object-contain object-bottom drop-shadow-[0_12px_18px_rgba(58,10,36,.18)] ${
+                i === ONBOARD_SCREENS.length - 1 ? "h-[84%]" : "h-[94%]"
+              }`}
+            />
+          </div>
+
+          {/* the one thing this screen asks for */}
+          <div className="relative z-10 shrink-0 px-4 pb-2 pt-1">
+            {i === 0 && (
+              <>
+                <p className={onboardLabel}>Full name</p>
+                <div className="mt-1 flex items-center gap-1.5 rounded-full bg-pure px-3 py-2 shadow-[0_1px_3px_rgba(58,10,36,.08)]">
+                  <User size={11} className="shrink-0 text-plum/45" />
+                  <span className="text-[9.5px] text-plum/80">Emma</span>
+                  <motion.span
+                    aria-hidden
+                    className="ml-px inline-block text-[#d81b60]"
+                    animate={{ opacity: [1, 0, 1] }}
+                    transition={{ duration: 0.9, repeat: Infinity }}
+                  >
+                    |
+                  </motion.span>
+                </div>
+                <OnboardButton onClick={next}>
+                  Continue
+                  <ArrowRight size={11} />
+                </OnboardButton>
+              </>
+            )}
+
+            {i === 1 && (
+              <>
+                <p className={onboardLabel}>Date of birth</p>
+                <div className="mt-1 flex gap-1.5">
+                  {["Day", "Month", "Year"].map((v, k) => (
+                    <span
+                      key={v}
+                      className={`flex flex-1 items-center justify-between rounded-full bg-pure px-2.5 py-2 text-[8.5px] ${
+                        k === 0
+                          ? "text-plum/80 ring-[1.5px] ring-[#d81b60]"
+                          : "text-plum/40"
+                      }`}
+                    >
+                      {v}
+                      <ChevronDown size={9} className="text-plum/45" />
+                    </span>
+                  ))}
+                </div>
+                <p className="mt-1 flex items-center gap-1 text-[7px] font-semibold text-[#d61c4e]">
+                  <AlertCircle size={8} />
+                  Pick all three
+                </p>
+                <OnboardButton onClick={next}>
+                  Continue
+                  <ArrowRight size={11} />
+                </OnboardButton>
+              </>
+            )}
+
+            {i === 2 && (
+              <>
+                <p className={onboardLabel}>Mobile number</p>
+                <div className="mt-1 flex items-center gap-2 rounded-full bg-pure px-2.5 py-2 shadow-[0_1px_3px_rgba(58,10,36,.08)]">
+                  <span className="flex shrink-0 items-center gap-1 text-[9px] font-bold">
+                    <span aria-hidden>🇮🇳</span>+91
+                    <ChevronDown size={9} className="text-plum/45" />
+                  </span>
+                  <span className="h-4 w-px shrink-0 bg-plum/15" />
+                  <span className="text-[9.5px] tracking-wide text-plum/70">
+                    98765 43210
+                  </span>
+                </div>
+                <OnboardButton solid onClick={next}>
+                  <Send size={10} className="fill-current" />
+                  Send OTP
+                </OnboardButton>
+                <div className="mt-2 flex items-center gap-2 text-[6.5px] font-bold text-plum/35">
+                  <span className="h-px flex-1 bg-plum/15" />
+                  OR
+                  <span className="h-px flex-1 bg-plum/15" />
+                </div>
+                <p className="mt-1.5 flex items-center justify-center gap-1 text-[8.5px] font-bold text-[#d81b60]">
+                  <AtSign size={9} />
+                  else continue with email
+                </p>
+                <p className="mt-1.5 text-center text-[6.5px] leading-snug text-plum/45">
+                  Whichever you pick, a 6-digit code goes to it.
+                </p>
+              </>
+            )}
+
+            {i === 3 && (
+              <>
+                <p className={onboardLabel}>Verification code</p>
+                <div className="mt-1 flex gap-1">
+                  {Array.from({ length: 6 }).map((_, k) => (
+                    <span
+                      key={k}
+                      className={`grid h-[30px] flex-1 place-items-center rounded-full bg-pure ${
+                        k === 0
+                          ? "ring-[1.5px] ring-[#d81b60]"
+                          : "border border-plum/10"
+                      }`}
+                    >
+                      {k === 0 && (
+                        <motion.span
+                          aria-hidden
+                          className="h-3.5 w-px bg-[#d81b60]"
+                          animate={{ opacity: [1, 0, 1] }}
+                          transition={{ duration: 0.9, repeat: Infinity }}
+                        />
+                      )}
+                    </span>
+                  ))}
+                </div>
+                <div className="mt-2 flex items-center justify-between text-[7.5px] font-semibold">
+                  <span className="flex items-center gap-1 text-plum/45">
+                    <RefreshCw size={9} />
+                    Resend in 22s
+                  </span>
+                  <span className="font-bold text-[#d81b60]">Change</span>
+                </div>
+                <OnboardButton onClick={next}>Verify</OnboardButton>
+                <p className="mt-1.5 text-center text-[6.5px] text-plum/45">
+                  Never share this code with anyone.
+                </p>
+              </>
+            )}
+
+            {i === 4 && (
+              <>
+                <p className={onboardLabel}>Password</p>
+                <div className="mt-1 flex items-center gap-2 rounded-full bg-pure px-3 py-2 ring-[1.5px] ring-[#d81b60]">
+                  <Lock size={10} className="shrink-0 text-plum/55" />
+                  <span className="flex-1 text-[8.5px] text-plum/40">
+                    At least 8 characters
+                  </span>
+                  <Eye size={11} className="shrink-0 text-plum/45" />
+                </div>
+                <OnboardButton onClick={next}>
+                  Continue
+                  <ArrowRight size={11} />
+                </OnboardButton>
+                <p className="mt-1.5 text-center text-[6.5px] leading-snug text-plum/45">
+                  Tap the eye to check it before you go on. You can change it
+                  later from your profile.
+                </p>
+              </>
+            )}
+
+            {i === 5 && (
+              <>
+                <div className="rounded-xl bg-pure px-3 py-2.5 text-center shadow-[0_2px_10px_rgba(58,10,36,.08)]">
+                  <span className="mx-auto grid h-9 w-9 place-items-center rounded-full bg-[#009688] text-[14px] font-bold text-pure">
+                    E
+                  </span>
+                  <p className="mt-1.5 text-[12.5px] font-extrabold leading-none">
+                    @emma_zz8
+                  </p>
+                  <p className="mt-1 text-[7.5px] text-plum/50">Emma</p>
+                  <p className="mt-1.5 flex items-center justify-center gap-1 text-[8.5px] font-bold text-[#d81b60]">
+                    <Shuffle size={9} />
+                    Give me another
+                  </p>
+                </div>
+                <div className="mt-1.5 space-y-1">
+                  {[
+                    { Icon: User, label: "Name", value: "Emma" },
+                    { Icon: Cake, label: "Born", value: "5 Jun 1999" },
+                    { Icon: Phone, label: "Verified", value: "+919999999999" },
+                  ].map(({ Icon, label, value }) => (
+                    <div
+                      key={label}
+                      className="flex items-center gap-1.5 text-[7.5px]"
+                    >
+                      <Icon size={9} className="shrink-0 text-plum/40" />
+                      <span className="flex-1 text-plum/50">{label}</span>
+                      <span className="font-bold text-plum/80">{value}</span>
+                    </div>
+                  ))}
+                </div>
+                <OnboardButton solid onClick={next}>
+                  Start a convo
+                </OnboardButton>
+                <p className="mt-1 text-center text-[6.5px] text-plum/45">
+                  One tap and the account is yours.
+                </p>
+              </>
+            )}
+          </div>
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}
+
+/* --------------------------- CONTACTS ------------------------- *
+ * Step two: the contacts permission, the search field, and the people
+ * already on Xelvic — which is what "find your people" means in the app.
+ */
+function ContactsDemo() {
+  const people = [
+    { name: "Ava Brooks", handle: "@ava.b", src: "/media/walls/sheher.jpg" },
+    {
+      name: "Tyler Brooks",
+      handle: "@tyler_brooks",
+      src: "/media/walls/mehfil.jpg",
+    },
+    { name: "Mia Carter", handle: "@mia.carter", src: "/media/walls/safar.jpg" },
+    { name: "Noah Reed", handle: "@noahreed", src: "/media/walls/raat.jpg" },
+  ];
+
+  return (
+    <div className="flex h-full flex-col bg-[#fbf5f8] text-plum">
+      <div className="flex shrink-0 items-center justify-between px-4 pb-1 pt-3.5 text-[8px] font-semibold leading-none text-plum/70">
+        <span>9:41</span>
+        <span className="flex items-center gap-1 text-plum/50">
+          <Signal size={8} />
+          <Wifi size={8} />
+          <BatteryFull size={9} />
+        </span>
+      </div>
+
+      <div className="flex shrink-0 items-center gap-2 px-3 pt-1">
+        <FaArrowLeft size={13} className="shrink-0 text-plum/75" />
+        <span className="text-[13px] font-extrabold tracking-tight">
+          Find your people
+        </span>
+      </div>
+
+      <div className="shrink-0 px-4 pt-2">
+        <p className="text-[8px] leading-snug text-plum/55">
+          Everyone already on Xelvic shows up right away. Your numbers never
+          leave your device in readable form.
+        </p>
+
+        <div className="mt-2 rounded-xl border border-[#f2d3e1] bg-[#fdf0f5] p-2.5">
+          <span className="grid h-7 w-7 place-items-center rounded-full bg-[#f9d4e4] text-[#d81b60]">
+            <UserPlus size={13} />
+          </span>
+          <p className="mt-1.5 text-[10px] font-extrabold leading-none">
+            Allow contacts
+          </p>
+          <p className="mt-1 text-[7px] leading-snug text-plum/55">
+            Xelvic matches the numbers on your phone and shows you the people
+            already here.
+          </p>
+          <button
+            type="button"
+            className="mt-2 w-full rounded-full bg-[#d81b60] py-1.5 text-[8.5px] font-bold text-pure"
+          >
+            Allow contacts
+          </button>
+        </div>
+
+        <div className="mt-2 flex items-center gap-1.5 rounded-full bg-pure px-3 py-1.5 text-[8px] text-plum/40 ring-1 ring-plum/10">
+          <Search size={10} className="shrink-0" />
+          Search by name or @handle
+        </div>
+
+        <div className="mt-2 flex items-center justify-between">
+          <p className="text-[10px] font-extrabold leading-none">On Xelvic</p>
+          <span className="text-[7px] font-bold text-[#d81b60]">4 found</span>
+        </div>
+      </div>
+
+      <div className="mt-1.5 min-h-0 flex-1 space-y-1 overflow-hidden px-4">
+        {people.map((p) => (
+          <div
+            key={p.handle}
+            className="flex items-center gap-2 rounded-xl bg-pure p-1.5 ring-1 ring-plum/5"
+          >
+            <span className="h-7 w-7 shrink-0 overflow-hidden rounded-full bg-pink-100">
+              <img src={p.src} alt="" className="h-full w-full object-cover" />
+            </span>
+            <span className="min-w-0 flex-1 leading-tight">
+              <span className="block truncate text-[9px] font-bold">
+                {p.name}
+              </span>
+              <span className="block truncate text-[7px] text-plum/45">
+                {p.handle}
+              </span>
+            </span>
+            <span className="shrink-0 rounded-full bg-[#fdf0f5] px-2 py-1 text-[7px] font-bold text-[#d81b60]">
+              Say hi
+            </span>
+          </div>
+        ))}
+      </div>
+
+      <p className="shrink-0 px-4 py-2 text-center text-[6.5px] text-plum/40">
+        Prefer to search? Find anyone by name or @handle.
+      </p>
+    </div>
+  );
+}
+
+/* ------------------------- MARKETPLACE ------------------------ *
+ * Step five opens the place the look is changed — the same Marketplace the
+ * Themes & Drip card uses, so the walkthrough and the feature agree.
+ */
+function MarketplaceDemo() {
+  return <ThemeMarketplaceMockup />;
+}
+
 const demos: Record<DemoKind, (p: { reduced: boolean }) => JSX.Element> = {
   chat: ChatDemo,
   call: CallDemo,
@@ -1845,6 +2653,9 @@ const demos: Record<DemoKind, (p: { reduced: boolean }) => JSX.Element> = {
   live: LiveDemo,
   audio: AudioDemo,
   drops: DropsDemo,
+  onboarding: OnboardingDemo,
+  contacts: ContactsDemo,
+  marketplace: MarketplaceDemo,
 };
 
 export default function PhoneDemo({ kind }: { kind: DemoKind }) {

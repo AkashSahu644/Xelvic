@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import {
   Camera,
   ChevronLeft,
+  CirclePlus,
   CornerUpLeft,
   Eye,
   Flame,
@@ -11,9 +12,7 @@ import {
   MessageSquare,
   Mic,
   MoreVertical,
-  Paperclip,
   Phone,
-  Plus,
   Rocket,
   Search,
   Send,
@@ -45,15 +44,20 @@ import { MdVerified } from "react-icons/md";
  * screen itself leaves a gap exactly where that piece goes; see `FeelsEscape`.
  *
  * Nothing here animates. These blocks are deliberately still.
+ *
+ * The chrome every screen is built out of — the status row, the convo header,
+ * the composer, the ground they all sit on — is exported, because the messaging
+ * page draws its own screens out of the same parts. Only the screens are private
+ * to this file.
  */
 
-const AVATAR = "/media/walls/mehfil.jpg";
+export const AVATAR = "/media/walls/mehfil.jpg";
 
 /* ------------------------------- chrome ------------------------------- */
 
 /** Sits clear of the shell's dynamic island, which hangs 8px–32px from the top
  *  and would otherwise cut into whatever comes next. */
-function StatusRow() {
+export function StatusRow() {
   return (
     <div className="flex items-end justify-between px-4 pb-2 pt-4 text-[10px] font-semibold leading-none text-plum/70">
       <span>21:04</span>
@@ -66,7 +70,7 @@ function StatusRow() {
 }
 
 /** the screen itself — one warm ground, so all three read as one product */
-function Screen({ children }: { children: ReactNode }) {
+export function Screen({ children }: { children: ReactNode }) {
   return (
     <div
       className="flex h-full flex-col bg-[#f4edf1] text-plum"
@@ -82,7 +86,7 @@ function Screen({ children }: { children: ReactNode }) {
 }
 
 /** the convo header every chat screen in the app wears */
-function ConvoHeader({
+export function ConvoHeader({
   name,
   sub,
   avatar,
@@ -127,43 +131,155 @@ function ConvoHeader({
   );
 }
 
-/** The foot of every thread. `attach` swaps the smiley for the outlined "+"
- *  that sits outside the field, the way the app's own convo does it — a ring
- *  drawn in the brand pink with the plus stroke matched to the ring. */
-function Composer({
-  placeholder = "Message",
-  attach = false,
+/** The foot of every thread, drawn the way the app draws it: the ringed "+"
+ *  that opens everything you can attach, a plain white field, and the mic.
+ *
+ *  Nothing else lives in the field. The app keeps the smiley, the paperclip and
+ *  the camera inside the "+" rather than crowding the row, so the only thing
+ *  the bar says is the one thing you would type — and the field, being plain
+ *  white on the tinted strip, is the brightest thing on the screen. */
+export function Composer({ placeholder = "Say something" }: { placeholder?: string }) {
+  return (
+    <div className="flex shrink-0 items-center gap-1.5 border-t border-plum/10 bg-[#fbf6f9] px-2 py-2">
+      <span className="grid h-6 w-6 shrink-0 place-items-center text-pink-500">
+        <CirclePlus size={18} />
+      </span>
+      <span className="flex h-8 min-w-0 flex-1 items-center rounded-full bg-pure px-3 border">
+        <span className="truncate text-[11px] leading-none text-plum/40">
+          {placeholder}
+        </span>
+      </span>
+      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-pink-600 text-pure">
+        <Mic size={14} />
+      </span>
+    </div>
+  );
+}
+
+/* ── the parts every drawn screen shares ─────────────────────────────────────
+   A thread, the bubbles in it, the initial somebody without a photo wears, and
+   the card that hangs off the side of the frame. The messaging page and the
+   calls page both draw with these, so they live here with the rest of the
+   chrome rather than in either page's own file. */
+
+/**
+ * One message in a thread. `mine` sends it: right-aligned, in the pink the app
+ * sends with, and squared off at the corner it points from.
+ */
+export function Bubble({
+  mine = false,
+  text,
+  meta,
+  fill = false,
+  big = false,
 }: {
-  placeholder?: string;
-  attach?: boolean;
+  mine?: boolean;
+  text: ReactNode;
+  /** the time and whatever rides with it — ticks, or the clock a disappearing
+   *  message counts down on */
+  meta?: ReactNode;
+  /** fills the box it is given instead of stopping at 82% of it. Only the
+   *  bubbles that leave the phone need this: each is placed in a box of its own
+   *  so that a third of it can sit past the glass. */
+  fill?: boolean;
+  /** a size up, for a bubble that has left the glass and has to hold up beside
+   *  a thread it is no longer part of */
+  big?: boolean;
 }) {
   return (
-    <div className="shrink-0 bg-pure px-2 py-1.5">
-      <div className="flex items-center gap-1.5">
-        {attach && (
-          <span className="grid h-5 w-5 shrink-0 place-items-center rounded-full border-2 border-pink-500 text-pink-500">
-            <Plus size={14} strokeWidth={2.5} />
+    <div
+      className={`flex flex-col ${fill ? "w-full" : "max-w-[82%]"} ${
+        mine ? "self-end" : "self-start"
+      }`}
+    >
+      <div
+        className={`leading-snug ${
+          big
+            ? "rounded-2xl px-3.5 py-2.5 text-[13px] shadow-[0_8px_20px_rgba(58,10,36,.18)]"
+            : "rounded-xl px-2 py-1.5 text-[10.5px] shadow-[0_1px_2px_rgba(58,10,36,.10)]"
+        } ${mine ? "rounded-br-[3px] bg-[#f7bcd6]" : "rounded-bl-[3px] bg-pure"}`}
+      >
+        {text}
+        {meta && (
+          <span className="mt-1 flex items-center justify-end gap-1 text-[8px] leading-none text-plum/50">
+            {meta}
           </span>
         )}
-        <span className="flex min-w-0 flex-1 items-center gap-1.5 rounded-full border border-plum/15 bg-[#f7f0f4] px-2 py-1.5">
-          {!attach && <Smile size={12} className="shrink-0 text-plum/45" />}
-          <span className="truncate text-[10px] text-plum/40">
-            {placeholder}
-          </span>
-          {!attach && (
-            <Paperclip size={12} className="ml-auto shrink-0 text-plum/45" />
-          )}
-          {!attach && <Camera size={12} className="shrink-0 text-plum/45" />}
-        </span>
-        <span
-          className={`grid h-7 w-7 shrink-0 place-items-center rounded-full text-pure ${
-            attach ? "bg-[#e11d48]" : "bg-[#ff2d78]"
-          }`}
-        >
-          <Mic size={13} />
-        </span>
       </div>
     </div>
+  );
+}
+
+/** The scroller every thread sits in. */
+export function Thread({ children }: { children: ReactNode }) {
+  return (
+    <div className="flex min-h-0 flex-1 flex-col gap-1.5 overflow-hidden px-2 pt-2">
+      {children}
+    </div>
+  );
+}
+
+/** Somebody who never set a photo wears their initial instead. */
+export function Person({
+  letter,
+  tone = "#7c3aed",
+  size = "h-9 w-9",
+  text = "text-[11px]",
+}: {
+  letter: string;
+  tone?: string;
+  size?: string;
+  text?: string;
+}) {
+  return (
+    <span
+      className={`grid ${size} shrink-0 place-items-center rounded-full ${text} font-bold leading-none text-pure`}
+      style={{ background: tone }}
+    >
+      {letter}
+    </span>
+  );
+}
+
+/**
+ * A card that does not stay behind the glass. The display is 280px across on
+ * the size these pages draw at, and a confirm dialog or a legend is worth more
+ * room than that — so it hangs off the side of the frame, over the empty half
+ * of the screen underneath, exactly the way the comments sheet's cards do.
+ *
+ * `top` is in screen coordinates: 0 is the top of the display.
+ */
+export function Float({
+  side,
+  top,
+  width = 216,
+  children,
+}: {
+  side: "left" | "right";
+  top: number;
+  width?: number;
+  children: ReactNode;
+}) {
+  return (
+    <div
+      className={`absolute rounded-xl bg-pure p-2.5 shadow-lg ring-1 ring-plum/10 ${
+        side === "left" ? "-left-7 sm:-left-12" : "-right-7 sm:-right-12"
+      }`}
+      style={{ top, width: `min(${width}px, 76vw)` }}
+    >
+      {children}
+    </div>
+  );
+}
+
+/** A card's own heading and body, so they all read as one thing. */
+export function FloatTitle({ children }: { children: ReactNode }) {
+  return <p className="text-[10px] font-bold leading-none">{children}</p>;
+}
+
+export function FloatBody({ children }: { children: ReactNode }) {
+  return (
+    <p className="mt-1.5 text-[9.5px] leading-snug text-plum/60">{children}</p>
   );
 }
 
@@ -222,11 +338,39 @@ function PostFoot({
 }
 
 /** a line of grey time, the way a thread stamps each stretch of itself */
-function Stamp({ children }: { children: ReactNode }) {
+/** A time on its own line in a thread, the way the app writes one: never inside
+ *  a bubble, and hard against the right of the column. */
+export function Stamp({ children }: { children: ReactNode }) {
   return (
-    <p className="mt-1.5 text-[8px] font-medium leading-none text-plum/45">
+    <p className="mt-1.5 text-right text-[8px] font-medium leading-none text-plum/45">
       {children}
     </p>
+  );
+}
+
+/**
+ * A day in a thread — the white chip the app drops in the middle of a
+ * conversation rather than a grey line off to one side.
+ *
+ * The two are not interchangeable. A grey line is a time that belongs to the
+ * message beside it; this chip belongs to everything under it, which is why it
+ * sits centred and wears the same white as the bubbles. A thread with the chips
+ * in it reads as days with messages in them.
+ */
+export function DayChip({
+  children,
+  className = "",
+}: {
+  children: ReactNode;
+  /** margin, for the few places the chip is pinned rather than scrolled past */
+  className?: string;
+}) {
+  return (
+    <span
+      className={`self-center rounded-full border border-plum/10 bg-pure px-2.5 py-1 text-[9.5px] font-bold leading-none text-plum/75 shadow-[0_1px_3px_rgba(58,10,36,.05)] ${className}`}
+    >
+      {children}
+    </span>
   );
 }
 
@@ -563,13 +707,11 @@ function FeelsMockup() {
           <Stamp>1:40</Stamp>
           <SparkPill />
 
-          <span className="mx-auto mb-3 mt-auto rounded-xl bg-pure px-2 py-1.5 text-[10px] font-semibold leading-none text-plum/50">
-            Yesterday
-          </span>
+          <DayChip className="mb-3 mt-auto">Yesterday</DayChip>
         </div>
       </div>
 
-      <Composer placeholder="Say something" attach />
+      <Composer />
     </Screen>
   );
 }

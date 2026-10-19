@@ -19,7 +19,6 @@ import {
   ShieldCheck,
   Sparkles,
   TrendingUp,
-  Users,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 
@@ -48,8 +47,7 @@ export const productMenu: NavGroup[] = [
   {
     heading: 'Make it yours',
     links: [
-      { label: 'Themes & Drip', to: '/features/themes', desc: '50+ looks & wearables', icon: Palette },
-      { label: 'The Cast', to: '/characters', desc: '17 characters, one per theme', icon: Users },
+      { label: 'Themes & Drip', to: '/features/themes', desc: '33 looks, 17 characters', icon: Palette },
       { label: 'All features', to: '/features', desc: 'The complete tour', icon: LayoutGrid },
       { label: 'How it works', to: '/how-it-works', desc: 'Hello to live in minutes', icon: Compass },
     ],
@@ -97,7 +95,7 @@ export const footerColumns: NavGroup[] = [
       { label: 'Moments', to: '/features/moments' },
       { label: 'Drops & Vibes', to: '/features/drops-vibes' },
       { label: 'Audio', to: '/features/audio' },
-      { label: 'Themes', to: '/features/themes' },
+      { label: 'Themes & Drip', to: '/features/themes' },
       { label: 'Download', to: '/download' },
     ],
   },
@@ -108,7 +106,6 @@ export const footerColumns: NavGroup[] = [
       { label: 'Overview', to: '/overview' },
       { label: 'Explore', to: '/explore' },
       { label: 'How it works', to: '/how-it-works' },
-      { label: 'The Cast', to: '/characters' },
       { label: 'Creators', to: '/creators' },
       { label: 'Developers', to: '/developers' },
       { label: 'Blog', to: '/blog' },
