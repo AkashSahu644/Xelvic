@@ -4,6 +4,9 @@ export type Job = {
   team: string
   location: string
   type: string
+  /** The day the role opened. Fixed data, never `today` at build time: a
+      rebuild must not make an old posting look new to a job crawler. */
+  datePosted: string
   summary: string
   responsibilities: string[]
   requirements: string[]
@@ -18,6 +21,7 @@ export const jobs: Job[] = [
     team: 'Engineering',
     location: 'Remote (IST ±4h)',
     type: 'Full-time',
+    datePosted: '2026-09-28',
     summary: 'Own and ship core app surfaces — chat, calls and live — in our Flutter codebase used by people every day.',
     responsibilities: [
       'Build and maintain feature surfaces across chat, calls, moments and live.',
@@ -36,6 +40,7 @@ export const jobs: Job[] = [
     team: 'Engineering',
     location: 'Remote',
     type: 'Full-time',
+    datePosted: '2026-09-28',
     summary: 'Scale the signaling, presence and media infrastructure behind Xelvic calls, rooms and live.',
     responsibilities: [
       'Design signaling and TURN/STUN infrastructure for millions of calls.',
@@ -54,6 +59,7 @@ export const jobs: Job[] = [
     team: 'Design',
     location: 'Remote',
     type: 'Full-time',
+    datePosted: '2026-09-28',
     summary: 'Shape how Xelvic feels — from the first hello to going live — with motion-rich, playful design.',
     responsibilities: [
       'Design end-to-end flows across messaging, social and creator tools.',
@@ -72,6 +78,7 @@ export const jobs: Job[] = [
     team: 'Trust & Safety',
     location: 'Remote',
     type: 'Full-time',
+    datePosted: '2026-09-28',
     summary: 'Build the policies, tooling and team that keep Xelvic a safe place to hang out.',
     responsibilities: [
       'Own content policy across moments, live, rooms and drops.',
@@ -90,6 +97,7 @@ export const jobs: Job[] = [
     team: 'Marketing',
     location: 'Remote',
     type: 'Full-time',
+    datePosted: '2026-09-28',
     summary: 'Grow Xelvic across the regions that love it, with campaigns that feel native to each community.',
     responsibilities: [
       'Run acquisition and lifecycle campaigns end to end.',
@@ -108,6 +116,7 @@ export const jobs: Job[] = [
     team: 'Operations',
     location: 'Remote',
     type: 'Full-time',
+    datePosted: '2026-09-28',
     summary: 'Be the voice of Xelvic in our communities, and the voice of our communities inside Xelvic.',
     responsibilities: [
       'Nurture creator and user communities across platforms.',

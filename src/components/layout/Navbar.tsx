@@ -205,7 +205,7 @@ export default function Navbar() {
                     {/* footer strip — grounds the sheet and carries the CTA */}
                     <div className="flex items-center justify-between gap-6 border-t border-white/10 bg-ink-800/50 px-7 py-3.5">
                       <p className="text-xs font-semibold text-plum/50">
-                        Free · Android · 33 themes
+                        Free · Android &amp; iOS · 33 themes
                       </p>
                       <Link
                         to="/download"

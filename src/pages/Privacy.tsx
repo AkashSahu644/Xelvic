@@ -36,7 +36,7 @@ export default function Privacy() {
             'It applies from the moment you download the app. If you want the practical version — the controls, in the order you would actually reach for them — the Data page is written for that. This is the same ground with the detail filled in.',
           ],
           points: [
-            'The Xelvic app for Android, and every screen inside it.',
+            'The Xelvic app for Android and iOS, and every screen inside it.',
             'This website, including the pages you are reading now.',
             'Not other companies’ apps, even where Xelvic links out to one.',
           ],
@@ -62,13 +62,13 @@ export default function Privacy() {
         {
           heading: 'How we use your information',
           body: [
-            'We use your information to deliver messages and calls, to show you moments, drops, vibes and rooms from the people you follow, to keep your account secure, and to act when somebody reports something.',
+            'We use your information to deliver messages and calls, to show you moments, drops, vibes and rooms from the people you keep, to keep your account secure, and to act when somebody reports something.',
             'We use aggregate, non-identifying data to understand what is working and what is not. That data does not carry your name, your number or your handle into any report we look at.',
             'We do not use the content of your conversations to decide what to advertise to you, and we do not pass it to anybody who would.',
           ],
           points: [
             'Delivering your messages, calls, voice notes and media.',
-            'Showing you the people and things you follow.',
+            'Showing you the people you keep and what they share.',
             'Keeping the account secure — codes, passwords and sign-ins.',
             'Acting on reports, and keeping people who are blocked apart.',
             'Improving the app from aggregate figures with the identifying parts stripped.',

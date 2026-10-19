@@ -390,7 +390,7 @@ function ChatDemo({ reduced }: { reduced: boolean }) {
                   ? "/media/themes/pink/typing.png"
                   : "/media/themes/pink/wait.png"
               }
-              alt={typing ? "Hifza is typing…" : "Hifza"}
+              alt={typing ? "Emily is typing…" : "Emily"}
               /* a small bottom-to-top nudge — minimal travel, no fuss */
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
@@ -921,7 +921,7 @@ function AudioDemo({ reduced }: { reduced: boolean }) {
           {
             src: "/media/themes/catgirl/audio.jpg",
             title: "Jhol",
-            artist: "Ekta 😊😊",
+            artist: "Ashley 😊😊",
             time: "4:38",
           },
         ].map((t) => (

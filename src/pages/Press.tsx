@@ -30,7 +30,7 @@ const facts = [
   },
   {
     k: 'Platforms',
-    v: 'iOS and Android',
+    v: 'Android and iOS, plus the web',
     note: 'Built for the phone in your pocket, including the older one on the slower network.',
   },
   {

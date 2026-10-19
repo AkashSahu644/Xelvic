@@ -100,7 +100,7 @@ export const softwareApplicationLd = (): Json => ({
   '@id': APP_ID,
   name: site.name,
   alternateName: `${site.name} — ${site.tagline}`,
-  operatingSystem: 'iOS, Android',
+  operatingSystem: 'Android, iOS',
   applicationCategory: 'SocialNetworkingApplication',
   applicationSubCategory: 'Messaging',
   description: site.description,
@@ -218,18 +218,19 @@ export const articleLd = (a: {
 
 /** Job posting. */
 export const jobPostingLd = (j: {
+  path: string
   title: string
   description: string
   employmentType: string
   location: string
-  datePosted?: string
+  datePosted: string
   team?: string
 }): Json => ({
   '@type': 'JobPosting',
   title: j.title,
   description: j.description,
   employmentType: j.employmentType.toUpperCase().replace(/[\s-]/g, '_'),
-  datePosted: j.datePosted ?? new Date().toISOString().slice(0, 10),
+  datePosted: j.datePosted,
   hiringOrganization: ref(ORG_ID),
   industry: 'Consumer Software',
   occupationalCategory: j.team,
@@ -238,7 +239,7 @@ export const jobPostingLd = (j: {
   /* Remote-first, and the application is an email rather than a form, so the
      posting says so instead of leaving a crawler to infer it from prose. */
   directApply: false,
-  url: absoluteUrl(`/careers`),
+  url: absoluteUrl(j.path),
 })
 
 /** FAQ page from question/answer pairs. */
@@ -307,7 +308,9 @@ export const contactPageLd = (c: {
   departments: { name: string; email: string; note?: string }[]
 }): Json => ({
   '@type': 'ContactPage',
-  '@id': `${absoluteUrl(c.path)}#webpage`,
+  /* Its own identifier, not the route's `#webpage`: the graph already carries
+     a WebPage node for /contact and two nodes must not share an @id. */
+  '@id': `${absoluteUrl(c.path)}#contactpage`,
   url: absoluteUrl(c.path),
   name: `Contact ${site.name}`,
   isPartOf: ref(SITE_ID),

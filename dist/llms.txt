@@ -3,7 +3,7 @@
 > Xelvic is a free social app for iOS, Android and the web that puts messaging,
 > voice and video calls, moments, live rooms, short video and music in one
 > place. It is built around close groups rather than follower counts: a daily
-> "Spark" streak, encrypted Private Vault chats, and 50+ full-app themes.
+> "Spark" streak, encrypted Private Vault chats, and 33 full-app themes.
 
 Xelvic is a consumer social and communication product. The app is free to use;
 a virtual currency called Sparks is spent on cosmetic themes and profile looks,
@@ -29,7 +29,7 @@ at https://xelvic.com/llms-full.txt.
 - [Live & Rooms](https://xelvic.com/features/live-rooms): Camera or text live streaming, plus audio rooms where the host hands out the microphones.
 - [Drops & Vibes](https://xelvic.com/features/drops-vibes): Photo Drops and short-video Vibes, with feels and private notes on each post.
 - [Audio & Music](https://xelvic.com/features/audio): Charts, playlists, offline saving and sharing a track straight into a chat.
-- [Themes & Drip](https://xelvic.com/features/themes): 50+ themes that restyle the whole app, chat wallpapers, and wearable Drip for your profile.
+- [Themes & Drip](https://xelvic.com/features/themes): 33 themes that restyle the whole app, chat wallpapers, and wearable Drip for your profile.
 - [The Cast](https://xelvic.com/characters): The 17 characters — one per theme pack — that appear in your conversations.
 
 ## How it works

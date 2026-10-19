@@ -92,7 +92,7 @@ export const faqCategories: FaqCategory[] = [
     faqs: [
       {
         q: 'How long do Moments last?',
-        a: 'A day. What you post turns up for the people who follow you and is gone from the feed tomorrow — and then it is kept in your Memories, on your profile, where who sees it follows your account exactly as your moments do.',
+        a: 'A day. What you post turns up for the people who keep you and is gone from the feed tomorrow — and then it is kept in your Memories, on your profile, where who sees it follows your account exactly as your moments do.',
       },
       {
         q: 'What is the difference between a Drop and a Vibe?',
@@ -108,7 +108,7 @@ export const faqCategories: FaqCategory[] = [
       },
       {
         q: 'How do I go live?',
-        a: 'Open Live, pick camera or text, and start whenever you are ready. It is announced to the people who follow you the moment you go, so nobody misses it by accident.',
+        a: 'Open Live, pick camera or text, and start whenever you are ready. It is announced to the people who keep you the moment you go, so nobody misses it by accident.',
       },
       {
         q: 'Who can talk in a room?',

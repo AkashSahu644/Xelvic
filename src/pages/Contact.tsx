@@ -64,7 +64,7 @@ export default function Contact() {
             <dl className="mt-10 divide-y divide-plum/10 border-y border-plum/10">
               {doors.map((r) => (
                 <div key={r.address} className="grid gap-2 py-6 sm:grid-cols-[210px_minmax(0,1fr)] sm:gap-8">
-                  <dt className="text-[11px] font-bold uppercase tracking-[0.14em] text-plum/40 sm:pt-1">
+                  <dt className="text-[11px] font-bold uppercase tracking-[0.14em] text-plum/70 sm:pt-1">
                     {r.k}
                   </dt>
                   <dd className="min-w-0">
@@ -75,7 +75,7 @@ export default function Contact() {
                       {r.address}
                     </a>
                     <p className="mt-2.5 leading-relaxed text-white/60">{r.d}</p>
-                    <p className="mt-3 text-[11px] font-bold uppercase tracking-[0.14em] text-plum/35">
+                    <p className="mt-3 text-[11px] font-bold uppercase tracking-[0.14em] text-plum/70">
                       {r.when}
                     </p>
                   </dd>

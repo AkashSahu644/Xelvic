@@ -3,7 +3,7 @@
 > Xelvic is a free social app for iOS, Android and the web that puts messaging,
 > voice and video calls, moments, live rooms, short video and music in one
 > place. It is built around close groups rather than follower counts: a daily
-> "Spark" streak, an encrypted Private Vault, and 50+ app-wide themes.
+> "Spark" streak, an encrypted Private Vault, and 33 app-wide themes.
 
 Source: https://xelvic.com · Index: https://xelvic.com/llms.txt
 Platforms: iOS, Android, any modern browser
@@ -206,10 +206,10 @@ story has a soundtrack.
 
 ### Themes & Drip — "A look for every you"
 
-Flip your whole app into a new world with 50+ themes, chat wallpapers and
+Flip your whole app into a new world with 33 themes, chat wallpapers and
 wearable "Drip" for your profile.
 
-- **50+ themes** — Anime, kitsune, shinobi, unicorn, mecha and more.
+- **33 themes** — Anime, kitsune, shinobi, unicorn, mecha and more.
 - **Chat wallpapers** — Set the scene with hand-painted backdrops.
 - **Drip wearables** — Dress your profile in cosmetic looks.
 - **Unlocked by Sparks** — Keep the spark going and new looks open up.
@@ -218,7 +218,7 @@ wearable "Drip" for your profile.
 
 1. Open Settings → Appearance — tap your profile, then the ⚙️ gear, then
    Appearance.
-2. Pick a theme — preview any of the 50+ looks live, then apply to flip your
+2. Pick a theme — preview any of the 33 looks live, then apply to flip your
    whole app.
 3. Set a chat wallpaper — choose a hand-painted backdrop for your
    conversations.

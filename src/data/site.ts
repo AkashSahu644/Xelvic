@@ -17,7 +17,7 @@ export const site = {
      should come away knowing what Xelvic does, not that it does several
      things. */
   description:
-    'Xelvic is a free social and messaging app for iOS, Android and the web: chat and group messaging, voice and video calls, Moments, live rooms, Drops and Vibes, music, a daily Spark streak, 33 themes and a private, encrypted Vault.',
+    'Xelvic is a free social and messaging app for Android, iPhone and the web: chat and group messaging, voice and video calls, Moments, live rooms, Drops and Vibes, music, a daily Spark streak, 33 themes and a private, encrypted Vault.',
   // Default social share image (1200×630). Lives in /public/og.
   ogImage: '/og/xelvic-og.png',
   locale: 'en_US',
@@ -34,6 +34,11 @@ export const site = {
      The query string is the package name and nothing else, so the URL keeps
      working when the listing's title changes. */
   playStore: 'https://play.google.com/store/apps/details?id=com.xelvic.app',
+  /* The iOS listing. PLACEHOLDER: the id below is not a real App Store app —
+     swap it for the live listing URL before this is treated as final. The
+     Download page's Apple badge reads this value, so replacing it here is the
+     only edit the link needs. */
+  appStore: 'https://apps.apple.com/us/app/xelvic/id0000000000',
   /* The direct build, still served out of `public/download/` as a fallback for
      a phone whose Play Store is unreachable. Nothing on the site links to it
      any more; it lives on so the file the site already ships is not orphaned

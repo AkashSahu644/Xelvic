@@ -1,9 +1,9 @@
 # Xelvic
 
-> Xelvic is a free social app for iOS, Android and the web that puts messaging,
+> Xelvic is a free social app for Android, iPhone and the web that puts messaging,
 > voice and video calls, moments, live rooms, short video and music in one
-> place. It is built around close groups rather than follower counts: a daily
-> "Spark" streak, encrypted Private Vault chats, and 50+ full-app themes.
+> place. It is built around close groups rather than keep counts: a daily
+> "Spark" streak, encrypted Private Vault chats, and 33 full-app themes.
 
 Xelvic is a consumer social and communication product. The app is free to use;
 a virtual currency called Sparks is spent on cosmetic themes and profile looks,
@@ -11,10 +11,10 @@ not on features. Minimum age is 13.
 
 - Canonical origin: https://xelvic.com
 - Web app (sign-in for existing accounts): https://web.xelvic.com
-- Platforms: iOS, Android, and any modern browser
+- Platforms: Android 8+, iOS 15+ (iPhone and iPad), and any modern browser.
 - Price: free. Sparks buy cosmetics only.
 - Minimum age: 13
-- Contact: hello@xelvic.app
+- Contact: hello@xelvic.app (mail is on the xelvic.app domain)
 
 This file is an index for language models and answer engines. Every page below
 is public marketing copy. A single-file, full-text version of the whole site is
@@ -29,24 +29,23 @@ at https://xelvic.com/llms-full.txt.
 - [Live & Rooms](https://xelvic.com/features/live-rooms): Rooms, Streams, Games and AMAs you open yourself, with hands up and Bring up to hand out the microphones.
 - [Drops & Vibes](https://xelvic.com/features/drops-vibes): Photo Drops and short-video Vibes, with feels and private notes on each post.
 - [Audio & Music](https://xelvic.com/features/audio): Charts, playlists, offline saving and sharing a track straight into a chat.
-- [Themes & Drip](https://xelvic.com/features/themes): 50+ themes that restyle the whole app, chat wallpapers, and wearable Drip for your profile.
-- [The Cast](https://xelvic.com/characters): The 17 characters — one per theme pack — that appear in your conversations.
+- [Themes & Drip](https://xelvic.com/features/themes): 33 themes that restyle the whole app, chat wallpapers, and wearable Drip for your profile.
+- [The Cast](https://xelvic.com/features/themes#cast): The 17 characters — one per character pack — that appear in your conversations.
 
 ## How it works
 
 - [How it works](https://xelvic.com/how-it-works): Hello to live in minutes, tap by tap.
-- [Overview](https://xelvic.com/overview): The whole product on a single page.
 - [What's New](https://xelvic.com/whats-new): The newest things in the app, and why they were built.
-- [Explore](https://xelvic.com/explore): What people are doing across Xelvic.
+- [Explore](https://xelvic.com/explore): The whole app on one page — the feed, the chats, the stories, every feature and the wallpapers.
 
 ## Download
 
-- [Download Xelvic](https://xelvic.com/download): App Store and Google Play links, device requirements, and answers about installing.
+- [Download Xelvic](https://xelvic.com/download): The Google Play and App Store listings, device requirements, and answers about installing.
 - [Sign in on the web](https://web.xelvic.com): For people who already have an account.
 
 ## Help and answers
 
-- [Help Center](https://xelvic.com/help): Over 50 answers across eight topics — sign-up, messaging and calls, moments and live, sparks and themes, privacy and safety, comments and notes, accounts and devices, and creator deals.
+- [Help Center](https://xelvic.com/help): 55 answers across eight topics — sign-up, messaging and calls, moments and live, sparks and themes, privacy and safety, comments and notes, accounts and devices, and creator deals.
 - [Settings, explained](https://xelvic.com/settings): Every switch in the app and what it actually changes.
 - [Support](https://xelvic.com/support): Which address to write to for what.
 - [Contact](https://xelvic.com/contact): Every team address, including privacy, safety, security and press.
@@ -58,6 +57,8 @@ at https://xelvic.com/llms-full.txt.
 - [Your Data](https://xelvic.com/data): What Xelvic collects, what it does not, and how to get it out.
 - [Privacy Policy](https://xelvic.com/privacy)
 - [Terms of Service](https://xelvic.com/terms)
+- [Child safety](https://xelvic.com/child-safety): The child-safety standards the app stores are handed, including the age gate and reporting routes.
+- [Delete your account](https://xelvic.com/delete-account): The permanent deletion route, what it removes, and what it cannot recover.
 
 ## Company
 

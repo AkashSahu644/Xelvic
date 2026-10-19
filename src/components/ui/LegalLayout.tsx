@@ -90,7 +90,7 @@ export default function LegalLayout({
           <aside className="hidden lg:block">
             <div className="sticky top-[calc(7rem+env(safe-area-inset-top))]">
               <div className="rounded-2xl border border-plum/10 bg-pure p-5 shadow-[0_2px_18px_rgba(157,23,77,.06)]">
-                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-plum/40">
+                <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-plum/70">
                   On this page
                 </p>
                 <nav className="mt-4 space-y-0.5">
@@ -103,7 +103,7 @@ export default function LegalLayout({
                         className={`group flex items-start gap-2.5 rounded-lg px-2.5 py-2 text-sm leading-snug transition-colors ${
                           on
                             ? 'bg-pink-50 font-semibold text-plum'
-                            : 'text-plum/55 hover:bg-pink-50/60 hover:text-plum'
+                            : 'text-plum/70 hover:bg-pink-50/60 hover:text-plum'
                         }`}
                       >
                         <span
@@ -119,12 +119,12 @@ export default function LegalLayout({
               </div>
 
               <div className="mt-4 space-y-2 px-2">
-                <p className="flex items-center gap-2 text-xs text-plum/40">
+                <p className="flex items-center gap-2 text-xs text-plum/70">
                   <Clock size={13} />
                   Last updated {updated}
                 </p>
                 {minutes && (
-                  <p className="flex items-center gap-2 text-xs text-plum/40">
+                  <p className="flex items-center gap-2 text-xs text-plum/70">
                     <span className="h-1 w-1 rounded-full bg-plum/30" />
                     About {minutes} min to read
                   </p>
@@ -133,7 +133,7 @@ export default function LegalLayout({
 
               {related && related.length > 0 && (
                 <div className="mt-6 px-2">
-                  <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.14em] text-plum/40">
+                  <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.14em] text-plum/70">
                     Read with this
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -150,7 +150,7 @@ export default function LegalLayout({
 
           {/* ————— the document ————— */}
           <div className="min-w-0 max-w-3xl">
-            <p className="mb-6 flex items-center gap-2 text-sm text-plum/40 lg:hidden">
+            <p className="mb-6 flex items-center gap-2 text-sm text-plum/70 lg:hidden">
               <Clock size={14} />
               Last updated {updated}
             </p>
@@ -167,7 +167,7 @@ export default function LegalLayout({
                 On this page
                 <span
                   aria-hidden
-                  className="shrink-0 font-display text-lg font-bold leading-none text-plum/35 transition-transform duration-200 group-open:rotate-45"
+                  className="shrink-0 font-display text-lg font-bold leading-none text-plum/70 transition-transform duration-200 group-open:rotate-45"
                 >
                   +
                 </span>
@@ -217,7 +217,7 @@ export default function LegalLayout({
                       key={g.label}
                       className="rounded-2xl border border-plum/10 bg-pure p-4 shadow-[0_2px_14px_rgba(157,23,77,.05)]"
                     >
-                      <dt className="text-[11px] font-semibold uppercase tracking-wider text-plum/40">
+                      <dt className="text-[11px] font-semibold uppercase tracking-wider text-plum/70">
                         {g.label}
                       </dt>
                       <dd className="mt-1.5 font-display text-lg font-bold leading-tight text-plum">
@@ -267,7 +267,7 @@ export default function LegalLayout({
                       {/* the app's own words — the receipt for the clause above */}
                       {s.app && (
                         <figure className="mt-5 rounded-2xl border border-plum/10 bg-pure px-5 py-4">
-                          <figcaption className="text-[10px] font-bold uppercase tracking-[0.14em] text-plum/40">
+                          <figcaption className="text-[10px] font-bold uppercase tracking-[0.14em] text-plum/70">
                             In the app
                           </figcaption>
                           <blockquote className="mt-2 border-l-2 border-[#ec4899] pl-3.5 text-[15px] italic leading-relaxed text-plum/80">

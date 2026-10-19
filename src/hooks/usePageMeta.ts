@@ -136,20 +136,22 @@ export function useSEO(options: SEOOptions = {}) {
         : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
       created,
     )
-    setLink('canonical', canonical, created)
-
-    /* One language, so every alternate points at this page's own canonical.
-       They still have to be rewritten on each navigation: the prerendered HTML
-       carries the pair belonging to the URL the visitor first landed on, and a
-       `/blog` page advertising `/about` as its English version is a page
-       competing with the one it just came from. A `noindex` route drops them
-       entirely, for the same reason it drops the canonical. */
+    /* A `noindex` route drops its canonical as well as its alternates. Keeping
+       a self-canonical on a page that asks not to be indexed is a contradictory
+       pair of signals, and the prerendered head already omits it. */
     const alternates = ['en', 'x-default']
     if (noindex) {
       document.head
-        .querySelectorAll('link[rel="alternate"][hreflang]')
+        .querySelectorAll('link[rel="canonical"], link[rel="alternate"][hreflang]')
         .forEach((el) => el.remove())
     } else {
+      setLink('canonical', canonical, created)
+
+      /* One language, so every alternate points at this page's own canonical.
+         They still have to be rewritten on each navigation: the prerendered HTML
+         carries the pair belonging to the URL the visitor first landed on, and a
+         `/blog` page advertising `/about` as its English version is a page
+         competing with the one it just came from. */
       for (const lang of alternates) {
         let tag = document.head.querySelector(`link[rel="alternate"][hreflang="${lang}"]`)
         if (!tag) {

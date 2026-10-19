@@ -136,7 +136,7 @@ const HOME_BULLETS = [
   ['Live &amp; Rooms', 'go live by camera or text, or open an audio room and hand out the microphones.'],
   ['Drops &amp; Vibes', 'photo posts and short-video reels, with feels and private notes on each one.'],
   ['Audio &amp; music', 'charts, playlists, offline saving, and sharing a track straight into a chat.'],
-  ['Themes &amp; Drip', '50+ themes that restyle the whole app, chat wallpapers, and wearables for your profile.'],
+  ['Themes &amp; Drip', '33 themes that restyle the whole app, chat wallpapers, and wearables for your profile.'],
   ['Sparks', 'a streak for every day two people actually talk.'],
   ['Private Vault', 'an encrypted, code-locked space for the conversations you want out of the way.'],
 ]
@@ -154,7 +154,7 @@ ${HOME_BULLETS.map(([k, v]) => `          <li><strong>${k}</strong> — ${v}</li
         <h2 style="${H2}">The essentials</h2>
         <ul style="${UL}">
           <li>Free to use. Sparks are spent on cosmetic themes and looks, never on features.</li>
-          <li>Available on iOS, Android and any modern browser. Minimum age 13.</li>
+          <li>Available on Android and iOS, plus any modern browser. Minimum age 13.</li>
           <li>Contacts are matched on your device — your address book is never uploaded.</li>
         </ul>`
   }

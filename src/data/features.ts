@@ -72,12 +72,12 @@ export const features: Feature[] = [
     color: '#db2777',
     screen: '/media/themes/animeblue/moments.jpg',
     quote:
-      'What the people you follow put up today turns up here, and is gone tomorrow.',
+      'What the people you keep put up today turns up here, and is gone tomorrow.',
     points: [
       { title: 'Text, polls & music', body: 'Post a thought, ask the room, or set it to a track.' },
       { title: 'Mention your people', body: 'A moment can name up to 5 people.' },
       { title: 'Memories', body: 'Everything you post is kept in a Memory once its day is over.' },
-      { title: 'Just for followers', body: 'Only the people you follow see what you put up.' },
+      { title: 'Just for your keeps', body: 'Only the people you keep see what you put up.' },
     ],
   },
   {
@@ -107,7 +107,7 @@ export const features: Feature[] = [
       'Post photo Drops and short-video Vibes. Feel them, leave notes, and find more of what you are into.',
     color: '#ff5fa2',
     screen: '/media/themes/animeblue/drops.jpg',
-    quote: 'Drops from people you follow turn up here.',
+    quote: 'Drops from people you keep turn up here.',
     points: [
       { title: 'Drops', body: 'Photo posts — every picture in a drop is posted at this one frame.' },
       { title: 'Vibes', body: 'Short-video reels with voice and music, built for the scroll.' },
@@ -256,10 +256,10 @@ export const featureGuides: Record<string, FeatureGuide> = {
       { tap: 'Tap the + on your circle', detail: 'First on the Moments rail — this opens the Moment composer.' },
       { tap: 'Add text, a poll or music', detail: 'Set the mood with a track, ask the room with a poll, or just drop a thought.' },
       { tap: 'Mention up to 5 people', detail: 'Type @ to tag the people who should see themselves in it.' },
-      { tap: 'Post — it lasts 24 hours', detail: 'Followers see it today; tomorrow it tucks itself into your Memories.' },
+      { tap: 'Post — it lasts 24 hours', detail: 'Your keeps see it today; tomorrow it tucks itself into your Memories.' },
     ],
     tips: [
-      'Only people you follow back can see your Moments.',
+      'Only mutual keeps can see your Moments.',
       'Open your own Moment and tap 14 watched to see who answered and who watched it.',
       'Open Profile → Memories to relive everything you have ever posted.',
       'Tap-and-hold a moment to pause it; swipe sideways to skip.',
@@ -300,7 +300,7 @@ export const featureGuides: Record<string, FeatureGuide> = {
     tips: [
       'Pick your interests in Explore and your feed tunes itself to you.',
       'Tap the heart to feel a post; long-press to save it for later.',
-      'Drops from the people you follow surface at the top of the feed.',
+      'Drops from the people you keep surface at the top of the feed.',
     ],
   },
   audio: {

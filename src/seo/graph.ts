@@ -33,8 +33,8 @@ import { cast } from '../data/characters'
 import { faqCategories } from '../data/faq'
 import { downloadFaqs } from '../data/downloadFaq'
 import { doors } from '../data/contact'
-import { deepLinks } from '../data/developers'
-import { creatorTools, dealSteps } from '../data/creators'
+import { deepLinks, developerFaqs } from '../data/developers'
+import { creatorTools, creatorFaqs, dealSteps } from '../data/creators'
 import { gettingStarted } from '../data/gettingStarted'
 import { routeSeo, type RouteSeo } from './routes'
 
@@ -96,6 +96,7 @@ export function routeExtras(r: RouteSeo): Json[] {
           path: '/developers',
           items: deepLinks.map((l) => ({ name: l.path, description: l.desc })),
         }),
+        faqLd(developerFaqs),
       ]
 
     case '/creators':
@@ -112,6 +113,7 @@ export function routeExtras(r: RouteSeo): Json[] {
           path: '/creators',
           steps: dealSteps.map((s) => ({ name: `${s.n}. ${s.t}`, text: s.d })),
         }),
+        faqLd(creatorFaqs),
       ]
 
     case '/features/themes':
@@ -147,7 +149,7 @@ export function routeExtras(r: RouteSeo): Json[] {
             'Five steps from downloading Xelvic to going live with your friends, with the exact taps at each one.',
           path: '/how-it-works',
           totalTime: 'PT5M',
-          tools: ['Xelvic for iOS or Android'],
+          tools: ['Xelvic for Android and iOS'],
           steps: gettingStarted.map((s) => ({
             name: s.title,
             text: `${s.body} In the app: ${s.taps.join(' → ')}.`,
@@ -177,7 +179,10 @@ function derivedNodes(r: RouteSeo): Json[] {
           datePublished: post.date,
           author: post.author,
           section: post.category,
-          wordCount: post.body.join(' ').split(/\s+/).length,
+          wordCount: [post.body, ...(post.sections ?? []).map((s) => s.body)]
+            .flat()
+            .join(' ')
+            .split(/\s+/).length,
         }),
       )
     }
@@ -188,10 +193,12 @@ function derivedNodes(r: RouteSeo): Json[] {
     if (job) {
       nodes.push(
         jobPostingLd({
+          path: r.path,
           title: job.title,
           description: `${job.summary} Responsibilities: ${job.responsibilities.join(' ')} Requirements: ${job.requirements.join(' ')}`,
           employmentType: job.type,
           location: job.location,
+          datePosted: job.datePosted,
           team: job.team,
         }),
       )
@@ -214,7 +221,7 @@ function derivedNodes(r: RouteSeo): Json[] {
           description: `${feature.tagline} — where to tap, step by step.`,
           path: r.path,
           totalTime: 'PT2M',
-          tools: ['Xelvic for iOS or Android'],
+          tools: ['Xelvic for Android and iOS'],
           steps: guide.steps.map((s) => ({ name: s.tap, text: s.detail })),
         }),
       )

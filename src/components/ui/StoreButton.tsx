@@ -33,10 +33,10 @@ type Props = {
   variant?: 'glow' | 'white' | 'ghost'
   /** An in-site route — what the CTA bands use to hand off to /download. */
   to?: string
-  /** Where the badge actually sends you. A store listing when there is one,
-      and the build itself when there is not — the Android badge on the
-      Download page is handed `site.androidApk` for exactly that reason. */
+  /** Where the badge actually sends you. A store listing when there is one. */
   href?: string
+  /** A store that is not live yet: render the badge as unavailable, not a dead link. */
+  soon?: boolean
   className?: string
 }
 
@@ -45,9 +45,27 @@ export default function StoreButton({
   variant = 'glow',
   to,
   href,
+  soon = false,
   className = '',
 }: Props) {
   const b = badges[store]
+
+  /* A badge that goes nowhere is worse than one that says so. This is the
+     state for a store that has no listing yet, rather than an `<a href="#">`
+     that scrolls the page to the top when it is tapped. */
+  if (soon) {
+    return (
+      <span
+        className={`btn btn-${variant} ${className} pointer-events-none select-none opacity-60`}
+        aria-disabled="true"
+        title={`${b.name} — coming soon`}
+      >
+        {b.glyph}
+        {b.name}
+        <span className="ml-1 text-xs font-normal opacity-80">(soon)</span>
+      </span>
+    )
+  }
 
   return (
     <MagneticButton variant={variant} to={to} href={href} className={className}>

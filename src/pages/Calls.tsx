@@ -40,8 +40,6 @@ export default function Calls() {
      only happen if the slug is renamed in one place and not the other. */
   if (!feature) return null;
 
-  const Icon = feature.icon;
-
   return (
     <>
       {/* ── the hero ─────────────────────────────────────────────────────────
@@ -72,15 +70,8 @@ export default function Calls() {
             half down the page on the device most people are reading on. */}
         <div className="wrap grid items-center gap-12 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           <div className="lg:col-start-1 lg:row-start-1">
-            <Reveal>
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 text-xs font-semibold text-white/70">
-                <Icon size={14} className="text-blue-glow" />
-                {feature.tagline}
-              </span>
-            </Reveal>
-
             <Reveal delay={0.05}>
-              <h1 className="mt-6 font-display text-[clamp(2.25rem,7vw,3rem)] font-bold leading-[1.05] tracking-tight [text-wrap:balance] md:text-[clamp(3rem,5.5vw,3.75rem)]">
+              <h1 className="font-display text-[clamp(2.25rem,7vw,3rem)] font-bold leading-[1.05] tracking-tight [text-wrap:balance] md:text-[clamp(3rem,5.5vw,3.75rem)]">
                 Voice &amp; video calls on{" "}
                 <span className="text-grad">Xelvic</span>
               </h1>

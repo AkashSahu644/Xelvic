@@ -44,8 +44,8 @@ const headline = [
   },
   {
     value: 'iOS 15',
-    label: 'The oldest iPhone we run on',
-    note: 'iPhone 6s and later, and iPad. One build covers both — there is no separate tablet version.',
+    label: 'The oldest iPhone it will run on',
+    note: 'Covers iPhone 6s and later, and iPad — one build, no separate tablet version.',
   },
   {
     value: '13+',
@@ -95,7 +95,7 @@ const requirements = [
   {
     k: 'iPhone & iPad',
     v: 'iOS 15 and later',
-    note: 'iPhone 6s and later. The app fills the screen on an iPad rather than sitting in a phone-shaped box.',
+    note: 'Runs on iPhone 6s and later, and fills the screen on an iPad. One build, no separate tablet version.',
   },
   {
     k: 'To sign up',
@@ -122,12 +122,12 @@ const requirements = [
 /* Four taps, in the order they happen. */
 const install = [
   {
-    t: 'Tap the badge for your phone',
-    d: 'The Google Play badge on an Android, the App Store badge on an iPhone. Both go to the listing for this app and nothing else.',
+    t: 'Tap a store badge',
+    d: 'Use the Google Play badge on Android or the App Store badge on iPhone and iPad. Both install the same app, on the same account.',
   },
   {
     t: 'Let the store install it',
-    d: 'Google Play installs it in one tap, with no “unknown sources” detour; iPhone will ask for Face ID or your Apple ID password. Any prompt is the store’s, not ours.',
+    d: 'Google Play and the App Store install it in one tap, with no “unknown sources” detour. Any prompt is the store’s, not ours.',
   },
   {
     t: 'Enter your number',
@@ -141,7 +141,7 @@ const install = [
 
 /* The questions a download page actually gets asked now live in
    src/data/downloadFaq, where the FAQPage in the head is built from the same
-   six answers this page's accordion renders. If an answer there ever stops
+   answers this page's accordion renders. If an answer there ever stops
    being true, it has to be deleted rather than softened. */
 
 export default function Download() {
@@ -159,7 +159,7 @@ export default function Download() {
             Get <span className="text-grad">Xelvic</span>
           </>
         }
-        sub="Free on Android and iPhone. Install it, sign in with your number, and your people are a tap away."
+        sub="Free on Android and iOS. Install it, sign in with your number, and your people are a tap away — or use it in your browser with nothing to install."
         wall="/media/walls/xelvic.jpg"
       />
 
@@ -201,12 +201,12 @@ export default function Download() {
               Two taps from your crew
             </h2>
             <p className="mt-3 leading-relaxed text-white/60">
-              Pick the store your phone uses. Signing in takes a number and a code — there is
-              no password to invent and nothing to verify afterwards.
+              Android installs from Google Play in one tap, and iPhone and iPad install from
+              the App Store. Signing in takes a number and a code, with no password to invent.
             </p>
 
             <div className="mt-7 flex flex-wrap gap-4">
-              <StoreButton store="apple" variant="white" href="#" />
+              <StoreButton store="apple" variant="white" href={site.appStore} />
               {/* The Android badge hands over the Play listing rather than the
                   build itself — see `site.playStore`. The store is the road
                   that keeps working: it updates the app, checks the signature

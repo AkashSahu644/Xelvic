@@ -153,7 +153,7 @@ export default function Data() {
           heading: 'How long any of it is kept',
           body: [
             'Different things have different lifetimes, and the app says each of them out loud rather than burying it.',
-            'A moment is a day: it goes to the people who follow you, and it is gone tomorrow — except that it is kept in your own Memories, on your profile, where who sees it follows your account exactly as your moments do.',
+            'A moment is a day: it goes to the people who keep you, and it is gone tomorrow — except that it is kept in your own Memories, on your profile, where who sees it follows your account exactly as your moments do.',
             'A room you opened stays in your list whether it is on, coming or over. A voice note stops at 30 minutes. A drop holds up to 10 pieces. A hidden convo stays hidden until you take it out.',
             'An account that is deleted is hidden at once and erased 30 days later. A reported item stays in the queue while it is worked, and then it does not.',
           ],

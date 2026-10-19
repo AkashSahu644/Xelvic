@@ -1,5 +1,5 @@
-import { useMemo, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useEffect, useMemo, useState } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import PageHero from '../components/layout/PageHero'
 import Reveal from '../components/ui/Reveal'
 import Accordion from '../components/ui/Accordion'
@@ -44,7 +44,31 @@ export default function Help() {
   useSEO()
 
   const [active, setActive] = useState(faqCategories[0].slug)
-  const [query, setQuery] = useState('')
+  const [params, setParams] = useSearchParams()
+  /* The WebSite node advertises `/help?q={search_term_string}` as the sitewide
+     search action, so the box has to start from the URL rather than from ''.
+     The rest of the page's state stays local; only the query is shareable. */
+  const [query, setQuery] = useState(params.get('q') ?? '')
+
+  /* Back/forward and a pasted `?q=` link both land here, so the box follows
+     the URL even when the change did not come from typing. */
+  useEffect(() => {
+    const next = params.get('q') ?? ''
+    setQuery((current) => (current === next ? current : next))
+  }, [params])
+
+  const changeQuery = (value: string) => {
+    setQuery(value)
+    setParams(
+      (current) => {
+        const next = new URLSearchParams(current)
+        if (value.trim()) next.set('q', value)
+        else next.delete('q')
+        return next
+      },
+      { replace: true },
+    )
+  }
 
   const searching = query.trim().length > 0
 
@@ -85,7 +109,7 @@ export default function Help() {
             <div className="flex items-end justify-between gap-4 border-b-2 border-plum/15 transition-colors focus-within:border-pink-500">
               <input
                 value={query}
-                onChange={(e) => setQuery(e.target.value)}
+                onChange={(e) => changeQuery(e.target.value)}
                 placeholder="Search the Help Center"
                 aria-label="Search help articles"
                 className="w-full bg-transparent py-4 font-display text-lg font-bold text-plum outline-none placeholder:font-sans placeholder:text-lg placeholder:font-normal placeholder:text-plum/35 md:text-xl"
@@ -93,7 +117,7 @@ export default function Help() {
               {searching && (
                 <button
                   type="button"
-                  onClick={() => setQuery('')}
+                  onClick={() => changeQuery('')}
                   className="shrink-0 cursor-pointer pb-5 text-xs font-bold uppercase tracking-[0.14em] text-plum/40 transition-colors hover:text-pink-700"
                 >
                   Clear
@@ -109,7 +133,7 @@ export default function Help() {
                 <button
                   key={p}
                   type="button"
-                  onClick={() => setQuery(p)}
+                  onClick={() => changeQuery(p)}
                   className="cursor-pointer rounded-full border border-plum/12 bg-pure px-3.5 py-1.5 text-xs font-semibold text-plum/60 transition-colors hover:border-pink-500/40 hover:text-pink-700"
                 >
                   {p}

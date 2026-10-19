@@ -5,7 +5,6 @@ import {
   Database,
   Globe,
   Image as ImageIcon,
-  Layers,
   LayoutGrid,
   Lock,
   MessageCircle,
@@ -60,8 +59,7 @@ export const resourcesMenu: NavGroup[] = [
     heading: 'Discover',
     links: [
       { label: "What's New", to: '/whats-new', desc: 'The newest in the app', icon: Sparkles },
-      { label: 'Explore', to: '/explore', desc: 'What people are doing', icon: Globe },
-      { label: 'Overview', to: '/overview', desc: 'The big picture', icon: Layers },
+      { label: 'Explore', to: '/explore', desc: 'The whole app, in one place', icon: Globe },
       { label: 'Blog', to: '/blog', desc: 'Stories & updates', icon: Newspaper },
     ],
   },
@@ -105,7 +103,6 @@ export const footerColumns: NavGroup[] = [
     heading: 'Explore',
     links: [
       { label: "What's New", to: '/whats-new' },
-      { label: 'Overview', to: '/overview' },
       { label: 'Explore', to: '/explore' },
       { label: 'How it works', to: '/how-it-works' },
       { label: 'Creators', to: '/creators' },

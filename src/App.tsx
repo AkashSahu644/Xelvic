@@ -32,7 +32,6 @@ const Themes = lazy(() => import('./pages/Themes'))
 const HowItWorks = lazy(() => import('./pages/HowItWorks'))
 const WhatsNewPage = lazy(() => import('./pages/WhatsNew'))
 const Explore = lazy(() => import('./pages/Explore'))
-const Overview = lazy(() => import('./pages/Overview'))
 const Download = lazy(() => import('./pages/Download'))
 const Creators = lazy(() => import('./pages/Creators'))
 const Developers = lazy(() => import('./pages/Developers'))
@@ -95,7 +94,9 @@ export default function App() {
                     path="/characters"
                     element={<Navigate to="/features/themes#cast" replace />}
                   />
-                  <Route path="/overview" element={<Overview />} />
+                  {/* Explore and Overview were two tours of the same app; they
+                      are one page now, so the old links land there. */}
+                  <Route path="/overview" element={<Navigate to="/explore" replace />} />
                   <Route path="/download" element={<Download />} />
                   <Route path="/creators" element={<Creators />} />
                   <Route path="/developers" element={<Developers />} />

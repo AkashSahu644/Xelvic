@@ -1,3 +1,11 @@
+/**
+ * Retired page, kept as reference.
+ *
+ * The cast now lives inside Themes & Drip (`/features/themes#cast`), and
+ * `/characters` is a `noindex` redirect in the router. This file is the copy
+ * the merged page was written from; nothing imports it, and it must not be
+ * added to `App.tsx` again.
+ */
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'

@@ -198,7 +198,7 @@ export default function Community() {
             title="A Spark, day by day"
             lead="A counter that only moves if both people do something, which is the only reason it means anything."
             body={[
-              'A spark is not a follower count and it is not something you can buy. It starts the moment two people have both said something on the same day, and it does not matter who went first — the app is explicit about that, because the whole value of the thing depends on it being mutual.',
+              'A spark is not a keep count and it is not something you can buy. It starts the moment two people have both said something on the same day, and it does not matter who went first — the app is explicit about that, because the whole value of the thing depends on it being mutual.',
               'Every day after that, both of you have to say something before the day is out. Miss one and a Shield takes the hit instead of the run. Shields bank once a week, up to a cap the app shows you, so there are only so many days you can sleep through before the run is the thing that suffers.',
               'Your run is yours to look at rather than to broadcast — showing sparks is a setting, not a default. What the other person does see is a screenshot: capture a Spark and the app notes it on your screen and tells them their Spark was captured. It cannot stop the screenshot; it just refuses to let it be quiet.',
               'One more rule worth knowing before you start counting: a one-to-one convo keeps its own spark, and a group does not count towards one. A spark is meant to be the two of you, not a room you both happen to be sitting in.',
@@ -230,7 +230,7 @@ export default function Community() {
               'Groups carry their own version of the same idea. A channel set to announcements is read-only for everyone but the admins, and the app says so on the screen instead of leaving you to find out by typing into it. Rooms you open stay in your list afterwards, whether they were on, coming or over.',
             ]}
             steps={[
-              { t: 'Open a room', d: 'Pick voices and start. It is announced to the people who follow you the moment you go.' },
+              { t: 'Open a room', d: 'Pick voices and start. It is announced to the people who keep you the moment you go.' },
               { t: 'Bring people up', d: 'Only the stage is heard. Somebody in the audience raises a hand and the host brings them up.' },
               { t: 'Hand the mic round', d: 'The host decides who speaks and who steps back down to the audience.' },
               { t: 'Close it', d: 'The room stays in your list afterwards, so what you hosted is not lost when it ends.' },

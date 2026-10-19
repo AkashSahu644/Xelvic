@@ -385,7 +385,7 @@ function GroupScreen() {
   const tiles: { name: string; src?: string; letter?: string; tone?: string }[] =
     [
       { name: "John", src: AVATAR },
-      { name: "Priya", src: WALL_SELF },
+      { name: "Olivia", src: WALL_SELF },
       { name: "Morgan", letter: "M", tone: "#7c3aed" },
       { name: "Hannah", letter: "H", tone: "#db2777" },
       { name: "Sam", letter: "S", tone: "#0ea5e9" },
@@ -644,7 +644,7 @@ function HistoryScreen() {
       tone: "#7c3aed",
     },
     {
-      name: "Priya",
+      name: "Olivia",
       dir: "incoming",
       note: "Incoming · 12 min",
       when: "17:20",

@@ -1,5 +1,7 @@
+import { Camera, Flame, Lock, MessageCircle, Radio, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
-import MagneticButton from '../ui/MagneticButton'
+import StoreButton from '../ui/StoreButton'
+import { site } from '../../data/site'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 
 /* ─────────────────────────────────────────────────────────────── the hero ─── */
@@ -64,10 +66,19 @@ const rails: { tiles: string[]; down: boolean; ratio: string; duration: number }
     duration,
   }))
 
-/* Three claims, each one already made elsewhere on the site and each one true
-   as written: 33 themes (features.ts), the Private Vault (features.ts), and
-   nothing sold (Data, Privacy and Settings all say so). */
-const promises = ['33 themes', 'Private Vault', 'Nothing sold, ever']
+/* The features the hero names — the tabs most of the app happens in, plus the
+   Streak and the Vault. These are pills rather than links: the hero is a
+   summary, and the nav is where the real paths are. Icons keep the row
+   recognisable at a glance the way an app store listing does, without turning
+   it into a second menu. */
+const highlights = [
+  { icon: MessageCircle, label: 'Chat' },
+  { icon: Flame, label: 'Streaks' },
+  { icon: Radio, label: 'Live rooms' },
+  { icon: Camera, label: 'Moments' },
+  { icon: Sparkles, label: 'Vibe' },
+  { icon: Lock, label: 'Vault' },
+]
 
 /**
  * One rail of the wall.
@@ -186,9 +197,9 @@ export default function Hero() {
 
       {/* ── the scrim ────────────────────────────────────────────────────────
           A ramp from the left rather than a flat wash: solid where the words
-          are, opening to the right so the wall shows through most where there
-          is nothing to read. The vignette is what stops the open right-hand
-          side reading as an accident.
+          are, opening to the right so the wall shows through most where the
+          reading stops. The vignette is what stops the open right-hand side
+          reading as an accident.
 
           No frost on it at all. There was — forty pixels, then sixteen — and
           the case for it was that a collage of photographs at full sharpness
@@ -213,80 +224,95 @@ export default function Hero() {
       <div className="pointer-events-none absolute inset-0 z-10 bg-[radial-gradient(110%_90%_at_6%_50%,rgba(247,233,240,.78),transparent_50%)]" />
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-40 bg-gradient-to-t from-[#ffffff] to-transparent" />
 
+      {/* ── the front ────────────────────────────────────────────────────────
+          One column, held to the left where the scrim is deepest: icon,
+          headline, line of copy, the two store badges, then the features. The
+          store badges come before the fine print, the way every app's own site
+          does it, and the wall on the right is left to itself. There is no
+          phone in this hero: the badges are the call to action, and the wall
+          is the picture. */}
       <div className="wrap relative z-20 w-full">
-        <div className="grid items-center gap-x-14 gap-y-10 lg:grid-cols-[minmax(0,1.02fr)_minmax(0,0.98fr)]">
-          {/* ── what the hero is saying ────────────────────────────────────── */}
-          <div>
-            <motion.h1
-              initial={reduced ? false : { opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.07 }}
-              /* Clamped rather than stepped. There is no height breakpoint in
-                 Tailwind and this is a section that has to fit a laptop as well
-                 as a desktop, so the type gives way to the viewport instead of
-                 holding its size and pushing the section past the fold. The
-                 ceiling is set by the widest line, which has to hold one line
-                 in the left half of the grid. */
-              className="font-display text-[clamp(2.6rem,5.3vw,4rem)] font-bold leading-[1] tracking-[-.055em]"
-            >
-              Focus, streak,
-              <span className="mt-1 block bg-[linear-gradient(100deg,#9d174d,#ec4899_38%,#ff77b0_68%,#9d174d)] bg-[length:220%_auto] bg-clip-text text-transparent animate-gradient-pan">
-                spark, vibe, chat.
-              </span>
-            </motion.h1>
+        <div className="max-w-[44rem]">
+          <motion.div
+            initial={reduced ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.05 }}
+            className="flex items-center gap-3"
+          >
+            <img
+              src="/favicon-512x512.png"
+              alt=""
+              width={56}
+              height={56}
+              className="h-14 w-14 rounded-[1.15rem] shadow-[0_14px_30px_-14px_rgba(157,23,77,.55)] ring-1 ring-pure/70"
+            />
+            <span className="font-display text-2xl font-bold tracking-tight text-plum">
+              Xelvic
+            </span>
+          </motion.div>
 
-            <motion.p
-              initial={reduced ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.18 }}
-              className="mt-6 max-w-[30rem] text-[16px] leading-[1.75] text-plum/70 sm:text-[17px]"
-            >
-              One app for the people you talk to every day. All four land in
-              Chat — where you can like and comment on anything shared with you.
-            </motion.p>
+          <motion.h1
+            initial={reduced ? false : { opacity: 0, y: 22 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.07 }}
+            /* Clamped rather than stepped. There is no height breakpoint in
+               Tailwind and this is a section that has to fit a laptop as well
+               as a desktop, so the type gives way to the viewport instead of
+               holding its size and pushing the section past the fold. */
+            className="mt-7 font-display text-[clamp(2.3rem,4.1vw,3.15rem)] font-bold leading-[.98] tracking-[-.055em] [text-wrap:balance]"
+          >
+            Chat. Streak. Vibe. &amp; More
+            <span className="mt-1 block bg-[linear-gradient(100deg,#9d174d,#ec4899_38%,#ff77b0_68%,#9d174d)] bg-[length:220%_auto] bg-clip-text text-transparent animate-gradient-pan">
+              All in one app.
+            </span>
+          </motion.h1>
 
-            <motion.div
-              initial={reduced ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.65, delay: 0.28 }}
-              className="mt-8 flex flex-wrap items-center gap-3"
-            >
-              <MagneticButton to="/download" variant="glow">
-                Get Xelvic
-              </MagneticButton>
-              {/* No colour overrides any more: the ghost variant is already
-                  the light-page outline, and it was only being forced white
-                  because the bed under it used to be black. */}
-              <MagneticButton to="/how-it-works" variant="ghost">
-                See how it works
-              </MagneticButton>
-            </motion.div>
+          <motion.p
+            initial={reduced ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.18 }}
+            className="mt-6 max-w-[35rem] text-[16px] leading-[1.75] text-plum/70 sm:text-[18px]"
+          >
+            Messages, group chats, HD calls, live rooms, Moments, Drops and
+            music — one free app for the people you actually talk to. On
+            Android, iPhone and the web.
+          </motion.p>
 
-            {/* The foot of the column, behind a rule so it reads as a standing
-                promise rather than a third line of marketing. Hairline ticks
-                rather than tick icons keep the hero free of glyphs. */}
-            <motion.ul
-              initial={reduced ? false : { opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="mt-10 hidden gap-x-7 gap-y-2.5 border-t border-plum/15 pt-5 sm:flex sm:flex-wrap"
-            >
-              {promises.map((p) => (
-                <li
-                  key={p}
-                  className="flex items-center gap-2.5 text-[13px] font-medium text-plum/55"
-                >
-                  <span aria-hidden className="h-px w-4 bg-pink-500" />
-                  {p}
-                </li>
-              ))}
-            </motion.ul>
-          </div>
+          <motion.div
+            initial={reduced ? false : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.28 }}
+            className="mt-9 flex flex-wrap items-center gap-3"
+          >
+            <StoreButton store="google" href={site.playStore} />
+            <StoreButton store="apple" variant="white" href={site.appStore} />
+          </motion.div>
 
-          {/* The second column is deliberately empty: the grid still holds the
-              words to the left half at the width they have always had, and the
-              wall that used to be here is now the bed behind the whole
-              section. */}
+          <motion.p
+            initial={reduced ? false : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.36 }}
+            className="mt-4 text-[13px] font-medium text-plum/65"
+          >
+            Free to download · No ads between you and your chats · Nothing sold, ever
+          </motion.p>
+
+          <motion.ul
+            initial={reduced ? false : { opacity: 0, y: 14 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.44 }}
+            className="mt-10 flex flex-wrap items-center gap-2.5"
+          >
+            {highlights.map(({ icon: Icon, label }) => (
+              <li
+                key={label}
+                className="flex items-center gap-2 rounded-full border border-plum/10 bg-pure px-3.5 py-2 text-[12.5px] font-semibold text-plum/80 shadow-[0_6px_18px_-12px_rgba(157,23,77,.4)]"
+              >
+                <Icon size={14} className="text-pink-600" aria-hidden />
+                {label}
+              </li>
+            ))}
+          </motion.ul>
         </div>
       </div>
     </section>

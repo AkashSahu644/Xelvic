@@ -66,8 +66,8 @@ export function CTABand() {
               {/* The Android badge goes straight to the Play listing: this is
                   the band that closes the pitch, and a person who has decided
                   to install should not have to pass through a second page to
-                  say which phone they hold. The Apple badge still hands off to
-                  /download, which is where the iPhone story lives. */}
+                  say which phone they hold. The Apple badge hands off to
+                  /download, which carries both stores and the requirements. */}
               <StoreButton store="google" variant="glow" href={site.playStore} className="w-full max-w-[240px] sm:w-auto" />
               <StoreButton store="apple" variant="ghost" to="/download" className="w-full max-w-[240px] sm:w-auto" />
             </div>
@@ -76,7 +76,7 @@ export function CTABand() {
 
         <Reveal delay={0.1}>
           <p className="mt-8 text-center text-sm font-semibold text-plum/50">
-            Free to download · Android · 33 themes · Encrypted chats &amp; calls
+            Free to download · Android &amp; iOS · 33 themes · Encrypted chats &amp; calls
           </p>
         </Reveal>
       </div>

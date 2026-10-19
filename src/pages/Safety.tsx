@@ -72,7 +72,7 @@ const urgent = [
 const habits = [
   {
     t: 'Keep the list small',
-    d: 'Only follow and keep people you actually want to hear from. Most of what is unpleasant on any app arrives through a connection somebody accepted once and forgot about.',
+    d: 'Only keep people you actually want to hear from. Most of what is unpleasant on any app arrives through a connection somebody accepted once and forgot about.',
   },
   {
     t: 'Use the Vault for the private half',

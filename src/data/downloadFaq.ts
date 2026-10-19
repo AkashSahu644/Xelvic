@@ -24,7 +24,12 @@ export const downloadFaqs: DownloadFaq[] = [
   },
   {
     q: 'Will it run on an old phone?',
-    a: 'If the phone runs Android 8 or iOS 15, yes — and those go back to 2017 and 2021 respectively. The app is built light, so a cheap phone is not treated as a second-class one.',
+    a: 'If the phone runs Android 8 or later, yes — Android 8 goes back to 2017. On an iPhone or iPad it needs iOS 15, which covers iPhone 6s and later. The app is built light, so a cheap phone is not treated as a second-class one.',
+    tag: 'Devices',
+  },
+  {
+    q: 'Does Xelvic work on iPhone?',
+    a: `Yes. Xelvic installs from the App Store on iPhone and iPad running iOS 15 or later, and the same account works in the browser at ${webHost}.`,
     tag: 'Devices',
   },
   {

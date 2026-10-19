@@ -82,9 +82,7 @@ Allow: /
 User-agent: Google-CloudVertexBot
 Allow: /
 
-# Microsoft Copilot.
-User-agent: BingBot
-Allow: /
+# Microsoft Copilot reads through Bingbot, which is already allowed above.
 
 # DuckDuckGo's AI answers.
 User-agent: DuckAssistBot

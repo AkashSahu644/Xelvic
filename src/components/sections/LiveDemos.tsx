@@ -35,7 +35,7 @@ const reels: {
     kind: 'moments',
     label: 'Moments',
     title: 'Share your day',
-    body: 'Post a Moment with music and polls. Up today for the people you follow, a Memory tomorrow.',
+    body: 'Post a Moment with music and polls. Up today for the people you keep, a Memory tomorrow.',
     to: '/features/moments',
     color: '#ff5fa2',
   },

@@ -142,7 +142,7 @@ const statics: RouteSeo[] = [
     breadcrumbs: [HOME],
     priority: 1.0,
     card: {
-      kicker: 'Free on iOS, Android & the web',
+      kicker: 'Free on Android, iOS & the web',
       headline: 'Chat, Spark, Vibe & more',
       sub: 'Chat, Sparks, Moments, live rooms, Drops & Vibes, short video, music and 33 themes — one place for the people you talk to every day.',
     },
@@ -165,7 +165,7 @@ const statics: RouteSeo[] = [
     path: '/how-it-works',
     title: 'How it works — Xelvic',
     description:
-      'From your first hello to going live: the five steps to set up Xelvic — create an account, find your people, start a chat or a call, post a Drop, and make it yours.',
+      'Five steps to set up Xelvic: create an account, find your people, start a chat or a call, post a Drop, and make the app yours.',
     ld: {
       name: 'How Xelvic works',
       description:
@@ -189,43 +189,30 @@ const statics: RouteSeo[] = [
   }),
   route({
     path: '/explore',
-    title: 'Explore — Xelvic',
+    title: 'Explore Xelvic — Feed, Chats & Stories',
     description:
-      'See what people are doing on Xelvic right now — live rooms, Moments, Drops, Vibes and trending audio, with interactive previews of the app itself.',
+      'Explore Xelvic in one place: the feed, the chats and the stories, with live interactive previews, every feature and the wallpapers that make it yours.',
     ld: {
       name: 'Explore Xelvic',
       description:
-        'Live rooms, fresh Moments, trending audio and endless Drops and Vibes — a taste of what people are doing on Xelvic, with live interactive previews of the app.',
+        'Xelvic brings chat, calling, Moments, live audio, Drops and Vibes, a social feed, music and a creator economy into a single home — the whole app, explored in one place.',
     },
     breadcrumbs: [HOME, { name: 'Explore', path: '/explore' }],
-    priority: 0.7,
-  }),
-  route({
-    path: '/overview',
-    title: 'Overview — Xelvic',
-    description:
-      'The big picture: what Xelvic is and everything it brings together — chat, calls, Moments, live rooms, Drops and Vibes, music, Sparks and creators.',
-    ld: {
-      name: 'Xelvic at a glance',
-      description:
-        'Xelvic brings chat, calling, Moments, live audio, Drops and Vibes, a social feed, music and a creator economy into a single home.',
-    },
-    breadcrumbs: [HOME, { name: 'Overview', path: '/overview' }],
-    priority: 0.6,
+    priority: 0.8,
   }),
   route({
     path: '/download',
     title: 'Download — Xelvic',
     description:
-      'Download Xelvic free for Android 8+ and iOS 15+ — what is included, what it needs to run, how to install it in four taps, and how to sign in on the web instead.',
+      'Download Xelvic free for Android and iOS, or use it in your browser. What is included, what it needs, and how to install it in four taps.',
     ld: {
       name: 'Download Xelvic',
       description:
-        'Download Xelvic free on Android 8+ and iOS 15+. What is included, what it needs to run, how to install it in four taps, and how to sign in on the web without installing anything.',
+        'Download Xelvic free on Android and iOS, or sign in on the web without installing anything. What is included, what it needs, and the four taps that install it.',
     },
     breadcrumbs: [HOME, { name: 'Download', path: '/download' }],
     priority: 0.9,
-    card: { kicker: 'Free download', headline: 'Get Xelvic', sub: 'Android 8+ and iOS 15+, or right here in your browser — no install needed.' },
+    card: { kicker: 'Free download', headline: 'Get Xelvic', sub: 'Android and iOS, or right here in your browser — no install needed.' },
   }),
   route({
     path: '/creators',
@@ -263,6 +250,23 @@ const statics: RouteSeo[] = [
         'Every Xelvic theme ships its own character. The mascot is not one fixed character — it is a cast, and it changes when you change your look.',
     },
     breadcrumbs: [HOME, { name: 'Themes & Drip', path: '/features/themes' }],
+    noindex: true,
+    priority: 0.1,
+  }),
+  route({
+    /* Explore and Overview were two tours of the same app; this URL stays so
+       old links and bookmarks still resolve. The app redirects it to Explore,
+       and the noindex keeps the redirect page out of the sitemap. */
+    path: '/overview',
+    title: 'Overview — Xelvic',
+    description:
+      'The Xelvic overview now lives on Explore: the feed, the chats, the stories, every feature and the wallpapers on one page.',
+    ld: {
+      name: 'Xelvic overview',
+      description:
+        'The overview now lives on Explore: the feed, the chats, the stories, every feature and the wallpapers on one page.',
+    },
+    breadcrumbs: [HOME, { name: 'Explore', path: '/explore' }],
     noindex: true,
     priority: 0.1,
   }),

@@ -10,7 +10,7 @@ import type { LucideIcon } from "lucide-react";
  * `MomentsMockups` draws for it.
  *
  * The rules here are the app's own, not a softer retelling. A Moment is up for
- * the people who follow you and nobody else; a Moment can name up to five
+ * the people who keep you and nobody else; a Moment can name up to five
  * people; and after its day it tucks itself away into Memories rather than
  * being deleted. The app says each of those outright, so this page says them
  * too and adds nothing.
@@ -39,7 +39,7 @@ export const momentsSections: MomentsSection[] = [
     title: "It starts on the Moments tab",
     body: [
       "The Moments tab opens on a pink circle with a + in it, labelled Your moments and first on the rail. Tap it and the composer is in front of you; beside it are the cards of everyone who has put something up today.",
-      "The rail only carries the people you follow, because a Moment is for them — not for the whole app, and not for a search box. There is no public side to it and no audience to build.",
+      "The rail only carries the people you keep, because a Moment is for them — not for the whole app, and not for a search box. There is no public side to it and no audience to build.",
     ],
     points: [
       {
@@ -47,8 +47,8 @@ export const momentsSections: MomentsSection[] = [
         body: "You do not go looking for a separate screen. The + circle sits first on the rail and is the way in.",
       },
       {
-        title: "Only the people you follow",
-        body: "Your Moments are for the people who follow you, and the rail shows the people you follow. Nothing here is public.",
+        title: "Only the people you keep",
+        body: "Your Moments are for the people who keep you, and the rail shows the people you keep. Nothing here is public.",
       },
       {
         title: "It has a day on it",

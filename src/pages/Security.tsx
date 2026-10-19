@@ -293,7 +293,7 @@ export default function Security() {
               doLabel="In scope"
               dontLabel="Out of scope"
               dos={[
-                'The Xelvic app for Android.',
+                'The Xelvic app for Android and iOS.',
                 'This website and everything served from it.',
                 'Account, session and vault behaviour.',
                 'How a conversation is encrypted and what the app claims about it.',

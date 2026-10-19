@@ -1,20 +1,20 @@
 # Xelvic — full text
 
-> Xelvic is a free social app for iOS, Android and the web that puts messaging,
+> Xelvic is a free social app for Android, iPhone and the web that puts messaging,
 > voice and video calls, moments, live rooms, short video and music in one
-> place. It is built around close groups rather than follower counts: a daily
-> "Spark" streak, an encrypted Private Vault, and 50+ app-wide themes.
+> place. It is built around close groups rather than keep counts: a daily
+> "Spark" streak, an encrypted Private Vault, and 33 app-wide themes.
 
 Source: https://xelvic.com · Index: https://xelvic.com/llms.txt
-Platforms: iOS, Android, any modern browser
+Platforms: Android 8+, iOS 15+ (iPhone and iPad), and any modern browser.
 Price: free. Sparks buy cosmetic themes and looks only, never features.
 Minimum age: 13
-Contact: hello@xelvic.app
+Contact: hello@xelvic.app (mail is on the xelvic.app domain)
 
 This document collects the site's own words in one place so a language model
 can read the whole product without following forty links. Nothing here is
-written for a crawler — every line is copy that appears on the site, with the
-page it came from noted above each part.
+written for a crawler — it is a digest of copy that appears on the site, with
+the page it came from noted above each part.
 
 ---
 
@@ -103,7 +103,7 @@ themselves away into Memories.
 - **Text, polls & music** — Post a thought, ask the room, or set it to a track.
 - **Mention your people** — A moment can name up to 5 people.
 - **Memories** — Everything you post is kept in a Memory once its day is over.
-- **Just for followers** — Only the people you follow see what you put up.
+- **Just for your keeps** — Only the people you keep see what you put up.
 
 **How to use it.** Home feed → tap your avatar ring → or swipe to Moments.
 
@@ -113,10 +113,10 @@ themselves away into Memories.
    poll, or just drop a thought.
 3. Mention up to 5 people — type @ to tag the people who should see themselves
    in it.
-4. Post — it lasts 24 hours. Followers see it today; tomorrow it tucks itself
+4. Post — it lasts 24 hours. Your keeps see it today; tomorrow it tucks itself
    into your Memories.
 
-Tips: only people you follow back can see your Moments. Open Profile →
+Tips: only mutual keeps can see your Moments. Open Profile →
 Memories to relive everything you have ever posted. Tap-and-hold a moment to
 pause it; swipe sideways to skip.
 
@@ -176,7 +176,7 @@ of what you are into.
 
 Tips: pick your interests in Explore and your feed tunes itself to you. Tap the
 heart to feel a post; long-press to save it for later. Drops from the people you
-follow surface at the top of the feed.
+keep surface at the top of the feed.
 
 *(from https://xelvic.com/features/drops-vibes)*
 
@@ -208,10 +208,10 @@ story has a soundtrack.
 
 ### Themes & Drip — "A look for every you"
 
-Flip your whole app into a new world with 50+ themes, chat wallpapers and
+Flip your whole app into a new world with 33 themes, chat wallpapers and
 wearable "Drip" for your profile.
 
-- **50+ themes** — Anime, kitsune, shinobi, unicorn, mecha and more.
+- **33 themes** — Anime, kitsune, shinobi, unicorn, mecha and more.
 - **Chat wallpapers** — Set the scene with hand-painted backdrops.
 - **Drip wearables** — Dress your profile in cosmetic looks.
 - **Unlocked by Sparks** — Keep the spark going and new looks open up.
@@ -220,7 +220,7 @@ wearable "Drip" for your profile.
 
 1. Open Settings → Appearance — tap your profile, then the ⚙️ gear, then
    Appearance.
-2. Pick a theme — preview any of the 50+ looks live, then apply to flip your
+2. Pick a theme — preview any of the 33 looks live, then apply to flip your
    whole app.
 3. Set a chat wallpaper — choose a hand-painted backdrop for your
    conversations.
@@ -237,7 +237,7 @@ nothing you post is tied to a theme.
 
 The Xelvic mascot is not one fixed character — it is a cast. Every theme pack
 ships its own artwork, so the character changes when you change your look.
-Seventeen characters, one per theme pack, plus three global poses:
+Seventeen characters, one per character pack, plus three global poses:
 
 - **Bio** — profiles & onboarding. The one that introduces you; it fronts the
   welcome flow and stands in wherever a profile needs a face.
@@ -246,7 +246,7 @@ Seventeen characters, one per theme pack, plus three global poses:
 - **Wait** — loading and empty screens. The patient one; it keeps you company
   on loading screens and when a list has nothing in it yet.
 
-*(from https://xelvic.com/characters)*
+*(from https://xelvic.com/features/themes#cast)*
 
 ### Social features
 
@@ -268,8 +268,8 @@ Seventeen characters, one per theme pack, plus three global poses:
 
 ## 3. Download and requirements
 
-- Free on Android 8+ and iOS 14+ — those go back to 2017 and 2020
-  respectively.
+- Free on Android 8+ and iOS 15+ (iPhone 6s and later, and iPad). Android 8
+  goes back to 2017.
 - There is no subscription, no premium tier and no ads in the chat list.
   Everything the app can do, it does for everyone who installs it.
 - The same account signs in on a phone, a tablet and a browser at once, and a
@@ -380,7 +380,7 @@ walk in — which is the point of the rule.
 ### Moments, Live & Rooms
 
 **How long do Moments last?**
-A day. What you post turns up for the people who follow you and is gone from
+A day. What you post turns up for the people who keep you and is gone from
 the feed tomorrow — and then it is kept in your Memories, on your profile,
 where who sees it follows your account exactly as your moments do.
 
@@ -403,7 +403,7 @@ make it public again and what you put up shows there.
 
 **How do I go live?**
 Open Live, pick camera or text, and start whenever you are ready. It is
-announced to the people who follow you the moment you go, so nobody misses it
+announced to the people who keep you the moment you go, so nobody misses it
 by accident.
 
 **Who can talk in a room?**
@@ -659,7 +659,7 @@ Creators are not an afterthought on Xelvic. Professional profiles, Insights and
 a verification mark are built in. Brands can invite creators to make content
 and track paid deals in the open. The creator uploads the deliverable for
 approval, and payment is released only after the company approves. Public
-creators with 2k followers or more show up in the directory, so brands can find
+creators with 2k keeps or more show up in the directory, so brands can find
 exactly the right collaborator.
 
 *(https://xelvic.com/blog/building-for-creators)*
@@ -682,6 +682,11 @@ source rather than a summary, so nothing is paraphrased out of context.
   it.
 - **Privacy Policy** — https://xelvic.com/privacy
 - **Terms of Service** — https://xelvic.com/terms
+- **Child safety** — https://xelvic.com/child-safety — The child-safety
+  standards the app stores are handed, including the age gate and reporting
+  routes.
+- **Delete your account** — https://xelvic.com/delete-account — The permanent
+  deletion route, what it removes, and what it cannot recover.
 - **Settings, explained** — https://xelvic.com/settings — Every switch in the
   app and what it changes.
 - **About us** — https://xelvic.com/about
@@ -689,15 +694,15 @@ source rather than a summary, so nothing is paraphrased out of context.
 - **Press** — https://xelvic.com/press
 - **Brand Center** — https://xelvic.com/brand
 - **Contact** — https://xelvic.com/contact — hello@xelvic.app for anything at
-  all; support@, safety@, security@, privacy@, press@, careers@, partners@ and
-  legal@ for the specific routes.
+  all (mail is on the xelvic.app domain); support@, safety@, security@,
+  privacy@, press@, careers@, partners@ and legal@ for the specific routes.
 - **Support** — https://xelvic.com/support
 - **Community** — https://xelvic.com/community
 - **Creators** — https://xelvic.com/creators
 - **Developers** — https://xelvic.com/developers
 - **What's New** — https://xelvic.com/whats-new
-- **Explore** — https://xelvic.com/explore
-- **Overview** — https://xelvic.com/overview
+- **Explore** — https://xelvic.com/explore — the whole app on one page: the
+  feed, the chats, the stories, every feature and the wallpapers.
 
 ---
 

@@ -301,13 +301,13 @@ function ChartsScreen() {
         <span className="h-[98px] w-[74px] shrink-0" />
         <TrendingCard
           title="Jhol"
-          artist="Ekta 😊😊"
+          artist="Ashley 😊😊"
           src={ART_2}
           avatar={FACE_3}
         />
         <TrendingCard
           title="BOYFRIEND"
-          artist="Hifza"
+          artist="Emily Rose"
           src={ART_3}
           avatar={FACE_2}
         />
@@ -504,7 +504,7 @@ function PlayerScreen() {
         <QueueRow
           tone="#3b3bd9"
           title="Kya fitoor dur"
-          artist="Ekta 😊😊"
+          artist="Ashley 😊😊"
           time="4:08"
         />
       </div>
@@ -540,11 +540,11 @@ type Track = {
 };
 
 const TRACKS: Track[] = [
-  { title: "Jhol", artist: "Ekta 😊😊", src: ART_2, time: "4:38" },
+  { title: "Jhol", artist: "Ashley 😊😊", src: ART_2, time: "4:38" },
   { title: "Music", artist: "Shahanshah", tone: "#3b3bd9", time: "8:55" },
   {
     title: "Aj mujhe jail bhi jana pada",
-    artist: "Hifza",
+    artist: "Emily Rose",
     src: ART_3,
     time: "0:10",
   },
@@ -552,11 +552,11 @@ const TRACKS: Track[] = [
   { title: "Saundebaazi", artist: "TOTUL SARKER", src: ART_4, time: "6:31" },
   {
     title: "Kya fitoor dur",
-    artist: "Ekta 😊😊",
+    artist: "Ashley 😊😊",
     tone: "#5b2ea6",
     time: "4:08",
   },
-  { title: "BOYFRIEND", artist: "Hifza", tone: "#7d1044", time: "3:12" },
+  { title: "BOYFRIEND", artist: "Emily Rose", tone: "#7d1044", time: "3:12" },
 ];
 
 function TrackRow({
@@ -655,7 +655,7 @@ function PlaylistsEscape() {
 
 const SAVED: Track[] = [
   { title: "Piya Aye Na", artist: "TOTUL SARKER", src: ART, time: "4:45" },
-  { title: "Jhol", artist: "Ekta 😊😊", src: ART_2, time: "4:38" },
+  { title: "Jhol", artist: "Ashley 😊😊", src: ART_2, time: "4:38" },
   { title: "Music", artist: "Shahanshah", tone: "#3b3bd9", time: "8:55" },
   { title: "Saundebaazi", artist: "TOTUL SARKER", src: ART_4, time: "6:31" },
 ];

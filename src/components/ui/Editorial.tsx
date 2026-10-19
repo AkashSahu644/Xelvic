@@ -52,11 +52,11 @@ export function Stats({
             <dd className="font-display text-3xl font-bold leading-none text-plum md:text-4xl">
               {s.value}
             </dd>
-            <dt className="mt-3.5 text-[11px] font-bold uppercase tracking-[0.14em] text-plum/40">
+            <dt className="mt-3.5 text-[11px] font-bold uppercase tracking-[0.14em] text-plum/70">
               {s.label}
             </dt>
             {s.note && (
-              <p className="mt-2 text-sm leading-relaxed text-plum/55">{s.note}</p>
+              <p className="mt-2 text-sm leading-relaxed text-plum/70">{s.note}</p>
             )}
           </div>
         ))}
@@ -84,13 +84,13 @@ export function Rows({
       <dl className={`divide-y divide-plum/10 border-y border-plum/10 ${className}`}>
         {items.map((r) => (
           <div key={r.k} className="grid gap-1.5 py-5 sm:grid-cols-[210px_minmax(0,1fr)] sm:gap-8">
-            <dt className="text-[11px] font-bold uppercase tracking-[0.14em] text-plum/40 sm:pt-1.5">
+            <dt className="text-[11px] font-bold uppercase tracking-[0.14em] text-plum/70 sm:pt-1.5">
               {r.k}
             </dt>
             <dd className="min-w-0">
               <span className="block text-[17px] font-semibold leading-snug text-plum">{r.v}</span>
               {r.note && (
-                <span className="mt-2 block text-sm leading-relaxed text-plum/55">{r.note}</span>
+                <span className="mt-2 block text-sm leading-relaxed text-plum/70">{r.note}</span>
               )}
             </dd>
           </div>
@@ -182,7 +182,7 @@ export function Pull({
           {children}
         </blockquote>
         {by && (
-          <figcaption className="mt-5 text-[11px] font-bold uppercase tracking-[0.14em] text-plum/40">
+          <figcaption className="mt-5 text-[11px] font-bold uppercase tracking-[0.14em] text-plum/70">
             {by}
           </figcaption>
         )}
@@ -193,13 +193,16 @@ export function Pull({
 
 /* ————————————————————————————————————— the frame ——— */
 
-/** A section heading with an optional kicker above it and a line of context below. */
+/** A section heading with a line of context below.
+ *
+ * `kicker` is accepted so existing call sites still compile, but it is not
+ * rendered: this site does not put eyebrow labels above headings. */
 export function SectionHead({
-  kicker,
   title,
   sub,
   className = '',
 }: {
+  /** @deprecated Not rendered. Eyebrow labels above headings are not used. */
   kicker?: string
   title: ReactNode
   sub?: string
@@ -208,11 +211,6 @@ export function SectionHead({
   return (
     <Reveal>
       <div className={className}>
-        {kicker && (
-          <p className="mb-4 text-[11px] font-bold uppercase tracking-[0.18em] text-pink-600">
-            {kicker}
-          </p>
-        )}
         <h2 className="font-display text-3xl font-bold leading-tight md:text-4xl">{title}</h2>
         {sub && <p className="mt-4 max-w-2xl leading-relaxed text-white/60">{sub}</p>}
       </div>
@@ -288,14 +286,14 @@ export function DoDont({
           </ul>
         </div>
         <div className="bg-pure p-6 sm:p-7">
-          <h3 className="text-[11px] font-bold uppercase tracking-[0.14em] text-plum/40">
+          <h3 className="text-[11px] font-bold uppercase tracking-[0.14em] text-plum/70">
             {dontLabel}
           </h3>
           <ul className="mt-5">
             {donts.map((d) => (
               <li
                 key={d}
-                className="border-t border-plum/10 py-3.5 leading-relaxed text-plum/55 first:border-0 first:pt-0"
+                className="border-t border-plum/10 py-3.5 leading-relaxed text-plum/70 first:border-0 first:pt-0"
               >
                 {d}
               </li>
@@ -347,7 +345,7 @@ export function Blocks({
             <h3 className="mt-3 font-display text-lg font-bold leading-snug text-plum">{it.t}</h3>
             <p className="mt-2.5 text-sm leading-relaxed text-plum/60">{it.d}</p>
             {it.app && (
-              <p className="mt-5 border-t border-plum/10 pt-4 text-[13px] italic leading-relaxed text-plum/50">
+              <p className="mt-5 border-t border-plum/10 pt-4 text-[13px] italic leading-relaxed text-plum/70">
                 “{it.app}”
               </p>
             )}

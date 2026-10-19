@@ -40,7 +40,7 @@ export const gettingStarted: GettingStartedStep[] = [
   {
     n: '04',
     title: 'Share your day',
-    body: 'Post a Moment, drop a photo, or go Live. What you share with the people you follow turns up today and becomes a Memory tomorrow.',
+    body: 'Post a Moment, drop a photo, or go Live. What you share with the people you keep turns up today and becomes a Memory tomorrow.',
     demo: 'moments',
     taps: ['Tap your avatar +', 'Add text / music / poll', 'Post — lasts 24h'],
   },

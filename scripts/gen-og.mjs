@@ -191,7 +191,7 @@ await render(
   {
     kicker: 'Free on iOS, Android & the web',
     headline: seo.site.tagline,
-    sub: 'One app for the people you talk to every day — chat, Sparks, Moments, live rooms, Drops, Vibes, music and 50+ themes.',
+    sub: 'One app for the people you talk to every day — chat, Sparks, Moments, live rooms, Drops, Vibes, music and 33 themes.',
     path: '/',
   },
   'xelvic-og.png',
