@@ -1,6 +1,17 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T9WLWHVQQG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+
+      gtag('config', 'G-T9WLWHVQQG');
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="theme-color" content="#fff5f9" />
@@ -63,59 +74,18 @@
     <div id="root"></div>
 
     <!--
-      The no-JavaScript fallback.
+      The static body.
 
-      This is not a crawler trick and it is not hidden from anybody: with
-      scripting off, this is genuinely all a visitor would otherwise get, and a
-      blank page is a worse answer for a person than a plain one. It says the
-      same things the rendered home page says, in the same words, and links to
-      the same pages — nothing here is written for a machine that a reader
-      would not also be told.
+      #root is left empty here on purpose. `prepareShell` in
+      scripts/lib/html.mjs drops this route's own body into it — at build time
+      in `prerender.mjs`, and at request time in the dev-server plugin — and
+      React clears it the moment the app mounts. One document therefore does
+      two jobs: a crawler that does not run JavaScript gets a real heading and
+      the page's actual copy, and a visitor whose script never arrives gets a
+      plain page instead of a blank one. Nothing in it is hidden from anybody,
+      and nothing is written for a machine that a reader would not also be
+      told.
     -->
-    <noscript>
-      <div style="max-width: 44rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; line-height: 1.65; color: #3a0a24">
-        <h1 style="font-size: 1.9rem; line-height: 1.15; margin: 0 0 0.5rem">Xelvic — Chat, Spark, Vibe &amp; more</h1>
-        <p style="font-size: 1.05rem; margin: 0 0 1.5rem">
-          Xelvic is a free social app for Android, iPhone and the web that puts messaging, voice and
-          video calls, moments, live rooms, short video and music in one place. It is built around
-          close groups rather than keep counts.
-        </p>
-
-        <h2 style="font-size: 1.15rem; margin: 1.75rem 0 0.5rem">What it does</h2>
-        <ul style="margin: 0; padding-left: 1.15rem">
-          <li><strong>Messaging</strong> — one-to-one and group chat with channels, voice notes, media, documents and an offline outbox.</li>
-          <li><strong>Voice &amp; video calls</strong> — peer-to-peer over WebRTC, with encrypted media and a full call history.</li>
-          <li><strong>Moments &amp; Memories</strong> — posts with text, polls and music that last 24 hours, then file themselves away.</li>
-          <li><strong>Live &amp; Rooms</strong> — go live by camera or text, or open an audio room and hand out the microphones.</li>
-          <li><strong>Drops &amp; Vibes</strong> — photo posts and short-video reels, with feels and private notes on each one.</li>
-          <li><strong>Audio &amp; music</strong> — charts, playlists, offline saving, and sharing a track straight into a chat.</li>
-          <li><strong>Themes &amp; Drip</strong> — 33 themes that restyle the whole app, chat wallpapers, and wearables for your profile.</li>
-          <li><strong>Sparks</strong> — a streak for every day two people actually talk.</li>
-          <li><strong>Private Vault</strong> — an encrypted, code-locked space for the conversations you want out of the way.</li>
-        </ul>
-
-        <h2 style="font-size: 1.15rem; margin: 1.75rem 0 0.5rem">The essentials</h2>
-        <ul style="margin: 0; padding-left: 1.15rem">
-          <li>Free to use. Sparks are spent on cosmetic themes and looks, never on features.</li>
-          <li>Available on Android and iOS, plus any modern browser. Minimum age 13.</li>
-          <li>Contacts are matched on your device — your address book is never uploaded.</li>
-        </ul>
-
-        <h2 style="font-size: 1.15rem; margin: 1.75rem 0 0.5rem">Where to go next</h2>
-        <ul style="margin: 0; padding-left: 1.15rem">
-          <li><a href="/features">All features</a></li>
-          <li><a href="/how-it-works">How it works</a></li>
-          <li><a href="/download">Download Xelvic</a></li>
-          <li><a href="/help">Help Center</a></li>
-          <li><a href="/safety">Safety</a> · <a href="/security">Security</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></li>
-          <li><a href="/about">About us</a> · <a href="/careers">Careers</a> · <a href="/contact">Contact</a></li>
-        </ul>
-
-        <p style="margin: 1.75rem 0 0; font-size: 0.95rem">
-          Signing in to an existing account: <a href="https://web.xelvic.com">web.xelvic.com</a>
-        </p>
-      </div>
-    </noscript>
 
     <script type="module" src="/src/main.tsx"></script>
   </body>

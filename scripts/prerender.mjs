@@ -23,10 +23,12 @@
  * strings, so what a preview shows while iterating and what ships are the same
  * document rather than two that look alike.
  *
- * What this does not do. It does not render the React tree, so the body stays
- * `<div id="root">`. Googlebot runs the bundle and sees the real page; the
- * bots that do not get the head, the structured data and the `<noscript>`
- * fallback, which is what they were ever going to read.
+ * What this does not do. It does not render the React tree. Instead the shell's
+ * `#root` is filled with the route's static body from `html.mjs` — the same
+ * words the page says, in plain markup — and React replaces it on mount. A
+ * crawler that does not run JavaScript therefore gets a real heading and real
+ * copy, not a blank container, and a visitor without JavaScript gets the same
+ * page in plain form. Googlebot runs the bundle and sees the app.
  *
  * Hosting note: this produces directory-style files (`dist/about/index.html`).
  * Every static host — Netlify, Vercel, Cloudflare Pages, GitHub Pages, S3 with

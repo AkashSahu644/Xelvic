@@ -1,5 +1,12 @@
 /**
- * One route's head, and one route's no-JavaScript body.
+ * One route's head, and one route's static body.
+ *
+ * The body is written into `#root`. React clears the container on its first
+ * render, so the same markup has two jobs: a crawler that does not run
+ * JavaScript reads a real heading and the page's actual copy, and a visitor
+ * whose script never arrives gets a plain page instead of a blank one. It is
+ * not hidden from anybody and it is not a second copy of the page's claims —
+ * the strings come from the same data the page renders.
  *
  * Two things read this: `scripts/prerender.mjs`, which writes a real file per
  * route into `dist/` and is what production serves, and the dev-server plugin
@@ -150,6 +157,19 @@ function extrasFor(r, seo) {
         <ul style="${UL}">
 ${HOME_BULLETS.map(([k, v]) => `          <li><strong>${k}</strong> — ${v}</li>`).join('\n')}
         </ul>
+
+        <h2 style="${H2}">What's new</h2>
+        <ul style="${UL}">
+${seo.newInXelvic
+  .map((n) => `          <li><strong>${esc(n.short)}</strong> — ${esc(n.summary)}</li>`)
+  .join('\n')}
+        </ul>
+
+        <h2 style="${H2}">A look for every you</h2>
+        <p style="${P}">Flip your whole app into a brand-new world with a single tap — anime,
+        kitsune, shinobi, unicorn, mecha, pastel, neon and dozens more. There are 33 themes in
+        all, 17 of them with a character of their own, plus chat wallpapers and wearables for
+        your profile.</p>
 
         <h2 style="${H2}">The essentials</h2>
         <ul style="${UL}">
@@ -317,7 +337,7 @@ function nextLinksFor(r, seo) {
   return NEXT_LINKS
 }
 
-export function noscriptFor(r, seo) {
+export function bodyFor(r, seo) {
   const trail = r.breadcrumbs
     .map((b, i) =>
       i === r.breadcrumbs.length - 1 ? esc(b.name) : `<a href="${b.path}">${esc(b.name)}</a>`,
@@ -328,8 +348,7 @@ export function noscriptFor(r, seo) {
     .map(([path, label]) => `          <li><a href="${path}">${esc(label)}</a></li>`)
     .join('\n')
 
-  return `    <noscript>
-      <div style="max-width:44rem;margin:0 auto;padding:2rem 1.25rem 4rem;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.65;color:#3a0a24">
+  return `<div data-seo-fallback style="max-width:44rem;margin:0 auto;padding:2rem 1.25rem 4rem;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;line-height:1.65;color:#3a0a24">
         <p style="font-size:0.9rem;margin:0 0 1rem;opacity:0.7">${trail}</p>
         <h1 style="font-size:1.9rem;line-height:1.15;margin:0 0 0.5rem">${esc(r.ld.name)}</h1>
         <p style="${P}">${esc(r.description)}</p>${extrasFor(r, seo)}
@@ -343,8 +362,7 @@ ${next}
           Xelvic is on <a href="/download">iOS, Android</a> and the web. Signing in to an existing
           account: <a href="${seo.site.web}">web.xelvic.com</a>
         </p>
-      </div>
-    </noscript>`
+      </div>`
 }
 
 /* ── The shell ────────────────────────────────────────────────────────────── */
@@ -376,6 +394,10 @@ export const NOT_FOUND = {
  * the prose. Stripping comments up front means the only `<title>` left is the
  * real one.
  *
+ * The second slot goes inside `#root`, which the shell leaves empty. React
+ * clears the container on its first render, so every route ships a real body
+ * for crawlers and for visitors without JavaScript without hydrating anything.
+ *
  * Route-specific tags left in the shell are then deleted rather than trusted,
  * because a crawler reads the first of a duplicated pair.
  */
@@ -383,7 +405,10 @@ export function prepareShell(template) {
   const shell = String(template)
     .replace(/<!--[\s\S]*?-->/g, '')
     .replace(/<title>[\s\S]*?<\/title>/, '<!-- @seo-head -->')
-    .replace(/<noscript>[\s\S]*?<\/noscript>/, '<!-- @seo-noscript -->')
+    .replace(
+      /<div\s+id="root">\s*(?:<div data-seo-fallback[\s\S]*?<\/div>)?\s*<\/div>/,
+      '<div id="root"><!-- @seo-body --></div>',
+    )
     .replace(/^\s*<meta\s+name="description"[\s\S]*?\/>\s*$/m, '')
     .replace(/^\s*<link\s+rel="canonical"[\s\S]*?\/>\s*$/gm, '')
     .replace(/^\s*<link\s+rel="alternate"[\s\S]*?\/>\s*$/gm, '')
@@ -395,8 +420,8 @@ export function prepareShell(template) {
   if (!shell.includes('@seo-head')) {
     throw new Error('index.html has no <title> to replace — has it been edited?')
   }
-  if (!shell.includes('@seo-noscript')) {
-    throw new Error('index.html has no <noscript> to replace — has it been edited?')
+  if (!shell.includes('@seo-body')) {
+    throw new Error('index.html has no empty #root to fill — has it been edited?')
   }
   return shell
 }
@@ -414,7 +439,7 @@ export function prepareShell(template) {
 export function htmlFor(shell, r, seo) {
   return shell
     .replace('<!-- @seo-head -->', () => headFor(r, seo))
-    .replace('<!-- @seo-noscript -->', () => noscriptFor(r, seo))
+    .replace('<!-- @seo-body -->', () => bodyFor(r, seo))
 }
 
 /**
